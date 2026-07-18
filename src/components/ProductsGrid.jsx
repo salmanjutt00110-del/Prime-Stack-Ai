@@ -62,6 +62,33 @@ export default function ProductsGrid() {
             Choose from our premium collection of AI tools, creator services, subscriptions, and digital products with instant activation and trusted support.
           </motion.p>
 
+          {/* Referral Reward Offer Banner */}
+          <motion.div
+            className="mt-6 p-5 rounded-2xl border text-xs sm:text-sm max-w-[700px] leading-relaxed relative overflow-hidden text-center cursor-default bg-white/5 border-white/10"
+            style={{
+              background: "linear-gradient(135deg, rgba(59,130,246,0.06) 0%, rgba(139,92,246,0.06) 50%, rgba(236,72,153,0.06) 100%)",
+              borderColor: "rgba(139, 92, 246, 0.15)",
+              boxShadow: "0 10px 30px rgba(139, 92, 246, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.05)",
+            }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.25 }}
+            whileHover={{ scale: 1.01, borderColor: "rgba(139, 92, 246, 0.3)" }}
+          >
+            {/* Shimmer sweep */}
+            <span className="ps-shimmer absolute inset-0" />
+            <div className="flex items-center justify-center gap-2 flex-wrap text-white/90">
+              <span className="text-base shrink-0">🎁</span>
+              <span className="font-bold bg-gradient-to-r from-blue-400 via-violet-400 to-pink-400 bg-clip-text text-transparent">
+                Referral Reward Offer:
+              </span>
+              <span>
+                Invite <strong>5 friends</strong> to buy any subscription (Gemini, ChatGPT, Canva, etc.), share the purchase proofs with us on WhatsApp, and receive a <strong>18-Month Google Gemini Pro</strong> subscription completely <strong>FREE!</strong>
+              </span>
+            </div>
+          </motion.div>
+
           {/* Search bar */}
           <motion.div
             className="mt-10 w-full max-w-md relative"
