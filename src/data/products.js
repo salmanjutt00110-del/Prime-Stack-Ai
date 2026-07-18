@@ -32,7 +32,7 @@ export const LOGO = {
 // Hero showcase products (one per brand) — 8 total
 export const HERO_PRODUCTS = [
   { id: "chatgpt-plus-1m", name: "ChatGPT Plus", tag: "⚡ Instant Delivery", duration: "1 Month", price: "Rs. 1,899", oldPrice: "Rs. 2,099", description: "ChatGPT Plus subscription via the fast & stable iCloud method. Full premium access with instant delivery and 2FA code setup included.", logo: BRAND.chatgpt, color: "#10A37F", color2: "#0D8A6D", particle: "#10A37F" },
-  { id: "gemini-pro-18", name: "Google Gemini Pro", tag: "🚀 18 Months", duration: "18 Months", price: "Rs. 4,699", oldPrice: "Rs. 5,199", description: "Premium Gemini AI access on your personal Google account — 5TB storage, advanced AI image generation, Veo video generation, monthly credits & family sharing.", logo: BRAND.gemini, color: "#4285F4", color2: "#8B5CF6", particle: "#60A5FA" },
+  { id: "gemini-pro-18", name: "Google Gemini Pro", tag: "🚀 18 Months", duration: "18 Months", price: "Rs. 999", oldPrice: "Rs. 5,199", description: "Premium Gemini AI access on your personal Google account — 5TB storage, advanced AI image generation, Veo video generation, monthly credits & family sharing.", logo: BRAND.gemini, color: "#4285F4", color2: "#8B5CF6", particle: "#60A5FA" },
   { id: "veo-3-video", name: "Google Veo 3", tag: "🎬 AI Video", duration: "30 Days Stable", price: "Rs. 3,999", oldPrice: "Rs. 4,449", description: "Unlimited AI video generation with 45,000+ credits. Only your Gmail address required. 20-day warranty on technical issues with full activation guide.", logo: BRAND.veo, color: "#4285F4", color2: "#EA4335", particle: "#60A5FA" },
   { id: "capcut-pro-1m", name: "CapCut Pro", tag: "✂️ Pro Editing", duration: "1 Month", price: "Rs. 1,199", oldPrice: "Rs. 1,329", description: "CapCut Pro premium access with all pro editing features, premium effects, filters, templates, AI editing tools — export without watermark.", logo: BRAND.capcut, color: "#FE2C55", color2: "#25F4EE", particle: "#FE2C55" },
   { id: "canva-pro-edu", name: "Canva Pro", tag: "🔥 Best Value", duration: "3 Years", price: "Rs. 299", oldPrice: "Rs. 329", description: "Canva Pro Edu invite for individual users — 3 years of access. Canva AI, magic design, magic write/edit, background remover and all AI-powered design tools.", logo: BRAND.canva, color: "#7D2AE8", color2: "#00C4CC", particle: "#A78BFA" },
@@ -47,7 +47,7 @@ export const ALL_PRODUCTS = [
     id: "gemini-pro-18",
     name: "Google Gemini Pro",
     duration: "18 Months",
-    price: "Rs. 4,699",
+    price: "Rs. 999",
     oldPrice: "Rs. 5,199",
     color: "#4285F4",
     logo: BRAND.gemini,
