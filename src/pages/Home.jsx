@@ -20,35 +20,6 @@ export default function Home() {
     return () => clearTimeout(t);
   }, []);
 
-  // Premium scroll reveal observer with blur and scale transitions
-  useEffect(() => {
-    const els = document.querySelectorAll(".ps-reveal");
-    const obs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            setTimeout(() => {
-              e.target.style.opacity = "1";
-              e.target.style.transform = "translateY(0) scale(1)";
-              e.target.style.filter = "blur(0px)";
-            }, (e.target.dataset.idx || 0) * 100);
-            obs.unobserve(e.target);
-          }
-        });
-      },
-      { threshold: 0.12 }
-    );
-    els.forEach((el) => {
-      el.style.opacity = "0";
-      el.style.transform = "translateY(50px) scale(0.96)";
-      el.style.filter = "blur(12px)";
-      el.style.transition =
-        "opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1), filter 1.2s cubic-bezier(0.16, 1, 0.3, 1)";
-      obs.observe(el);
-    });
-    return () => obs.disconnect();
-  }, []);
-
   return (
     <>
       {/* Premium Cinematic Intro Screen */}
@@ -86,30 +57,14 @@ export default function Home() {
         <AmbientGlow />
         <Navbar />
         <main>
-          <div className="ps-reveal" data-idx="0">
-            <Hero />
-          </div>
-          <div className="ps-reveal" data-idx="1">
-            <StatsBar />
-          </div>
-          <div className="ps-reveal" data-idx="2">
-            <ProductsGrid />
-          </div>
-          <div className="ps-reveal" data-idx="1">
-            <HowItWorks />
-          </div>
-          <div className="ps-reveal" data-idx="1">
-            <WhyUs />
-          </div>
-          <div className="ps-reveal" data-idx="1">
-            <Testimonials />
-          </div>
-          <div className="ps-reveal" data-idx="1">
-            <FAQ />
-          </div>
-          <div className="ps-reveal" data-idx="1">
-            <CTASection />
-          </div>
+          <Hero />
+          <StatsBar />
+          <ProductsGrid />
+          <HowItWorks />
+          <WhyUs />
+          <Testimonials />
+          <FAQ />
+          <CTASection />
         </main>
         <Footer />
       </motion.div>
