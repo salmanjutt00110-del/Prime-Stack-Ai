@@ -17,6 +17,7 @@ export default function ParticleBackground({ color = "#8B5CF6", count }) {
     const ctx = canvas.getContext("2d", { alpha: true });
     let raf;
     let particles = [];
+    let isVisible = true;
 
     const isMobile = window.innerWidth < 768;
     const n = count || (isMobile ? 15 : 35); // Optimized particle count
@@ -52,6 +53,7 @@ export default function ParticleBackground({ color = "#8B5CF6", count }) {
     }
 
     function draw() {
+      if (!isVisible) return; // Completely pause calculations when off-screen
       const w = window.innerWidth;
       const h = window.innerHeight;
       ctx.clearRect(0, 0, w, h);
@@ -99,12 +101,26 @@ export default function ParticleBackground({ color = "#8B5CF6", count }) {
     spawn();
     draw();
 
+    // IntersectionObserver to dynamically pause/resume canvas drawings
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+        if (isVisible) {
+          cancelAnimationFrame(raf);
+          draw();
+        }
+      },
+      { threshold: 0.01 }
+    );
+    observer.observe(canvas);
+
     window.addEventListener("resize", resize); // Only resize, do NOT trigger GC spawn spike
     window.addEventListener("mousemove", onMouse);
     window.addEventListener("mouseleave", onLeave);
 
     return () => {
       cancelAnimationFrame(raf);
+      observer.disconnect();
       window.removeEventListener("resize", resize);
       window.removeEventListener("mousemove", onMouse);
       window.removeEventListener("mouseleave", onLeave);

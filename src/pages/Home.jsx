@@ -156,7 +156,7 @@ function AmbientGlow() {
   return (
     <div
       id="ps-ambient"
-      className="pointer-events-none fixed z-0 rounded-full blur-[160px] opacity-25 transition-opacity duration-500"
+      className="pointer-events-none fixed z-0 rounded-full blur-[160px] opacity-25 transition-opacity duration-500 hidden md:block"
       style={{
         width: 400,
         height: 400,

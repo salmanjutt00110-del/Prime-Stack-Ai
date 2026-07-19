@@ -52,16 +52,6 @@ export default function ProductCard({ product, index = 0 }) {
           rotate: 0.5,
           borderColor: `${product.color}66`,
         }}
-        animate={{
-          y: [0, -4, 0],
-        }}
-        transition={{
-          y: {
-            duration: 5 + (index % 3) * 0.5,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }
-        }}
       >
         {/* Top Right Discount Glass Badge */}
         <motion.div
