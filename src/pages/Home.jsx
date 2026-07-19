@@ -16,6 +16,7 @@ export default function Home() {
 
   // Cinematic page intro loader timer
   useEffect(() => {
+    window.scrollTo(0, 0);
     const t = setTimeout(() => setIntro(false), 1200);
     return () => clearTimeout(t);
   }, []);

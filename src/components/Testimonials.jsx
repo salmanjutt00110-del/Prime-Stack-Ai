@@ -65,13 +65,13 @@ export default function Testimonials() {
   const [isHovered, setIsHovered] = useState(false);
   const timerRef = useRef(null);
 
-  // Autoplay functionality: swap review every 4.5 seconds
+  // Autoplay functionality: swap review every 3 seconds
   useEffect(() => {
     if (!isHovered) {
       timerRef.current = setInterval(() => {
         setDirection(1);
         setIndex((prev) => (prev + 1) % REVIEWS.length);
-      }, 4500);
+      }, 3000);
     }
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
