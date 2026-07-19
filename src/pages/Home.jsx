@@ -12,14 +12,21 @@ import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 
 export default function Home() {
-  const [intro, setIntro] = useState(true);
+  const [intro, setIntro] = useState(() => {
+    // Only show the intro loader once per session
+    const hasSeen = sessionStorage.getItem("ps-intro-seen");
+    return !hasSeen;
+  });
 
   // Cinematic page intro loader timer
   useEffect(() => {
     window.scrollTo(0, 0);
+    if (!intro) return;
+
+    sessionStorage.setItem("ps-intro-seen", "true");
     const t = setTimeout(() => setIntro(false), 2800);
     return () => clearTimeout(t);
-  }, []);
+  }, [intro]);
 
   return (
     <>
