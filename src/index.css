@@ -299,4 +299,16 @@
   .ps-magnetic-btn:hover {
     box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
   }
+
+  /* Premium 3D Extrusion Text effect with dynamic shadow offset */
+  .ps-text-3d {
+    text-shadow: 
+      0 1px 0 rgba(255,255,255,0.08),
+      0 2px 0 rgba(0,0,0,0.4),
+      0 3px 0 rgba(0,0,0,0.55),
+      0 4px 0 rgba(0,0,0,0.7),
+      0 6px 15px rgba(0, 0, 0, 0.8),
+      0 0 35px rgba(139, 92, 246, 0.15);
+    transform-style: preserve-3d;
+  }
 }

@@ -1,5 +1,6 @@
 import { MousePointerClick, MessageCircle, Rocket } from "lucide-react";
 import { motion } from "framer-motion";
+import Animated3DText from "@/components/Animated3DText";
 
 const STEPS = [
   {
@@ -36,15 +37,9 @@ export default function HowItWorks() {
           >
             Simple Process
           </motion.span>
-          <motion.h2
-            className="mt-3 font-display font-bold text-white text-[clamp(1.8rem,4vw,2.8rem)] tracking-tight"
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            How It Works
-          </motion.h2>
+          <h2 className="mt-3 font-display font-bold text-white text-[clamp(1.8rem,4vw,2.8rem)] tracking-tight">
+            <Animated3DText text="How It Works" variant="heading" />
+          </h2>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">

@@ -80,8 +80,7 @@ function AmbientGlow() {
     const move = (e) => {
       cancelAnimationFrame(raf);
       raf = requestAnimationFrame(() => {
-        el.style.left = e.clientX + "px";
-        el.style.top = e.clientY + "px";
+        el.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate3d(-50%, -50%, 0)`;
       });
     };
     window.addEventListener("mousemove", move);
@@ -99,9 +98,9 @@ function AmbientGlow() {
         height: 400,
         background:
           "radial-gradient(circle, rgba(139,92,246,0.35), transparent 70%)",
-        transform: "translate(-50%, -50%)",
-        left: "50%",
-        top: "50%",
+        transform: "translate3d(50vw, 50vh, 0) translate3d(-50%, -50%, 0)",
+        left: 0,
+        top: 0,
       }}
       aria-hidden="true"
     />

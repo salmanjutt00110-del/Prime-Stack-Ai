@@ -3,6 +3,7 @@ import { Search, X } from "lucide-react";
 import { ALL_PRODUCTS } from "@/data/products";
 import ProductCard from "@/components/ProductCard";
 import { motion } from "framer-motion";
+import Animated3DText from "@/components/Animated3DText";
 
 export default function ProductsGrid() {
   const [query, setQuery] = useState("");
@@ -41,15 +42,11 @@ export default function ProductsGrid() {
           </motion.div>
 
           {/* Gradient Heading */}
-          <motion.h2
+          <h2
             className="mt-6 font-display font-bold leading-[1.1] tracking-tight text-[clamp(2.2rem,5vw,3.2rem)] bg-gradient-to-r from-blue-400 via-violet-500 to-pink-500 bg-clip-text text-transparent cursor-default"
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
           >
-            Premium AI Tools & Digital Services
-          </motion.h2>
+            <Animated3DText text="Premium AI Tools & Digital Services" variant="heading" />
+          </h2>
 
           {/* Subtitle */}
           <motion.p

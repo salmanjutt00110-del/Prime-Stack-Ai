@@ -2,9 +2,26 @@ import { Check, MessageCircle, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { openWhatsApp } from "@/lib/whatsapp";
 import { motion } from "framer-motion";
+import { useState } from "react";
+import Animated3DText from "@/components/Animated3DText";
 
 export default function ProductCard({ product, index = 0 }) {
   const navigate = useNavigate();
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e) => {
+    const el = e.currentTarget;
+    const rect = el.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    const rx = -(y / (rect.height / 2)) * 8;
+    const ry = (x / (rect.width / 2)) * 8;
+    setTilt({ x: ry, y: rx });
+  };
+
+  const handleMouseLeave = () => {
+    setTilt({ x: 0, y: 0 });
+  };
 
   return (
     /* Outer wrapper handling only the scroll-triggered fade-in entrance */
@@ -14,21 +31,26 @@ export default function ProductCard({ product, index = 0 }) {
       viewport={{ once: true, margin: "-30px" }}
       transition={{ duration: 0.7, delay: (index % 4) * 0.08, ease: [0.16, 1, 0.3, 1] }}
       className="w-full flex"
+      style={{ perspective: 1000 }}
     >
       {/* Inner card handling continuous float and hover animations with zero conflicts */}
       <motion.div
-        className="ps-luxury-glass ps-glass-reflection ps-border-glow-wrapper relative rounded-[30px] p-8 flex flex-col items-center justify-between cursor-pointer w-full text-center border border-white/5"
+        className="ps-luxury-glass ps-glass-reflection ps-border-glow-wrapper relative rounded-[30px] p-8 flex flex-col items-center justify-between cursor-pointer w-full text-center border border-white/5 group"
         style={{
           height: "auto",
           "--border-accent": `${product.color}66`,
+          transform: `rotateX(${tilt.y}deg) rotateY(${tilt.x}deg)`,
+          transformStyle: "preserve-3d",
+          transition: "transform 0.15s ease-out, border-color 0.3s ease",
         }}
         onClick={() => navigate(`/product/${product.id}`)}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
         whileHover={{
           y: -10,
           scale: 1.02,
           rotate: 0.5,
           borderColor: `${product.color}66`,
-          boxShadow: `0 35px 80px rgba(0, 0, 0, 0.8), 0 0 50px ${product.color}25`,
         }}
         animate={{
           y: [0, -4, 0],
@@ -68,12 +90,13 @@ export default function ProductCard({ product, index = 0 }) {
             SAVE 10%
           </span>
         </motion.div>
-
-        {/* Brand-themed ambient glow overlay inside the card on hover */}
+ 
+        {/* Brand-themed ambient glow & shadow overlay inside the card on hover */}
         <div
-          className="absolute inset-0 -z-10 rounded-[30px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+          className="absolute inset-0 -z-10 rounded-[30px] opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none"
           style={{
             background: `radial-gradient(circle at 50% 0%, ${product.color}0f, transparent 65%)`,
+            boxShadow: `0 30px 70px rgba(0, 0, 0, 0.8), 0 0 45px ${product.color}20`,
           }}
         />
 
@@ -117,7 +140,7 @@ export default function ProductCard({ product, index = 0 }) {
 
         {/* Product Name */}
         <h3 className="font-display font-bold text-white text-xl sm:text-2xl leading-tight mb-3 tracking-tight max-h-[56px] overflow-hidden line-clamp-2">
-          {product.name}
+          <Animated3DText text={product.name} hoverTilt={true} variant="subheading" />
         </h3>
 
         {/* Duration Badge */}

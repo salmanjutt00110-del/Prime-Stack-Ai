@@ -1,5 +1,6 @@
 import { Star } from "lucide-react";
 import { motion } from "framer-motion";
+import Animated3DText from "@/components/Animated3DText";
 
 const REVIEWS = [
   {
@@ -39,15 +40,9 @@ export default function Testimonials() {
           >
             Testimonials
           </motion.span>
-          <motion.h2
-            className="mt-3 font-display font-bold text-white text-[clamp(1.8rem,4vw,2.8rem)] tracking-tight"
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            Loved by Creators
-          </motion.h2>
+          <h2 className="mt-3 font-display font-bold text-white text-[clamp(1.8rem,4vw,2.8rem)] tracking-tight">
+            <Animated3DText text="Loved by Creators" variant="heading" />
+          </h2>
         </div>
 
         <div className="grid md:grid-cols-3 gap-5">

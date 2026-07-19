@@ -5,6 +5,7 @@ import { HERO_PRODUCTS } from "@/data/products";
 import { openWhatsApp } from "@/lib/whatsapp";
 import { useNavigate } from "react-router-dom";
 import ParticleBackground from "@/components/ParticleBackground";
+import Animated3DText from "@/components/Animated3DText";
 
 const SPRING = { duration: 0.8, ease: [0.16, 1, 0.3, 1] };
 
@@ -63,6 +64,8 @@ export default function Hero() {
   const navigate = useNavigate();
   const [index, setIndex] = useState(0);
   const timerRef = useRef(null);
+  const [logoTilt, setLogoTilt] = useState({ x: 0, y: 0 });
+  const [cardTilt, setCardTilt] = useState({ x: 0, y: 0 });
 
   const product = HERO_PRODUCTS[index];
   const theme = THEMES[product.id] || THEMES["chatgpt-plus-1m"];
@@ -73,6 +76,34 @@ export default function Hero() {
     }, 3500); // 3.5-second transition interval
     return () => clearInterval(timerRef.current);
   }, []);
+
+  const handleLogoMouseMove = (e) => {
+    const el = e.currentTarget;
+    const rect = el.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    const rx = -(y / (rect.height / 2)) * 12;
+    const ry = (x / (rect.width / 2)) * 12;
+    setLogoTilt({ x: ry, y: rx });
+  };
+
+  const handleLogoMouseLeave = () => {
+    setLogoTilt({ x: 0, y: 0 });
+  };
+
+  const handleCardMouseMove = (e) => {
+    const el = e.currentTarget;
+    const rect = el.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    const rx = -(y / (rect.height / 2)) * 6;
+    const ry = (x / (rect.width / 2)) * 6;
+    setCardTilt({ x: ry, y: rx });
+  };
+
+  const handleCardMouseLeave = () => {
+    setCardTilt({ x: 0, y: 0 });
+  };
 
   const go = (i) => setIndex((i + HERO_PRODUCTS.length) % HERO_PRODUCTS.length);
 
@@ -125,7 +156,7 @@ export default function Hero() {
           </div>
 
           <h1 className="font-display font-black text-white leading-[1.05] tracking-tight text-[clamp(2.1rem,5vw,3.6rem)]">
-            Premium AI Tools for Creators & Professionals
+            <Animated3DText text="Premium AI Tools for Creators & Professionals" />
           </h1>
 
           <p className="mt-4 text-white/55 text-sm sm:text-base max-w-xl mx-auto lg:mx-0 leading-relaxed">
@@ -139,7 +170,7 @@ export default function Hero() {
           </div>
 
           {/* Dynamic Showcase Card */}
-          <div className="mt-8 relative">
+          <div className="mt-8 relative" style={{ perspective: 1000 }}>
             <AnimatePresence mode="wait">
               <motion.div
                 key={product.id}
@@ -148,10 +179,15 @@ export default function Hero() {
                 exit={{ opacity: 0, y: -15, filter: "blur(5px)" }}
                 transition={SPRING}
                 onClick={() => navigate(`/product/${product.id}`)}
+                onMouseMove={handleCardMouseMove}
+                onMouseLeave={handleCardMouseLeave}
                 className="ps-luxury-glass rounded-2xl p-5 sm:p-6 border shadow-2xl relative text-left cursor-pointer transition-colors hover:bg-white/[0.04]"
                 style={{
                   borderColor: `${product.color}25`,
                   boxShadow: `0 20px 45px ${product.color}10, inset 0 1px 0 rgba(255,255,255,0.06)`,
+                  transform: `rotateX(${cardTilt.y}deg) rotateY(${cardTilt.x}deg)`,
+                  transformStyle: "preserve-3d",
+                  transition: "transform 0.1s ease-out",
                 }}
               >
                 {/* subtle moving reflection */}
@@ -172,7 +208,7 @@ export default function Hero() {
                 </div>
 
                 <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
-                  {product.name}
+                  <Animated3DText text={product.name} hoverTilt={true} variant="subheading" />
                 </h2>
 
                 <p className="mt-2 text-white/55 text-xs sm:text-sm leading-relaxed max-w-lg font-body">
@@ -241,7 +277,7 @@ export default function Hero() {
         </div>
 
         {/* RIGHT — floating logo card */}
-        <div className="order-1 lg:order-2 flex justify-center mb-6 lg:mb-0">
+        <div className="order-1 lg:order-2 flex justify-center mb-6 lg:mb-0" style={{ perspective: 1000 }}>
           <AnimatePresence mode="wait">
             <motion.div
               key={product.id}
@@ -250,7 +286,14 @@ export default function Hero() {
               exit={{ opacity: 0, scale: 0.8, rotate: 6 }}
               transition={SPRING}
               onClick={() => navigate(`/product/${product.id}`)}
+              onMouseMove={handleLogoMouseMove}
+              onMouseLeave={handleLogoMouseLeave}
               className="relative cursor-pointer group"
+              style={{
+                transform: `rotateX(${logoTilt.y}deg) rotateY(${logoTilt.x}deg)`,
+                transformStyle: "preserve-3d",
+                transition: "transform 0.15s ease-out",
+              }}
               whileHover={{ scale: 1.03 }}
             >
               {/* glow behind */}

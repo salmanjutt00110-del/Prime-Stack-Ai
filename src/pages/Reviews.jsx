@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { WHATSAPP_GENERAL, WHATSAPP_NUMBER } from "@/lib/whatsapp";
 import { motion } from "framer-motion";
+import Animated3DText from "@/components/Animated3DText";
 
 const SEED_REVIEWS = [
   { name: "Ahmed Raza", role: "Content Creator", rating: 5, text: "Got my ChatGPT Plus within minutes. Super smooth process and the support was incredibly helpful. Highly recommend PrimeStack!", product: "ChatGPT Plus", date: "2 weeks ago" },
@@ -72,14 +73,9 @@ export default function Reviews() {
             >
               Testimonials
             </motion.span>
-            <motion.h1
-              className="mt-3 font-display font-bold text-white text-[clamp(2.2rem,6vw,3.5rem)] tracking-tight"
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-            >
-              What Our Clients Say
-            </motion.h1>
+            <h1 className="mt-3 font-display font-bold text-white text-[clamp(2.2rem,6vw,3.5rem)] tracking-tight">
+              <Animated3DText text="What Our Clients Say" variant="heading" />
+            </h1>
             <motion.p
               className="mt-4 text-white/55 text-base max-w-xl mx-auto"
               initial={{ opacity: 0, y: 15 }}

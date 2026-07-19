@@ -1,12 +1,12 @@
-import myLogo from "../../photo/my logo .png";
-import chatgptLogo from "../../photo/chatgpt.png";
-import geminiLogo from "../../photo/Gemini-Logo.png";
-import veoLogo from "../../photo/veo 3.png";
-import capcutLogo from "../../photo/capcut.png";
-import canvaLogo from "../../photo/canva.png";
-import grokLogo from "../../photo/supergrok.png";
-import surfsharkLogo from "../../photo/surfshark vpn.png";
-import tiktokLogo from "../../photo/tiktok.png";
+import myLogo from "../photo/my-logo.png";
+import chatgptLogo from "../photo/chatgpt.png";
+import geminiLogo from "../photo/gemini-logo.png";
+import veoLogo from "../photo/veo-3.png";
+import capcutLogo from "../photo/capcut.png";
+import canvaLogo from "../photo/canva.png";
+import grokLogo from "../photo/supergrok.png";
+import surfsharkLogo from "../photo/surfshark-vpn.png";
+import tiktokLogo from "../photo/tiktok.png";
 
 const db = globalThis.__B44_DB__ || { auth:{ isAuthenticated: async()=>false, me: async()=>null }, entities:new Proxy({}, { get:()=>({ filter:async()=>[], get:async()=>null, create:async()=>({}), update:async()=>({}), delete:async()=>({}) }) }), integrations:{ Core:{ UploadFile:async()=>({ file_url:'' }) } } };
 

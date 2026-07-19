@@ -1,5 +1,6 @@
 import { ShieldCheck, BadgeCheck, Zap, Headphones, HeartHandshake, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
+import Animated3DText from "@/components/Animated3DText";
 
 const REASONS = [
   { icon: ShieldCheck, title: "100% Secure", desc: "Every transaction is protected and handled with care.", color: "#3B82F6" },
@@ -24,15 +25,9 @@ export default function WhyUs() {
           >
             Why PrimeStack
           </motion.span>
-          <motion.h2
-            className="mt-3 font-display font-bold text-white text-[clamp(1.8rem,4vw,2.8rem)] tracking-tight"
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            Why Choose Us
-          </motion.h2>
+          <h2 className="mt-3 font-display font-bold text-white text-[clamp(1.8rem,4vw,2.8rem)] tracking-tight">
+            <Animated3DText text="Why Choose Us" variant="heading" />
+          </h2>
           <motion.p
             className="mt-3 text-white/50 text-base max-w-xl mx-auto"
             initial={{ opacity: 0, y: 15 }}
