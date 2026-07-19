@@ -17,7 +17,7 @@ export default function Home() {
   // Cinematic page intro loader timer
   useEffect(() => {
     window.scrollTo(0, 0);
-    const t = setTimeout(() => setIntro(false), 1200);
+    const t = setTimeout(() => setIntro(false), 2800);
     return () => clearTimeout(t);
   }, []);
 
@@ -30,20 +30,76 @@ export default function Home() {
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
-            className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#050505]"
+            className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#050505] text-center px-4"
           >
-            {/* Glowing Logo */}
-            <motion.div
-              initial={{ scale: 0.8, filter: "blur(10px)", opacity: 0 }}
-              animate={{ scale: [0.85, 1.03, 1], filter: "blur(0px)", opacity: 1 }}
-              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className="relative flex items-center justify-center"
-            >
-              <div className="absolute w-44 h-44 rounded-full bg-violet-600/20 blur-[50px] animate-pulse" />
-              <span className="font-display font-black text-4xl text-white tracking-wider relative z-10 uppercase">
-                Prime<span className="bg-gradient-to-r from-blue-400 via-violet-400 to-pink-500 bg-clip-text text-transparent">Stack</span>
-              </span>
-            </motion.div>
+            {/* Ambient background glow */}
+            <div className="absolute w-[300px] h-[300px] rounded-full bg-violet-600/10 blur-[100px] animate-pulse" />
+
+            <div className="relative flex flex-col items-center max-w-xl">
+              {/* WELCOME BADGE */}
+              <motion.span
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="text-[10px] tracking-[0.25em] font-bold text-white/40 uppercase mb-4"
+              >
+                Welcome to PrimeStack AI
+              </motion.span>
+
+              {/* MAIN LOGO / TITLES */}
+              <motion.div
+                initial={{ scale: 0.85, opacity: 0, filter: "blur(8px)" }}
+                animate={{ scale: 1, opacity: 1, filter: "blur(0px)" }}
+                transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                className="relative flex items-center justify-center mb-6"
+              >
+                <div className="absolute w-44 h-44 rounded-full bg-violet-600/20 blur-[50px]" />
+                <span className="font-display font-black text-4xl sm:text-5xl text-white tracking-wider relative z-10 uppercase">
+                  Prime<span className="bg-gradient-to-r from-blue-400 via-violet-400 to-pink-500 bg-clip-text text-transparent">Stack</span>
+                </span>
+              </motion.div>
+
+              {/* TAGLINE HEADER */}
+              <motion.h2
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+                className="font-display font-bold text-white text-lg sm:text-xl tracking-tight mb-3"
+              >
+                Premium AI Tools & Digital Services
+              </motion.h2>
+
+              {/* tag line details */}
+              <motion.p
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 1.1 }}
+                className="text-white/50 text-xs sm:text-sm leading-relaxed mb-10 max-w-md font-body"
+              >
+                Discover the world's most powerful AI tools, creator solutions, and premium subscriptions—all in one trusted platform.
+              </motion.p>
+
+              {/* LOADING FOOTER */}
+              <div className="flex flex-col items-center w-48">
+                <motion.span
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.6, delay: 1.4 }}
+                  className="text-[10px] tracking-[0.1em] text-white/30 font-semibold mb-2.5"
+                >
+                  Loading your premium experience...
+                </motion.span>
+                {/* sleek horizontal progress bar line */}
+                <div className="w-full h-[2px] bg-white/5 rounded-full overflow-hidden relative">
+                  <motion.div
+                    initial={{ width: "0%" }}
+                    animate={{ width: "100%" }}
+                    transition={{ duration: 1.3, delay: 1.3, ease: "easeInOut" }}
+                    className="absolute top-0 bottom-0 left-0 bg-gradient-to-r from-blue-400 via-violet-500 to-pink-500 rounded-full"
+                  />
+                </div>
+              </div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
