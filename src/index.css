@@ -311,4 +311,56 @@
       0 0 35px rgba(139, 92, 246, 0.15);
     transform-style: preserve-3d;
   }
+
+  /* Disclaimer Bar Animations */
+  @keyframes ps-marquee {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); }
+  }
+
+  @keyframes ps-glass-shine {
+    0% { left: -150%; }
+    20%, 100% { left: 200%; }
+  }
+
+  @keyframes ps-particle-float-1 {
+    0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.15; }
+    50% { transform: translate3d(-40px, -6px, 0) scale(1.4); opacity: 0.35; }
+  }
+
+  @keyframes ps-particle-float-2 {
+    0%, 100% { transform: translate3d(0, 0, 0) scale(1.2); opacity: 0.2; }
+    50% { transform: translate3d(40px, 6px, 0) scale(0.85); opacity: 0.1; }
+  }
+
+  @keyframes ps-gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .ps-animate-marquee {
+    animation: ps-marquee 45s linear infinite;
+  }
+
+  .ps-animate-marquee:hover {
+    animation-play-state: paused;
+  }
+
+  .ps-glass-shine-line {
+    animation: ps-glass-shine 8s infinite linear;
+  }
+
+  .ps-float-particle-1 {
+    animation: ps-particle-float-1 8s ease-in-out infinite;
+  }
+
+  .ps-float-particle-2 {
+    animation: ps-particle-float-2 10s ease-in-out infinite;
+  }
+
+  .ps-gradient-border-anim {
+    background-size: 200% 200%;
+    animation: ps-gradient-shift 6s ease infinite;
+  }
 }

@@ -77,6 +77,21 @@ export default function Hero() {
     return () => clearInterval(timerRef.current);
   }, []);
 
+  useEffect(() => {
+    if (product) {
+      window.dispatchEvent(
+        new CustomEvent("hero-product-change", {
+          detail: {
+            productId: product.id,
+            color: product.color,
+            color2: product.color2 || product.color,
+            name: product.name,
+          },
+        })
+      );
+    }
+  }, [index, product]);
+
   const handleLogoMouseMove = (e) => {
     const el = e.currentTarget;
     const rect = el.getBoundingClientRect();

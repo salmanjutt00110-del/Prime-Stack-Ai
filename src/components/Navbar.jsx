@@ -3,6 +3,7 @@ import { Menu, X, MessageCircle, Search } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Logo from "@/components/Logo";
 import { WHATSAPP_GENERAL } from "@/lib/whatsapp";
+import DisclaimerBar from "@/components/DisclaimerBar";
 
 const LINKS = [
   { label: "Home", href: "#home" },
@@ -44,7 +45,8 @@ export default function Navbar() {
   };
 
   return (
-    <header
+    <>
+      <header
       className="fixed top-0 inset-x-0 z-50 transition-all duration-500"
       style={{
         height: scrolled ? 52 : 64,
@@ -144,5 +146,7 @@ export default function Navbar() {
         </div>
       </div>
     </header>
+    <DisclaimerBar />
+    </>
   );
 }
