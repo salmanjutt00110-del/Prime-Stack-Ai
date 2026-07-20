@@ -82,11 +82,20 @@ export default function DisclaimerBar() {
     };
   }, [location.pathname]);
 
+  // Listener to open disclaimer modal via custom event
+  useEffect(() => {
+    const handleOpenModal = () => setIsModalOpen(true);
+    window.addEventListener("open-disclaimer-modal", handleOpenModal);
+    return () => {
+      window.removeEventListener("open-disclaimer-modal", handleOpenModal);
+    };
+  }, []);
+
   const textSegment = (
     <span className="text-xs font-semibold text-white/80 tracking-wide whitespace-nowrap flex items-center">
       <span className="inline-block animate-pulse text-[11px] mr-1.5">⚠️</span>
       <span className="text-white/60 font-bold mr-1.5">Disclaimer:</span>
-      Hamari services ki prices, duration, features aur availability market conditions, supplier updates aur platform policies ke mutabiq kisi bhi waqt tabdeel ho sakti hain. Hum website ko regularly update karte rehte hain taake aap ko latest information aur best rates mil saken. Order place karne se pehle latest price aur details zaroor verify karein.
+      Hamari prices market rates aur supplier updates ke mutabiq up-down (change) hoti rehti hain, isliye website par prices kabhi thodi zyada ya kam ho sakti hain. Kisi bhi order se pehle WhatsApp par latest price zaroor verify karlein.
     </span>
   );
 
@@ -189,7 +198,7 @@ export default function DisclaimerBar() {
 
                 <div className="relative z-10 space-y-4">
                   <p className="text-white/85 text-sm sm:text-base leading-relaxed font-semibold">
-                    Hamari services ki prices, duration, features aur availability market conditions, supplier updates aur platform policies ke mutabiq kisi bhi waqt tabdeel ho sakti hain. Hum website ko regularly update karte rehte hain taake aap ko latest information aur best rates mil saken. Order place karne se pehle latest price aur details zaroor verify karein.
+                    Hamari prices market rates aur supplier updates ke mutabiq up-down (change) hoti rehti hain, isliye website par prices kabhi thodi zyada ya kam ho sakti hain. Services ki duration, features aur availability market conditions aur platform policies ke mutabiq kisi bhi waqt tabdeel ho sakti hain. Order place karne se pehle WhatsApp par latest price aur details zaroor verify karein.
                   </p>
                   <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/5 text-xs text-white/50 leading-relaxed font-medium">
                     ⚠️ Order place karne se pehle agar aap ke paas koi query hai, toh aap direct WhatsApp par contact kar sakte hain. We are always active to guide you!

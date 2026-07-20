@@ -58,6 +58,42 @@ const THEMES = {
     glow2: "rgba(37, 244, 238, 0.15)",
     particles: "#FE2C55",
   },
+  "youtube-premium-12m": {
+    bg: "radial-gradient(ellipse 80% 60% at 50% 30%, rgba(255, 0, 0, 0.12) 0%, transparent 70%)",
+    glow: "rgba(255, 0, 0, 0.25)",
+    glow2: "rgba(204, 0, 0, 0.15)",
+    particles: "#FF0000",
+  },
+  "chatgpt-go-3m": {
+    bg: "radial-gradient(ellipse 80% 60% at 50% 30%, rgba(16, 163, 127, 0.12) 0%, transparent 70%)",
+    glow: "rgba(16, 163, 127, 0.25)",
+    glow2: "rgba(13, 138, 109, 0.15)",
+    particles: "#10A37F",
+  },
+  "capcut-pro-admin-7s": {
+    bg: "radial-gradient(ellipse 80% 60% at 50% 30%, rgba(254, 44, 85, 0.12) 0%, transparent 70%)",
+    glow: "rgba(254, 44, 85, 0.25)",
+    glow2: "rgba(37, 244, 238, 0.15)",
+    particles: "#FE2C55",
+  },
+  "surfshark-vpn-1m": {
+    bg: "radial-gradient(ellipse 80% 60% at 50% 30%, rgba(28, 159, 232, 0.12) 0%, transparent 70%)",
+    glow: "rgba(28, 159, 232, 0.25)",
+    glow2: "rgba(34, 211, 238, 0.15)",
+    particles: "#1C9FE8",
+  },
+  "nordvpn-3m": {
+    bg: "radial-gradient(ellipse 80% 60% at 50% 30%, rgba(0, 96, 255, 0.12) 0%, transparent 70%)",
+    glow: "rgba(0, 96, 255, 0.25)",
+    glow2: "rgba(139, 92, 246, 0.15)",
+    particles: "#0060FF",
+  },
+  "lovable-ai-100c": {
+    bg: "radial-gradient(ellipse 80% 60% at 50% 30%, rgba(238, 15, 121, 0.12) 0%, transparent 70%)",
+    glow: "rgba(238, 15, 121, 0.25)",
+    glow2: "rgba(139, 92, 246, 0.15)",
+    particles: "#EE0F79",
+  },
 };
 
 export default function Hero() {

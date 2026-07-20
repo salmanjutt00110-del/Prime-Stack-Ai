@@ -86,34 +86,57 @@ export default function ProductsGrid() {
             </div>
           </motion.div>
 
-          {/* Search bar */}
-          <motion.div
-            className="mt-10 w-full max-w-md relative"
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            <Search
-              size={18}
-              className="absolute left-4 top-1/2 -translate-y-1/2 text-white/40 pointer-events-none"
-            />
-            <input
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search products, features, duration..."
-              className="w-full pl-11 pr-10 py-3.5 rounded-full text-sm text-white placeholder-white/35 outline-none transition-all duration-300 focus:ring-1 focus:ring-purple-500 border border-white/10 bg-white/5 backdrop-blur-md"
-            />
-            {query && (
-              <button
-                onClick={() => setQuery("")}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white p-1"
-                aria-label="Clear search"
-              >
-                <X size={16} />
-              </button>
-            )}
-          </motion.div>
+          {/* Search bar and Disclaimer Button */}
+          <div className="mt-10 w-full max-w-xl flex flex-col sm:flex-row gap-3 items-center justify-center">
+            {/* Search bar */}
+            <motion.div
+              className="w-full relative"
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              <Search
+                size={18}
+                className="absolute left-4 top-1/2 -translate-y-1/2 text-white/40 pointer-events-none"
+              />
+              <input
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Search products, features, duration..."
+                className="w-full pl-11 pr-10 py-3.5 rounded-full text-sm text-white placeholder-white/35 outline-none transition-all duration-300 focus:ring-1 focus:ring-purple-500 border border-white/10 bg-white/5 backdrop-blur-md"
+              />
+              {query && (
+                <button
+                  onClick={() => setQuery("")}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white p-1"
+                  aria-label="Clear search"
+                >
+                  <X size={16} />
+                </button>
+              )}
+            </motion.div>
+
+            {/* Disclaimer Button */}
+            <motion.button
+              onClick={() => {
+                window.dispatchEvent(new CustomEvent("open-disclaimer-modal"));
+              }}
+              className="px-5 py-3.5 rounded-full text-xs font-bold text-white/80 hover:text-white border border-white/10 bg-white/5 hover:bg-white/10 hover:border-white/20 transition-all duration-300 flex items-center gap-1.5 shrink-0 cursor-pointer"
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.35 }}
+              whileHover={{ scale: 1.03 }}
+              whileActive={{ scale: 0.98 }}
+            >
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-amber-500" />
+              </span>
+              ⚠️ Price Disclaimer
+            </motion.button>
+          </div>
         </div>
 
         {/* PRODUCT GRID */}
