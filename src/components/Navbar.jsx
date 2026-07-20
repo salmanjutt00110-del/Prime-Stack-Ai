@@ -27,6 +27,13 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const handleLogoClick = (e) => {
+    e.preventDefault();
+    setOpen(false);
+    navigate("/");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   const handleNav = (e, link) => {
     e.preventDefault();
     setOpen(false);
@@ -49,15 +56,17 @@ export default function Navbar() {
       <header
       className="fixed top-0 inset-x-0 z-50 transition-all duration-500"
       style={{
-        height: scrolled ? 52 : 64,
         backdropFilter: "blur(24px) saturate(180%)",
         WebkitBackdropFilter: "blur(24px) saturate(180%)",
         background: "rgba(5,5,5,0.85)",
         borderBottom: "1px solid rgba(255,255,255,0.06)",
       }}
     >
-      <nav className="mx-auto max-w-7xl px-4 sm:px-6 h-full flex items-center justify-between">
-        <a href="#home" onClick={(e) => handleNav(e, { href: "#home", route: false })} className="flex items-center gap-2.5 group">
+      <nav 
+        className="mx-auto max-w-7xl px-4 sm:px-6 flex items-center justify-between transition-all duration-500"
+        style={{ height: scrolled ? 52 : 64 }}
+      >
+        <a href="/" onClick={handleLogoClick} className="flex items-center gap-2.5 group">
           <Logo size={scrolled ? 32 : 36} />
           <span
             className="font-display font-semibold tracking-tight text-white transition-all"

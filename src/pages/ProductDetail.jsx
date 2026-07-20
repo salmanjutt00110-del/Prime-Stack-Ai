@@ -140,7 +140,7 @@ export default function ProductDetail() {
         />
       </div>
 
-      <main className="flex-grow pt-20">
+      <main className="flex-grow pt-32 sm:pt-36">
         {/* back */}
         <div className="mx-auto max-w-5xl px-4 sm:px-6 pt-4">
           <button
@@ -193,13 +193,19 @@ export default function ProductDetail() {
             </div>
 
             <div className="mt-7 flex items-center gap-3 flex-wrap">
-              <button
+              <motion.button
                 onClick={() => openWhatsApp(product.name, product.duration, product.price)}
-                className="flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm font-semibold text-white transition-all duration-300 hover:scale-[1.03]"
-                style={{ background: "linear-gradient(135deg, #25D366, #128C7E)", boxShadow: `0 8px 30px ${accent}25` }}
+                className="flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold text-white transition-all duration-300 relative overflow-hidden active:scale-95 shadow-[0_4px_20px_rgba(139,92,246,0.2)] hover:shadow-[0_6px_30px_rgba(139,92,246,0.35)] ps-gradient-border-anim"
+                style={{
+                  background: "linear-gradient(135deg, #3B82F6 0%, #8B5CF6 50%, #EC4899 100%)",
+                  backgroundSize: "200% 200%"
+                }}
+                whileHover={{ scale: 1.03 }}
               >
-                <MessageCircle size={16} /> Buy on WhatsApp
-              </button>
+                <span className="ps-shimmer absolute inset-0" />
+                <MessageCircle size={16} className="relative z-10 shrink-0" />
+                <span className="relative z-10">Buy on WhatsApp</span>
+              </motion.button>
               <a
                 href="#details"
                 className="flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm font-semibold text-white border border-white/15 bg-white/5 hover:bg-white/10 transition-all hover:scale-[1.02]"
@@ -228,7 +234,17 @@ export default function ProductDetail() {
                 }}
               >
                 <span className="ps-shimmer absolute inset-0 rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden" />
-                <img src={product.logo} alt={product.name} className="relative w-[58%] h-[58%] object-contain" />
+                 <img
+                  src={product.logo}
+                  alt={product.name}
+                  className="relative w-[58%] h-[58%] object-contain"
+                  style={{
+                    filter: product.id.toLowerCase().includes("youtube")
+                      ? `invert(1) hue-rotate(180deg) brightness(1.3) contrast(1.2)`
+                      : ``,
+                    mixBlendMode: product.id.toLowerCase().includes("youtube") ? "screen" : "normal"
+                  }}
+                />
               </div>
             </motion.div>
           </div>
@@ -350,13 +366,19 @@ export default function ProductDetail() {
               Order now on WhatsApp — your product details are pre-filled. Pay, activate, and start using premium access.
             </p>
             <div className="mt-5 flex items-center justify-center gap-3 flex-wrap relative z-10">
-              <button
+              <motion.button
                 onClick={() => openWhatsApp(product.name, product.duration, product.price)}
-                className="flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm font-semibold text-white transition-all duration-300 hover:scale-[1.03]"
-                style={{ background: "linear-gradient(135deg, #25D366, #128C7E)", boxShadow: "0 4px 20px rgba(37,211,102,0.25)" }}
+                className="flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold text-white transition-all duration-300 relative overflow-hidden active:scale-95 shadow-[0_4px_20px_rgba(139,92,246,0.25)] hover:shadow-[0_6px_30px_rgba(139,92,246,0.4)] ps-gradient-border-anim"
+                style={{
+                  background: "linear-gradient(135deg, #3B82F6 0%, #8B5CF6 50%, #EC4899 100%)",
+                  backgroundSize: "200% 200%"
+                }}
+                whileHover={{ scale: 1.03 }}
               >
-                <MessageCircle size={16} /> Buy on WhatsApp
-              </button>
+                <span className="ps-shimmer absolute inset-0" />
+                <MessageCircle size={16} className="relative z-10 shrink-0" />
+                <span className="relative z-10">Buy on WhatsApp</span>
+              </motion.button>
               <a
                 href={WHATSAPP_GENERAL}
                 target="_blank"

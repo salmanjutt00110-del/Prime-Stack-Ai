@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { createPortal } from "react-dom";
 
 // Helper to map brand theme colors dynamically
 function getProductTheme(id) {
@@ -84,9 +85,14 @@ export default function DisclaimerBar() {
 
   // Listener to open disclaimer modal via custom event
   useEffect(() => {
-    const handleOpenModal = () => setIsModalOpen(true);
+    const handleOpenModal = () => {
+      console.log("DisclaimerBar: open-disclaimer-modal event received!");
+      setIsModalOpen(true);
+    };
+    console.log("DisclaimerBar: Registering open-disclaimer-modal event listener");
     window.addEventListener("open-disclaimer-modal", handleOpenModal);
     return () => {
+      console.log("DisclaimerBar: Unregistering open-disclaimer-modal event listener");
       window.removeEventListener("open-disclaimer-modal", handleOpenModal);
     };
   }, []);
@@ -102,8 +108,9 @@ export default function DisclaimerBar() {
   return (
     <>
       <div
-        className="fixed inset-x-0 z-40 px-4 sm:px-6 transition-all duration-500 pointer-events-none"
-        style={{ top: scrolled ? 51 : 63 }}
+        className={`fixed inset-x-0 z-40 px-4 sm:px-6 transition-all duration-500 pointer-events-none ${
+          scrolled ? "top-[54px] md:top-[60px]" : "top-[72px] md:top-[80px]"
+        }`}
       >
         <div
           className="mx-auto max-w-7xl w-full h-9 rounded-full p-[1px] relative overflow-hidden transition-all duration-700 pointer-events-auto ps-gradient-border-anim"
@@ -159,65 +166,68 @@ export default function DisclaimerBar() {
       </div>
 
       {/* Interactive Glassmorphic Modal */}
-      <AnimatePresence>
-        {isModalOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setIsModalOpen(false)}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70 backdrop-blur-md pointer-events-auto"
-          >
+      {createPortal(
+        <AnimatePresence>
+          {isModalOpen && (
             <motion.div
-              initial={{ scale: 0.95, opacity: 0, y: 10 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.95, opacity: 0, y: 10 }}
-              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-lg rounded-3xl p-[1px] overflow-hidden ps-gradient-border-anim"
-              style={{
-                background: `linear-gradient(135deg, ${themeColors.from}, ${themeColors.via}, ${themeColors.to})`,
-                boxShadow: `0 30px 60px rgba(0, 0, 0, 0.85), 0 0 50px ${themeColors.from}20`,
-              }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsModalOpen(false)}
+              className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70 backdrop-blur-md pointer-events-auto"
             >
-              <div className="w-full rounded-[23px] bg-[#070709] p-6 sm:p-8 relative overflow-hidden">
-                <div
-                  className="absolute -top-24 -right-24 w-48 h-48 rounded-full blur-[80px] opacity-25"
-                  style={{ background: themeColors.from }}
-                />
+              <motion.div
+                initial={{ scale: 0.95, opacity: 0, y: 10 }}
+                animate={{ scale: 1, opacity: 1, y: 0 }}
+                exit={{ scale: 0.95, opacity: 0, y: 10 }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                onClick={(e) => e.stopPropagation()}
+                className="relative w-full max-w-lg rounded-3xl p-[1px] overflow-hidden ps-gradient-border-anim"
+                style={{
+                  background: `linear-gradient(135deg, ${themeColors.from}, ${themeColors.via}, ${themeColors.to})`,
+                  boxShadow: `0 30px 60px rgba(0, 0, 0, 0.85), 0 0 50px ${themeColors.from}20`,
+                }}
+              >
+                <div className="w-full rounded-[23px] bg-[#070709] p-6 sm:p-8 relative overflow-hidden">
+                  <div
+                    className="absolute -top-24 -right-24 w-48 h-48 rounded-full blur-[80px] opacity-25"
+                    style={{ background: themeColors.from }}
+                  />
 
-                <div className="flex items-center gap-3 mb-5 relative z-10">
-                  <span className="flex h-2.5 w-2.5 relative">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
-                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-500" />
-                  </span>
-                  <h3 className="font-display font-bold text-lg text-white tracking-tight">
-                    Zaroori Note / Important Disclaimer
-                  </h3>
-                </div>
+                  <div className="flex items-center gap-3 mb-5 relative z-10">
+                    <span className="flex h-2.5 w-2.5 relative">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
+                      <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-500" />
+                    </span>
+                    <h3 className="font-display font-bold text-lg text-white tracking-tight">
+                      Zaroori Note / Important Disclaimer
+                    </h3>
+                  </div>
 
-                <div className="relative z-10 space-y-4">
-                  <p className="text-white/85 text-sm sm:text-base leading-relaxed font-semibold">
-                    Hamari prices market rates aur supplier updates ke mutabiq up-down (change) hoti rehti hain, isliye website par prices kabhi thodi zyada ya kam ho sakti hain. Services ki duration, features aur availability market conditions aur platform policies ke mutabiq kisi bhi waqt tabdeel ho sakti hain. Order place karne se pehle WhatsApp par latest price aur details zaroor verify karein.
-                  </p>
-                  <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/5 text-xs text-white/50 leading-relaxed font-medium">
-                    ⚠️ Order place karne se pehle agar aap ke paas koi query hai, toh aap direct WhatsApp par contact kar sakte hain. We are always active to guide you!
+                  <div className="relative z-10 space-y-4">
+                    <p className="text-white/85 text-sm sm:text-base leading-relaxed font-semibold">
+                      Hamari prices market rates aur supplier updates ke mutabiq up-down (change) hoti rehti hain, isliye website par prices kabhi thodi zyada ya kam ho sakti hain. Services ki duration, features aur availability market conditions aur platform policies ke mutabiq kisi bhi waqt tabdeel ho sakti hain. Order place karne se pehle WhatsApp par latest price aur details zaroor verify karein.
+                    </p>
+                    <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/5 text-xs text-white/50 leading-relaxed font-medium">
+                      ⚠️ Order place karne se pehle agar aap ke paas koi query hai, toh aap direct WhatsApp par contact kar sakte hain. We are always active to guide you!
+                    </div>
+                  </div>
+
+                  <div className="mt-8 flex justify-end relative z-10">
+                    <button
+                      onClick={() => setIsModalOpen(false)}
+                      className="px-6 py-2.5 rounded-xl text-xs font-semibold text-white/80 hover:text-white border border-white/10 hover:bg-white/5 transition-all active:scale-[0.98] cursor-pointer"
+                    >
+                      Samjh Gaya (Close)
+                    </button>
                   </div>
                 </div>
-
-                <div className="mt-8 flex justify-end relative z-10">
-                  <button
-                    onClick={() => setIsModalOpen(false)}
-                    className="px-6 py-2.5 rounded-xl text-xs font-semibold text-white/80 hover:text-white border border-white/10 hover:bg-white/5 transition-all active:scale-[0.98] cursor-pointer"
-                  >
-                    Samjh Gaya (Close)
-                  </button>
-                </div>
-              </div>
+              </motion.div>
             </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
     </>
   );
 }

@@ -106,10 +106,19 @@ export default function Hero() {
   const product = HERO_PRODUCTS[index];
   const theme = THEMES[product.id] || THEMES["chatgpt-plus-1m"];
 
-  useEffect(() => {
+  const startTimer = () => {
+    clearInterval(timerRef.current);
     timerRef.current = setInterval(() => {
       setIndex((i) => (i + 1) % HERO_PRODUCTS.length);
-    }, 3500); // 3.5-second transition interval
+    }, 4500); // Smoother 4.5-second interval
+  };
+
+  const stopTimer = () => {
+    clearInterval(timerRef.current);
+  };
+
+  useEffect(() => {
+    startTimer();
     return () => clearInterval(timerRef.current);
   }, []);
 
@@ -129,6 +138,7 @@ export default function Hero() {
   }, [index, product]);
 
   const handleLogoMouseMove = (e) => {
+    if (window.innerWidth < 768) return; // Disable on mobile for performance
     const el = e.currentTarget;
     const rect = el.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
@@ -143,6 +153,7 @@ export default function Hero() {
   };
 
   const handleCardMouseMove = (e) => {
+    if (window.innerWidth < 768) return; // Disable on mobile for performance
     const el = e.currentTarget;
     const rect = el.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
@@ -156,12 +167,15 @@ export default function Hero() {
     setCardTilt({ x: 0, y: 0 });
   };
 
-  const go = (i) => setIndex((i + HERO_PRODUCTS.length) % HERO_PRODUCTS.length);
+  const go = (i) => {
+    setIndex((i + HERO_PRODUCTS.length) % HERO_PRODUCTS.length);
+    startTimer(); // Reset timer on manual navigation
+  };
 
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center overflow-hidden pt-24 pb-16"
+      className="relative min-h-screen flex items-center overflow-hidden pt-36 sm:pt-40 pb-16"
     >
       {/* Dynamic Background Gradient */}
       <div className="absolute inset-0 -z-20 bg-[#050505]" />
@@ -231,7 +245,11 @@ export default function Hero() {
                 transition={SPRING}
                 onClick={() => navigate(`/product/${product.id}`)}
                 onMouseMove={handleCardMouseMove}
-                onMouseLeave={handleCardMouseLeave}
+                onMouseEnter={stopTimer}
+                onMouseLeave={() => {
+                  handleCardMouseLeave();
+                  startTimer();
+                }}
                 className="ps-luxury-glass rounded-2xl p-5 sm:p-6 border shadow-2xl relative text-left cursor-pointer transition-colors hover:bg-white/[0.04]"
                 style={{
                   borderColor: `${product.color}25`,
@@ -309,7 +327,7 @@ export default function Hero() {
           </div>
 
           {/* Dot Navigation */}
-          <div className="mt-8 flex items-center justify-center lg:justify-start gap-2.5">
+          <div className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-2.5 max-w-full px-2">
             {HERO_PRODUCTS.map((p, i) => (
               <button
                 key={p.id}
@@ -332,13 +350,21 @@ export default function Hero() {
           <AnimatePresence mode="wait">
             <motion.div
               key={product.id}
-              initial={{ opacity: 0, scale: 0.8, rotate: -6 }}
-              animate={{ opacity: 1, scale: 1, rotate: 0 }}
-              exit={{ opacity: 0, scale: 0.8, rotate: 6 }}
-              transition={SPRING}
+              initial={{ opacity: 0, scale: 0.75, rotateX: -25, rotateY: -25, y: 40, filter: "blur(12px)" }}
+              animate={{ opacity: 1, scale: 1, rotateX: 0, rotateY: 0, y: 0, filter: "blur(0px)" }}
+              exit={{ opacity: 0, scale: 0.75, rotateX: 25, rotateY: 25, y: -40, filter: "blur(12px)" }}
+              transition={{
+                type: "spring",
+                stiffness: 140,
+                damping: 18
+              }}
               onClick={() => navigate(`/product/${product.id}`)}
               onMouseMove={handleLogoMouseMove}
-              onMouseLeave={handleLogoMouseLeave}
+              onMouseEnter={stopTimer}
+              onMouseLeave={() => {
+                handleLogoMouseLeave();
+                startTimer();
+              }}
               className="relative cursor-pointer group"
               style={{
                 transform: `rotateX(${logoTilt.y}deg) rotateY(${logoTilt.x}deg)`,
@@ -355,10 +381,10 @@ export default function Hero() {
               <div
                 className="ps-float relative flex items-center justify-center rounded-[1.5rem] sm:rounded-[2rem] w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80"
                 style={{
-                  background: "rgba(255,255,255,0.03)",
+                  background: `linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 50%, ${product.color}08 100%)`,
                   backdropFilter: "blur(40px)",
                   WebkitBackdropFilter: "blur(40px)",
-                  border: "1px solid rgba(255,255,255,0.1)",
+                  border: "1px solid rgba(255,255,255,0.12)",
                   boxShadow: `0 24px 80px rgba(0,0,0,0.5), 0 0 60px ${product.color}25`,
                 }}
               >
@@ -367,8 +393,13 @@ export default function Hero() {
                 <img
                   src={product.logo}
                   alt={product.name}
-                  className="relative w-[58%] h-[58%] object-contain"
-                  style={{ filter: "drop-shadow(0 8px 24px rgba(0,0,0,0.4))" }}
+                  className="relative w-[58%] h-[58%] object-contain transition-transform duration-300 group-hover:scale-105"
+                  style={{
+                    filter: product.id.toLowerCase().includes("youtube")
+                      ? `invert(1) hue-rotate(180deg) brightness(1.3) contrast(1.2) drop-shadow(0 8px 24px rgba(0,0,0,0.4)) drop-shadow(0 0 15px ${product.color}20)`
+                      : `drop-shadow(0 8px 24px rgba(0,0,0,0.4)) drop-shadow(0 0 15px ${product.color}20)`,
+                    mixBlendMode: product.id.toLowerCase().includes("youtube") ? "screen" : "normal"
+                  }}
                 />
               </div>
             </motion.div>

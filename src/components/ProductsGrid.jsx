@@ -1,164 +1,334 @@
 import { useMemo, useState } from "react";
-import { Search, X } from "lucide-react";
+import { 
+  Search, 
+  X, 
+  LayoutGrid, 
+  Cpu, 
+  Video, 
+  Paintbrush, 
+  CreditCard, 
+  Shield, 
+  Zap, 
+  Flame,
+  Rocket,
+  Award,
+  Headphones,
+  RefreshCw
+} from "lucide-react";
 import { ALL_PRODUCTS } from "@/data/products";
 import ProductCard from "@/components/ProductCard";
 import { motion } from "framer-motion";
-import Animated3DText from "@/components/Animated3DText";
+
+const CATEGORIES = [
+  { id: "all", label: "All Products", icon: "Grid" },
+  { id: "ai", label: "AI Tools", icon: "Cpu" },
+  { id: "video-ai", label: "Video AI", icon: "Video" },
+  { id: "creator", label: "Creator Tools", icon: "Paintbrush" },
+  { id: "subs", label: "Subscriptions", icon: "CreditCard" },
+  { id: "vpn", label: "VPN", icon: "Shield" },
+  { id: "automation", label: "Automation", icon: "Zap" },
+  { id: "trending", label: "Trending", icon: "Flame" }
+];
+
+const IconMap = {
+  Grid: LayoutGrid,
+  Cpu: Cpu,
+  Video: Video,
+  Paintbrush: Paintbrush,
+  CreditCard: CreditCard,
+  Shield: Shield,
+  Zap: Zap,
+  Flame: Flame
+};
+
+const CATEGORY_MAP = {
+  all: null,
+  ai: ["gemini-pro-18", "veo-3-video", "supergrok-3m-basic", "supergrok-3m-warranty", "supergrok-12m-basic", "supergrok-12m-premium", "chatgpt-plus-1m", "chatgpt-go-3m", "lovable-ai-100c"],
+  "video-ai": ["veo-3-video", "capcut-pro-1m", "capcut-pro-admin-7s"],
+  creator: ["capcut-pro-1m", "capcut-pro-admin-7s", "canva-pro-edu", "canva-pro-admin", "tiktok-growth-challenge", "youtube-premium-12m", "youtube-premium-3m", "youtube-premium-1m"],
+  subs: ["youtube-premium-12m", "youtube-premium-3m", "youtube-premium-1m", "canva-pro-edu", "canva-pro-admin", "chatgpt-plus-1m", "gemini-pro-18", "lovable-ai-100c"],
+  vpn: ["surfshark-vpn-1y", "surfshark-vpn-1m", "nordvpn-3m"],
+  automation: ["lovable-ai-100c", "tiktok-growth-challenge", "chatgpt-go-3m"],
+  trending: ["gemini-pro-18", "chatgpt-plus-1m", "canva-pro-edu", "veo-3-video", "supergrok-12m-premium"]
+};
 
 export default function ProductsGrid() {
   const [query, setQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("all");
 
   const filtered = useMemo(() => {
+    let list = ALL_PRODUCTS;
+
+    // Filter by category
+    if (selectedCategory !== "all") {
+      const allowedIds = CATEGORY_MAP[selectedCategory] || [];
+      list = list.filter((p) => allowedIds.includes(p.id));
+    }
+
+    // Filter by search query
     const q = query.trim().toLowerCase();
-    if (!q) return ALL_PRODUCTS;
-    return ALL_PRODUCTS.filter((p) =>
-      [p.name, p.duration, p.tag, ...p.features].join(" ").toLowerCase().includes(q)
-    );
-  }, [query]);
+    if (q) {
+      list = list.filter((p) =>
+        [p.name, p.duration, p.tag, ...p.features].join(" ").toLowerCase().includes(q)
+      );
+    }
+    
+    return list;
+  }, [selectedCategory, query]);
 
   return (
-    <section id="products" className="relative py-[120px] px-4 sm:px-6 overflow-hidden">
-      {/* Background ambient auroras */}
-      <div className="absolute inset-0 -z-10 pointer-events-none ps-aurora w-full h-full" />
+    <section 
+      id="products" 
+      className="relative py-[140px] px-4 sm:px-6 overflow-hidden bg-[#030305] border-t border-white/5"
+    >
+      {/* SVG Noise Texture Overlay */}
+      <div 
+        className="absolute inset-0 opacity-[0.02] pointer-events-none mix-blend-overlay z-10"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`
+        }}
+      />
 
-      <div className="mx-auto max-w-7xl relative z-10">
+      {/* Luxury Background - Shifting Aurora Blurs */}
+      <motion.div 
+        className="absolute top-[5%] left-[-10%] w-[500px] h-[500px] rounded-full bg-blue-600/10 blur-[120px] pointer-events-none z-0"
+        animate={{
+          x: [0, 80, 0],
+          y: [0, -50, 0],
+          scale: [1, 1.1, 1]
+        }}
+        transition={{
+          duration: 18,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
+      <motion.div 
+        className="absolute top-[40%] right-[-10%] w-[600px] h-[600px] rounded-full bg-pink-600/10 blur-[130px] pointer-events-none z-0"
+        animate={{
+          x: [0, -90, 0],
+          y: [0, 70, 0],
+          scale: [1, 1.15, 1]
+        }}
+        transition={{
+          duration: 22,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 2
+        }}
+      />
+      <motion.div 
+        className="absolute bottom-[10%] left-[10%] w-[550px] h-[550px] rounded-full bg-violet-600/10 blur-[120px] pointer-events-none z-0"
+        animate={{
+          x: [0, 60, -30, 0],
+          y: [0, 80, -40, 0],
+          scale: [1, 1.08, 1]
+        }}
+        transition={{
+          duration: 25,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 4
+        }}
+      />
+
+      {/* Tiny Floating Particles */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        {[...Array(20)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-white/20 rounded-full"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`
+            }}
+            animate={{
+              y: [0, -100, 0],
+              x: [0, Math.random() * 40 - 20, 0],
+              opacity: [0, 0.8, 0]
+            }}
+            transition={{
+              duration: 10 + Math.random() * 15,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: Math.random() * 5
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="mx-auto max-w-[1440px] relative z-10">
         
-        {/* SECTION HEADER (Rebuilt from scratch) */}
+        {/* SECTION HEADER */}
         <div className="text-center mb-16 flex flex-col items-center">
           
-          {/* Small Gradient Badge */}
+          {/* Small Premium Glass Badge */}
           <motion.div
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold border bg-white/5 border-white/10 text-white/90 shadow-[0_0_15px_rgba(255,255,255,0.05)] cursor-default"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-extrabold border border-white/10 bg-white/[0.03] text-violet-400 shadow-[0_0_15px_rgba(139,92,246,0.1)] backdrop-blur-md cursor-pointer relative overflow-hidden group"
             initial={{ opacity: 0, y: -15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            whileHover={{ scale: 1.05, borderColor: "rgba(255,255,255,0.2)" }}
+            whileHover={{ scale: 1.05 }}
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-blue-400 via-violet-400 to-pink-400 animate-pulse" />
-            <span className="bg-gradient-to-r from-blue-400 via-violet-400 to-pink-400 bg-clip-text text-transparent">
+            <span className="ps-shimmer absolute inset-0" />
+            <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-blue-400 via-violet-400 to-pink-400 animate-ping" />
+            <span className="bg-gradient-to-r from-blue-400 via-violet-400 to-pink-400 bg-clip-text text-transparent tracking-wider">
               ✨ PREMIUM COLLECTION
             </span>
           </motion.div>
 
-          {/* Gradient Heading */}
-          <h2
-            className="mt-6 font-display font-bold leading-[1.1] tracking-tight text-[clamp(2.2rem,5vw,3.2rem)] bg-gradient-to-r from-blue-400 via-violet-500 to-pink-500 bg-clip-text text-transparent cursor-default"
-          >
-            <Animated3DText text="Premium AI Tools & Digital Services" variant="heading" />
+          {/* Large Gradient Heading */}
+          <h2 className="mt-5 font-display font-black leading-tight tracking-tight text-4xl sm:text-5xl md:text-6xl text-center text-white">
+            Explore{" "}
+            <span className="bg-gradient-to-r from-blue-400 via-violet-500 to-pink-500 bg-clip-text text-transparent animate-pulse duration-[3000ms]">
+              Premium AI Products
+            </span>
           </h2>
 
           {/* Subtitle */}
           <motion.p
-            className="mt-5 text-white/60 text-base sm:text-lg max-w-[700px] leading-relaxed font-body"
+            className="mt-4 text-white/50 text-xs sm:text-sm md:text-base max-w-[720px] leading-relaxed font-body text-center"
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Choose from our premium collection of AI tools, creator services, subscriptions, and digital products with instant activation and trusted support.
+            Choose from our premium collection of AI tools, digital subscriptions, creator services, and business solutions.
           </motion.p>
 
-          {/* Referral Reward Offer Banner */}
-          <motion.div
-            className="mt-6 p-5 rounded-2xl border text-xs sm:text-sm max-w-[700px] leading-relaxed relative overflow-hidden text-center cursor-default bg-white/5 border-white/10"
-            style={{
-              background: "linear-gradient(135deg, rgba(59,130,246,0.06) 0%, rgba(139,92,246,0.06) 50%, rgba(236,72,153,0.06) 100%)",
-              borderColor: "rgba(139, 92, 246, 0.15)",
-              boxShadow: "0 10px 30px rgba(139, 92, 246, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.05)",
-            }}
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.25 }}
-            whileHover={{ scale: 1.01, borderColor: "rgba(139, 92, 246, 0.3)" }}
-          >
-            {/* Shimmer sweep */}
-            <span className="ps-shimmer absolute inset-0" />
-            <div className="flex items-center justify-center gap-2 flex-wrap text-white/90">
-              <span className="text-base shrink-0">🎁</span>
-              <span className="font-bold bg-gradient-to-r from-blue-400 via-violet-400 to-pink-400 bg-clip-text text-transparent">
-                Referral Reward Offer:
-              </span>
-              <span>
-                Invite <strong>5 friends</strong> to buy any subscription (Gemini, ChatGPT, Canva, etc.), share the purchase proofs with us on WhatsApp, and receive a <strong>18-Month Google Gemini Pro</strong> subscription completely <strong>FREE!</strong>
-              </span>
+          {/* Search Box & Category Filters Row */}
+          <div className="mt-12 flex flex-col lg:flex-row items-center gap-4 w-full max-w-6xl mx-auto px-4 md:px-0 overflow-x-auto scrollbar-none pb-2 justify-start lg:justify-center">
+            {/* Search Box */}
+            <div className="relative shrink-0 w-full lg:w-80 p-[1.5px] rounded-[18px] overflow-hidden bg-gradient-to-r from-white/10 to-white/5 focus-within:from-blue-500/30 focus-within:via-purple-500/30 focus-within:to-pink-500/30 transition-all duration-500 shadow-[0_4px_30px_rgba(0,0,0,0.4)]">
+              <div className="relative w-full rounded-[17px] bg-[#070709] flex items-center px-4 py-2.5">
+                <Search
+                  size={14}
+                  className="text-white/40 pointer-events-none mr-2.5 shrink-0"
+                />
+                <input
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  placeholder="Search for products, tools, services..."
+                  className="w-full text-xs text-white placeholder-white/30 outline-none bg-transparent"
+                />
+                {query && (
+                  <button
+                    onClick={() => setQuery("")}
+                    className="text-white/40 hover:text-white p-1 transition-colors shrink-0"
+                  >
+                    <X size={12} />
+                  </button>
+                )}
+              </div>
             </div>
-          </motion.div>
 
-          {/* Search bar and Disclaimer Button */}
-          <div className="mt-10 w-full max-w-xl flex flex-col sm:flex-row gap-3 items-center justify-center">
-            {/* Search bar */}
-            <motion.div
-              className="w-full relative"
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-            >
-              <Search
-                size={18}
-                className="absolute left-4 top-1/2 -translate-y-1/2 text-white/40 pointer-events-none"
-              />
-              <input
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search products, features, duration..."
-                className="w-full pl-11 pr-10 py-3.5 rounded-full text-sm text-white placeholder-white/35 outline-none transition-all duration-300 focus:ring-1 focus:ring-purple-500 border border-white/10 bg-white/5 backdrop-blur-md"
-              />
-              {query && (
-                <button
-                  onClick={() => setQuery("")}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white p-1"
-                  aria-label="Clear search"
-                >
-                  <X size={16} />
-                </button>
-              )}
-            </motion.div>
-
-            {/* Disclaimer Button */}
-            <motion.button
-              onClick={() => {
-                window.dispatchEvent(new CustomEvent("open-disclaimer-modal"));
-              }}
-              className="px-5 py-3.5 rounded-full text-xs font-bold text-white/80 hover:text-white border border-white/10 bg-white/5 hover:bg-white/10 hover:border-white/20 transition-all duration-300 flex items-center gap-1.5 shrink-0 cursor-pointer"
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.35 }}
-              whileHover={{ scale: 1.03 }}
-              whileActive={{ scale: 0.98 }}
-            >
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-amber-500" />
-              </span>
-              ⚠️ Price Disclaimer
-            </motion.button>
+            {/* Category Pills */}
+            <div className="flex items-center gap-3 overflow-x-auto scrollbar-none w-full lg:w-auto shrink-0 pb-1">
+              {CATEGORIES.map((cat) => {
+                const isActive = selectedCategory === cat.id;
+                const Icon = IconMap[cat.icon];
+                return (
+                  <motion.button
+                    key={cat.id}
+                    onClick={() => setSelectedCategory(cat.id)}
+                    className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold transition-all duration-300 relative cursor-pointer border shrink-0 backdrop-blur-md ${
+                      isActive
+                        ? "bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 border-purple-500/50 text-white shadow-[0_0_20px_rgba(139,92,246,0.25)]"
+                        : "bg-white/5 border-white/10 text-white/60 hover:text-white hover:border-white/20 hover:bg-white/10"
+                    }`}
+                    whileHover={{
+                      y: -3,
+                      scale: 1.05,
+                      boxShadow: isActive 
+                        ? "0 0 25px rgba(139, 92, 246, 0.35)"
+                        : "0 0 20px rgba(255, 255, 255, 0.05)"
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {Icon && <Icon size={12} className={isActive ? "text-purple-400" : "text-white/50"} />}
+                    <span>{cat.label}</span>
+                  </motion.button>
+                );
+              })}
+            </div>
           </div>
+
         </div>
 
-        {/* PRODUCT GRID */}
+        {/* PRODUCT GRID - Mobile-first responsive spacing */}
         {filtered.length === 0 ? (
           <div className="text-center py-16">
             <p className="text-white/50 text-sm">
               No products found for "{query}". Try a different search.
             </p>
             <button
-              onClick={() => setQuery("")}
+              onClick={() => {
+                setQuery("");
+                setSelectedCategory("all");
+              }}
               className="mt-4 px-5 py-2.5 rounded-full text-sm font-medium text-white border border-white/15 hover:bg-white/8 transition-colors"
             >
               Clear search
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[28px]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-[1400px] mx-auto px-4 sm:px-6">
             {filtered.map((p, i) => (
               <ProductCard key={p.id} product={p} index={i} />
             ))}
           </div>
         )}
+
+        {/* Trust/Feature Badges Row */}
+        <div className="mt-20 grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-4 p-6 rounded-3xl border border-white/5 bg-[#07070a]/40 backdrop-blur-md">
+          <div className="flex items-center gap-3">
+            <div className="flex items-center justify-center w-9 h-9 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 shrink-0">
+              <Rocket size={16} />
+            </div>
+            <div className="flex flex-col text-left leading-tight font-body">
+              <span className="text-xs font-bold text-white">Instant Delivery</span>
+              <span className="text-[10px] text-white/40 font-medium">100% automatic delivery</span>
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="flex items-center justify-center w-9 h-9 rounded-full bg-green-500/10 text-green-400 border border-green-500/20 shrink-0">
+              <Shield size={16} />
+            </div>
+            <div className="flex flex-col text-left leading-tight font-body">
+              <span className="text-xs font-bold text-white">Secure Payment</span>
+              <span className="text-[10px] text-white/40 font-medium">SSL encrypted & safe</span>
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="flex items-center justify-center w-9 h-9 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20 shrink-0">
+              <Award size={16} />
+            </div>
+            <div className="flex flex-col text-left leading-tight font-body">
+              <span className="text-xs font-bold text-white">Best Prices</span>
+              <span className="text-[10px] text-white/40 font-medium">10% OFF on every product</span>
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="flex items-center justify-center w-9 h-9 rounded-full bg-pink-500/10 text-pink-400 border border-pink-500/20 shrink-0">
+              <Headphones size={16} />
+            </div>
+            <div className="flex flex-col text-left leading-tight font-body">
+              <span className="text-xs font-bold text-white">24/7 Support</span>
+              <span className="text-[10px] text-white/40 font-medium">Always here to help you</span>
+            </div>
+          </div>
+          <div className="flex items-center gap-3 col-span-2 md:col-span-1 justify-center md:justify-start">
+            <div className="flex items-center justify-center w-9 h-9 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20 shrink-0">
+              <RefreshCw size={16} />
+            </div>
+            <div className="flex flex-col text-left leading-tight font-body">
+              <span className="text-xs font-bold text-white">Money Back</span>
+              <span className="text-[10px] text-white/40 font-medium">7 days money back</span>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
   );
