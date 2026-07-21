@@ -238,12 +238,6 @@ export default function ProductDetail() {
                   src={product.logo}
                   alt={product.name}
                   className="relative w-[58%] h-[58%] object-contain"
-                  style={{
-                    filter: product.id.toLowerCase().includes("youtube")
-                      ? `invert(1) hue-rotate(180deg) brightness(1.3) contrast(1.2)`
-                      : ``,
-                    mixBlendMode: product.id.toLowerCase().includes("youtube") ? "screen" : "normal"
-                  }}
                 />
               </div>
             </motion.div>

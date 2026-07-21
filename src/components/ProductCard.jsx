@@ -183,10 +183,7 @@ const ProductCard = memo(function ProductCard({ product, index = 0 }) {
                 alt={product.name}
                 className="w-[70px] h-[70px] relative z-10"
                 imgStyle={{
-                  filter: product.id.toLowerCase().includes("youtube")
-                    ? `invert(1) hue-rotate(180deg) brightness(1.3) contrast(1.2)`
-                    : `brightness(1.2) contrast(1.15)`,
-                  mixBlendMode: product.id.toLowerCase().includes("youtube") ? "screen" : "normal",
+                  filter: "brightness(1.2) contrast(1.15)"
                 }}
               />
             </div>

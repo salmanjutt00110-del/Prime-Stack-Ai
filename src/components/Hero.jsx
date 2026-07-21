@@ -395,10 +395,7 @@ export default function Hero() {
                   alt={product.name}
                   className="relative w-[58%] h-[58%] object-contain transition-transform duration-300 group-hover:scale-105"
                   style={{
-                    filter: product.id.toLowerCase().includes("youtube")
-                      ? `invert(1) hue-rotate(180deg) brightness(1.3) contrast(1.2) drop-shadow(0 8px 24px rgba(0,0,0,0.4)) drop-shadow(0 0 15px ${product.color}20)`
-                      : `drop-shadow(0 8px 24px rgba(0,0,0,0.4)) drop-shadow(0 0 15px ${product.color}20)`,
-                    mixBlendMode: product.id.toLowerCase().includes("youtube") ? "screen" : "normal"
+                    filter: `drop-shadow(0 8px 24px rgba(0,0,0,0.4)) drop-shadow(0 0 15px ${product.color}20)`
                   }}
                 />
               </div>
