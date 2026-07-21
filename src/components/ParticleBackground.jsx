@@ -20,7 +20,7 @@ export default function ParticleBackground({ color = "#8B5CF6", count }) {
     let isVisible = true;
 
     const isMobile = window.innerWidth < 768;
-    const n = count || (isMobile ? 15 : 35); // Optimized particle count
+    const n = count || (isMobile ? 4 : 20); // Optimized particle count
 
     function resize() {
       const dpr = Math.min(window.devicePixelRatio || 1, 1.2); // Cap DPR to 1.2 for performance
@@ -63,13 +63,15 @@ export default function ParticleBackground({ color = "#8B5CF6", count }) {
 
       for (const p of particles) {
         // gentle mouse attraction
-        const dx = mx - p.x;
-        const dy = my - p.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 120) {
-          const f = (1 - dist / 120) * 0.4;
-          p.x += dx * 0.008 * f;
-          p.y += dy * 0.008 * f;
+        if (!isMobile) {
+          const dx = mx - p.x;
+          const dy = my - p.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 120) {
+            const f = (1 - dist / 120) * 0.4;
+            p.x += dx * 0.008 * f;
+            p.y += dy * 0.008 * f;
+          }
         }
         p.x += p.vx;
         p.y += p.vy;

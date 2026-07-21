@@ -1,7 +1,9 @@
+import { useState, useEffect, memo } from "react";
 import { MessageCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { openWhatsApp } from "@/lib/whatsapp";
 import { motion } from "framer-motion";
+import LazyImage from "@/components/LazyImage";
 
 /* ── Inline SVG Icons ── */
 const LightningIcon = ({ size = 12, style, className }) => (
@@ -40,9 +42,17 @@ const getSideGlowColors = (id) => {
   return { primary: "139, 92, 246", secondary: "59, 130, 246" };
 };
 
-export default function ProductCard({ product, index = 0 }) {
+const ProductCard = memo(function ProductCard({ product, index = 0 }) {
   const navigate = useNavigate();
   const sideGlow = getSideGlowColors(product.id);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   /* Discount calculation */
   const calculateDiscount = (oldPriceStr, priceStr) => {
@@ -58,151 +68,81 @@ export default function ProductCard({ product, index = 0 }) {
   return (
     /* ── Entrance animation wrapper ── */
     <motion.div
-      initial={{ opacity: 0, y: 60, scale: 0.92, filter: "blur(12px)" }}
-      whileInView={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.9, delay: (index % 3) * 0.1, ease: [0.16, 1, 0.3, 1] }}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-30px" }}
+      transition={{ duration: 0.5, delay: (index % 3) * 0.05, ease: "easeOut" }}
       className="w-full flex"
     >
       {/* ── Outer glow wrapper — premium side glow effect ── */}
       <div className="relative w-full group">
 
-        {/* Side Glow — Left */}
-        <motion.div
-          className="absolute -left-3 top-[15%] bottom-[15%] w-20 rounded-full pointer-events-none z-0"
+        {/* Combined Static Ambient Glow - hidden on mobile to boost scrolling FPS */}
+        <div
+          className="hidden md:block absolute -inset-2 rounded-[40px] pointer-events-none z-0 opacity-40 transition-opacity duration-500 group-hover:opacity-75"
           style={{
-            background: `radial-gradient(ellipse at 100% 50%, rgba(${sideGlow.primary}, 0.35) 0%, rgba(${sideGlow.secondary}, 0.15) 40%, transparent 70%)`,
-            filter: "blur(30px)",
-            willChange: "transform, opacity",
-            transform: "translateZ(0)",
-          }}
-          animate={{
-            opacity: [0.4, 0.7, 0.4],
-            scaleY: [1, 1.05, 1],
-          }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: index * 0.2 }}
-        />
-
-        {/* Side Glow — Right */}
-        <motion.div
-          className="absolute -right-3 top-[15%] bottom-[15%] w-20 rounded-full pointer-events-none z-0"
-          style={{
-            background: `radial-gradient(ellipse at 0% 50%, rgba(${sideGlow.secondary}, 0.35) 0%, rgba(${sideGlow.primary}, 0.15) 40%, transparent 70%)`,
-            filter: "blur(30px)",
-            willChange: "transform, opacity",
-            transform: "translateZ(0)",
-          }}
-          animate={{
-            opacity: [0.4, 0.7, 0.4],
-            scaleY: [1, 1.05, 1],
-          }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: index * 0.2 + 0.5 }}
-        />
-
-        {/* Side Glow — Top */}
-        <motion.div
-          className="absolute left-[15%] right-[15%] -top-2 h-16 rounded-full pointer-events-none z-0"
-          style={{
-            background: `radial-gradient(ellipse at 50% 100%, rgba(${sideGlow.primary}, 0.3) 0%, transparent 70%)`,
+            background: `radial-gradient(circle at 50% 50%, rgba(${sideGlow.primary}, 0.22) 0%, rgba(${sideGlow.secondary}, 0.08) 50%, transparent 70%)`,
             filter: "blur(25px)",
           }}
-          animate={{
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: index * 0.15 }}
-        />
-
-        {/* Side Glow — Bottom */}
-        <motion.div
-          className="absolute left-[15%] right-[15%] -bottom-2 h-16 rounded-full pointer-events-none z-0"
-          style={{
-            background: `radial-gradient(ellipse at 50% 0%, rgba(${sideGlow.secondary}, 0.3) 0%, transparent 70%)`,
-            filter: "blur(25px)",
-          }}
-          animate={{
-            opacity: [0.25, 0.45, 0.25],
-          }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: index * 0.15 + 0.3 }}
         />
 
         {/* ── Main Card Body ── */}
         <motion.div
-          className="relative rounded-[32px] p-7 sm:p-8 flex flex-col cursor-pointer w-full overflow-hidden z-10"
-          layoutScroll
+          className="relative rounded-[32px] p-7 sm:p-8 flex flex-col cursor-pointer w-full overflow-hidden z-10 ps-glass-reflection"
           onClick={() => navigate(`/product/${product.id}`)}
           style={{
             background: "linear-gradient(180deg, rgba(15, 15, 20, 0.92) 0%, rgba(8, 8, 12, 0.96) 100%)",
-            backdropFilter: "blur(40px)",
-            WebkitBackdropFilter: "blur(40px)",
+            backdropFilter: isMobile ? "blur(12px)" : "blur(30px)",
+            WebkitBackdropFilter: isMobile ? "blur(12px)" : "blur(30px)",
             border: `1px solid rgba(${sideGlow.primary}, 0.15)`,
-            boxShadow: `0 30px 80px rgba(0, 0, 0, 0.8), 0 0 1px rgba(255, 255, 255, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.06)`,
+            boxShadow: "0 20px 50px rgba(0, 0, 0, 0.75)",
             willChange: "transform",
             transform: "translateZ(0)",
           }}
-          whileHover={{
-            y: -10,
-            scale: 1.02,
+          whileHover={isMobile ? {} : {
+            y: -8,
+            scale: 1.015,
             borderColor: `rgba(${sideGlow.primary}, 0.3)`,
-            boxShadow: `0 40px 100px rgba(0, 0, 0, 0.9), 0 0 50px rgba(${sideGlow.primary}, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1)`,
+            boxShadow: `0 30px 65px rgba(0, 0, 0, 0.85), 0 0 30px rgba(${sideGlow.primary}, 0.1)`,
           }}
           whileTap={{ scale: 0.98 }}
-          transition={{ type: "spring", stiffness: 280, damping: 24 }}
+          transition={{ type: "spring", stiffness: 300, damping: 25 }}
         >
-          {/* Animated border glow — rotating gradient border */}
-          <motion.div
+          {/* Static premium border glow border, no CPU-heavy rotating mask */}
+          <div
             className="absolute inset-0 rounded-[32px] pointer-events-none z-0"
             style={{
               padding: "1px",
-              background: `conic-gradient(from 0deg, transparent, rgba(${sideGlow.primary}, 0.4), transparent, rgba(${sideGlow.secondary}, 0.3), transparent)`,
+              background: `linear-gradient(135deg, rgba(${sideGlow.primary}, 0.25), rgba(${sideGlow.secondary}, 0.08))`,
               WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
               WebkitMaskComposite: "xor",
               maskComposite: "exclude",
             }}
-            animate={{
-              rotate: [0, 360]
-            }}
-            transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-          />
-
-          {/* Glass Reflection sweep */}
-          <motion.div
-            className="absolute inset-0 pointer-events-none opacity-20 z-0"
-            style={{
-              background: "linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.04) 50%, transparent 65%)",
-              backgroundSize: "200% 100%",
-            }}
-            animate={{
-              backgroundPosition: ["-200% 0%", "200% 0%"]
-            }}
-            transition={{ duration: 8, repeat: Infinity, ease: "linear", delay: index * 0.3 }}
           />
 
           {/* Ambient brand color glow inside card (top area) */}
           <div
-            className="absolute top-0 left-0 right-0 h-[60%] pointer-events-none z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+            className="absolute top-0 left-0 right-0 h-[60%] pointer-events-none z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
             style={{
-              background: `radial-gradient(ellipse at 50% 0%, rgba(${sideGlow.primary}, 0.12) 0%, transparent 70%)`,
+              background: `radial-gradient(ellipse at 50% 0%, rgba(${sideGlow.primary}, 0.1) 0%, transparent 70%)`,
             }}
           />
 
           {/* ── SAVE Badge (top-left floating glass) ── */}
-          <motion.div
+          <div
             className="absolute top-5 left-5 z-20 px-3.5 py-2 rounded-2xl flex items-center gap-2"
             style={{
               background: "rgba(8, 8, 12, 0.75)",
-              backdropFilter: "blur(20px)",
+              backdropFilter: "blur(12px)",
               border: "1px solid rgba(255, 255, 255, 0.08)",
-              boxShadow: `0 8px 30px rgba(0,0,0,0.6), 0 0 15px rgba(${sideGlow.primary}, 0.1)`,
+              boxShadow: "0 8px 24px rgba(0,0,0,0.5)",
             }}
-            animate={{ y: [0, -3, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           >
             <div
               className="flex items-center justify-center w-6 h-6 rounded-full shrink-0"
               style={{
                 background: `rgba(${sideGlow.primary}, 0.15)`,
                 border: `1px solid rgba(${sideGlow.primary}, 0.3)`,
-                boxShadow: `0 0 12px rgba(${sideGlow.primary}, 0.3)`,
               }}
             >
               <LightningIcon size={11} style={{ color: product.color }} />
@@ -211,66 +151,45 @@ export default function ProductCard({ product, index = 0 }) {
               <span className="text-white/40 text-[8px] font-black uppercase tracking-widest">SAVE</span>
               <span className="text-white text-sm font-black tracking-tight">{discountVal}</span>
             </div>
-          </motion.div>
+          </div>
 
           {/* ── Logo Section ── */}
           <div className="flex justify-center mb-7 mt-6 relative z-10">
-            {/* Breathing radial glow behind logo */}
-            <motion.div
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none"
+            {/* Ambient radial glow behind logo - static hover indicator */}
+            <div
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none w-36 h-36 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
               style={{
-                width: 180,
-                height: 180,
-                background: `radial-gradient(circle, rgba(${sideGlow.primary}, 0.2) 0%, rgba(${sideGlow.secondary}, 0.1) 40%, transparent 70%)`,
-                filter: "blur(100px)",
+                background: `radial-gradient(circle, rgba(${sideGlow.primary}, 0.25) 0%, transparent 70%)`,
+                filter: "blur(30px)",
               }}
-              animate={{
-                opacity: [0.15, 0.4, 0.15],
-                scale: [1, 1.15, 1],
-              }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: index * 0.15 }}
             />
 
             {/* Logo Orb */}
-            <motion.div
-              className="relative flex items-center justify-center rounded-full overflow-hidden"
+            <div
+              className="relative flex items-center justify-center rounded-full overflow-hidden md:ps-logo-float-loop"
               style={{
                 width: 120,
                 height: 120,
-                background: `radial-gradient(circle at 50% 35%, rgba(${sideGlow.primary}, 0.12) 0%, rgba(255, 255, 255, 0.08) 50%, rgba(255, 255, 255, 0.03) 100%)`,
-                backdropFilter: "blur(35px)",
-                WebkitBackdropFilter: "blur(35px)",
-                border: `3px solid rgba(${sideGlow.primary}, 0.6)`,
-                boxShadow: `0 15px 40px rgba(0, 0, 0, 0.5), 0 0 40px rgba(${sideGlow.primary}, 0.25), 0 0 80px rgba(${sideGlow.primary}, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 0 25px rgba(255, 255, 255, 0.03)`,
-              }}
-              animate={{
-                y: [0, -5, 0],
-                scale: [1, 1.02, 1],
-                boxShadow: [
-                  `0 15px 40px rgba(0,0,0,0.5), 0 0 40px rgba(${sideGlow.primary}, 0.25), 0 0 80px rgba(${sideGlow.primary}, 0.1), inset 0 1px 0 rgba(255,255,255,0.2)`,
-                  `0 15px 40px rgba(0,0,0,0.5), 0 0 55px rgba(${sideGlow.primary}, 0.4), 0 0 100px rgba(${sideGlow.primary}, 0.18), inset 0 1px 0 rgba(255,255,255,0.2)`,
-                  `0 15px 40px rgba(0,0,0,0.5), 0 0 40px rgba(${sideGlow.primary}, 0.25), 0 0 80px rgba(${sideGlow.primary}, 0.1), inset 0 1px 0 rgba(255,255,255,0.2)`,
-                ],
-              }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: index * 0.12 }}
-              whileHover={{
-                scale: 1.08,
-                boxShadow: `0 15px 40px rgba(0,0,0,0.6), 0 0 65px rgba(${sideGlow.primary}, 0.5), 0 0 120px rgba(${sideGlow.primary}, 0.25), inset 0 1px 0 rgba(255,255,255,0.25)`,
+                background: `radial-gradient(circle at 50% 35%, rgba(${sideGlow.primary}, 0.1) 0%, rgba(255, 255, 255, 0.06) 50%, rgba(255, 255, 255, 0.02) 100%)`,
+                backdropFilter: isMobile ? "blur(10px)" : "blur(20px)",
+                WebkitBackdropFilter: isMobile ? "blur(10px)" : "blur(20px)",
+                border: `3px solid rgba(${sideGlow.primary}, 0.5)`,
+                boxShadow: `0 15px 40px rgba(0, 0, 0, 0.4), 0 0 35px rgba(${sideGlow.primary}, 0.2)`,
               }}
             >
               <span className="ps-shimmer absolute inset-0" />
-              <img
+              <LazyImage
                 src={product.logo}
                 alt={product.name}
-                className="w-[70px] h-[70px] object-contain relative z-10"
-                style={{
+                className="w-[70px] h-[70px] relative z-10"
+                imgStyle={{
                   filter: product.id.toLowerCase().includes("youtube")
-                    ? `invert(1) hue-rotate(180deg) brightness(1.3) contrast(1.2) drop-shadow(0 4px 12px rgba(0,0,0,0.3)) drop-shadow(0 0 20px rgba(${sideGlow.primary}, 0.3))`
-                    : `brightness(1.2) contrast(1.15) drop-shadow(0 4px 12px rgba(0,0,0,0.3)) drop-shadow(0 0 20px rgba(${sideGlow.primary}, 0.3))`,
+                    ? `invert(1) hue-rotate(180deg) brightness(1.3) contrast(1.2)`
+                    : `brightness(1.2) contrast(1.15)`,
                   mixBlendMode: product.id.toLowerCase().includes("youtube") ? "screen" : "normal",
                 }}
               />
-            </motion.div>
+            </div>
           </div>
 
           {/* ── Product Title ── */}
@@ -284,9 +203,9 @@ export default function ProductCard({ product, index = 0 }) {
               className="inline-flex items-center px-4 py-1.5 rounded-full text-[10px] font-bold border backdrop-blur-sm"
               style={{
                 background: `rgba(${sideGlow.primary}, 0.08)`,
-                borderColor: `rgba(${sideGlow.primary}, 0.25)`,
+                borderColor: `rgba(${sideGlow.primary}, 0.2)`,
                 color: product.color,
-                boxShadow: `0 4px 15px rgba(0, 0, 0, 0.2), 0 0 12px rgba(${sideGlow.primary}, 0.12)`,
+                boxShadow: `0 4px 12px rgba(0, 0, 0, 0.15)`,
               }}
             >
               {product.duration.includes("Stable") || product.duration.includes("Access") ? product.duration : `${product.duration} Access`}
@@ -305,22 +224,17 @@ export default function ProductCard({ product, index = 0 }) {
                 {product.oldPrice}
               </span>
             )}
-            <motion.span
+            <span
               className="text-3xl sm:text-[34px] font-black font-display tracking-tight relative"
               style={{
-                background: "linear-gradient(135deg, #60A5FA 0%, #A78BFA 40%, #F472B6 80%, #60A5FA 100%)",
-                backgroundSize: "300% 100%",
+                background: "linear-gradient(135deg, #60A5FA 0%, #A78BFA 50%, #F472B6 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
               }}
-              animate={{
-                backgroundPosition: ["0% center", "300% center"],
-              }}
-              transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
             >
               {product.price}
-            </motion.span>
+            </span>
           </div>
 
           {/* ── Features Row ── */}
@@ -364,17 +278,12 @@ export default function ProductCard({ product, index = 0 }) {
               className="relative flex items-center justify-center gap-2.5 w-full h-[58px] rounded-2xl text-[13px] font-bold text-white overflow-hidden active:scale-[0.97] transition-transform"
               style={{
                 background: "linear-gradient(135deg, #3B82F6 0%, #7C3AED 50%, #EC4899 100%)",
-                backgroundSize: "200% 200%",
-                boxShadow: `0 8px 35px rgba(124, 58, 237, 0.25), 0 0 20px rgba(${sideGlow.primary}, 0.1)`,
+                boxShadow: `0 8px 35px rgba(124, 58, 237, 0.2)`,
               }}
-              whileHover={{
-                scale: 1.03,
-                boxShadow: `0 12px 45px rgba(124, 58, 237, 0.4), 0 0 30px rgba(${sideGlow.primary}, 0.2)`,
+              whileHover={isMobile ? {} : {
+                scale: 1.025,
+                boxShadow: `0 12px 45px rgba(124, 58, 237, 0.35)`,
               }}
-              animate={{
-                backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-              }}
-              transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
             >
               <span className="ps-shimmer absolute inset-0 z-0" />
               <MessageCircle size={16} className="shrink-0 relative z-10" />
@@ -397,4 +306,6 @@ export default function ProductCard({ product, index = 0 }) {
       </div>
     </motion.div>
   );
-}
+});
+
+export default ProductCard;

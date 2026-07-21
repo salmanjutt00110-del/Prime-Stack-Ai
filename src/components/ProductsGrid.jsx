@@ -89,73 +89,13 @@ export default function ProductsGrid() {
         }}
       />
 
-      {/* Luxury Background - Shifting Aurora Blurs */}
-      <motion.div 
-        className="absolute top-[5%] left-[-10%] w-[500px] h-[500px] rounded-full bg-blue-600/10 blur-[120px] pointer-events-none z-0"
-        animate={{
-          x: [0, 80, 0],
-          y: [0, -50, 0],
-          scale: [1, 1.1, 1]
-        }}
-        transition={{
-          duration: 18,
-          repeat: Infinity,
-          ease: "easeInOut"
+      {/* Luxury Background - Single Subtle Aurora Glow (Performance Optimized) */}
+      <div 
+        className="absolute inset-0 pointer-events-none z-0"
+        style={{
+          background: "radial-gradient(circle at 50% 35%, rgba(139, 92, 246, 0.06) 0%, rgba(59, 130, 246, 0.03) 50%, transparent 80%)",
         }}
       />
-      <motion.div 
-        className="absolute top-[40%] right-[-10%] w-[600px] h-[600px] rounded-full bg-pink-600/10 blur-[130px] pointer-events-none z-0"
-        animate={{
-          x: [0, -90, 0],
-          y: [0, 70, 0],
-          scale: [1, 1.15, 1]
-        }}
-        transition={{
-          duration: 22,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 2
-        }}
-      />
-      <motion.div 
-        className="absolute bottom-[10%] left-[10%] w-[550px] h-[550px] rounded-full bg-violet-600/10 blur-[120px] pointer-events-none z-0"
-        animate={{
-          x: [0, 60, -30, 0],
-          y: [0, 80, -40, 0],
-          scale: [1, 1.08, 1]
-        }}
-        transition={{
-          duration: 25,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 4
-        }}
-      />
-
-      {/* Tiny Floating Particles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-white/20 rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`
-            }}
-            animate={{
-              y: [0, -100, 0],
-              x: [0, Math.random() * 40 - 20, 0],
-              opacity: [0, 0.8, 0]
-            }}
-            transition={{
-              duration: 10 + Math.random() * 15,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: Math.random() * 5
-            }}
-          />
-        ))}
-      </div>
 
       <div className="mx-auto max-w-[1440px] relative z-10">
         
@@ -181,7 +121,7 @@ export default function ProductsGrid() {
           {/* Large Gradient Heading */}
           <h2 className="mt-5 font-display font-black leading-tight tracking-tight text-4xl sm:text-5xl md:text-6xl text-center text-white">
             Explore{" "}
-            <span className="bg-gradient-to-r from-blue-400 via-violet-500 to-pink-500 bg-clip-text text-transparent animate-pulse duration-[3000ms]">
+            <span className="bg-gradient-to-r from-blue-400 via-violet-500 to-pink-500 bg-clip-text text-transparent animate-pulse [animation-duration:3s]">
               Premium AI Products
             </span>
           </h2>
