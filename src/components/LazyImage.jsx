@@ -1,10 +1,16 @@
 import { useState, useEffect, useRef } from "react";
 
-export default function LazyImage({ src, alt, className, style, imgStyle }) {
-  const [visible, setVisible] = useState(false);
+export default function LazyImage({ src, alt, className, style, imgStyle, priority = false }) {
+  const [visible, setVisible] = useState(priority);
+  const [loaded, setLoaded] = useState(false);
   const ref = useRef(null);
 
   useEffect(() => {
+    if (priority) {
+      setVisible(true);
+      return;
+    }
+
     if (!window.IntersectionObserver) {
       setVisible(true);
       return;
@@ -17,7 +23,7 @@ export default function LazyImage({ src, alt, className, style, imgStyle }) {
           observer.disconnect();
         }
       },
-      { rootMargin: "150px" }
+      { rootMargin: "200px" }
     );
 
     if (ref.current) {
@@ -25,20 +31,23 @@ export default function LazyImage({ src, alt, className, style, imgStyle }) {
     }
 
     return () => observer.disconnect();
-  }, []);
+  }, [priority]);
 
   return (
     <div ref={ref} className={className} style={{ ...style, position: "relative" }}>
-      {visible ? (
+      {/* Shimmer placeholder on top until image is fully decoded and loaded */}
+      {!loaded && (
+        <div className="absolute inset-0 w-full h-full bg-white/[0.04] animate-pulse rounded-full z-10" />
+      )}
+      {visible && (
         <img
           src={src}
           alt={alt}
-          className="w-full h-full object-contain"
-          style={imgStyle}
-          loading="lazy"
+          className="w-full h-full object-contain transition-opacity duration-300"
+          style={{ ...imgStyle, opacity: loaded ? 1 : 0 }}
+          loading={priority ? "eager" : "lazy"}
+          onLoad={() => setLoaded(true)}
         />
-      ) : (
-        <div className="w-full h-full bg-white/[0.03] animate-pulse rounded-full" />
       )}
     </div>
   );

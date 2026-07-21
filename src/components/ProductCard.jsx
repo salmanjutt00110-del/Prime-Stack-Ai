@@ -42,7 +42,7 @@ const getSideGlowColors = (id) => {
   return { primary: "139, 92, 246", secondary: "59, 130, 246" };
 };
 
-const ProductCard = memo(function ProductCard({ product, index = 0 }) {
+const ProductCard = memo(function ProductCard({ product, index = 0, priority = false }) {
   const navigate = useNavigate();
   const sideGlow = getSideGlowColors(product.id);
   const [isMobile, setIsMobile] = useState(false);
@@ -185,6 +185,7 @@ const ProductCard = memo(function ProductCard({ product, index = 0 }) {
                 imgStyle={{
                   filter: "brightness(1.2) contrast(1.15)"
                 }}
+                priority={priority}
               />
             </div>
           </div>

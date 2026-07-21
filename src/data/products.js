@@ -1,16 +1,16 @@
-import myLogo from "../photo/my-logo.png";
-import chatgptLogo from "../photo/chatgpt.png";
-import geminiLogo from "../photo/gemini-logo.png";
-import veoLogo from "../photo/veo-3.png";
-import capcutLogo from "../photo/capcut.png";
-import canvaLogo from "../photo/canva.png";
-import grokLogo from "../photo/supergrok.png";
-import surfsharkLogo from "../photo/surfshark-vpn.png";
-import tiktokLogo from "../photo/tiktok.png";
-import youtubePremiumLogo from "../photo/youtube-premium.png";
-import nordVpnLogo from "../photo/nord-vpn.png";
-import lovableLogo from "../photo/lovable.png";
-import chatgptGoLogo from "../photo/chatgpt-go.png";
+import myLogo from "../photo/my-logo.webp";
+import chatgptLogo from "../photo/chatgpt.webp";
+import geminiLogo from "../photo/gemini-logo.webp";
+import veoLogo from "../photo/veo-3.webp";
+import capcutLogo from "../photo/capcut.webp";
+import canvaLogo from "../photo/canva.webp";
+import grokLogo from "../photo/supergrok.webp";
+import surfsharkLogo from "../photo/surfshark-vpn.webp";
+import tiktokLogo from "../photo/tiktok.webp";
+import youtubePremiumLogo from "../photo/youtube-premium.webp";
+import nordVpnLogo from "../photo/nord-vpn.webp";
+import lovableLogo from "../photo/lovable.webp";
+import chatgptGoLogo from "../photo/chatgpt-go.webp";
 
 const db = globalThis.__B44_DB__ || { auth:{ isAuthenticated: async()=>false, me: async()=>null }, entities:new Proxy({}, { get:()=>({ filter:async()=>[], get:async()=>null, create:async()=>({}), update:async()=>({}), delete:async()=>({}) }) }), integrations:{ Core:{ UploadFile:async()=>({ file_url:'' }) } } };
 
