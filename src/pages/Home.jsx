@@ -10,6 +10,7 @@ import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
+import LazySection from "@/components/LazySection";
 
 export default function Home() {
   const [intro, setIntro] = useState(() => {
@@ -55,8 +56,8 @@ export default function Home() {
 
               {/* MAIN LOGO / TITLES */}
               <motion.div
-                initial={{ scale: 0.85, opacity: 0, filter: "blur(8px)" }}
-                animate={{ scale: 1, opacity: 1, filter: "blur(0px)" }}
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
                 className="relative flex items-center justify-center mb-6"
               >
@@ -111,27 +112,47 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      <motion.div
-        initial={{ opacity: 0, scale: 0.97, filter: "blur(12px)" }}
-        animate={!intro ? { opacity: 1, scale: 1, filter: "blur(0px)" } : {}}
-        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-        className="relative min-h-screen bg-[#050505] text-white overflow-x-hidden"
-      >
-        {/* ambient cursor glow */}
-        <AmbientGlow />
-        <Navbar />
-        <main>
-          <Hero />
-          <StatsBar />
-          <ProductsGrid />
-          <HowItWorks />
-          <WhyUs />
-          <Testimonials />
-          <FAQ />
-          <CTASection />
-        </main>
-        <Footer />
-      </motion.div>
+      {!intro && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="relative min-h-screen bg-[#050505] text-white overflow-x-hidden"
+        >
+          {/* ambient cursor glow */}
+          <AmbientGlow />
+          <Navbar />
+          <main>
+            <Hero />
+            <StatsBar />
+            
+            {/* Products grid eagerly rendered but optimized */}
+            <ProductsGrid />
+            
+            {/* Below-the-fold components are lazy loaded on viewport enter */}
+            <LazySection placeholderHeight="400px">
+              <HowItWorks />
+            </LazySection>
+            
+            <LazySection placeholderHeight="400px">
+              <WhyUs />
+            </LazySection>
+            
+            <LazySection placeholderHeight="350px">
+              <Testimonials />
+            </LazySection>
+            
+            <LazySection placeholderHeight="300px">
+              <FAQ />
+            </LazySection>
+            
+            <LazySection placeholderHeight="250px">
+              <CTASection />
+            </LazySection>
+          </main>
+          <Footer />
+        </motion.div>
+      )}
     </>
   );
 }
