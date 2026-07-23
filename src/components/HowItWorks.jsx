@@ -7,19 +7,19 @@ const STEPS = [
     icon: MousePointerClick,
     title: "Choose Your Tool",
     desc: "Browse the marketplace and pick the premium AI product that fits your needs.",
-    color: "#3B82F6", // Blue
+    color: "#3B82F6",
   },
   {
     icon: MessageCircle,
     title: "Order on WhatsApp",
     desc: "Click Buy — your product details are auto-filled and sent straight to our WhatsApp.",
-    color: "#10A37F", // WhatsApp Green
+    color: "#10A37F",
   },
   {
     icon: Rocket,
     title: "Get Delivered",
     desc: "Complete payment, receive instant activation, and start using your premium access.",
-    color: "#EC4899", // Pink
+    color: "#EC4899",
   },
 ];
 
@@ -50,7 +50,7 @@ export default function HowItWorks() {
               style={{
                 background: "rgba(255,255,255,0.03)",
                 backdropFilter: "blur(20px)",
-                borderColor: "rgba(255,255,255,0.07)",
+                borderColor: "rgba(255,255,255,0.09)",
               }}
               initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -63,15 +63,7 @@ export default function HowItWorks() {
                 boxShadow: `0 20px 50px rgba(0,0,0,0.5), 0 0 30px ${s.color}15`,
               }}
             >
-              {/* Subtle radial glow inside card on hover */}
-              <div
-                className="absolute inset-0 -z-10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                style={{
-                  background: `radial-gradient(circle at 50% 0%, ${s.color}0d, transparent 65%)`,
-                }}
-              />
-
-              <div className="absolute top-5 right-6 font-display font-bold text-5xl text-white/5 transition-transform duration-300 group-hover:scale-110">
+              <div className="absolute top-5 right-6 font-display font-bold text-5xl text-white/10 transition-transform duration-300 group-hover:scale-110">
                 {i + 1}
               </div>
               <div
@@ -88,7 +80,7 @@ export default function HowItWorks() {
               <h3 className="font-display font-semibold text-white text-lg mb-2">
                 {s.title}
               </h3>
-              <p className="text-white/55 text-sm leading-relaxed">{s.desc}</p>
+              <p className="text-white/75 text-sm leading-relaxed font-body">{s.desc}</p>
             </motion.div>
           ))}
         </div>

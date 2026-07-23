@@ -65,13 +65,12 @@ export default function Testimonials() {
   const [isHovered, setIsHovered] = useState(false);
   const timerRef = useRef(null);
 
-  // Autoplay functionality: swap review every 3 seconds
   useEffect(() => {
     if (!isHovered) {
       timerRef.current = setInterval(() => {
         setDirection(1);
         setIndex((prev) => (prev + 1) % REVIEWS.length);
-      }, 3000);
+      }, 3500);
     }
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
@@ -127,7 +126,7 @@ export default function Testimonials() {
               drag="x"
               dragConstraints={{ left: 0, right: 0 }}
               dragElastic={0.8}
-              onDragEnd={(e, { offset, velocity }) => {
+              onDragEnd={(e, { offset }) => {
                 const swipeThreshold = 50;
                 if (Math.abs(offset.x) > swipeThreshold) {
                   if (offset.x > 0) {
@@ -141,10 +140,10 @@ export default function Testimonials() {
               style={{ transformStyle: "preserve-3d" }}
             >
               <div
-                className="ps-luxury-glass ps-glass-reflection ps-border-glow-wrapper rounded-[30px] p-8 sm:p-10 border border-white/5 relative"
+                className="ps-luxury-glass ps-glass-reflection ps-border-glow-wrapper rounded-[30px] p-8 sm:p-10 border border-white/10 relative"
                 style={{
-                  "--border-accent": `${activeReview.color}66`,
-                  background: "rgba(255, 255, 255, 0.02)",
+                  "--border-accent": `${activeReview.color}88`,
+                  background: "rgba(255, 255, 255, 0.03)",
                   boxShadow: `0 30px 60px rgba(0, 0, 0, 0.6), 0 0 40px ${activeReview.color}15`,
                 }}
               >
@@ -158,7 +157,7 @@ export default function Testimonials() {
 
                 {/* Quote Mark */}
                 <Quote
-                  className="absolute top-8 right-8 text-white/5"
+                  className="absolute top-8 right-8 text-white/10"
                   size={56}
                 />
 
@@ -174,12 +173,12 @@ export default function Testimonials() {
                 </div>
 
                 {/* Quote Text */}
-                <p className="text-white/80 text-base sm:text-lg leading-relaxed mb-8 italic">
+                <p className="text-white/90 text-base sm:text-lg leading-relaxed mb-8 italic font-body">
                   "{activeReview.text}"
                 </p>
 
                 {/* User Info Footer */}
-                <div className="flex items-center justify-between flex-wrap gap-4 pt-4 border-t border-white/5">
+                <div className="flex items-center justify-between flex-wrap gap-4 pt-4 border-t border-white/10">
                   <div className="flex items-center gap-4">
                     {/* User Avatar */}
                     <div
@@ -194,10 +193,10 @@ export default function Testimonials() {
                       {activeReview.name.charAt(0)}
                     </div>
                     <div>
-                      <h4 className="text-white text-base font-semibold">
+                      <h3 className="text-white text-base font-semibold">
                         {activeReview.name}
-                      </h4>
-                      <p className="text-white/50 text-xs mt-0.5">
+                      </h3>
+                      <p className="text-white/70 text-xs mt-0.5 font-medium">
                         {activeReview.role}
                       </p>
                     </div>
@@ -207,8 +206,8 @@ export default function Testimonials() {
                   <span
                     className="inline-block px-3 py-1 rounded-full text-xs font-bold border"
                     style={{
-                      background: `${activeReview.color}18`,
-                      borderColor: `${activeReview.color}35`,
+                      background: `${activeReview.color}20`,
+                      borderColor: `${activeReview.color}45`,
                       color: activeReview.color,
                       boxShadow: `0 4px 12px ${activeReview.color}10`,
                     }}
@@ -221,22 +220,20 @@ export default function Testimonials() {
           </AnimatePresence>
         </div>
 
-        {/* Carousel Navigation Controls */}
+        {/* Carousel Navigation Controls with 44px min touch target */}
         <div className="mt-8 flex items-center justify-between max-w-2xl mx-auto px-4 relative z-20">
           <button
             onClick={handlePrev}
-            className="w-10 h-10 rounded-full flex items-center justify-center border border-white/10 hover:border-white/20 bg-white/5 hover:bg-white/10 text-white/70 hover:text-white transition-all duration-300 active:scale-90"
+            className="w-11 h-11 rounded-full flex items-center justify-center border border-white/15 hover:border-white/30 bg-white/10 hover:bg-white/15 text-white transition-all duration-300 active:scale-90 min-w-[44px] min-h-[44px]"
             aria-label="Previous Review"
           >
             <ChevronLeft size={20} />
           </button>
 
           {/* Dots Indicator */}
-          <div className="flex gap-2 max-w-[200px] overflow-hidden py-2 px-1">
-            {/* Show only 7 dots max at a time for aesthetic spacing, centered around the current index */}
+          <div className="flex gap-1 max-w-[200px] overflow-hidden py-2 px-1">
             {REVIEWS.map((_, i) => {
               const distance = Math.abs(i - index);
-              // Hide dots too far from current index to keep it compact
               if (distance > 3) return null;
               
               return (
@@ -246,24 +243,28 @@ export default function Testimonials() {
                     setDirection(i > index ? 1 : -1);
                     setIndex(i);
                   }}
-                  className="rounded-full transition-all duration-300"
-                  style={{
-                    width: i === index ? 16 : 6,
-                    height: 6,
-                    background:
-                      i === index
-                        ? activeReview.color
-                        : "rgba(255,255,255,0.15)",
-                  }}
+                  className="min-w-[28px] min-h-[44px] flex items-center justify-center py-2 transition-transform active:scale-95"
                   aria-label={`Go to review ${i + 1}`}
-                />
+                >
+                  <span
+                    className="block rounded-full transition-all duration-300"
+                    style={{
+                      width: i === index ? 16 : 6,
+                      height: 6,
+                      background:
+                        i === index
+                          ? activeReview.color
+                          : "rgba(255,255,255,0.25)",
+                    }}
+                  />
+                </button>
               );
             })}
           </div>
 
           <button
             onClick={handleNext}
-            className="w-10 h-10 rounded-full flex items-center justify-center border border-white/10 hover:border-white/20 bg-white/5 hover:bg-white/10 text-white/70 hover:text-white transition-all duration-300 active:scale-90"
+            className="w-11 h-11 rounded-full flex items-center justify-center border border-white/15 hover:border-white/30 bg-white/10 hover:bg-white/15 text-white transition-all duration-300 active:scale-90 min-w-[44px] min-h-[44px]"
             aria-label="Next Review"
           >
             <ChevronRight size={20} />
@@ -271,7 +272,7 @@ export default function Testimonials() {
         </div>
 
         {/* Total Count Badge */}
-        <div className="text-center mt-6 text-white/30 text-xs font-semibold select-none">
+        <div className="text-center mt-6 text-white/60 text-xs font-semibold select-none">
           Showing review {index + 1} of {REVIEWS.length}
         </div>
       </div>

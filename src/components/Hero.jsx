@@ -110,7 +110,7 @@ export default function Hero() {
     clearInterval(timerRef.current);
     timerRef.current = setInterval(() => {
       setIndex((i) => (i + 1) % HERO_PRODUCTS.length);
-    }, 4500); // Smoother 4.5-second interval
+    }, 4500);
   };
 
   const stopTimer = () => {
@@ -138,7 +138,7 @@ export default function Hero() {
   }, [index, product]);
 
   const handleLogoMouseMove = (e) => {
-    if (window.innerWidth < 768) return; // Disable on mobile for performance
+    if (window.innerWidth < 768) return;
     const el = e.currentTarget;
     const rect = el.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
@@ -153,7 +153,7 @@ export default function Hero() {
   };
 
   const handleCardMouseMove = (e) => {
-    if (window.innerWidth < 768) return; // Disable on mobile for performance
+    if (window.innerWidth < 768) return;
     const el = e.currentTarget;
     const rect = el.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
@@ -169,7 +169,7 @@ export default function Hero() {
 
   const go = (i) => {
     setIndex((i + HERO_PRODUCTS.length) % HERO_PRODUCTS.length);
-    startTimer(); // Reset timer on manual navigation
+    startTimer();
   };
 
   return (
@@ -215,7 +215,7 @@ export default function Hero() {
         <div className="order-2 lg:order-1 text-center lg:text-left">
           
           {/* Announcement Badge */}
-          <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-bold bg-white/5 border border-white/10 text-white/80 mb-4 shadow-[0_0_15px_rgba(255,255,255,0.03)] backdrop-blur-md">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-bold bg-white/10 border border-white/15 text-white/90 mb-4 shadow-[0_0_15px_rgba(255,255,255,0.03)] backdrop-blur-md">
             <span>✨</span>
             <span>PRIME TOOLS HUB MARKETPLACE</span>
           </div>
@@ -224,13 +224,13 @@ export default function Hero() {
             <Animated3DText text="Premium AI Tools for Creators & Professionals" />
           </h1>
 
-          <p className="mt-4 text-white/55 text-sm sm:text-base max-w-xl mx-auto lg:mx-0 leading-relaxed">
+          <p className="mt-4 text-white/80 text-sm sm:text-base max-w-xl mx-auto lg:mx-0 leading-relaxed font-body">
             Unlock the world's most powerful AI tools, premium subscriptions, and creator services—all in one secure platform on <span className="text-white font-semibold">PrimeTools.store</span> with instant activation & 24/7 support.
           </p>
 
-          {/* Bulk Purchase & 10% OFF Glass Banner */}
+          {/* Bulk Purchase Offer Banner */}
           <div className="mt-5 flex flex-wrap items-center justify-center lg:justify-start gap-2.5">
-            <div className="ps-pulse inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-amber-500/10 border border-amber-500/25 text-amber-300 shadow-[0_0_20px_rgba(245,158,11,0.1)] backdrop-blur-md">
+            <div className="ps-pulse inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-amber-500/15 border border-amber-500/35 text-amber-200 shadow-[0_0_20px_rgba(245,158,11,0.1)] backdrop-blur-md">
               <span>🎉</span>
               <span>Bulk Purchase Offer: Buy 5+ Products & Get Custom Discount</span>
             </div>
@@ -254,8 +254,8 @@ export default function Hero() {
                 }}
                 className="ps-luxury-glass rounded-2xl p-5 sm:p-6 border shadow-2xl relative text-left cursor-pointer transition-colors hover:bg-white/[0.04]"
                 style={{
-                  borderColor: `${product.color}25`,
-                  boxShadow: `0 20px 45px ${product.color}10, inset 0 1px 0 rgba(255,255,255,0.06)`,
+                  borderColor: `${product.color}35`,
+                  boxShadow: `0 20px 45px ${product.color}15, inset 0 1px 0 rgba(255,255,255,0.08)`,
                   transform: `rotateX(${cardTilt.y}deg) rotateY(${cardTilt.x}deg)`,
                   transformStyle: "preserve-3d",
                   transition: "transform 0.1s ease-out",
@@ -268,27 +268,27 @@ export default function Hero() {
                   <span
                     className="px-2.5 py-0.5 rounded-full text-[10px] font-bold"
                     style={{
-                      background: `${product.color}15`,
-                      border: `1px solid ${product.color}30`,
+                      background: `${product.color}25`,
+                      border: `1px solid ${product.color}45`,
                       color: product.color,
                     }}
                   >
                     {product.tag}
                   </span>
-                  <span className="text-[11px] text-white/40">• {product.duration}</span>
+                  <span className="text-[11px] text-white/75 font-medium">• {product.duration}</span>
                 </div>
 
                 <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
                   <Animated3DText text={product.name} hoverTilt={true} variant="subheading" />
                 </h2>
 
-                <p className="mt-2 text-white/55 text-xs sm:text-sm leading-relaxed max-w-lg font-body">
+                <p className="mt-2 text-white/75 text-xs sm:text-sm leading-relaxed max-w-lg font-body">
                   {product.description}
                 </p>
 
                 <div className="mt-4 flex items-center gap-2.5 flex-wrap">
                   {product.oldPrice && (
-                    <span className="text-white/35 text-xs sm:text-sm line-through font-light">
+                    <span className="text-white/60 text-xs sm:text-sm line-through font-light">
                       {product.oldPrice}
                     </span>
                   )}
@@ -305,7 +305,7 @@ export default function Hero() {
                   <a
                     href="#products"
                     onClick={(e) => e.stopPropagation()}
-                    className="px-4.5 py-2.5 rounded-xl text-xs font-semibold text-white border border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-300"
+                    className="px-4.5 py-2.5 rounded-xl text-xs font-semibold text-white border border-white/15 bg-white/10 hover:bg-white/15 transition-all duration-300 min-h-[44px] inline-flex items-center"
                   >
                     Explore Catalog
                   </a>
@@ -314,7 +314,7 @@ export default function Hero() {
                       e.stopPropagation();
                       openWhatsApp(product.name, product.duration, product.price);
                     }}
-                    className="ps-magnetic-btn flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-xs font-bold text-white transition-all duration-300"
+                    className="ps-magnetic-btn flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-xs font-bold text-white transition-all duration-300 min-h-[44px]"
                     style={{
                       background: `linear-gradient(135deg, ${product.color} 0%, ${product.color}cc 100%)`,
                       boxShadow: `0 4px 20px ${product.color}35`,
@@ -328,21 +328,25 @@ export default function Hero() {
             </AnimatePresence>
           </div>
 
-          {/* Dot Navigation */}
-          <div className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-2.5 max-w-full px-2">
+          {/* Dot Navigation with 44px touch targets */}
+          <div className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-1 max-w-full px-2">
             {HERO_PRODUCTS.map((p, i) => (
               <button
                 key={p.id}
                 onClick={() => go(i)}
                 aria-label={`Show ${p.name}`}
-                className="rounded-full transition-all duration-500"
-                style={{
-                  width: i === index ? 32 : 8,
-                  height: 8,
-                  background:
-                    i === index ? product.color : "rgba(255,255,255,0.15)",
-                }}
-              />
+                className="py-3 px-1.5 flex items-center justify-center min-w-[36px] min-h-[44px] transition-transform active:scale-95"
+              >
+                <span
+                  className="block rounded-full transition-all duration-500"
+                  style={{
+                    width: i === index ? 32 : 8,
+                    height: 8,
+                    background:
+                      i === index ? product.color : "rgba(255,255,255,0.25)",
+                  }}
+                />
+              </button>
             ))}
           </div>
         </div>
@@ -383,10 +387,10 @@ export default function Hero() {
               <div
                 className="ps-float relative flex items-center justify-center rounded-[1.5rem] sm:rounded-[2rem] w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80"
                 style={{
-                  background: `linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 50%, ${product.color}08 100%)`,
+                  background: `linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 50%, ${product.color}12 100%)`,
                   backdropFilter: "blur(40px)",
                   WebkitBackdropFilter: "blur(40px)",
-                  border: "1px solid rgba(255,255,255,0.12)",
+                  border: "1px solid rgba(255,255,255,0.18)",
                   boxShadow: `0 24px 80px rgba(0,0,0,0.5), 0 0 60px ${product.color}25`,
                 }}
               >
@@ -394,7 +398,11 @@ export default function Hero() {
                 <span className="ps-shimmer absolute inset-0 rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden" />
                 <img
                   src={product.logo}
-                  alt={product.name}
+                  alt={`${product.name} official logo`}
+                  fetchpriority="high"
+                  decoding="async"
+                  width="160"
+                  height="160"
                   className="relative w-[58%] h-[58%] object-contain transition-transform duration-300 group-hover:scale-105"
                   style={{
                     filter: `drop-shadow(0 8px 24px rgba(0,0,0,0.4)) drop-shadow(0 0 15px ${product.color}20)`

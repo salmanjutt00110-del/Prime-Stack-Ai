@@ -13,7 +13,7 @@ const REASONS = [
 
 export default function WhyUs() {
   return (
-    <section id="why-us" className="relative py-20 px-4 sm:px-6">
+    <section id="why-us" className="relative py-20 px-4 sm:px-6 scroll-mt-24">
       <div className="mx-auto max-w-6xl">
         <div className="text-center mb-14">
           <motion.span
@@ -29,7 +29,7 @@ export default function WhyUs() {
             <Animated3DText text="Why Choose Us" variant="heading" />
           </h2>
           <motion.p
-            className="mt-3 text-white/50 text-base max-w-xl mx-auto"
+            className="mt-3 text-white/80 text-base max-w-xl mx-auto"
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -47,7 +47,7 @@ export default function WhyUs() {
               style={{
                 background: "rgba(255,255,255,0.03)",
                 backdropFilter: "blur(20px)",
-                borderColor: "rgba(255,255,255,0.07)",
+                borderColor: "rgba(255,255,255,0.09)",
               }}
               initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -60,7 +60,6 @@ export default function WhyUs() {
                 boxShadow: `0 20px 50px rgba(0,0,0,0.5), 0 0 30px ${r.color}15`,
               }}
             >
-              {/* Subtle radial glow inside card on hover */}
               <div
                 className="absolute inset-0 -z-10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                 style={{
@@ -82,7 +81,7 @@ export default function WhyUs() {
               <h3 className="font-display font-semibold text-white text-base mb-1.5">
                 {r.title}
               </h3>
-              <p className="text-white/55 text-sm leading-relaxed">{r.desc}</p>
+              <p className="text-white/75 text-sm leading-relaxed font-body">{r.desc}</p>
             </motion.div>
           ))}
         </div>

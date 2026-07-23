@@ -63,15 +63,15 @@ export default function Navbar() {
         style={{
           backdropFilter: "blur(24px) saturate(180%)",
           WebkitBackdropFilter: "blur(24px) saturate(180%)",
-          background: "rgba(5,5,5,0.85)",
-          borderBottom: "1px solid rgba(255,255,255,0.06)",
+          background: "rgba(5,5,5,0.88)",
+          borderBottom: "1px solid rgba(255,255,255,0.08)",
         }}
       >
         <nav 
           className="mx-auto max-w-7xl px-4 sm:px-6 flex items-center justify-between transition-all duration-500"
-          style={{ height: scrolled ? 52 : 64 }}
+          style={{ height: scrolled ? 54 : 64 }}
         >
-          <a href="/" onClick={handleLogoClick} className="flex items-center gap-2.5 group">
+          <a href="/" onClick={handleLogoClick} className="flex items-center gap-2.5 group min-h-[44px]">
             <Logo size={scrolled ? 32 : 36} />
             <span
               className="font-display font-semibold tracking-tight text-white transition-all flex items-center gap-1.5"
@@ -90,10 +90,10 @@ export default function Navbar() {
                 key={l.label}
                 href={l.route ? l.href : l.href}
                 onClick={(e) => handleNav(e, l)}
-                className="text-sm text-white/65 hover:text-white transition-colors duration-300 relative group"
+                className="text-sm text-white/85 hover:text-white transition-colors duration-300 relative group py-3 px-1 min-h-[44px] flex items-center"
               >
                 {l.label}
-                <span className="absolute -bottom-1.5 left-0 w-0 h-px bg-gradient-to-r from-blue-400 to-pink-400 group-hover:w-full transition-all duration-300" />
+                <span className="absolute bottom-1 left-0 w-0 h-px bg-gradient-to-r from-blue-400 to-pink-400 group-hover:w-full transition-all duration-300" />
               </a>
             ))}
           </div>
@@ -101,8 +101,8 @@ export default function Navbar() {
           <div className="flex items-center gap-3">
             <button
               onClick={(e) => handleNav(e, { href: "#products", route: false })}
-              className="hidden sm:flex items-center gap-2 px-3.5 py-2 rounded-full text-sm text-white/75 hover:text-white border border-white/12 hover:bg-white/8 transition-all"
-              aria-label="Search products"
+              className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-full text-sm text-white/90 hover:text-white border border-white/15 hover:bg-white/10 transition-all min-h-[44px]"
+              aria-label="Search products catalog"
             >
               <Search size={15} />
               Search
@@ -111,7 +111,7 @@ export default function Navbar() {
               href={WHATSAPP_GENERAL}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-white transition-all duration-300 hover:scale-[1.03] hover:shadow-lg"
+              className="hidden sm:flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-semibold text-white transition-all duration-300 hover:scale-[1.03] hover:shadow-lg min-h-[44px]"
               style={{ background: "linear-gradient(135deg, #25D366, #128C7E)", boxShadow: "0 4px 20px rgba(37,211,102,0.25)" }}
             >
               <MessageCircle size={16} />
@@ -119,8 +119,8 @@ export default function Navbar() {
             </a>
             <button
               onClick={() => setOpen((v) => !v)}
-              className="md:hidden text-white p-2"
-              aria-label="Toggle menu"
+              className="md:hidden text-white p-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl bg-white/5 border border-white/10"
+              aria-label="Toggle menu navigation"
             >
               {open ? <X size={22} /> : <Menu size={22} />}
             </button>
@@ -132,7 +132,7 @@ export default function Navbar() {
           style={{
             background: "rgba(5,5,5,0.95)",
             backdropFilter: "blur(24px)",
-            borderBottom: open ? "1px solid rgba(255,255,255,0.06)" : "none",
+            borderBottom: open ? "1px solid rgba(255,255,255,0.08)" : "none",
           }}
         >
           <div className="px-6 py-4 flex flex-col gap-1">
@@ -141,7 +141,7 @@ export default function Navbar() {
                 key={l.label}
                 href={l.route ? l.href : l.href}
                 onClick={(e) => handleNav(e, l)}
-                className="py-3 text-white/75 hover:text-white border-b border-white/5 text-sm font-medium"
+                className="py-3 text-white/90 hover:text-white border-b border-white/5 text-sm font-semibold min-h-[44px] flex items-center"
               >
                 {l.label}
               </a>
@@ -151,7 +151,7 @@ export default function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setOpen(false)}
-              className="mt-3 flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-semibold text-white"
+              className="mt-3 flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-semibold text-white min-h-[44px]"
               style={{ background: "linear-gradient(135deg, #25D366, #128C7E)" }}
             >
               <MessageCircle size={16} />
