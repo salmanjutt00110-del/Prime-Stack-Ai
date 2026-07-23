@@ -40,43 +40,312 @@
     <meta name="twitter:description" content="Access ChatGPT Plus, Google Gemini Pro, Veo 3, Canva Pro, CapCut Pro & more through Prime Tools Hub." />
     <meta name="twitter:image" content="https://primetools.store/prime-tools-logo.png" />
 
-    <!-- JSON-LD Structured Data -->
+    <!-- JSON-LD Structured Data (Google Rich Results Compliant) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@graph": [
         {
           "@type": "Organization",
-          "@id": "https://primetools.store/#organization",
+          "@id": "https://primetoolshub.store/#organization",
           "name": "Prime Tools Hub",
-          "url": "https://primetools.store/",
-          "logo": "https://primetools.store/prime-tools-logo.png",
+          "url": "https://primetoolshub.store/",
+          "logo": "https://primetoolshub.store/prime-tools-logo.png",
           "description": "Pakistan & Global's premier destination for genuine AI tools, creator accounts, VPNs, and digital subscriptions."
         },
         {
           "@type": "WebSite",
-          "@id": "https://primetools.store/#website",
-          "url": "https://primetools.store/",
+          "@id": "https://primetoolshub.store/#website",
+          "url": "https://primetoolshub.store/",
           "name": "Prime Tools Hub",
-          "publisher": { "@id": "https://primetools.store/#organization" },
+          "publisher": { "@id": "https://primetoolshub.store/#organization" },
           "potentialAction": {
             "@type": "SearchAction",
-            "target": "https://primetools.store/#products?q={search_term_string}",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://primetoolshub.store/#products?q={search_term_string}"
+            },
             "query-input": "required name=search_term_string"
           }
         },
         {
-          "@type": "AggregateRating",
-          "itemReviewed": {
-            "@type": "Product",
-            "name": "Prime Tools Hub Premium Subscriptions",
-            "image": "https://primetools.store/prime-tools-logo.png",
-            "description": "ChatGPT Plus, Gemini Advanced, Veo 3 AI Video, CapCut Pro, Canva Pro, SuperGrok, Surfshark VPN."
+          "@type": "BreadcrumbList",
+          "@id": "https://primetoolshub.store/#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://primetoolshub.store/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Products",
+              "item": "https://primetoolshub.store/#products"
+            }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://primetoolshub.store/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How do I place an order?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Simply browse our catalog, click 'Buy on WhatsApp' or 'Order Now' on any product card. Your order details will auto-fill in a WhatsApp message. Send it to our team and we'll guide you through quick payment and instant activation."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How fast is product delivery & activation?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Most products (such as ChatGPT Plus, Gemini Advanced, CapCut Pro, Canva Pro, and VPNs) are activated within minutes after payment confirmation. Special custom growth services like TikTok Growth Challenge may take up to 24 hours."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What payment methods do you accept?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "We accept EasyPaisa, JazzCash, Bank Account Transfers, and select international payment methods. Once you place an order on WhatsApp, we share the exact payment details."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Are these accounts genuine, safe, and legal?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, 100%. We only deal in legitimate, genuine accounts and official activation channels. Your privacy and data safety are fully protected."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What if I face an issue during my subscription period?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "All our products come with a dedicated replacement warranty for the duration specified on the product card. If you experience any issue, simply reach out to our WhatsApp support and we will replace or resolve it immediately."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Do you offer bulk discounts for agencies, teams, or resellers?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes! If you purchase 5 or more products (or require multi-user team seats), we offer exclusive custom bulk pricing. Contact us on WhatsApp for a personalized quotation."
+              }
+            }
+          ]
+        },
+        {
+          "@type": "Product",
+          "@id": "https://primetoolshub.store/product/chatgpt-plus-1m#product",
+          "name": "ChatGPT Plus",
+          "description": "ChatGPT Plus subscription via the fast & stable iCloud method. Full premium access with instant delivery and 2FA code setup included.",
+          "image": "https://primetoolshub.store/photo/chatgpt.webp",
+          "brand": {
+            "@type": "Brand",
+            "name": "Prime Tools Hub"
           },
-          "ratingValue": "4.9",
-          "reviewCount": "520",
-          "bestRating": "5",
-          "worstRating": "1"
+          "offers": {
+            "@type": "Offer",
+            "url": "https://primetoolshub.store/product/chatgpt-plus-1m",
+            "priceCurrency": "PKR",
+            "price": "1799",
+            "availability": "https://schema.org/InStock",
+            "itemCondition": "https://schema.org/NewCondition",
+            "seller": {
+              "@type": "Organization",
+              "name": "Prime Tools Hub"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "@id": "https://primetoolshub.store/product/gemini-pro-18#product",
+          "name": "Google Gemini Pro",
+          "description": "Premium Gemini AI access on your personal Google account — 5TB storage, advanced AI image generation, Veo video generation, monthly credits & family sharing.",
+          "image": "https://primetoolshub.store/photo/gemini-logo.webp",
+          "brand": {
+            "@type": "Brand",
+            "name": "Prime Tools Hub"
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://primetoolshub.store/product/gemini-pro-18",
+            "priceCurrency": "PKR",
+            "price": "949",
+            "availability": "https://schema.org/InStock",
+            "itemCondition": "https://schema.org/NewCondition",
+            "seller": {
+              "@type": "Organization",
+              "name": "Prime Tools Hub"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "@id": "https://primetoolshub.store/product/veo-3-video#product",
+          "name": "Google Veo 3",
+          "description": "Unlimited AI video generation with 45,000+ credits. Only your Gmail address required. 20-day warranty on technical issues with full activation guide.",
+          "image": "https://primetoolshub.store/photo/veo-3.webp",
+          "brand": {
+            "@type": "Brand",
+            "name": "Prime Tools Hub"
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://primetoolshub.store/product/veo-3-video",
+            "priceCurrency": "PKR",
+            "price": "3799",
+            "availability": "https://schema.org/InStock",
+            "itemCondition": "https://schema.org/NewCondition",
+            "seller": {
+              "@type": "Organization",
+              "name": "Prime Tools Hub"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "@id": "https://primetoolshub.store/product/capcut-pro-1m#product",
+          "name": "CapCut Pro",
+          "description": "CapCut Pro premium access with all pro editing features, premium effects, filters, templates, AI editing tools — export without watermark.",
+          "image": "https://primetoolshub.store/photo/capcut.webp",
+          "brand": {
+            "@type": "Brand",
+            "name": "Prime Tools Hub"
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://primetoolshub.store/product/capcut-pro-1m",
+            "priceCurrency": "PKR",
+            "price": "1139",
+            "availability": "https://schema.org/InStock",
+            "itemCondition": "https://schema.org/NewCondition",
+            "seller": {
+              "@type": "Organization",
+              "name": "Prime Tools Hub"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "@id": "https://primetoolshub.store/product/canva-pro-edu#product",
+          "name": "Canva Pro",
+          "description": "Canva Pro Edu invite for individual users — 3 years of access. Canva AI, magic design, magic write/edit, background remover and all AI-powered design tools.",
+          "image": "https://primetoolshub.store/photo/canva.webp",
+          "brand": {
+            "@type": "Brand",
+            "name": "Prime Tools Hub"
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://primetoolshub.store/product/canva-pro-edu",
+            "priceCurrency": "PKR",
+            "price": "279",
+            "availability": "https://schema.org/InStock",
+            "itemCondition": "https://schema.org/NewCondition",
+            "seller": {
+              "@type": "Organization",
+              "name": "Prime Tools Hub"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "@id": "https://primetoolshub.store/product/supergrok-12m-premium#product",
+          "name": "SuperGrok",
+          "description": "SuperGrok premium access powered by X. Advanced AI models, fast responses, and premium AI features.",
+          "image": "https://primetoolshub.store/photo/supergrok.webp",
+          "brand": {
+            "@type": "Brand",
+            "name": "Prime Tools Hub"
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://primetoolshub.store/product/supergrok-12m-premium",
+            "priceCurrency": "PKR",
+            "price": "2659",
+            "availability": "https://schema.org/InStock",
+            "itemCondition": "https://schema.org/NewCondition",
+            "seller": {
+              "@type": "Organization",
+              "name": "Prime Tools Hub"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "@id": "https://primetoolshub.store/product/surfshark-vpn-1y#product",
+          "name": "Surfshark VPN",
+          "description": "1-year premium VPN subscription with global server access, high-speed browsing & streaming, encrypted privacy, and easy redeem-code activation.",
+          "image": "https://primetoolshub.store/photo/surfshark-vpn.webp",
+          "brand": {
+            "@type": "Brand",
+            "name": "Prime Tools Hub"
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://primetoolshub.store/product/surfshark-vpn-1y",
+            "priceCurrency": "PKR",
+            "price": "3320",
+            "availability": "https://schema.org/InStock",
+            "itemCondition": "https://schema.org/NewCondition",
+            "seller": {
+              "@type": "Organization",
+              "name": "Prime Tools Hub"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "@id": "https://primetoolshub.store/product/tiktok-growth-challenge#product",
+          "name": "TikTok Creator Growth",
+          "description": "Creator Growth Challenge activation on your eligible USA TikTok account. Policy-compliant, fast processing, with activation warranty included.",
+          "image": "https://primetoolshub.store/photo/tiktok.webp",
+          "brand": {
+            "@type": "Brand",
+            "name": "Prime Tools Hub"
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://primetoolshub.store/product/tiktok-growth-challenge",
+            "priceCurrency": "PKR",
+            "price": "8549",
+            "availability": "https://schema.org/InStock",
+            "itemCondition": "https://schema.org/NewCondition",
+            "seller": {
+              "@type": "Organization",
+              "name": "Prime Tools Hub"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "@id": "https://primetoolshub.store/product/youtube-premium-12m#product",
+          "name": "YouTube Premium",
+          "description": "12 Months of stable YouTube Premium and YouTube Music access on your personal Google account via a fixed family slot.",
+          "image": "https://primetoolshub.store/photo/youtube-premium.webp",
+          "brand": {
+            "@type": "Brand",
+            "name": "Prime Tools Hub"
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://primetoolshub.store/product/youtube-premium-12m",
+            "priceCurrency": "PKR",
+            "price": "8250",
+            "availability": "https://schema.org/InStock",
+            "itemCondition": "https://schema.org/NewCondition",
+            "seller": {
+              "@type": "Organization",
+              "name": "Prime Tools Hub"
+            }
+          }
         }
       ]
     }
