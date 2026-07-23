@@ -6,27 +6,30 @@ import { motion } from "framer-motion";
  * A premium typography component that splits text into words and letters,
  * applying a staggered 3D entrance rotation (along the X-axis) and
  * interactive 3D parallax tilt effects on cursor hover.
- * Optimized to bypass letter-splitting on mobile to prevent performance lag.
+ * Synchronous mobile detection prevents forced reflow and unneeded DOM node creation.
  */
 export default function Animated3DText({
   text,
   className = "",
   delay = 0,
   hoverTilt = true,
-  variant = "heading", // "heading" | "subheading" | "body"
+  variant = "heading",
 }) {
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(() => {
+    if (typeof window !== "undefined") {
+      return window.innerWidth < 768;
+    }
+    return false;
+  });
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   const words = text.split(" ");
 
-  // Container variants triggering staggered entrance animations on scroll
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: (customDelay = 0) => ({
@@ -38,7 +41,6 @@ export default function Animated3DText({
     }),
   };
 
-  // Letter animations doing a flip rotation around the X-axis with deep perspective
   const letterVariants = {
     hidden: {
       opacity: 0,
@@ -59,7 +61,6 @@ export default function Animated3DText({
     },
   };
 
-  // Mobile simple entry animation (opacity and y shift for the entire block)
   const mobileVariants = {
     hidden: { opacity: 0, y: 15 },
     visible: (customDelay = 0) => ({
@@ -73,7 +74,6 @@ export default function Animated3DText({
     }),
   };
 
-  // Custom styling based on hierarchy
   const baseShadow =
     variant === "heading"
       ? "ps-text-3d hover:text-violet-400 transition-colors duration-500"

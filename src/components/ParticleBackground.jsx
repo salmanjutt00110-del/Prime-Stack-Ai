@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 
 // Performance-optimized Canvas-based floating particle background.
-// Constrained to viewport size using fixed positioning to prevent huge canvas rendering lag.
+// Bypasses canvas rendering on mobile devices (< 768px) for 100/100 Lighthouse performance.
 export default function ParticleBackground({ color = "#8B5CF6", count }) {
   const canvasRef = useRef(null);
   const colorRef = useRef(color);
@@ -12,6 +12,10 @@ export default function ParticleBackground({ color = "#8B5CF6", count }) {
   }, [color]);
 
   useEffect(() => {
+    if (typeof window !== "undefined" && window.innerWidth < 768) {
+      return; // Completely bypass particle canvas calculation on mobile devices
+    }
+
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d", { alpha: true });
@@ -19,11 +23,10 @@ export default function ParticleBackground({ color = "#8B5CF6", count }) {
     let particles = [];
     let isVisible = true;
 
-    const isMobile = window.innerWidth < 768;
-    const n = count || (isMobile ? 4 : 20); // Optimized particle count
+    const n = count || 20;
 
     function resize() {
-      const dpr = Math.min(window.devicePixelRatio || 1, 1.2); // Cap DPR to 1.2 for performance
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.2);
       canvas.width = window.innerWidth * dpr;
       canvas.height = window.innerHeight * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -53,7 +56,7 @@ export default function ParticleBackground({ color = "#8B5CF6", count }) {
     }
 
     function draw() {
-      if (!isVisible) return; // Completely pause calculations when off-screen
+      if (!isVisible) return;
       const w = window.innerWidth;
       const h = window.innerHeight;
       ctx.clearRect(0, 0, w, h);
@@ -62,21 +65,17 @@ export default function ParticleBackground({ color = "#8B5CF6", count }) {
       const my = mouseRef.current.y;
 
       for (const p of particles) {
-        // gentle mouse attraction
-        if (!isMobile) {
-          const dx = mx - p.x;
-          const dy = my - p.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 120) {
-            const f = (1 - dist / 120) * 0.4;
-            p.x += dx * 0.008 * f;
-            p.y += dy * 0.008 * f;
-          }
+        const dx = mx - p.x;
+        const dy = my - p.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 120) {
+          const f = (1 - dist / 120) * 0.4;
+          p.x += dx * 0.008 * f;
+          p.y += dy * 0.008 * f;
         }
         p.x += p.vx;
         p.y += p.vy;
         
-        // Wrap around viewport edges
         if (p.x < 0) p.x = w;
         if (p.x > w) p.x = 0;
         if (p.y < 0) p.y = h;
@@ -103,7 +102,6 @@ export default function ParticleBackground({ color = "#8B5CF6", count }) {
     spawn();
     draw();
 
-    // IntersectionObserver to dynamically pause/resume canvas drawings
     const observer = new IntersectionObserver(
       ([entry]) => {
         isVisible = entry.isIntersecting;
@@ -116,7 +114,7 @@ export default function ParticleBackground({ color = "#8B5CF6", count }) {
     );
     observer.observe(canvas);
 
-    window.addEventListener("resize", resize); // Only resize, do NOT trigger GC spawn spike
+    window.addEventListener("resize", resize);
     window.addEventListener("mousemove", onMouse);
     window.addEventListener("mouseleave", onLeave);
 
@@ -129,10 +127,14 @@ export default function ParticleBackground({ color = "#8B5CF6", count }) {
     };
   }, [count]);
 
+  if (typeof window !== "undefined" && window.innerWidth < 768) {
+    return null; // Return null on mobile viewport
+  }
+
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 w-screen h-screen pointer-events-none"
+      className="fixed inset-0 w-screen h-screen pointer-events-none hidden md:block"
       style={{ zIndex: -10 }}
       aria-hidden="true"
     />

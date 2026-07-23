@@ -3,7 +3,6 @@ import { useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { createPortal } from "react-dom";
 
-// Helper to map brand theme colors dynamically
 function getProductTheme(id) {
   if (!id) return null;
   const lowerId = id.toLowerCase();
@@ -23,12 +22,11 @@ export default function DisclaimerBar() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const location = useLocation();
   const [themeColors, setThemeColors] = useState({
-    from: "#60A5FA", // Default Blue
-    via: "#8B5CF6",  // Default Purple
-    to: "#EC4899",   // Default Pink
+    from: "#60A5FA",
+    via: "#8B5CF6",
+    to: "#EC4899",
   });
 
-  // Scroll detection to adjust top positioning matching the navbar height
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 24);
@@ -38,9 +36,7 @@ export default function DisclaimerBar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Listen to active route changes and hero showcase index updates
   useEffect(() => {
-    // 1. If on product page, dynamically extract active product theme
     if (location.pathname.startsWith("/product/")) {
       const parts = location.pathname.split("/");
       const id = parts[parts.length - 1];
@@ -55,7 +51,6 @@ export default function DisclaimerBar() {
       }
     }
 
-    // 2. Default to general multi-color gradient
     setThemeColors({
       from: "#60A5FA",
       via: "#8B5CF6",
@@ -63,10 +58,8 @@ export default function DisclaimerBar() {
     });
   }, [location.pathname]);
 
-  // Listen to custom hero slide change events
   useEffect(() => {
     const handleHeroProductChange = (e) => {
-      // Only transition colors dynamically if not explicitly on a product details page
       if (!location.pathname.startsWith("/product/")) {
         const { color, color2 } = e.detail;
         setThemeColors({
@@ -83,16 +76,12 @@ export default function DisclaimerBar() {
     };
   }, [location.pathname]);
 
-  // Listener to open disclaimer modal via custom event
   useEffect(() => {
     const handleOpenModal = () => {
-      console.log("DisclaimerBar: open-disclaimer-modal event received!");
       setIsModalOpen(true);
     };
-    console.log("DisclaimerBar: Registering open-disclaimer-modal event listener");
     window.addEventListener("open-disclaimer-modal", handleOpenModal);
     return () => {
-      console.log("DisclaimerBar: Unregistering open-disclaimer-modal event listener");
       window.removeEventListener("open-disclaimer-modal", handleOpenModal);
     };
   }, []);
@@ -106,14 +95,14 @@ export default function DisclaimerBar() {
         <span className="font-extrabold bg-gradient-to-r from-amber-300 via-amber-400 to-emerald-400 bg-clip-text text-transparent">
           Bulk Purchase Discount:
         </span>
-        <span className="text-white/90">
+        <span className="text-white/95 font-medium">
           Customers purchasing 5 or more products are eligible for a special discount. Please contact us on WhatsApp for bulk pricing.
         </span>
       </span>
 
-      <span className="text-xs font-semibold text-white/80 tracking-wide flex items-center">
+      <span className="text-xs font-semibold text-white/90 tracking-wide flex items-center">
         <span className="inline-block animate-pulse text-[11px] mr-1.5">⚠️</span>
-        <span className="text-white/60 font-bold mr-1.5">Disclaimer:</span>
+        <span className="text-white/80 font-bold mr-1.5">Disclaimer:</span>
         Prices & availability updated daily. Verify latest rates on WhatsApp before placing order.
       </span>
     </div>
@@ -133,7 +122,6 @@ export default function DisclaimerBar() {
             boxShadow: `0 8px 32px rgba(0, 0, 0, 0.5), 0 4px 15px ${themeColors.from}1a`,
           }}
         >
-          {/* Soft Ambient Floating Particles */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
             <div
               className="absolute top-1/2 left-1/4 w-32 h-10 rounded-full blur-xl opacity-20 ps-float-particle-1"
@@ -145,21 +133,18 @@ export default function DisclaimerBar() {
             />
           </div>
 
-          {/* 8-second glass shine animation overlay */}
           <div className="ps-glass-shine-line absolute inset-y-0 w-24 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-[-25deg] z-10 pointer-events-none" />
 
-          {/* Glassmorphic body */}
           <div
             onClick={() => setIsModalOpen(true)}
             className="w-full h-full rounded-full bg-[#050506]/90 backdrop-blur-[24px] flex items-center relative z-20 px-3 overflow-hidden cursor-pointer"
           >
-            {/* Interactive "Important Note" Button */}
             <button
               onClick={(e) => {
                 e.stopPropagation();
                 setIsModalOpen(true);
               }}
-              className="flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider text-white border border-amber-500/30 transition-all mr-3 shrink-0 cursor-pointer pointer-events-auto relative z-30 active:scale-95 bg-amber-500/10 text-amber-300"
+              className="flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider text-white border border-amber-500/40 transition-all mr-3 shrink-0 cursor-pointer pointer-events-auto relative z-30 active:scale-95 bg-amber-500/20 text-amber-300 min-h-[32px]"
             >
               <span className="relative flex h-1.5 w-1.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
@@ -168,7 +153,6 @@ export default function DisclaimerBar() {
               🎉 Bulk Offer
             </button>
 
-            {/* Marquee scroll zone */}
             <div className="w-full overflow-hidden relative select-none">
               <div className="flex w-max ps-animate-marquee gap-16 items-center">
                 {textSegment}
@@ -179,7 +163,6 @@ export default function DisclaimerBar() {
         </div>
       </div>
 
-      {/* Interactive Glassmorphic Modal */}
       {createPortal(
         <AnimatePresence>
           {isModalOpen && (
@@ -219,10 +202,10 @@ export default function DisclaimerBar() {
                   </div>
 
                   <div className="relative z-10 space-y-4">
-                    <p className="text-white/85 text-sm sm:text-base leading-relaxed font-semibold">
+                    <p className="text-white/90 text-sm sm:text-base leading-relaxed font-semibold">
                       Hamari prices market rates aur supplier updates ke mutabiq up-down (change) hoti rehti hain, isliye website par prices kabhi thodi zyada ya kam ho sakti hain. Services ki duration, features aur availability market conditions aur platform policies ke mutabiq kisi bhi waqt tabdeel ho sakti hain. Order place karne se pehle WhatsApp par latest price aur details zaroor verify karein.
                     </p>
-                    <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/5 text-xs text-white/50 leading-relaxed font-medium">
+                    <div className="p-3.5 rounded-xl bg-white/[0.04] border border-white/10 text-xs text-white/80 leading-relaxed font-medium">
                       ⚠️ Order place karne se pehle agar aap ke paas koi query hai, toh aap direct WhatsApp par contact kar sakte hain. We are always active to guide you!
                     </div>
                   </div>
@@ -230,7 +213,7 @@ export default function DisclaimerBar() {
                   <div className="mt-8 flex justify-end relative z-10">
                     <button
                       onClick={() => setIsModalOpen(false)}
-                      className="px-6 py-2.5 rounded-xl text-xs font-semibold text-white/80 hover:text-white border border-white/10 hover:bg-white/5 transition-all active:scale-[0.98] cursor-pointer"
+                      className="px-6 py-2.5 rounded-xl text-xs font-semibold text-white hover:bg-white/10 border border-white/20 transition-all active:scale-[0.98] cursor-pointer min-h-[44px]"
                     >
                       Samjh Gaya (Close)
                     </button>
