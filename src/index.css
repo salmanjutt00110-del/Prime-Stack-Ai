@@ -26,21 +26,8 @@
     --border: 0 0% 89.8%;
     --input: 0 0% 89.8%;
     --ring: 0 0% 3.9%;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
     --radius: 0.5rem;
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
@@ -63,19 +50,6 @@
     --border: 0 0% 14.9%;
     --input: 0 0% 14.9%;
     --ring: 0 0% 83.1%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
 
@@ -163,7 +137,7 @@
     100% { background-position: 200% center; }
   }
 
-  /* Discount badge pulse (double heartbeat) */
+  /* Discount badge pulse */
   .ps-pulse {
     animation: ps-pulse 2s ease-in-out infinite;
   }
@@ -207,6 +181,16 @@
       inset 0 1px 0px rgba(255, 255, 255, 0.06);
   }
 
+  /* Mobile GPU optimization: bypass backdrop blur rendering pipeline on small screens */
+  @media (max-width: 767px) {
+    .ps-luxury-glass,
+    .ps-glass-reflection {
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      background: rgba(12, 12, 16, 0.96) !important;
+    }
+  }
+
   .ps-glass-reflection {
     position: relative;
     overflow: hidden;
@@ -236,7 +220,6 @@
     left: 150%;
   }
 
-  /* Animated border mask for luxury cards */
   .ps-border-glow-wrapper {
     position: relative;
   }
@@ -270,16 +253,6 @@
     padding: 1.5px;
   }
 
-  /* Cinematic Aurora Lights (Performance Optimized, No Blur Filter) */
-  .ps-aurora {
-    background: 
-      radial-gradient(circle at 20% 20%, rgba(139, 92, 246, 0.05) 0%, rgba(139, 92, 246, 0) 50%),
-      radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.04) 0%, rgba(236, 72, 153, 0) 50%),
-      radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.03) 0%, rgba(59, 130, 246, 0) 65%);
-    pointer-events: none;
-  }
-
-  /* Continuous slow floating + scaling loop for logos inside cards */
   .ps-logo-float-loop {
     animation: ps-logo-float-slow 6s ease-in-out infinite;
   }
@@ -292,7 +265,6 @@
     }
   }
 
-  /* Magnetic Button Hover Glow */
   .ps-magnetic-btn {
     transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
   }
@@ -300,7 +272,6 @@
     box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
   }
 
-  /* Premium 3D Extrusion Text effect with dynamic shadow offset */
   .ps-text-3d {
     text-shadow: 
       0 1px 0 rgba(255,255,255,0.08),
@@ -312,7 +283,6 @@
     transform-style: preserve-3d;
   }
 
-  /* Disclaimer Bar Animations */
   @keyframes ps-marquee {
     0% { transform: translate3d(0, 0, 0); }
     100% { transform: translate3d(-50%, 0, 0); }

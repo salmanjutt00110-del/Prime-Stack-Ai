@@ -19,11 +19,10 @@ export default function Logo({ size = 40, animated = true }) {
           : "0 0 0 transparent",
       }}
     >
-      {/* shimmer sweep */}
       <span className="ps-shimmer absolute inset-0 pointer-events-none" />
       <img
         src={logoSrc}
-        alt="Prime Tools Hub"
+        alt="Prime Tools Hub logo"
         width={size}
         height={size}
         loading="eager"
