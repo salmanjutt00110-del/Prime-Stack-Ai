@@ -112,7 +112,7 @@ export default function ProductsGrid() {
             whileHover={{ scale: 1.05 }}
           >
             <span className="ps-shimmer absolute inset-0" />
-            <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-blue-400 via-violet-400 to-pink-400 animate-ping" />
+            <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-blue-400 via-violet-400 to-pink-400" />
             <span className="bg-gradient-to-r from-blue-400 via-violet-400 to-pink-400 bg-clip-text text-transparent tracking-wider">
               ✨ PREMIUM COLLECTION
             </span>
@@ -121,7 +121,7 @@ export default function ProductsGrid() {
           {/* Large Gradient Heading */}
           <h2 className="mt-5 font-display font-black leading-tight tracking-tight text-4xl sm:text-5xl md:text-6xl text-center text-white">
             Explore{" "}
-            <span className="bg-gradient-to-r from-blue-400 via-violet-500 to-pink-500 bg-clip-text text-transparent animate-pulse [animation-duration:3s]">
+            <span className="bg-gradient-to-r from-blue-400 via-violet-500 to-pink-500 bg-clip-text text-transparent">
               Premium AI Products
             </span>
           </h2>

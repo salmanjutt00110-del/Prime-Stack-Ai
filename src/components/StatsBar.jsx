@@ -55,13 +55,7 @@ export default function StatsBar() {
     <section className="relative py-10 px-4 sm:px-6">
       <div
         ref={ref}
-        className="mx-auto max-w-5xl rounded-2xl px-6 py-8 flex flex-wrap items-center justify-center gap-y-6"
-        style={{
-          background: "rgba(255,255,255,0.04)",
-          backdropFilter: "blur(20px)",
-          WebkitBackdropFilter: "blur(20px)",
-          border: "1px solid rgba(255,255,255,0.08)",
-        }}
+        className="mx-auto max-w-5xl rounded-2xl px-6 py-8 flex flex-wrap items-center justify-center gap-y-6 ps-luxury-glass"
       >
         {STATS.map((s, i) => (
           <div

@@ -1,11 +1,12 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, lazy, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle } from "lucide-react";
 import { HERO_PRODUCTS } from "@/data/products";
 import { openWhatsApp } from "@/lib/whatsapp";
 import { useNavigate } from "react-router-dom";
-import ParticleBackground from "@/components/ParticleBackground";
 import Animated3DText from "@/components/Animated3DText";
+
+const ParticleBackground = lazy(() => import("@/components/ParticleBackground"));
 
 const SPRING = { duration: 0.8, ease: [0.16, 1, 0.3, 1] };
 
@@ -190,10 +191,14 @@ export default function Hero() {
         <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(29,161,242,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(29,161,242,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-50 pointer-events-none transition-opacity duration-1000" />
       )}
 
-      {/* Dynamic Theme Particles */}
-      <div className="absolute inset-0 -z-10 opacity-60 pointer-events-none">
-        <ParticleBackground color={theme.particles} />
-      </div>
+      {/* Dynamic Theme Particles — desktop only (canvas is expensive on mobile) */}
+      {typeof window !== "undefined" && window.innerWidth >= 768 && (
+        <div className="absolute inset-0 -z-10 opacity-60 pointer-events-none">
+          <Suspense fallback={null}>
+            <ParticleBackground color={theme.particles} />
+          </Suspense>
+        </div>
+      )}
 
       {/* Animated Glow Orbs */}
       <motion.div
@@ -241,9 +246,9 @@ export default function Hero() {
             <AnimatePresence mode="wait">
               <motion.div
                 key={product.id}
-                initial={{ opacity: 0, y: 15, filter: "blur(5px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                exit={{ opacity: 0, y: -15, filter: "blur(5px)" }}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
                 transition={SPRING}
                 onClick={() => navigate(`/product/${product.id}`)}
                 onMouseMove={handleCardMouseMove}
@@ -356,9 +361,9 @@ export default function Hero() {
           <AnimatePresence mode="wait">
             <motion.div
               key={product.id}
-              initial={{ opacity: 0, scale: 0.75, rotateX: -25, rotateY: -25, y: 40, filter: "blur(12px)" }}
-              animate={{ opacity: 1, scale: 1, rotateX: 0, rotateY: 0, y: 0, filter: "blur(0px)" }}
-              exit={{ opacity: 0, scale: 0.75, rotateX: 25, rotateY: 25, y: -40, filter: "blur(12px)" }}
+              initial={{ opacity: 0, scale: 0.75, rotateX: -25, rotateY: -25, y: 40 }}
+              animate={{ opacity: 1, scale: 1, rotateX: 0, rotateY: 0, y: 0 }}
+              exit={{ opacity: 0, scale: 0.75, rotateX: 25, rotateY: 25, y: -40 }}
               transition={{
                 type: "spring",
                 stiffness: 140,

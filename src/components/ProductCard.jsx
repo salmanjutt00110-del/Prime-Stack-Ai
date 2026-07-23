@@ -45,11 +45,10 @@ const getSideGlowColors = (id) => {
 const ProductCard = memo(function ProductCard({ product, index = 0, priority = false }) {
   const navigate = useNavigate();
   const sideGlow = getSideGlowColors(product.id);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(() => typeof window !== "undefined" && window.innerWidth < 768);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
   }, []);

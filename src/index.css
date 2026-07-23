@@ -6,9 +6,9 @@
   :root {
     --background: 0 0% 2%;
     --foreground: 0 0% 98%;
-    --font-heading: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+    --font-heading: 'Inter', ui-sans-serif, system-ui, sans-serif;
     --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
-    --font-display: 'Sora', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Inter', ui-sans-serif, system-ui, sans-serif;
     --card: 0 0% 100%;
     --card-foreground: 0 0% 3.9%;
     --popover: 0 0% 100%;
@@ -90,56 +90,56 @@
 }
 
 @layer utilities {
-  /* === PrimeStack animations === */
+  /* === PrimeStack GPU-composited animations === */
 
-  /* Logo float + breathe + glow */
+  /* Logo float + breathe + glow — uses only transform & box-shadow (composited) */
   .ps-logo-anim {
-    animation: ps-logo-float 3s ease-in-out infinite,
-      ps-logo-breathe 4s ease-in-out infinite,
-      ps-logo-glow 3s ease-in-out infinite;
+    animation: ps-logo-float 3s ease-in-out infinite;
+    will-change: transform;
   }
   @keyframes ps-logo-float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-4px); }
-  }
-  @keyframes ps-logo-breathe {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.03); }
-  }
-  @keyframes ps-logo-glow {
-    0%, 100% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.4); }
-    50% { box-shadow: 0 0 40px rgba(139, 92, 246, 0.7), 0 0 80px rgba(59, 130, 246, 0.25); }
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-4px) scale(1.03); }
   }
 
-  /* Floating glass card */
+  /* Floating glass card — transform only (GPU composited) */
   .ps-float {
     animation: ps-card-float 5s ease-in-out infinite;
+    will-change: transform;
   }
   @keyframes ps-card-float {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-12px); }
   }
 
-  /* Shimmer sweep */
+  /* Shimmer sweep — uses transform translateX instead of background-position */
   .ps-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  .ps-shimmer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
     background: linear-gradient(
       115deg,
       transparent 30%,
       rgba(255, 255, 255, 0.08) 50%,
       transparent 70%
     );
-    background-size: 200% 100%;
     animation: ps-shimmer 6s linear infinite;
+    will-change: transform;
     pointer-events: none;
   }
   @keyframes ps-shimmer {
-    0% { background-position: -200% center; }
-    100% { background-position: 200% center; }
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
   }
 
-  /* Discount badge pulse */
+  /* Discount badge pulse — scale only (GPU composited) */
   .ps-pulse {
     animation: ps-pulse 2s ease-in-out infinite;
+    will-change: transform;
   }
   @keyframes ps-pulse {
     0%, 100% { transform: scale(1); }
@@ -152,6 +152,7 @@
   .ps-grad-text {
     background-size: 200% auto;
     animation: ps-grad-shift 4s linear infinite;
+    will-change: background-position;
   }
   @keyframes ps-grad-shift {
     0% { background-position: 0% center; }
@@ -162,14 +163,14 @@
 @media (prefers-reduced-motion: reduce) {
   .ps-logo-anim,
   .ps-float,
-  .ps-shimmer,
+  .ps-shimmer::before,
   .ps-pulse,
   .ps-grad-text {
     animation: none !important;
   }
 }
 
-/* === Premium Luxury Redesign Utilities === */
+/* === Premium Luxury Utilities === */
 @layer utilities {
   .ps-luxury-glass {
     background: rgba(255, 255, 255, 0.015);
@@ -181,7 +182,7 @@
       inset 0 1px 0px rgba(255, 255, 255, 0.06);
   }
 
-  /* Mobile GPU optimization: bypass backdrop blur rendering pipeline on small screens */
+  /* Mobile GPU optimization: bypass backdrop blur on small screens */
   @media (max-width: 767px) {
     .ps-luxury-glass,
     .ps-glass-reflection {
@@ -255,14 +256,11 @@
 
   .ps-logo-float-loop {
     animation: ps-logo-float-slow 6s ease-in-out infinite;
+    will-change: transform;
   }
   @keyframes ps-logo-float-slow {
-    0%, 100% {
-      transform: translateY(0) scale(1);
-    }
-    50% {
-      transform: translateY(-5px) scale(1.03);
-    }
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-5px) scale(1.03); }
   }
 
   .ps-magnetic-btn {
@@ -283,14 +281,16 @@
     transform-style: preserve-3d;
   }
 
+  /* Disclaimer Bar Animations — GPU composited with transform only */
   @keyframes ps-marquee {
     0% { transform: translate3d(0, 0, 0); }
     100% { transform: translate3d(-50%, 0, 0); }
   }
 
+  /* Glass shine — uses transform translateX instead of left (composited) */
   @keyframes ps-glass-shine {
-    0% { left: -150%; }
-    20%, 100% { left: 200%; }
+    0% { transform: translateX(-250%); }
+    20%, 100% { transform: translateX(350%); }
   }
 
   @keyframes ps-particle-float-1 {
@@ -311,6 +311,7 @@
 
   .ps-animate-marquee {
     animation: ps-marquee 45s linear infinite;
+    will-change: transform;
   }
 
   .ps-animate-marquee:hover {
@@ -319,18 +320,22 @@
 
   .ps-glass-shine-line {
     animation: ps-glass-shine 8s infinite linear;
+    will-change: transform;
   }
 
   .ps-float-particle-1 {
     animation: ps-particle-float-1 8s ease-in-out infinite;
+    will-change: transform, opacity;
   }
 
   .ps-float-particle-2 {
     animation: ps-particle-float-2 10s ease-in-out infinite;
+    will-change: transform, opacity;
   }
 
   .ps-gradient-border-anim {
     background-size: 200% 200%;
     animation: ps-gradient-shift 6s ease infinite;
+    will-change: background-position;
   }
 }
