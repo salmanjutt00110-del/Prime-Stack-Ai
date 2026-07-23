@@ -243,7 +243,7 @@ export default function Hero() {
 
           {/* Dynamic Showcase Card */}
           <div className="mt-8 relative" style={{ perspective: 1000 }}>
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={product.id}
                 initial={{ opacity: 0, y: 15 }}
@@ -358,7 +358,7 @@ export default function Hero() {
 
         {/* RIGHT — floating logo card */}
         <div className="order-1 lg:order-2 flex justify-center mb-6 lg:mb-0" style={{ perspective: 1000 }}>
-          <AnimatePresence mode="wait">
+          <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={product.id}
               initial={{ opacity: 0, scale: 0.75, rotateX: -25, rotateY: -25, y: 40 }}
