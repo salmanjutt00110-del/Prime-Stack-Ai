@@ -69,12 +69,12 @@ export default function Navbar() {
         <a href="/" onClick={handleLogoClick} className="flex items-center gap-2.5 group">
           <Logo size={scrolled ? 32 : 36} />
           <span
-            className="font-display font-semibold tracking-tight text-white transition-all"
+            className="font-display font-semibold tracking-tight text-white transition-all flex items-center gap-1.5"
             style={{ fontSize: scrolled ? 16 : 17 }}
           >
-            PrimeStack{" "}
-            <span className="ps-grad-text bg-gradient-to-r from-blue-400 via-violet-400 to-pink-400 bg-clip-text text-transparent">
-              AI
+            Prime{" "}
+            <span className="ps-grad-text bg-gradient-to-r from-blue-400 via-violet-400 to-pink-400 bg-clip-text text-transparent font-bold">
+              Tools Hub
             </span>
           </span>
         </a>

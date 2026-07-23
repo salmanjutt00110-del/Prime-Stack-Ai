@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import StatsBar from "@/components/StatsBar";
+import ChatGPTSpecialOffer from "@/components/ChatGPTSpecialOffer";
+import BulkPurchaseBanner from "@/components/BulkPurchaseBanner";
 import ProductsGrid from "@/components/ProductsGrid";
 import HowItWorks from "@/components/HowItWorks";
 import WhyUs from "@/components/WhyUs";
@@ -25,7 +27,7 @@ export default function Home() {
     if (!intro) return;
 
     sessionStorage.setItem("ps-intro-seen", "true");
-    const t = setTimeout(() => setIntro(false), 2800);
+    const t = setTimeout(() => setIntro(false), 2600);
     return () => clearTimeout(t);
   }, [intro]);
 
@@ -51,7 +53,7 @@ export default function Home() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="text-[10px] tracking-[0.25em] font-bold text-white/40 uppercase mb-4"
               >
-                Welcome to PrimeStack AI
+                Welcome to Prime Tools Hub
               </motion.span>
 
               {/* MAIN LOGO / TITLES */}
@@ -63,7 +65,7 @@ export default function Home() {
               >
                 <div className="absolute w-44 h-44 rounded-full bg-violet-600/20 blur-[50px]" />
                 <span className="font-display font-black text-4xl sm:text-5xl text-white tracking-wider relative z-10 uppercase">
-                  Prime<span className="bg-gradient-to-r from-blue-400 via-violet-400 to-pink-500 bg-clip-text text-transparent">Stack</span>
+                  Prime<span className="bg-gradient-to-r from-blue-400 via-violet-400 to-pink-500 bg-clip-text text-transparent"> Tools Hub</span>
                 </span>
               </motion.div>
 
@@ -84,7 +86,7 @@ export default function Home() {
                 transition={{ duration: 0.8, delay: 1.1 }}
                 className="text-white/50 text-xs sm:text-sm leading-relaxed mb-10 max-w-md font-body"
               >
-                Discover the world's most powerful AI tools, creator solutions, and premium subscriptions—all in one trusted platform.
+                Discover the world's most powerful AI tools, creator solutions, and premium subscriptions—all in one trusted platform on PrimeTools.store.
               </motion.p>
 
               {/* LOADING FOOTER */}
@@ -126,7 +128,13 @@ export default function Home() {
             <Hero />
             <StatsBar />
             
-            {/* Products grid eagerly rendered but optimized */}
+            {/* Highlighted ChatGPT Plus Special Offer */}
+            <ChatGPTSpecialOffer />
+
+            {/* Premium Bulk Purchase Offer Banner */}
+            <BulkPurchaseBanner variant="card" />
+
+            {/* Products catalog */}
             <ProductsGrid />
             
             {/* Below-the-fold components are lazy loaded on viewport enter */}

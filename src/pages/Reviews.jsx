@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 import Animated3DText from "@/components/Animated3DText";
 
 const SEED_REVIEWS = [
-  { name: "Ahmed Raza", role: "Content Creator", rating: 5, text: "Got my ChatGPT Plus within minutes. Super smooth process and the support was incredibly helpful. Highly recommend PrimeStack!", product: "ChatGPT Plus", date: "2 weeks ago" },
+  { name: "Ahmed Raza", role: "Content Creator", rating: 5, text: "Got my ChatGPT Plus within minutes. Super smooth process and the support was incredibly helpful. Highly recommend Prime Tools Hub!", product: "ChatGPT Plus", date: "2 weeks ago" },
   { name: "Sana Khan", role: "Freelance Designer", rating: 5, text: "Canva Pro for 3 years at this price is unbeatable. Activation was instant and everything works perfectly. Trusted seller for sure.", product: "Canva Pro Edu", date: "1 month ago" },
   { name: "Bilal Ahmed", role: "Digital Marketer", rating: 5, text: "Bought the Gemini Pro 18-month plan. Premium quality, fast delivery, and genuine access. The best AI marketplace in Pakistan.", product: "Google Gemini Pro", date: "3 weeks ago" },
   { name: "Hiba Noor", role: "Student", rating: 5, text: "CapCut Pro works perfectly for my reels and edits. Export without watermark is a game changer. Quick delivery too!", product: "CapCut Pro", date: "1 week ago" },
@@ -48,7 +48,7 @@ export default function Reviews() {
 
   const submitReview = () => {
     const msg = encodeURIComponent(
-      `Hello PrimeStack AI! 👋\n\nI'd like to leave a review:\n\n` +
+      `Hello Prime Tools Hub! 👋\n\nI'd like to leave a review:\n\n` +
         `⭐ Rating: ${form.rating}/5\n` +
         `👤 Name: ${form.name || "—"}\n` +
         `🛒 Product: ${form.product || "—"}\n\n` +
@@ -82,7 +82,7 @@ export default function Reviews() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              Real reviews from 500+ happy clients who trust PrimeStack AI for premium digital tools.
+              Real reviews from 500+ happy clients who trust Prime Tools Hub for premium digital tools.
             </motion.p>
 
             <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto">

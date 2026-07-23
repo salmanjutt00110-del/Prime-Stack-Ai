@@ -10,15 +10,16 @@ export default function Footer() {
           <div className="flex items-center gap-2.5">
             <Logo size={40} />
             <span className="font-display font-semibold text-white text-lg">
-              PrimeStack{" "}
-              <span className="bg-gradient-to-r from-blue-400 via-violet-400 to-pink-400 bg-clip-text text-transparent">
-                AI
+              Prime{" "}
+              <span className="bg-gradient-to-r from-blue-400 via-violet-400 to-pink-400 bg-clip-text text-transparent font-bold">
+                Tools Hub
               </span>
             </span>
           </div>
           <p className="text-white/50 text-sm max-w-md">
-            Premium AI Tools & Digital Services — All in One Place. Powering the
-            future with premium AI solutions through one trusted platform.
+            Premium AI Tools & Digital Services — Available on{" "}
+            <span className="text-white/80 font-semibold">PrimeTools.store</span>. Powering the
+            future with genuine AI solutions through one trusted platform.
           </p>
           <a
             href={WHATSAPP_GENERAL}
@@ -40,25 +41,28 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Static, highly readable disclaimer card */}
-        <div className="mt-10 p-5 rounded-2xl border border-white/6 bg-white/[0.01] backdrop-blur-md max-w-3xl mx-auto text-left relative overflow-hidden group hover:border-white/12 transition-all duration-300">
+        {/* Static, highly readable disclaimer & bulk order card */}
+        <div className="mt-10 p-5 sm:p-6 rounded-2xl border border-amber-500/20 bg-white/[0.01] backdrop-blur-md max-w-3xl mx-auto text-left relative overflow-hidden group hover:border-amber-500/40 transition-all duration-300">
           <div className="flex items-center gap-2 mb-2.5">
             <span className="flex h-2 w-2 relative">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400/75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500" />
             </span>
-            <h4 className="font-display font-semibold text-xs text-white/80 uppercase tracking-widest">
-              Important Disclaimer / Zaroori Note
+            <h4 className="font-display font-bold text-xs text-amber-300 uppercase tracking-widest">
+              🎉 Bulk Purchase Offer & Important Notice
             </h4>
           </div>
-          <p className="text-white/45 text-xs sm:text-[13px] leading-relaxed font-medium">
-            Hamari services ki prices, duration, features aur availability market conditions, supplier updates aur platform policies ke mutabiq kisi bhi waqt tabdeel ho sakti hain. Hum website ko regularly update karte rehte hain taake aap ko latest information aur best rates mil saken. Order place karne se pehle latest price aur details zaroor verify karein.
+          <p className="text-white/80 text-xs sm:text-[13px] leading-relaxed font-medium mb-3">
+            Customers purchasing 5 or more products are eligible for a special bulk discount. Please contact us on WhatsApp for custom bulk pricing and quotations.
+          </p>
+          <p className="text-white/45 text-xs sm:text-[12px] leading-relaxed font-normal border-t border-white/5 pt-2.5">
+            Prices, duration, and availability are subject to market rates and platform updates. Please verify current prices on WhatsApp prior to order placement.
           </p>
         </div>
 
         <div className="mt-10 pt-6 border-t border-white/5 text-center">
-          <p className="text-white/30 text-xs">
-            © {new Date().getFullYear()} PrimeStack AI. All rights reserved.
+          <p className="text-white/40 text-xs font-medium">
+            © {new Date().getFullYear()} Prime Tools Hub (<span className="text-white/60">PrimeTools.store</span>). All rights reserved.
           </p>
         </div>
       </div>

@@ -9,6 +9,7 @@ import { openWhatsApp, WHATSAPP_GENERAL, WHATSAPP_NUMBER } from "@/lib/whatsapp"
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ParticleBackground from "@/components/ParticleBackground";
+import BulkPurchaseBanner from "@/components/BulkPurchaseBanner";
 import { motion } from "framer-motion";
 
 // Helper to convert hex to rgb for background blending
@@ -213,6 +214,9 @@ export default function ProductDetail() {
                 View Details
               </a>
             </div>
+
+            {/* Bulk Purchase Offer Callout */}
+            <BulkPurchaseBanner variant="compact" productName={product.name} />
           </motion.div>
 
           {/* logo card */}

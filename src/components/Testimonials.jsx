@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Animated3DText from "@/components/Animated3DText";
 
 const REVIEWS = [
-  { name: "Ahmed Raza", role: "Content Creator", text: "Got my ChatGPT Plus within minutes. Super smooth process and the support was incredibly helpful. Highly recommend PrimeStack!", rating: 5, color: "#10A37F", product: "ChatGPT Plus" },
+  { name: "Ahmed Raza", role: "Content Creator", text: "Got my ChatGPT Plus within minutes. Super smooth process and the support was incredibly helpful. Highly recommend Prime Tools Hub!", rating: 5, color: "#10A37F", product: "ChatGPT Plus" },
   { name: "Sana Khan", role: "Freelance Designer", text: "Canva Pro for 3 years at this price is unbeatable. Activation was instant and everything works perfectly. Trusted seller for sure.", rating: 5, color: "#7D2AE8", product: "Canva Pro" },
   { name: "Bilal Ahmed", role: "Digital Marketer", text: "Bought the Gemini Pro 18-month plan. Premium quality, fast delivery, and genuine access. The best AI marketplace in Pakistan.", rating: 5, color: "#4285F4", product: "Google Gemini Pro" },
   { name: "Hiba Noor", role: "Student", text: "CapCut Pro works perfectly for my reels and edits. Export without watermark is a game changer. Quick delivery too!", rating: 5, color: "#FE2C55", product: "CapCut Pro" },
@@ -24,7 +24,7 @@ const REVIEWS = [
   { name: "Maryam Nisar", role: "Freelance Writer", text: "Writing blogs has become so much easier with ChatGPT Plus. Unbelievable response time and prompt activation.", rating: 5, color: "#10A37F", product: "ChatGPT Plus" },
   { name: "Waqas Khan", role: "Cybersecurity Specialist", text: "Genuine Surfshark key. Fast speeds and connects on multiple devices. Best VPN service.", rating: 5, color: "#1C9FE8", product: "Surfshark VPN" },
   { name: "Kiran Shahzadi", role: "E-commerce Seller", text: "Making social media posts for my brand is so much easier. Genuine Canva Pro invitation. Highly recommended!", rating: 5, color: "#7D2AE8", product: "Canva Pro" },
-  { name: "Daniyal Asif", role: "Vlogger", text: "Amazing service! CapCut Pro editing features work flawlessly on my desktop. Thank you PrimeStack!", rating: 5, color: "#FE2C55", product: "CapCut Pro" },
+  { name: "Daniyal Asif", role: "Vlogger", text: "Amazing service! CapCut Pro editing features work flawlessly on my desktop. Thank you Prime Tools Hub!", rating: 5, color: "#FE2C55", product: "CapCut Pro" },
   { name: "Zain ul Abideen", role: "SEO Expert", text: "Advanced Gemini helps with deep analysis. The 18-month plan is a steal. Instant activation.", rating: 5, color: "#4285F4", product: "Google Gemini Pro" },
   { name: "Sarah Joseph", role: "English Teacher", text: "Excellent customer service on WhatsApp. Guided me step-by-step through the iCloud activation.", rating: 5, color: "#10A37F", product: "ChatGPT Plus" },
   { name: "Haris Mehmood", role: "Graphic Artist", text: "Fully premium assets are accessible now. The delivery took just 5 minutes. Outstanding seller!", rating: 5, color: "#7D2AE8", product: "Canva Pro" },

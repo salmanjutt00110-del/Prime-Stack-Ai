@@ -98,11 +98,25 @@ export default function DisclaimerBar() {
   }, []);
 
   const textSegment = (
-    <span className="text-xs font-semibold text-white/80 tracking-wide whitespace-nowrap flex items-center">
-      <span className="inline-block animate-pulse text-[11px] mr-1.5">⚠️</span>
-      <span className="text-white/60 font-bold mr-1.5">Disclaimer:</span>
-      Hamari prices market rates aur supplier updates ke mutabiq up-down (change) hoti rehti hain, isliye website par prices kabhi thodi zyada ya kam ho sakti hain. Kisi bhi order se pehle WhatsApp par latest price zaroor verify karlein.
-    </span>
+    <div className="flex items-center gap-12 whitespace-nowrap">
+      <span className="text-xs font-semibold tracking-wide flex items-center gap-2">
+        <span className="flex items-center justify-center w-5 h-5 rounded-full bg-amber-500/20 border border-amber-500/30 text-amber-300 text-[10px] shrink-0">
+          🎉
+        </span>
+        <span className="font-extrabold bg-gradient-to-r from-amber-300 via-amber-400 to-emerald-400 bg-clip-text text-transparent">
+          Bulk Purchase Discount:
+        </span>
+        <span className="text-white/90">
+          Customers purchasing 5 or more products are eligible for a special discount. Please contact us on WhatsApp for bulk pricing.
+        </span>
+      </span>
+
+      <span className="text-xs font-semibold text-white/80 tracking-wide flex items-center">
+        <span className="inline-block animate-pulse text-[11px] mr-1.5">⚠️</span>
+        <span className="text-white/60 font-bold mr-1.5">Disclaimer:</span>
+        Prices & availability updated daily. Verify latest rates on WhatsApp before placing order.
+      </span>
+    </div>
   );
 
   return (
@@ -145,18 +159,18 @@ export default function DisclaimerBar() {
                 e.stopPropagation();
                 setIsModalOpen(true);
               }}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-wider text-white border border-white/10 hover:border-white/20 transition-all mr-3 shrink-0 cursor-pointer pointer-events-auto relative z-30 active:scale-95 bg-white/5"
+              className="flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider text-white border border-amber-500/30 transition-all mr-3 shrink-0 cursor-pointer pointer-events-auto relative z-30 active:scale-95 bg-amber-500/10 text-amber-300"
             >
               <span className="relative flex h-1.5 w-1.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-amber-500" />
               </span>
-              Zaroori Note
+              🎉 Bulk Offer
             </button>
 
             {/* Marquee scroll zone */}
             <div className="w-full overflow-hidden relative select-none">
-              <div className="flex w-max ps-animate-marquee gap-24 items-center">
+              <div className="flex w-max ps-animate-marquee gap-16 items-center">
                 {textSegment}
                 {textSegment}
               </div>

@@ -217,7 +217,7 @@ export default function Hero() {
           {/* Announcement Badge */}
           <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-bold bg-white/5 border border-white/10 text-white/80 mb-4 shadow-[0_0_15px_rgba(255,255,255,0.03)] backdrop-blur-md">
             <span>✨</span>
-            <span>PRIME AI MARKETPLACE</span>
+            <span>PRIME TOOLS HUB MARKETPLACE</span>
           </div>
 
           <h1 className="font-display font-black text-white leading-[1.05] tracking-tight text-[clamp(2.1rem,5vw,3.6rem)]">
@@ -225,13 +225,15 @@ export default function Hero() {
           </h1>
 
           <p className="mt-4 text-white/55 text-sm sm:text-base max-w-xl mx-auto lg:mx-0 leading-relaxed">
-            Unlock the world's most powerful AI tools, premium subscriptions, and creator services—all in one secure platform with instant activation, trusted support, and exclusive savings.
+            Unlock the world's most powerful AI tools, premium subscriptions, and creator services—all in one secure platform on <span className="text-white font-semibold">PrimeTools.store</span> with instant activation & 24/7 support.
           </p>
 
-          {/* 10% OFF Glass Banner */}
-          <div className="mt-5 ps-pulse inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-white/5 border border-white/8 text-white/80 shadow-[0_0_20px_rgba(255,255,255,0.03)] backdrop-blur-md">
-            <span>🎉</span>
-            <span>Limited Time — Enjoy 10% OFF on Every Product</span>
+          {/* Bulk Purchase & 10% OFF Glass Banner */}
+          <div className="mt-5 flex flex-wrap items-center justify-center lg:justify-start gap-2.5">
+            <div className="ps-pulse inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-amber-500/10 border border-amber-500/25 text-amber-300 shadow-[0_0_20px_rgba(245,158,11,0.1)] backdrop-blur-md">
+              <span>🎉</span>
+              <span>Bulk Purchase Offer: Buy 5+ Products & Get Custom Discount</span>
+            </div>
           </div>
 
           {/* Dynamic Showcase Card */}

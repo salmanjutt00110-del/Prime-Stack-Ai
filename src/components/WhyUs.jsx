@@ -23,7 +23,7 @@ export default function WhyUs() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            Why PrimeStack
+            Why Prime Tools Hub
           </motion.span>
           <h2 className="mt-3 font-display font-bold text-white text-[clamp(1.8rem,4vw,2.8rem)] tracking-tight">
             <Animated3DText text="Why Choose Us" variant="heading" />

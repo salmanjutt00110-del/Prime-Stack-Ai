@@ -1,4 +1,4 @@
-import myLogo from "../photo/my-logo.webp";
+import primeToolsLogo from "../photo/prime-tools-logo.webp";
 import chatgptLogo from "../photo/chatgpt.webp";
 import geminiLogo from "../photo/gemini-logo.webp";
 import veoLogo from "../photo/veo-3.webp";
@@ -14,7 +14,7 @@ import chatgptGoLogo from "../photo/chatgpt-go.webp";
 
 const db = globalThis.__B44_DB__ || { auth:{ isAuthenticated: async()=>false, me: async()=>null }, entities:new Proxy({}, { get:()=>({ filter:async()=>[], get:async()=>null, create:async()=>({}), update:async()=>({}), delete:async()=>({}) }) }), integrations:{ Core:{ UploadFile:async()=>({ file_url:'' }) } } };
 
-// PrimeStack AI — Product Catalog (with full terms, warranty & buying instructions)
+// Prime Tools Hub — Product Catalog (with full terms, warranty & buying instructions)
 export const WHATSAPP_NUMBER = "923227157125";
 
 const BRAND = {
@@ -34,7 +34,8 @@ const BRAND = {
 export { BRAND };
 
 export const LOGO = {
-  primestack: myLogo,
+  primetools: primeToolsLogo,
+  primestack: primeToolsLogo,
 };
 
 // Hero showcase products (one per brand) — 8 total
