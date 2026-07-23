@@ -3,6 +3,19 @@ import Logo from "@/components/Logo";
 import { WHATSAPP_GENERAL, WHATSAPP_NUMBER } from "@/lib/whatsapp";
 
 export default function Footer() {
+  const handleNavClick = (e, targetId) => {
+    if (window.location.pathname === "/") {
+      e.preventDefault();
+      const el = document.querySelector(targetId);
+      if (el) {
+        const top = el.getBoundingClientRect().top + window.pageYOffset - 80;
+        window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+      } else if (targetId === "#home") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    }
+  };
+
   return (
     <footer className="relative pt-16 pb-8 px-4 sm:px-6 border-t border-white/6">
       <div className="mx-auto max-w-6xl">
@@ -33,11 +46,11 @@ export default function Footer() {
           </a>
 
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mt-4">
-            <a href="#home" className="text-white/50 hover:text-white text-sm transition-colors">Home</a>
-            <a href="#products" className="text-white/50 hover:text-white text-sm transition-colors">Products</a>
-            <a href="#why-us" className="text-white/50 hover:text-white text-sm transition-colors">About</a>
-            <a href="#faq" className="text-white/50 hover:text-white text-sm transition-colors">FAQ</a>
-            <a href="#contact" className="text-white/50 hover:text-white text-sm transition-colors">Contact</a>
+            <a href="#home" onClick={(e) => handleNavClick(e, "#home")} className="text-white/50 hover:text-white text-sm transition-colors">Home</a>
+            <a href="#products" onClick={(e) => handleNavClick(e, "#products")} className="text-white/50 hover:text-white text-sm transition-colors">Products</a>
+            <a href="#about" onClick={(e) => handleNavClick(e, "#about")} className="text-white/50 hover:text-white text-sm transition-colors">About</a>
+            <a href="#faq" onClick={(e) => handleNavClick(e, "#faq")} className="text-white/50 hover:text-white text-sm transition-colors">FAQ</a>
+            <a href="#contact" onClick={(e) => handleNavClick(e, "#contact")} className="text-white/50 hover:text-white text-sm transition-colors">Contact</a>
           </div>
         </div>
 

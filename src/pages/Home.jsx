@@ -6,13 +6,13 @@ import StatsBar from "@/components/StatsBar";
 import ChatGPTSpecialOffer from "@/components/ChatGPTSpecialOffer";
 import BulkPurchaseBanner from "@/components/BulkPurchaseBanner";
 import ProductsGrid from "@/components/ProductsGrid";
+import AboutUs from "@/components/AboutUs";
 import HowItWorks from "@/components/HowItWorks";
 import WhyUs from "@/components/WhyUs";
 import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
-import LazySection from "@/components/LazySection";
 
 export default function Home() {
   const [intro, setIntro] = useState(() => {
@@ -137,26 +137,23 @@ export default function Home() {
             {/* Products catalog */}
             <ProductsGrid />
             
-            {/* Below-the-fold components are lazy loaded on viewport enter */}
-            <LazySection placeholderHeight="400px">
-              <HowItWorks />
-            </LazySection>
+            {/* Dedicated About Us Section */}
+            <AboutUs />
+
+            {/* How It Works */}
+            <HowItWorks />
             
-            <LazySection placeholderHeight="400px">
-              <WhyUs />
-            </LazySection>
+            {/* Why Choose Us */}
+            <WhyUs />
             
-            <LazySection placeholderHeight="350px">
-              <Testimonials />
-            </LazySection>
+            {/* Customer Testimonials */}
+            <Testimonials />
             
-            <LazySection placeholderHeight="300px">
-              <FAQ />
-            </LazySection>
+            {/* Frequently Asked Questions */}
+            <FAQ />
             
-            <LazySection placeholderHeight="250px">
-              <CTASection />
-            </LazySection>
+            {/* Call To Action Contact Section */}
+            <CTASection />
           </main>
           <Footer />
         </motion.div>

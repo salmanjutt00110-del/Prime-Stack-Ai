@@ -3,7 +3,6 @@ import { useLocation, useNavigationType } from "react-router-dom";
 
 const getHashId = (hash) => {
   const rawId = hash.slice(1);
-
   try {
     return decodeURIComponent(rawId);
   } catch {
@@ -26,12 +25,18 @@ export default function ScrollToTop() {
   }, [pathname]);
 
   useEffect(() => {
-    // 1. If there's a hash, scroll to the hash element
+    // 1. If there's a hash, scroll to the hash element with header offset
     if (hash) {
       const id = getHashId(hash);
       const timer = window.setTimeout(() => {
-        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-      }, 100);
+        const el = document.getElementById(id);
+        if (el) {
+          const top = el.getBoundingClientRect().top + window.pageYOffset - 80;
+          window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+        } else if (id === "home") {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }, 150);
       return () => window.clearTimeout(timer);
     }
 
@@ -40,11 +45,11 @@ export default function ScrollToTop() {
       const savedPosition = scrollPositions.current[pathname] || 0;
       const timer = window.setTimeout(() => {
         window.scrollTo({ top: savedPosition, left: 0, behavior: "instant" });
-      }, 50); // Small delay to allow react-render cycles to finish
+      }, 50);
       return () => window.clearTimeout(timer);
     }
 
-    // 3. Otherwise (PUSH/REPLACE navigation), scroll to the very top (Hero section)
+    // 3. Otherwise (PUSH/REPLACE navigation), scroll to top
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
   }, [pathname, hash, navigationType]);
 
