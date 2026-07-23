@@ -4,16 +4,14 @@ import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClientInstance } from '@/lib/query-client'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import PageNotFound from './lib/PageNotFound';
-import { AuthProvider, useAuth } from '@/lib/AuthContext';
-import UserNotRegisteredError from '@/components/UserNotRegisteredError';
+import { AuthProvider } from '@/lib/AuthContext';
 import ScrollToTop from './components/ScrollToTop';
+import Home from '@/pages/Home';
 
-const Home = lazy(() => import('@/pages/Home'));
 const ProductDetail = lazy(() => import('@/pages/ProductDetail'));
 const Reviews = lazy(() => import('@/pages/Reviews'));
 
 const AuthenticatedApp = () => {
-  // Render the main app directly without Base44 auth checks
   return (
     <Routes>
       <Route path="/" element={<Home />} />
@@ -25,7 +23,6 @@ const AuthenticatedApp = () => {
 };
 
 function App() {
-
   return (
     <AuthProvider>
       <QueryClientProvider client={queryClientInstance}>
