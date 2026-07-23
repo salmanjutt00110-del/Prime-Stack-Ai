@@ -107,20 +107,12 @@ export default function Hero() {
   const product = HERO_PRODUCTS[index];
   const theme = THEMES[product.id] || THEMES["chatgpt-plus-1m"];
 
-  const startTimer = () => {
-    clearInterval(timerRef.current);
-    timerRef.current = setInterval(() => {
-      setIndex((i) => (i + 1) % HERO_PRODUCTS.length);
-    }, 4500);
-  };
-
-  const stopTimer = () => {
-    clearInterval(timerRef.current);
-  };
-
+  // Auto-cycle product showcase every 4 seconds consistently
   useEffect(() => {
-    startTimer();
-    return () => clearInterval(timerRef.current);
+    const timer = setInterval(() => {
+      setIndex((prevIndex) => (prevIndex + 1) % HERO_PRODUCTS.length);
+    }, 4000);
+    return () => clearInterval(timer);
   }, []);
 
   useEffect(() => {
@@ -170,7 +162,6 @@ export default function Hero() {
 
   const go = (i) => {
     setIndex((i + HERO_PRODUCTS.length) % HERO_PRODUCTS.length);
-    startTimer();
   };
 
   return (
@@ -252,11 +243,7 @@ export default function Hero() {
                 transition={SPRING}
                 onClick={() => navigate(`/product/${product.id}`)}
                 onMouseMove={handleCardMouseMove}
-                onMouseEnter={stopTimer}
-                onMouseLeave={() => {
-                  handleCardMouseLeave();
-                  startTimer();
-                }}
+                onMouseLeave={handleCardMouseLeave}
                 className="ps-luxury-glass rounded-2xl p-5 sm:p-6 border shadow-2xl relative text-left cursor-pointer transition-colors hover:bg-white/[0.04]"
                 style={{
                   borderColor: `${product.color}35`,
@@ -371,11 +358,7 @@ export default function Hero() {
               }}
               onClick={() => navigate(`/product/${product.id}`)}
               onMouseMove={handleLogoMouseMove}
-              onMouseEnter={stopTimer}
-              onMouseLeave={() => {
-                handleLogoMouseLeave();
-                startTimer();
-              }}
+              onMouseLeave={handleLogoMouseLeave}
               className="relative cursor-pointer group"
               style={{
                 transform: `rotateX(${logoTilt.y}deg) rotateY(${logoTilt.x}deg)`,
