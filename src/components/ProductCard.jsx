@@ -173,7 +173,7 @@ const ProductCard = memo(function ProductCard({ product, index = 0, priority = f
               <LazyImage
                 src={product.logo}
                 alt={`${product.name} official logo`}
-                className="w-[70px] h-[70px] relative z-10"
+                className="w-[88px] h-[88px] relative z-10"
                 imgStyle={{
                   filter: "brightness(1.2) contrast(1.15)"
                 }}

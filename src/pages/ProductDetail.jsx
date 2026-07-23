@@ -241,7 +241,7 @@ export default function ProductDetail() {
                  <img
                   src={product.logo}
                   alt={product.name}
-                  className="relative w-[58%] h-[58%] object-contain"
+                  className="relative w-[76%] h-[76%] object-contain"
                 />
               </div>
             </motion.div>

@@ -391,7 +391,7 @@ export default function Hero() {
                   decoding="async"
                   width="160"
                   height="160"
-                  className="relative w-[58%] h-[58%] object-contain transition-transform duration-300 group-hover:scale-105"
+                  className="relative w-[76%] h-[76%] object-contain transition-transform duration-300 group-hover:scale-105"
                   style={{
                     filter: `drop-shadow(0 8px 24px rgba(0,0,0,0.4)) drop-shadow(0 0 15px ${product.color}20)`
                   }}

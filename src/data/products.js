@@ -7,7 +7,7 @@ import canvaLogo from "../photo/canva.webp";
 import grokLogo from "../photo/supergrok.webp";
 import surfsharkLogo from "../photo/surfshark-vpn.webp";
 import tiktokLogo from "../photo/tiktok.webp";
-import youtubePremiumLogo from "../photo/yt-logo.png";
+import youtubePremiumLogo from "../photo/youtube-premium.webp";
 import nordVpnLogo from "../photo/nord-vpn.webp";
 import lovableLogo from "../photo/lovable.webp";
 import chatgptGoLogo from "../photo/chatgpt-go.webp";
