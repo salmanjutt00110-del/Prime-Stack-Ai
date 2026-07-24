@@ -7,6 +7,7 @@ import ProductsGrid from "@/components/ProductsGrid";
 const TieredRewardsBanner = lazy(() => import("@/components/TieredRewardsBanner"));
 const ChatGPTSpecialOffer = lazy(() => import("@/components/ChatGPTSpecialOffer"));
 const BulkPurchaseBanner = lazy(() => import("@/components/BulkPurchaseBanner"));
+const MetaAdsSection = lazy(() => import("@/components/MetaAdsSection"));
 const AboutUs = lazy(() => import("@/components/AboutUs"));
 const HowItWorks = lazy(() => import("@/components/HowItWorks"));
 const WhyUs = lazy(() => import("@/components/WhyUs"));
@@ -44,6 +45,11 @@ export default function Home() {
 
         <ProductsGrid />
         
+        {/* Meta Ads & Advertising Services Section */}
+        <Suspense fallback={null}>
+          <MetaAdsSection />
+        </Suspense>
+
         <Suspense fallback={null}>
           <AboutUs />
           <HowItWorks />

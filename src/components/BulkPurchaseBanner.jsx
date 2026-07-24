@@ -1,6 +1,6 @@
 import { memo } from "react";
 import { motion } from "framer-motion";
-import { Sparkles, MessageCircle, Gift, ArrowRight } from "lucide-react";
+import { Sparkles, MessageCircle, Gift, ArrowRight, CheckCircle2 } from "lucide-react";
 import { openBulkWhatsApp } from "@/lib/whatsapp";
 
 /**
@@ -35,14 +35,14 @@ const BulkPurchaseBanner = memo(function BulkPurchaseBanner({
               <Gift size={18} className="text-amber-400 animate-bounce" />
             </div>
             <div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 flex-wrap">
                 <span className="text-[11px] font-black uppercase tracking-wider text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">
-                  🎉 Bulk Offer
+                  🎉 Bulk Account Deals
                 </span>
-                <span className="text-xs font-semibold text-white/90">Buy 5+ Items</span>
+                <span className="text-xs font-semibold text-white/90">5 Same Accounts = 15% OFF | 10 = 25% OFF</span>
               </div>
               <p className="text-xs text-white/70 mt-0.5">
-                Special discount for bulk buyers. Contact us on WhatsApp for a custom quotation.
+                Buy 5 same accounts to get 15% OFF or 1 Free Account (ChatGPT/Gemini/Canva). Buy 10 for 25% OFF + 2 Free Accounts!
               </p>
             </div>
           </div>
@@ -76,18 +76,19 @@ const BulkPurchaseBanner = memo(function BulkPurchaseBanner({
           <span className="text-xl">🎉</span>
           <div>
             <h4 className="font-display text-xs font-bold text-amber-300 uppercase tracking-wider mb-1 flex items-center gap-1.5">
-              Bulk Purchase Offer
+              Bulk Account Offers (Up to 35% OFF)
               <span className="animate-pulse inline-block w-2 h-2 rounded-full bg-amber-400" />
             </h4>
             <p className="text-xs text-white/80 leading-relaxed">
-              Buying 5 or more products? You are eligible for a special bulk discount!
+              <strong>Buy 5 Same Accounts:</strong> Get 15% OFF OR 1 Free Account (ChatGPT/Gemini/Canva).<br/>
+              <strong>Buy 10 Same Accounts:</strong> Get 25% OFF AND 2 Free Accounts!
             </p>
             <button
               onClick={() => openBulkWhatsApp("5+", productName ? `Ordering ${productName}` : "")}
               className="mt-2 text-xs font-semibold text-emerald-400 hover:text-emerald-300 flex items-center gap-1 underline underline-offset-4 cursor-pointer"
             >
               <MessageCircle size={13} />
-              Ask for custom bulk quotation on WhatsApp
+              Claim Bulk Discount on WhatsApp
             </button>
           </div>
         </div>
@@ -121,37 +122,60 @@ const BulkPurchaseBanner = memo(function BulkPurchaseBanner({
             {/* Background shimmer */}
             <div className="ps-glass-shine-line absolute inset-y-0 w-32 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-[-25deg] pointer-events-none" />
 
-            <div className="flex items-center gap-4 sm:gap-6 text-left relative z-10">
-              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-amber-500/25 to-violet-600/25 border border-amber-500/40 flex items-center justify-center shrink-0 shadow-[0_0_20px_rgba(245,158,11,0.3)]">
+            <div className="flex items-start gap-4 sm:gap-6 text-left relative z-10">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-amber-500/25 to-violet-600/25 border border-amber-500/40 flex items-center justify-center shrink-0 shadow-[0_0_20px_rgba(245,158,11,0.3)] mt-1">
                 <Gift className="w-7 h-7 sm:w-8 sm:h-8 text-amber-400 animate-pulse" />
               </div>
 
               <div>
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-300 font-extrabold text-[11px] uppercase tracking-wider mb-2">
                   <Sparkles size={12} className="text-amber-400" />
-                  🎉 Bulk Purchase Offer
+                  🎉 Bulk Account Discount & Free Gift Deals
                 </div>
 
                 <h3 className="font-display font-extrabold text-xl sm:text-2xl text-white tracking-tight">
-                  Buy 5 or more products & get special bulk pricing
+                  Buy Same Accounts in Quantity & Unlock Massive Bonuses!
                 </h3>
 
-                <p className="mt-1 text-white/70 text-xs sm:text-sm max-w-xl leading-relaxed">
-                  Need multiple subscriptions or reseller deals? Contact us on WhatsApp for a custom quotation crafted specifically for your requirements.
+                {/* Specific 5 & 10 Account Deals */}
+                <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                  <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20">
+                    <span className="font-black text-amber-400 uppercase tracking-wider block mb-1">
+                      🔥 Buy 5 Same Accounts
+                    </span>
+                    <p className="text-white/80 leading-relaxed">
+                      Get <strong>15% Instant Discount</strong> <br />
+                      <u>OR</u> <strong>1 FREE Account</strong> (Choose ChatGPT, Gemini, or Canva).
+                    </p>
+                  </div>
+
+                  <div className="p-3 rounded-xl bg-purple-500/10 border border-purple-500/20">
+                    <span className="font-black text-purple-300 uppercase tracking-wider block mb-1">
+                      👑 Buy 10 Same Accounts
+                    </span>
+                    <p className="text-white/80 leading-relaxed">
+                      Get <strong>25% Instant Discount</strong> <br />
+                      <u>AND</u> <strong>2 FREE Accounts</strong> (1 Canva FREE + Choice of ChatGPT/Gemini).
+                    </p>
+                  </div>
+                </div>
+
+                <p className="mt-3 text-emerald-400 text-xs font-semibold flex items-center gap-1.5">
+                  <CheckCircle2 size={14} /> Higher bulk quantities unlock up to 35% Maximum Wholesale Discount!
                 </p>
               </div>
             </div>
 
             <div className="relative z-10 shrink-0 w-full md:w-auto">
               <button
-                onClick={() => openBulkWhatsApp("5+")}
+                onClick={() => openBulkWhatsApp("5+ Same Accounts")}
                 className="w-full md:w-auto px-7 py-3.5 rounded-2xl font-display font-extrabold text-sm text-black flex items-center justify-center gap-2.5 transition-all duration-300 hover:scale-[1.04] shadow-[0_0_25px_rgba(37,211,102,0.4)] cursor-pointer"
                 style={{
                   background: "linear-gradient(135deg, #25D366 0%, #128C7E 100%)",
                 }}
               >
                 <MessageCircle size={18} />
-                <span>Contact on WhatsApp for Quotation</span>
+                <span>Claim Bulk Discount on WhatsApp</span>
               </button>
             </div>
           </div>

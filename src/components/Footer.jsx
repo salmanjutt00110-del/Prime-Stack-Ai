@@ -48,6 +48,8 @@ export default function Footer() {
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mt-4">
             <a href="#home" onClick={(e) => handleNavClick(e, "#home")} className="text-white/80 hover:text-white text-sm transition-colors py-2 px-2 min-h-[44px] flex items-center">Home</a>
             <a href="#products" onClick={(e) => handleNavClick(e, "#products")} className="text-white/80 hover:text-white text-sm transition-colors py-2 px-2 min-h-[44px] flex items-center">Products</a>
+            <a href="#meta-ads" onClick={(e) => handleNavClick(e, "#meta-ads")} className="text-white/80 hover:text-white text-sm transition-colors py-2 px-2 min-h-[44px] flex items-center">Meta Ads</a>
+            <a href="https://www.amirads.pro/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 text-sm font-semibold transition-colors py-2 px-2 min-h-[44px] flex items-center gap-1">AmirAds ↗</a>
             <a href="#about" onClick={(e) => handleNavClick(e, "#about")} className="text-white/80 hover:text-white text-sm transition-colors py-2 px-2 min-h-[44px] flex items-center">About</a>
             <a href="#faq" onClick={(e) => handleNavClick(e, "#faq")} className="text-white/80 hover:text-white text-sm transition-colors py-2 px-2 min-h-[44px] flex items-center">FAQ</a>
             <a href="#contact" onClick={(e) => handleNavClick(e, "#contact")} className="text-white/80 hover:text-white text-sm transition-colors py-2 px-2 min-h-[44px] flex items-center">Contact</a>
