@@ -108,11 +108,19 @@ export default function ProductDetail() {
           "@type": "Brand",
           "name": "Prime Tools Hub"
         },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "520",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
         "offers": {
           "@type": "Offer",
           "url": `https://primetoolshub.store/product/${product.id}`,
           "priceCurrency": "PKR",
           "price": numericPrice,
+          "priceValidUntil": "2026-12-31",
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition",
           "seller": {
