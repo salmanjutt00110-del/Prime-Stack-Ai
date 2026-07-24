@@ -12,6 +12,8 @@ import ParticleBackground from "@/components/ParticleBackground";
 import BulkPurchaseBanner from "@/components/BulkPurchaseBanner";
 import { motion } from "framer-motion";
 
+import { generateProductSchema } from "@/lib/seoSchema";
+
 // Helper to convert hex to rgb for background blending
 function hexToRgb(hex) {
   if (!hex) return null;
@@ -82,78 +84,33 @@ export default function ProductDetail() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    if (!product) return;
-
-    const rawPrice = product.price || "";
-    const numericPrice = rawPrice.replace(/\D/g, "") || "0";
-    let imageUrl = "https://primetoolshub.store/prime-tools-logo.png";
-    if (product.logo) {
-      if (product.logo.startsWith("http")) {
-        imageUrl = product.logo;
-      } else if (product.logo.startsWith("/")) {
-        imageUrl = `https://primetoolshub.store${product.logo}`;
-      } else {
-        imageUrl = `https://primetoolshub.store/${product.logo}`;
-      }
-    }
-
-    const schemaData = [
-      {
-        "@context": "https://schema.org",
-        "@type": "Product",
-        "name": product.name,
-        "description": product.description || `Official ${product.name} account with ${product.duration} access.`,
-        "image": imageUrl,
-        "brand": {
-          "@type": "Brand",
-          "name": "Prime Tools Hub"
+    const productSchema = generateProductSchema(product);
+    const breadcrumbSchema = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://primetoolshub.store/"
         },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.9",
-          "reviewCount": "520",
-          "bestRating": "5",
-          "worstRating": "1"
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Products",
+          "item": "https://primetoolshub.store/#products"
         },
-        "offers": {
-          "@type": "Offer",
-          "url": `https://primetoolshub.store/product/${product.id}`,
-          "priceCurrency": "PKR",
-          "price": numericPrice,
-          "priceValidUntil": "2026-12-31",
-          "availability": "https://schema.org/InStock",
-          "itemCondition": "https://schema.org/NewCondition",
-          "seller": {
-            "@type": "Organization",
-            "name": "Prime Tools Hub"
-          }
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": product.name,
+          "item": `https://primetoolshub.store/product/${product.id}`
         }
-      },
-      {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://primetoolshub.store/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Products",
-            "item": "https://primetoolshub.store/#products"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": product.name,
-            "item": `https://primetoolshub.store/product/${product.id}`
-          }
-        ]
-      }
-    ];
+      ]
+    };
+
+    const schemaData = [productSchema, breadcrumbSchema].filter(Boolean);
 
     let scriptEl = document.getElementById("detail-product-jsonld");
     if (!scriptEl) {

@@ -1,9 +1,35 @@
 /**
  * SEO Structured Data (JSON-LD) Helper
- * Rebuilt from scratch according to Google's latest Rich Results requirements.
- * Ensures zero Search Console errors, valid Organization, WebSite, SearchAction,
- * BreadcrumbList, FAQPage, and Product Offer schemas.
+ * Rebuilt strictly according to Google's latest Rich Results & Schema.org guidelines.
+ * Features:
+ * - 100% Valid Product Schema with zero fake reviews/ratings (Step 4 compliant).
+ * - Complete Product metadata: @context, @type, name, description, image, sku, category, brand, url, offers (price, priceCurrency, availability, itemCondition, priceValidUntil, seller).
+ * - Full Organization Schema with ContactPoint and SameAs.
+ * - Full WebSite Schema with SearchAction and EntryPoint.
+ * - BreadcrumbList & FAQPage Schema.
  */
+
+export function getProductCategory(product) {
+  if (!product) return "AI Tools & Subscriptions";
+  const id = (product.id || "").toLowerCase();
+  const name = (product.name || "").toLowerCase();
+
+  if (id.includes("vpn") || name.includes("vpn") || id.includes("surfshark") || id.includes("nord")) {
+    return "VPN Services";
+  }
+  if (id.includes("capcut") || id.includes("canva") || id.includes("tiktok") || name.includes("editing") || name.includes("design")) {
+    return "Creator Tools";
+  }
+  if (id.includes("youtube") || id.includes("growth")) {
+    return "Digital Subscriptions";
+  }
+  return "AI Tools & Subscriptions";
+}
+
+export function getProductSku(product) {
+  if (!product || !product.id) return "PRIME-TOOL-SUB";
+  return product.id.toUpperCase().replace(/[^A-Z0-9]/g, "-");
+}
 
 export function generateProductSchema(product) {
   if (!product) return null;
@@ -22,26 +48,26 @@ export function generateProductSchema(product) {
     }
   }
 
+  const sku = getProductSku(product);
+  const category = getProductCategory(product);
+  const productUrl = `https://primetoolshub.store/product/${product.id}`;
+
   return {
     "@context": "https://schema.org",
     "@type": "Product",
     "name": product.name,
-    "description": product.description || `Official ${product.name} account with ${product.duration || 'premium'} access.`,
+    "description": product.description || `Official ${product.name} subscription with instant delivery and warranty.`,
     "image": imageUrl,
+    "sku": sku,
+    "category": category,
     "brand": {
       "@type": "Brand",
       "name": "Prime Tools Hub"
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "520",
-      "bestRating": "5",
-      "worstRating": "1"
-    },
+    "url": productUrl,
     "offers": {
       "@type": "Offer",
-      "url": `https://primetoolshub.store/product/${product.id}`,
+      "url": productUrl,
       "priceCurrency": "PKR",
       "price": numericPrice,
       "priceValidUntil": "2026-12-31",
@@ -62,7 +88,18 @@ export function generateHomepageGraph(products = []) {
     "name": "Prime Tools Hub",
     "url": "https://primetoolshub.store/",
     "logo": "https://primetoolshub.store/prime-tools-logo.png",
-    "description": "Pakistan & Global's premier destination for genuine AI tools, creator accounts, VPNs, and digital subscriptions."
+    "description": "Pakistan & Global's premier destination for genuine AI tools, creator accounts, VPNs, and digital subscriptions.",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+923227157125",
+      "contactType": "customer service",
+      "areaServed": ["PK", "WW"],
+      "availableLanguage": ["English", "Urdu"]
+    },
+    "sameAs": [
+      "https://wa.me/923227157125",
+      "https://primetoolshub.store/"
+    ]
   };
 
   const website = {
@@ -169,26 +206,26 @@ export function generateHomepageGraph(products = []) {
       }
     }
 
+    const sku = getProductSku(p);
+    const category = getProductCategory(p);
+    const productUrl = `https://primetoolshub.store/product/${p.id}`;
+
     return {
       "@type": "Product",
-      "@id": `https://primetoolshub.store/product/${p.id}#product`,
+      "@id": `${productUrl}#product`,
       "name": p.name,
       "description": p.description || `Official ${p.name} account with ${p.duration || 'premium'} access.`,
       "image": imageUrl,
+      "sku": sku,
+      "category": category,
       "brand": {
         "@type": "Brand",
         "name": "Prime Tools Hub"
       },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "520",
-        "bestRating": "5",
-        "worstRating": "1"
-      },
+      "url": productUrl,
       "offers": {
         "@type": "Offer",
-        "url": `https://primetoolshub.store/product/${p.id}`,
+        "url": productUrl,
         "priceCurrency": "PKR",
         "price": numericPrice,
         "priceValidUntil": "2026-12-31",
