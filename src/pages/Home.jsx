@@ -4,7 +4,7 @@ import Hero from "@/components/Hero";
 import StatsBar from "@/components/StatsBar";
 import ProductsGrid from "@/components/ProductsGrid";
 
-// Below-fold sections: lazy-loaded to reduce initial JS parse by ~90KB
+const TieredRewardsBanner = lazy(() => import("@/components/TieredRewardsBanner"));
 const ChatGPTSpecialOffer = lazy(() => import("@/components/ChatGPTSpecialOffer"));
 const BulkPurchaseBanner = lazy(() => import("@/components/BulkPurchaseBanner"));
 const AboutUs = lazy(() => import("@/components/AboutUs"));
@@ -27,6 +27,11 @@ export default function Home() {
       <main>
         <Hero />
         <StatsBar />
+
+        {/* Tiered Free Gifts & Reseller Deals Section */}
+        <Suspense fallback={null}>
+          <TieredRewardsBanner />
+        </Suspense>
         
         {/* Below-fold lazy sections — loaded after initial paint */}
         <Suspense fallback={null}>

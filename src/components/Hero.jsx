@@ -239,17 +239,27 @@ export default function Hero() {
             Unlock the world's most powerful AI tools, premium subscriptions, and creator services—all in one secure platform on <span className="text-white font-semibold">PrimeTools.store</span> with instant activation & 24/7 support.
           </motion.p>
 
-          {/* Bulk Purchase Offer Banner */}
+          {/* Offer & Reseller Banners */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
             className="mt-5 flex flex-wrap items-center justify-center lg:justify-start gap-2.5"
           >
-            <div className="ps-pulse inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-amber-500/15 border border-amber-500/35 text-amber-200 shadow-[0_0_20px_rgba(245,158,11,0.1)] backdrop-blur-md">
-              <span>🎉</span>
-              <span>Bulk Purchase Offer: Buy 5+ Products & Get Custom Discount</span>
-            </div>
+            <a
+              href="#special-offers"
+              className="ps-pulse inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold bg-gradient-to-r from-amber-500/20 via-purple-500/20 to-pink-500/20 border border-amber-500/40 text-amber-200 shadow-[0_0_20px_rgba(245,158,11,0.2)] backdrop-blur-md hover:scale-105 transition-transform"
+            >
+              <span>🎁</span>
+              <span>FREE Gifts on Orders Rs. 2,000+ (Canva, Gemini, ChatGPT)</span>
+            </a>
+            <a
+              href="#special-offers"
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold bg-emerald-500/15 border border-emerald-500/35 text-emerald-300 backdrop-blur-md hover:scale-105 transition-transform"
+            >
+              <span>🤝</span>
+              <span>Special Reseller Wholesale Discounts</span>
+            </a>
           </motion.div>
 
           {/* Dynamic Showcase Card */}
