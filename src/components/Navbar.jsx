@@ -9,6 +9,7 @@ import DisclaimerBar from "@/components/DisclaimerBar";
 const LINKS = [
   { label: "Home", href: "#home" },
   { label: "Products", href: "#products" },
+  { label: "Services", href: "#agency-services" },
   { label: "Meta Ads", href: "#meta-ads" },
   { label: "About", href: "#about" },
   { label: "Reviews", href: "/reviews", route: true },
