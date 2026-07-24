@@ -3,6 +3,9 @@ import { motion } from "framer-motion";
 import { Sparkles, MessageCircle, Gift, ArrowRight } from "lucide-react";
 import { openBulkWhatsApp } from "@/lib/whatsapp";
 
+/**
+ * @type {React.NamedExoticComponent<{ variant?: "card" | "compact" | "popup" | "hero", productName?: string }>}
+ */
 const BulkPurchaseBanner = memo(function BulkPurchaseBanner({
   variant = "card", // "card" | "compact" | "popup" | "hero"
   productName = "",

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Menu, X, MessageCircle, Search } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
 import Logo from "@/components/Logo";
 import { WHATSAPP_GENERAL } from "@/lib/whatsapp";
 import DisclaimerBar from "@/components/DisclaimerBar";
@@ -58,7 +59,10 @@ export default function Navbar() {
 
   return (
     <>
-      <header
+      <motion.header
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         className="fixed top-0 inset-x-0 z-50 transition-all duration-500"
         style={{
           backdropFilter: "blur(24px) saturate(180%)",
@@ -159,7 +163,7 @@ export default function Navbar() {
             </a>
           </div>
         </div>
-      </header>
+      </motion.header>
       <DisclaimerBar />
     </>
   );

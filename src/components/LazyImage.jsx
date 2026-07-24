@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 
-export default function LazyImage({ src, alt, className, style, imgStyle, priority = false }) {
+export default function LazyImage({ src, alt, className = "", style = {}, imgStyle = {}, priority = false }) {
   const [visible, setVisible] = useState(priority);
   const [loaded, setLoaded] = useState(priority);
   const ref = useRef(null);

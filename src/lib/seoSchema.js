@@ -2,8 +2,8 @@
  * SEO Structured Data (JSON-LD) Helper
  * Rebuilt strictly according to Google's latest Rich Results & Schema.org guidelines.
  * Features:
- * - 100% Valid Product Schema with zero fake reviews/ratings (Step 4 compliant).
- * - Complete Product metadata: @context, @type, name, description, image, sku, category, brand, url, offers (price, priceCurrency, availability, itemCondition, priceValidUntil, seller).
+ * - 100% Valid Product Schema with zero fake reviews or ratings - Step 4 compliant.
+ * - Complete Product metadata: context, type, name, description, image, sku, category, brand, url, offers (price, priceCurrency, availability, itemCondition, priceValidUntil, seller).
  * - Full Organization Schema with ContactPoint and SameAs.
  * - Full WebSite Schema with SearchAction and EntryPoint.
  * - BreadcrumbList & FAQPage Schema.

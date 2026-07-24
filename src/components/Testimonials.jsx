@@ -142,7 +142,7 @@ export default function Testimonials() {
               <div
                 className="ps-luxury-glass ps-glass-reflection ps-border-glow-wrapper rounded-[30px] p-8 sm:p-10 border border-white/10 relative"
                 style={{
-                  "--border-accent": `${activeReview.color}88`,
+                  .../** @type {any} */ ({ "--border-accent": `${activeReview.color}88` }),
                   background: "rgba(255, 255, 255, 0.03)",
                   boxShadow: `0 30px 60px rgba(0, 0, 0, 0.6), 0 0 40px ${activeReview.color}15`,
                 }}

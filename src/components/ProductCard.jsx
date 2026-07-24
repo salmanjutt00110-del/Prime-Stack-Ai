@@ -6,19 +6,19 @@ import { motion } from "framer-motion";
 import LazyImage from "@/components/LazyImage";
 
 /* ── Inline SVG Icons ── */
-const LightningIcon = ({ size = 12, style, className }) => (
+const LightningIcon = ({ size = 12, style = {}, className = "" }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="currentColor" style={style} className={className}>
     <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
   </svg>
 );
 
-const ShieldIcon = ({ size = 12, style, className }) => (
+const ShieldIcon = ({ size = 12, style = {}, className = "" }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={style} className={className}>
     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
   </svg>
 );
 
-const HeadsetIcon = ({ size = 12, style, className }) => (
+const HeadsetIcon = ({ size = 12, style = {}, className = "" }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={style} className={className}>
     <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
     <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
@@ -42,6 +42,9 @@ const getSideGlowColors = (id) => {
   return { primary: "139, 92, 246", secondary: "59, 130, 246" };
 };
 
+/**
+ * @type {React.NamedExoticComponent<{ product: any, index?: number, priority?: boolean }>}
+ */
 const ProductCard = memo(function ProductCard({ product, index = 0, priority = false }) {
   const navigate = useNavigate();
   const sideGlow = getSideGlowColors(product.id);

@@ -221,8 +221,20 @@ export default function ProductsGrid() {
         )}
 
         {/* Trust/Feature Badges Row */}
-        <div className="mt-20 grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-4 p-6 rounded-3xl border border-white/10 bg-[#07070a]/60 backdrop-blur-md">
-          <div className="flex items-center gap-3">
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-30px" }}
+          transition={{ duration: 0.6 }}
+          className="mt-20 grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-4 p-6 rounded-3xl border border-white/10 bg-[#07070a]/60 backdrop-blur-md"
+        >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.1 }}
+            className="flex items-center gap-3"
+          >
             <div className="flex items-center justify-center w-9 h-9 rounded-full bg-blue-500/15 text-blue-400 border border-blue-500/25 shrink-0">
               <Rocket size={16} />
             </div>
@@ -230,8 +242,15 @@ export default function ProductsGrid() {
               <span className="text-xs font-bold text-white">Instant Delivery</span>
               <span className="text-[10px] text-white/70 font-medium">100% automatic delivery</span>
             </div>
-          </div>
-          <div className="flex items-center gap-3">
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.2 }}
+            className="flex items-center gap-3"
+          >
             <div className="flex items-center justify-center w-9 h-9 rounded-full bg-green-500/15 text-green-400 border border-green-500/25 shrink-0">
               <Shield size={16} />
             </div>
@@ -239,8 +258,15 @@ export default function ProductsGrid() {
               <span className="text-xs font-bold text-white">Secure Payment</span>
               <span className="text-[10px] text-white/70 font-medium">SSL encrypted & safe</span>
             </div>
-          </div>
-          <div className="flex items-center gap-3">
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.3 }}
+            className="flex items-center gap-3"
+          >
             <div className="flex items-center justify-center w-9 h-9 rounded-full bg-purple-500/15 text-purple-400 border border-purple-500/25 shrink-0">
               <Award size={16} />
             </div>
@@ -248,8 +274,15 @@ export default function ProductsGrid() {
               <span className="text-xs font-bold text-white">Best Prices</span>
               <span className="text-[10px] text-white/70 font-medium">10% OFF on every product</span>
             </div>
-          </div>
-          <div className="flex items-center gap-3">
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.4 }}
+            className="flex items-center gap-3"
+          >
             <div className="flex items-center justify-center w-9 h-9 rounded-full bg-pink-500/15 text-pink-400 border border-pink-500/25 shrink-0">
               <Headphones size={16} />
             </div>
@@ -257,8 +290,15 @@ export default function ProductsGrid() {
               <span className="text-xs font-bold text-white">24/7 Support</span>
               <span className="text-[10px] text-white/70 font-medium">Always here to help you</span>
             </div>
-          </div>
-          <div className="flex items-center gap-3 col-span-2 md:col-span-1 justify-center md:justify-start">
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.5 }}
+            className="flex items-center gap-3 col-span-2 md:col-span-1 justify-center md:justify-start"
+          >
             <div className="flex items-center justify-center w-9 h-9 rounded-full bg-amber-500/15 text-amber-400 border border-amber-500/25 shrink-0">
               <RefreshCw size={16} />
             </div>
@@ -266,8 +306,8 @@ export default function ProductsGrid() {
               <span className="text-xs font-bold text-white">Money Back</span>
               <span className="text-[10px] text-white/70 font-medium">7 days money back</span>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
       </div>
     </section>

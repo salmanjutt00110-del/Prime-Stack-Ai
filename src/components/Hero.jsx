@@ -186,7 +186,7 @@ export default function Hero() {
       {typeof window !== "undefined" && window.innerWidth >= 768 && (
         <div className="absolute inset-0 -z-10 opacity-60 pointer-events-none">
           <Suspense fallback={null}>
-            <ParticleBackground color={theme.particles} />
+            <ParticleBackground color={theme.particles} count={25} />
           </Suspense>
         </div>
       )}
@@ -211,26 +211,46 @@ export default function Hero() {
         <div className="order-2 lg:order-1 text-center lg:text-left">
           
           {/* Announcement Badge */}
-          <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-bold bg-white/10 border border-white/15 text-white/90 mb-4 shadow-[0_0_15px_rgba(255,255,255,0.03)] backdrop-blur-md">
+          <motion.div
+            initial={{ opacity: 0, y: -15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-bold bg-white/10 border border-white/15 text-white/90 mb-4 shadow-[0_0_15px_rgba(255,255,255,0.03)] backdrop-blur-md"
+          >
             <span>✨</span>
             <span>PRIME TOOLS HUB MARKETPLACE</span>
-          </div>
+          </motion.div>
 
-          <h1 className="font-display font-black text-white leading-[1.05] tracking-tight text-[clamp(2.1rem,5vw,3.6rem)]">
+          <motion.h1
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="font-display font-black text-white leading-[1.05] tracking-tight text-[clamp(2.1rem,5vw,3.6rem)]"
+          >
             <Animated3DText text="Premium AI Tools for Creators & Professionals" />
-          </h1>
+          </motion.h1>
 
-          <p className="mt-4 text-white/80 text-sm sm:text-base max-w-xl mx-auto lg:mx-0 leading-relaxed font-body">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-4 text-white/80 text-sm sm:text-base max-w-xl mx-auto lg:mx-0 leading-relaxed font-body"
+          >
             Unlock the world's most powerful AI tools, premium subscriptions, and creator services—all in one secure platform on <span className="text-white font-semibold">PrimeTools.store</span> with instant activation & 24/7 support.
-          </p>
+          </motion.p>
 
           {/* Bulk Purchase Offer Banner */}
-          <div className="mt-5 flex flex-wrap items-center justify-center lg:justify-start gap-2.5">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="mt-5 flex flex-wrap items-center justify-center lg:justify-start gap-2.5"
+          >
             <div className="ps-pulse inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-amber-500/15 border border-amber-500/35 text-amber-200 shadow-[0_0_20px_rgba(245,158,11,0.1)] backdrop-blur-md">
               <span>🎉</span>
               <span>Bulk Purchase Offer: Buy 5+ Products & Get Custom Discount</span>
             </div>
-          </div>
+          </motion.div>
 
           {/* Dynamic Showcase Card */}
           <div className="mt-8 relative" style={{ perspective: 1000 }}>
@@ -387,7 +407,7 @@ export default function Hero() {
                 <img
                   src={product.logo}
                   alt={`${product.name} official logo`}
-                  fetchpriority="high"
+                  fetchPriority="high"
                   decoding="async"
                   width="160"
                   height="160"

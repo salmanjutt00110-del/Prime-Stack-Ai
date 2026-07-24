@@ -116,7 +116,7 @@ export default function ProductDetail() {
     if (!scriptEl) {
       scriptEl = document.createElement("script");
       scriptEl.id = "detail-product-jsonld";
-      scriptEl.type = "application/ld+json";
+      scriptEl.setAttribute("type", "application/ld+json");
       document.head.appendChild(scriptEl);
     }
     scriptEl.textContent = JSON.stringify(schemaData);
@@ -446,7 +446,7 @@ export default function ProductDetail() {
   );
 }
 
-function Stat({ icon: Icon, label, value, accent, small }) {
+function Stat({ icon: Icon, label, value, accent, small = false }) {
   return (
     <div className="flex items-center gap-3">
       <Icon size={18} style={{ color: accent }} className="shrink-0" />
