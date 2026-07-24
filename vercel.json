@@ -73,7 +73,7 @@
   ],
   "rewrites": [
     {
-      "source": "/((?!assets|fonts|favicon|manifest|robots|sitemap|.*\\.xml|.*\\.txt|.*\\.png|.*\\.webp).*)",
+      "source": "/((?!assets|fonts|favicon|manifest|robots|sitemap|.*\\.xml|.*\\.txt|.*\\.png|.*\\.webp|.*\\.ico).*)",
       "destination": "/index.html"
     }
   ]
