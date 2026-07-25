@@ -2,14 +2,15 @@ import { memo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Globe, Video, Megaphone, Sparkles, ExternalLink, MessageCircle,
-  CheckCircle2, Flame, ShieldCheck, Tag, ArrowRight, Zap, Star, Award, Layers
+  CheckCircle2, Flame, ShieldCheck, Tag, ArrowRight, Zap, Star, Award, Layers,
+  Rocket, TrendingUp, Target, BarChart3, Clock
 } from "lucide-react";
 
 const CATEGORIES = [
   { id: "all", label: "✨ All Agency Services", icon: Layers },
   { id: "web-dev", label: "🌐 Web Development (50% OFF)", icon: Globe },
   { id: "video", label: "🎬 Video & Reels Editing", icon: Video },
-  { id: "ads", label: "🚀 TikTok & Meta Ads", icon: Megaphone },
+  { id: "ads", label: "🚀 Meta & TikTok Ads", icon: Megaphone },
 ];
 
 const SERVICES = [
@@ -22,16 +23,16 @@ const SERVICES = [
     badgeColor: "#EF4444",
     themeColor: "indigo",
     accentGlow: "rgba(99, 102, 241, 0.35)",
-    borderGradient: "linear-gradient(135deg, rgba(239,68,68,0.9), rgba(99,102,241,0.8), rgba(168,85,247,0.9))",
-    priceNote: "Super Affordable & Pocket-Friendly Agency Rates",
+    borderGradient: "linear-gradient(135deg, rgba(239,68,68,0.9), rgba(99,102,241,0.85), rgba(168,85,247,0.9))",
+    priceNote: "Special Pocket-Friendly Agency Rates — 50% Discount",
     image: "/website-creation-showcase.png",
-    description: "Get a high-converting, modern custom website tailored to transform visitors into customers. From e-commerce storefronts to agency portfolios and SaaS landing pages, we deliver end-to-end responsive web applications.",
+    description: "Get a high-converting, modern custom website engineered to turn visitors into paying customers. From e-commerce storefronts to agency portfolios, landing pages, and web applications.",
     features: [
-      "🔥 50% OFF Flat Discount for First 2 Customers",
-      "E-commerce, Portfolios & Custom Web Applications",
+      "🔥 Flat 50% OFF Discount for First 2 Customers",
+      "E-Commerce, Portfolios & Custom Web Applications",
       "100% Mobile Responsive & Lightning-Fast Performance",
-      "Free Domain Configuration & Technical SEO Included",
-      "Interactive UI/UX with Custom Glassmorphic Aesthetics",
+      "Free Domain Setup, Hosting Config & Technical SEO",
+      "Interactive UI/UX with Modern Glassmorphism Design",
     ],
     stats: [
       { label: "Discount", val: "50% OFF" },
@@ -45,26 +46,26 @@ const SERVICES = [
     id: "video-creation",
     category: "video",
     title: "Professional Video Editing & TikTok Reel Creation",
-    subtitle: "Viral Content & High-ROAS Video Ad Creatives",
+    subtitle: "Viral Social Content & High-ROAS Video Ad Creatives",
     badge: "🎬 HIGH-CONVERTING VIRAL ADS",
     badgeColor: "#EC4899",
     themeColor: "pink",
     accentGlow: "rgba(236, 72, 153, 0.35)",
-    borderGradient: "linear-gradient(135deg, rgba(236,72,153,0.9), rgba(168,85,247,0.8), rgba(6,182,212,0.9))",
-    priceNote: "Engaging Content Built to Maximize Conversions",
+    borderGradient: "linear-gradient(135deg, rgba(236,72,153,0.9), rgba(168,85,247,0.85), rgba(6,182,212,0.9))",
+    priceNote: "Engaging Content Built to Skyrocket Retention & ROAS",
     image: "/video-editing-showcase.png",
-    description: "Skyrocket sales and social reach with high-converting video ads, TikTok reels, YouTube shorts, and product promos. We engineer crisp cuts, motion graphics, AI voiceovers, and punchy captions.",
+    description: "Skyrocket sales and audience engagement with high-impact video ads, TikTok reels, YouTube shorts, and product promos featuring motion graphics, punchy captions, and AI voiceovers.",
     features: [
-      "TikTok & Meta High-ROAS Video Ad Creatives",
-      "Dynamic Subtitles, Sound Effects & Motion Graphics",
-      "E-Commerce Product Showcase & Unboxing Videos",
-      "AI Voiceover Synchronization & Reel Formatting",
+      "TikTok, Instagram & Meta High-ROAS Video Ad Creatives",
+      "Dynamic Subtitles, Sound FX & Smooth Motion Graphics",
+      "E-Commerce Product Showcase & Unboxing Video Edits",
+      "AI Voiceover Sync & Vertical Reel Format Optimization",
       "Hook-Oriented Editing to Maximize Viewer Retention",
     ],
     stats: [
       { label: "Format", val: "4K 60FPS" },
       { label: "Delivery", val: "24-48 Hrs" },
-      { label: "Engagement", val: "+300% ROAS" },
+      { label: "ROAS Impact", val: "+300% ROAS" },
     ],
     ctaText: "Order Custom Video Editing",
     highlight: false,
@@ -73,26 +74,26 @@ const SERVICES = [
     id: "ads-marketing",
     category: "ads",
     title: "Meta Ads & TikTok Ads Campaign Management",
-    subtitle: "Data-Driven Advertising & Targeted Customer Funnels",
+    subtitle: "Data-Driven Advertising & Targeted Audience Funnels",
     badge: "🚀 HIGH ROAS CAMPAIGN SCALING",
     badgeColor: "#3B82F6",
     themeColor: "blue",
     accentGlow: "rgba(59, 130, 246, 0.35)",
-    borderGradient: "linear-gradient(135deg, rgba(59,130,246,0.9), rgba(16,185,129,0.8), rgba(139,92,246,0.9))",
+    borderGradient: "linear-gradient(135deg, rgba(59,130,246,0.9), rgba(16,185,129,0.85), rgba(139,92,246,0.9))",
     priceNote: "Targeted Funnels & Budget Optimization",
     image: "/ads-marketing-showcase.png",
-    description: "Scale your e-commerce store or agency with profitable Meta (Facebook & Instagram) and TikTok ad campaigns. We build custom audience funnels, setup pixel tracking, and continuously scale winning ads.",
+    description: "Scale your e-commerce brand or agency with profitable Meta (Facebook & Instagram) and TikTok ad campaigns. We build custom audience funnels, setup pixel tracking, and continuously scale winning ads.",
     features: [
       "Facebook, Instagram & TikTok Ad Campaign Setup",
-      "Custom Audience Targeting & Retargeting Funnels",
+      "Custom Audience Targeting & Laser Retargeting Funnels",
       "Meta Pixel & TikTok Events API Conversion Setup",
-      "High-Converting Copywriting & Ad Design Creative",
+      "High-Converting Copywriting & Creative Ad Designs",
       "Weekly ROAS Reporting & Continuous Optimization",
     ],
     stats: [
       { label: "Platforms", val: "Meta + TikTok" },
       { label: "Strategy", val: "Full Funnel" },
-      { label: "ROAS Target", val: "3X - 7X+" },
+      { label: "Target ROAS", val: "3.5X - 8.0X" },
     ],
     ctaText: "Consult for Ads Management",
     highlight: false,
@@ -113,25 +114,32 @@ const DigitalServicesSection = memo(function DigitalServicesSection() {
     window.open(`https://wa.me/923227157125?text=${text}`, "_blank");
   };
 
+  const handleWhatsAppConsultation = () => {
+    const text = encodeURIComponent(
+      "Hi AmirAds, I saw your Meta & TikTok Ads agency section on Prime Tools Hub and I want to discuss advertising & growth services for my business!"
+    );
+    window.open(`https://wa.me/923227157125?text=${text}`, "_blank");
+  };
+
   return (
-    <section id="agency-services" className="relative py-20 px-4 sm:px-6 overflow-hidden bg-[#030307]">
-      {/* Background Animated Glow Spheres */}
+    <section id="agency-services" className="relative py-24 px-4 sm:px-6 overflow-hidden bg-[#030307] scroll-mt-20">
+      {/* Background Radial Ambient Glow Lights */}
       <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[900px] h-[550px] bg-radial from-indigo-900/25 via-purple-900/15 to-transparent blur-[150px]" />
-        <div className="absolute bottom-10 left-10 w-[450px] h-[450px] bg-radial from-pink-600/15 to-transparent blur-[130px]" />
-        <div className="absolute top-10 right-10 w-[450px] h-[450px] bg-radial from-blue-600/15 to-transparent blur-[130px]" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[950px] h-[600px] bg-radial from-indigo-900/30 via-purple-900/18 to-transparent blur-[160px]" />
+        <div className="absolute bottom-10 left-10 w-[500px] h-[500px] bg-radial from-pink-600/18 to-transparent blur-[140px]" />
+        <div className="absolute top-10 right-10 w-[500px] h-[500px] bg-radial from-blue-600/18 to-transparent blur-[140px]" />
       </div>
 
       <div className="mx-auto max-w-7xl relative z-10">
         
-        {/* HEADER SECTION */}
-        <div className="text-center mb-12">
-          {/* Pulsing Animated Top Badge */}
+        {/* SECTION HEADER */}
+        <div className="text-center mb-14">
           <motion.div
             initial={{ opacity: 0, y: -15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full text-xs font-black bg-gradient-to-r from-blue-500/15 via-purple-500/15 to-pink-500/15 border border-blue-500/35 text-blue-300 shadow-[0_0_25px_rgba(59,130,246,0.3)] mb-5"
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full text-xs font-black bg-gradient-to-r from-blue-500/15 via-purple-500/15 to-pink-500/15 border border-blue-500/35 text-blue-300 shadow-[0_0_25px_rgba(59,130,246,0.3)] mb-4"
           >
             <Sparkles size={15} className="text-blue-400 animate-spin" />
             <span className="tracking-wider uppercase">AMIRADS DIGITAL AGENCY SERVICES</span>
@@ -142,12 +150,12 @@ const DigitalServicesSection = memo(function DigitalServicesSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
             className="font-display font-black text-3xl sm:text-5xl lg:text-6xl tracking-tight text-white leading-tight"
           >
             Website Creation, Video Editing &{" "}
-            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-              TikTok / Meta Ads
+            <span className="bg-gradient-to-r from-blue-400 via-purple-300 to-pink-400 bg-clip-text text-transparent ps-text-3d">
+              Meta / TikTok Ads
             </span>
           </motion.h2>
 
@@ -155,18 +163,18 @@ const DigitalServicesSection = memo(function DigitalServicesSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             className="mt-4 text-white/80 text-sm sm:text-base max-w-2xl mx-auto font-body leading-relaxed"
           >
-            Scale your business with full-stack digital solutions — custom high-converting web apps, viral video reel editing, and data-driven ad scaling.
+            Empower your online business with full-stack digital solutions — custom high-converting web apps, viral video reel editing, and targeted Meta & TikTok ad scaling.
           </motion.p>
 
-          {/* ACTION BAR: VISIT WEBSITE & 50% DISCOUNT BANNER */}
+          {/* ACTION BUTTON & PROMO DISCOUNT CALLOUT */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
             className="mt-8 flex flex-wrap items-center justify-center gap-4"
           >
             <a
@@ -179,7 +187,7 @@ const DigitalServicesSection = memo(function DigitalServicesSection() {
               }}
             >
               <Globe size={18} className="text-blue-200 group-hover:rotate-12 transition-transform" />
-              <span>Visit Official Website (amirads.pro)</span>
+              <span>Visit Official Agency Website (amirads.pro)</span>
               <ExternalLink size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
 
@@ -190,8 +198,14 @@ const DigitalServicesSection = memo(function DigitalServicesSection() {
             </div>
           </motion.div>
 
-          {/* CATEGORY FILTER TABS */}
-          <div className="mt-10 inline-flex flex-wrap items-center justify-center p-1.5 rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-2xl gap-1.5">
+          {/* CATEGORY TABS */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="mt-10 inline-flex flex-wrap items-center justify-center p-1.5 rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-2xl gap-1.5 shadow-2xl"
+          >
             {CATEGORIES.map((cat) => {
               const Icon = cat.icon;
               const isActive = activeTab === cat.id;
@@ -199,21 +213,21 @@ const DigitalServicesSection = memo(function DigitalServicesSection() {
                 <button
                   key={cat.id}
                   onClick={() => setActiveTab(cat.id)}
-                  className={`px-4 py-2.5 rounded-xl text-xs font-extrabold flex items-center gap-2 transition-all cursor-pointer ${
+                  className={`px-4 py-2.5 rounded-xl text-xs font-extrabold flex items-center gap-2 transition-all duration-300 cursor-pointer ${
                     isActive
-                      ? "bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white shadow-lg scale-[1.02]"
+                      ? "bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white shadow-lg scale-[1.03]"
                       : "text-white/70 hover:text-white hover:bg-white/5"
                   }`}
                 >
-                  <Icon size={14} />
+                  <Icon size={15} />
                   <span>{cat.label}</span>
                 </button>
               );
             })}
-          </div>
+          </motion.div>
         </div>
 
-        {/* ANIMATED SERVICES CARDS GRID */}
+        {/* SERVICES CARDS GRID */}
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
@@ -247,11 +261,11 @@ const DigitalServicesSection = memo(function DigitalServicesSection() {
                     backdropFilter: "blur(30px)",
                   }}
                 >
-                  {/* Background Shimmer Effect on Hover */}
+                  {/* Hover Shine Effect */}
                   <div className="ps-glass-shine-line absolute inset-y-0 w-36 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-[-25deg] pointer-events-none group-hover:translate-x-full transition-transform duration-1000" />
 
                   <div>
-                    {/* Image Banner Container with Overlay */}
+                    {/* Image Banner */}
                     <div className="relative w-full h-48 rounded-2xl overflow-hidden mb-6 border border-white/12 group-hover:border-white/25 transition-all shadow-inner">
                       <img
                         src={srv.image}
@@ -273,7 +287,7 @@ const DigitalServicesSection = memo(function DigitalServicesSection() {
                         <span>{srv.badge}</span>
                       </span>
 
-                      {/* Stat Pills Overlay on Bottom of Image */}
+                      {/* Stat Pills */}
                       <div className="absolute bottom-3 inset-x-3 flex items-center justify-between gap-2 px-3 py-1.5 rounded-xl bg-black/65 backdrop-blur-md border border-white/10 text-[10px] font-bold text-white/90">
                         {srv.stats.map((st) => (
                           <div key={st.label} className="text-center">
@@ -284,7 +298,7 @@ const DigitalServicesSection = memo(function DigitalServicesSection() {
                       </div>
                     </div>
 
-                    {/* Service Header & Subtitle */}
+                    {/* Service Header */}
                     <div className="mb-3">
                       <span className="text-[10px] font-black uppercase tracking-widest text-purple-400 bg-purple-500/10 px-2.5 py-0.5 rounded border border-purple-500/20 inline-block mb-2">
                         {srv.subtitle}
@@ -294,7 +308,7 @@ const DigitalServicesSection = memo(function DigitalServicesSection() {
                       </h3>
                     </div>
 
-                    {/* Price & Discount Guarantee Badge */}
+                    {/* Price & Offer Note */}
                     <div className="inline-flex items-center gap-2 text-xs font-bold text-emerald-300 bg-emerald-500/10 px-3 py-1.5 rounded-xl border border-emerald-500/25 mb-4">
                       <Tag size={13} className="text-emerald-400" />
                       <span>{srv.priceNote}</span>
@@ -316,7 +330,7 @@ const DigitalServicesSection = memo(function DigitalServicesSection() {
                     </div>
                   </div>
 
-                  {/* Action CTA Button */}
+                  {/* Order CTA Button */}
                   <button
                     onClick={() => handleOrderService(srv.title)}
                     className="w-full py-4 rounded-2xl font-display font-extrabold text-xs sm:text-sm text-white flex items-center justify-center gap-2.5 transition-all duration-300 hover:scale-[1.03] active:scale-95 cursor-pointer shadow-[0_0_25px_rgba(37,211,102,0.35)]"
@@ -334,7 +348,110 @@ const DigitalServicesSection = memo(function DigitalServicesSection() {
           </motion.div>
         </AnimatePresence>
 
-        {/* BOTTOM GUARANTEE & CONSULTATION CALLOUT */}
+        {/* DEDICATED META ADS & TIKTOK ADVERTISING SPOTLIGHT SECTION */}
+        <div id="meta-ads" className="scroll-mt-24 mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6 }}
+            className="relative rounded-3xl p-[2px] overflow-hidden ps-gradient-border-anim shadow-[0_30px_70px_rgba(0,0,0,0.85),0_0_50px_rgba(59,130,246,0.35)]"
+            style={{
+              background:
+                "linear-gradient(135deg, rgba(59,130,246,0.95), rgba(147,51,234,0.9), rgba(236,72,153,0.95))",
+            }}
+          >
+            <div
+              className="w-full rounded-[22px] p-6 sm:p-10 relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8"
+              style={{
+                background:
+                  "linear-gradient(135deg, rgba(12, 14, 30, 0.97) 0%, rgba(6, 7, 16, 0.99) 100%)",
+                backdropFilter: "blur(30px)",
+              }}
+            >
+              {/* Shimmer line */}
+              <div className="ps-glass-shine-line absolute inset-y-0 w-40 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-[-25deg] pointer-events-none" />
+
+              <div className="flex flex-col text-left relative z-10 max-w-3xl">
+                {/* Badge */}
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/15 border border-blue-500/35 text-blue-300 font-black text-xs uppercase tracking-wider mb-3 w-max shadow-[0_0_20px_rgba(59,130,246,0.3)]">
+                  <Rocket size={15} className="text-blue-400 animate-bounce" />
+                  <span>META ADS & TIKTOK ADVERTISING SPECIALIST</span>
+                </div>
+
+                {/* Title */}
+                <h3 className="font-display font-black text-2xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-snug">
+                  Scale Your E-Commerce Store & Agency with{" "}
+                  <span className="bg-gradient-to-r from-blue-400 via-purple-300 to-pink-400 bg-clip-text text-transparent">
+                    Meta & TikTok Ads
+                  </span>
+                </h3>
+
+                {/* Description */}
+                <p className="mt-3 text-white/80 text-xs sm:text-sm leading-relaxed font-body">
+                  Maximize your Return on Ad Spend (ROAS) with high-converting Facebook, Instagram & TikTok advertising campaigns. We engineer targeted sales funnels, setup Meta Pixel & Conversion API, write compelling ad copy, and scale winning campaigns.
+                </p>
+
+                {/* Highlights grid */}
+                <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  {[
+                    "High-ROAS Facebook & Instagram Ad Campaigns",
+                    "TikTok Ads Setup & Viral Audience Funnels",
+                    "Custom Audience Targeting & Retargeting",
+                    "Meta Pixel Setup, API Conversions & Analytics",
+                    "Creative Ad Copywriting & High-Converting Designs",
+                  ].map((feat) => (
+                    <div key={feat} className="flex items-center gap-2 text-xs font-semibold text-white/90">
+                      <CheckCircle2 size={15} className="text-blue-400 shrink-0" />
+                      <span>{feat}</span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Stat Pills */}
+                <div className="mt-6 flex flex-wrap items-center gap-3">
+                  {[
+                    { label: "Target ROAS", val: "3.5X - 8.0X" },
+                    { label: "Platforms", val: "Meta + TikTok" },
+                    { label: "Reporting", val: "Real-Time Tracking" },
+                  ].map((st) => (
+                    <div key={st.label} className="px-3.5 py-1.5 rounded-xl bg-white/[0.04] border border-white/10 text-xs font-semibold text-white/85">
+                      <span className="text-white/50 font-normal mr-1">{st.label}:</span>
+                      <span className="text-emerald-400 font-extrabold">{st.val}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="relative z-10 shrink-0 w-full lg:w-auto flex flex-col sm:flex-row lg:flex-col gap-3.5">
+                <a
+                  href="https://www.amirads.pro/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full lg:w-64 px-6 py-4 rounded-2xl font-display font-extrabold text-xs sm:text-sm text-white flex items-center justify-center gap-2.5 transition-all duration-300 hover:scale-[1.05] active:scale-95 shadow-[0_0_35px_rgba(59,130,246,0.45)] cursor-pointer group"
+                  style={{
+                    background: "linear-gradient(135deg, #2563EB 0%, #7C3AED 100%)",
+                  }}
+                >
+                  <Globe size={18} className="text-blue-200" />
+                  <span>Visit AmirAds Website</span>
+                  <ExternalLink size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </a>
+
+                <button
+                  onClick={handleWhatsAppConsultation}
+                  className="w-full lg:w-64 px-6 py-4 rounded-2xl font-display font-extrabold text-xs sm:text-sm text-white flex items-center justify-center gap-2.5 transition-all duration-300 hover:scale-[1.05] active:scale-95 border border-emerald-500/40 bg-emerald-500/15 hover:bg-emerald-500/25 shadow-[0_0_25px_rgba(37,211,102,0.25)] cursor-pointer"
+                >
+                  <MessageCircle size={18} className="text-emerald-400" />
+                  <span>Ads Campaign Consultation</span>
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* BOTTOM GUARANTEE & CUSTOM CONSULTATION CARD */}
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}

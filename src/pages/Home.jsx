@@ -8,7 +8,6 @@ const TieredRewardsBanner = lazy(() => import("@/components/TieredRewardsBanner"
 const ChatGPTSpecialOffer = lazy(() => import("@/components/ChatGPTSpecialOffer"));
 const BulkPurchaseBanner = lazy(() => import("@/components/BulkPurchaseBanner"));
 const DigitalServicesSection = lazy(() => import("@/components/DigitalServicesSection"));
-const MetaAdsSection = lazy(() => import("@/components/MetaAdsSection"));
 const AboutUs = lazy(() => import("@/components/AboutUs"));
 const HowItWorks = lazy(() => import("@/components/HowItWorks"));
 const WhyUs = lazy(() => import("@/components/WhyUs"));
@@ -44,16 +43,11 @@ export default function Home() {
           <BulkPurchaseBanner variant="card" />
         </Suspense>
 
-        {/* Digital Agency Services: Website Creation, Video Editing, TikTok & Meta Ads */}
+        <ProductsGrid />
+
+        {/* Unified Digital Agency Services: Website Creation, Video Editing, TikTok & Meta Ads */}
         <Suspense fallback={null}>
           <DigitalServicesSection />
-        </Suspense>
-
-        <ProductsGrid />
-        
-        {/* Meta Ads & Advertising Services Section */}
-        <Suspense fallback={null}>
-          <MetaAdsSection />
         </Suspense>
 
         <Suspense fallback={null}>
