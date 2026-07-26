@@ -97,8 +97,11 @@ const THEMES = {
   },
 };
 
+import { useLanguageTheme } from "@/lib/LanguageThemeContext";
+
 export default function Hero() {
   const navigate = useNavigate();
+  const { t, isDark } = useLanguageTheme();
   const [index, setIndex] = useState(0);
   const timerRef = useRef(null);
   const [logoTilt, setLogoTilt] = useState({ x: 0, y: 0 });
@@ -170,7 +173,7 @@ export default function Hero() {
       className="relative min-h-screen flex items-center overflow-hidden pt-36 sm:pt-40 pb-16"
     >
       {/* Dynamic Background Gradient */}
-      <div className="absolute inset-0 -z-20 bg-[#050505]" />
+      <div className={`absolute inset-0 -z-20 ${isDark ? "bg-[#050505]" : "bg-slate-50"}`} />
       <motion.div
         className="absolute inset-0 -z-10"
         animate={{ background: theme.bg }}
@@ -215,28 +218,34 @@ export default function Hero() {
             initial={{ opacity: 0, y: -15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-bold bg-white/10 border border-white/15 text-white/90 mb-4 shadow-[0_0_15px_rgba(255,255,255,0.03)] backdrop-blur-md"
+            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-bold border mb-4 shadow-sm backdrop-blur-md ${
+              isDark ? "bg-white/10 border-white/15 text-white/90" : "bg-slate-200/80 border-slate-300 text-slate-800"
+            }`}
           >
             <span>✨</span>
-            <span>PRIME TOOLS HUB MARKETPLACE</span>
+            <span>{t('hero_marketplace_badge', 'PRIME TOOLS HUB MARKETPLACE')}</span>
           </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="font-display font-black text-white leading-[1.05] tracking-tight text-[clamp(2.1rem,5vw,3.6rem)]"
+            className={`font-display font-black leading-[1.05] tracking-tight text-[clamp(2.1rem,5vw,3.6rem)] ${
+              isDark ? "text-white" : "text-slate-900"
+            }`}
           >
-            <Animated3DText text="Premium AI Tools for Creators & Professionals" />
+            <Animated3DText text={t('hero_title', 'Premium AI Tools for Creators & Professionals')} />
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-4 text-white/80 text-sm sm:text-base max-w-xl mx-auto lg:mx-0 leading-relaxed font-body"
+            className={`mt-4 text-sm sm:text-base max-w-xl mx-auto lg:mx-0 leading-relaxed font-body ${
+              isDark ? "text-white/80" : "text-slate-700"
+            }`}
           >
-            Unlock the world's most powerful AI tools, premium subscriptions, and creator services—all in one secure platform on <span className="text-white font-semibold">PrimeTools.store</span> with instant activation & 24/7 support.
+            {t('hero_subtitle', 'Unlock the world\'s most powerful AI tools, premium subscriptions, and creator services—all in one secure platform on PrimeTools.store with instant activation & 24/7 support.')}
           </motion.p>
 
           {/* Offer & Reseller Banners */}
@@ -248,17 +257,25 @@ export default function Hero() {
           >
             <a
               href="#special-offers"
-              className="ps-pulse inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold bg-gradient-to-r from-amber-500/20 via-purple-500/20 to-pink-500/20 border border-amber-500/40 text-amber-200 shadow-[0_0_20px_rgba(245,158,11,0.2)] backdrop-blur-md hover:scale-105 transition-transform"
+              className={`ps-pulse inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold border backdrop-blur-md hover:scale-105 transition-transform ${
+                isDark 
+                  ? "bg-gradient-to-r from-amber-500/20 via-purple-500/20 to-pink-500/20 border-amber-500/40 text-amber-200" 
+                  : "bg-amber-100/90 border-amber-300 text-amber-900"
+              }`}
             >
               <span>🎁</span>
-              <span>FREE Gifts on Orders Rs. 2,000+ (Canva, Gemini, ChatGPT)</span>
+              <span>{t('hero_free_gift_banner', 'FREE Gifts on Orders Rs. 2,000+ (Canva, Gemini, ChatGPT)')}</span>
             </a>
             <a
               href="#special-offers"
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold bg-emerald-500/15 border border-emerald-500/35 text-emerald-300 backdrop-blur-md hover:scale-105 transition-transform"
+              className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold border backdrop-blur-md hover:scale-105 transition-transform ${
+                isDark 
+                  ? "bg-emerald-500/15 border-emerald-500/35 text-emerald-300" 
+                  : "bg-emerald-100/90 border-emerald-300 text-emerald-900"
+              }`}
             >
               <span>🤝</span>
-              <span>Special Reseller Wholesale Discounts</span>
+              <span>{t('hero_reseller_banner', 'Special Reseller Wholesale Discounts')}</span>
             </a>
           </motion.div>
 
@@ -274,7 +291,7 @@ export default function Hero() {
                 onClick={() => navigate(`/product/${product.id}`)}
                 onMouseMove={handleCardMouseMove}
                 onMouseLeave={handleCardMouseLeave}
-                className="ps-luxury-glass rounded-2xl p-5 sm:p-6 border shadow-2xl relative text-left cursor-pointer transition-colors hover:bg-white/[0.04]"
+                className="ps-luxury-glass rounded-2xl p-5 sm:p-6 border shadow-2xl relative text-left cursor-pointer transition-colors"
                 style={{
                   borderColor: `${product.color}35`,
                   boxShadow: `0 20px 45px ${product.color}15, inset 0 1px 0 rgba(255,255,255,0.08)`,
@@ -297,20 +314,20 @@ export default function Hero() {
                   >
                     {product.tag}
                   </span>
-                  <span className="text-[11px] text-white/75 font-medium">• {product.duration}</span>
+                  <span className={`text-[11px] font-medium ${isDark ? "text-white/75" : "text-slate-600"}`}>• {product.duration}</span>
                 </div>
 
-                <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                <h2 className="text-xl sm:text-2xl font-bold tracking-tight">
                   <Animated3DText text={product.name} hoverTilt={true} variant="subheading" />
                 </h2>
 
-                <p className="mt-2 text-white/75 text-xs sm:text-sm leading-relaxed max-w-lg font-body">
+                <p className={`mt-2 text-xs sm:text-sm leading-relaxed max-w-lg font-body ${isDark ? "text-white/75" : "text-slate-700"}`}>
                   {product.description}
                 </p>
 
                 <div className="mt-4 flex items-center gap-2.5 flex-wrap">
                   {product.oldPrice && (
-                    <span className="text-white/60 text-xs sm:text-sm line-through font-light">
+                    <span className={`text-xs sm:text-sm line-through font-light ${isDark ? "text-white/60" : "text-slate-500"}`}>
                       {product.oldPrice}
                     </span>
                   )}
@@ -327,23 +344,27 @@ export default function Hero() {
                   <a
                     href="#products"
                     onClick={(e) => e.stopPropagation()}
-                    className="px-4.5 py-2.5 rounded-xl text-xs font-semibold text-white border border-white/15 bg-white/10 hover:bg-white/15 transition-all duration-300 min-h-[44px] inline-flex items-center"
+                    className={`px-4.5 py-2.5 rounded-xl text-xs font-semibold border transition-all duration-300 min-h-[44px] inline-flex items-center ${
+                      isDark 
+                        ? "text-white border-white/15 bg-white/10 hover:bg-white/15" 
+                        : "text-slate-900 border-slate-300 bg-slate-100 hover:bg-slate-200"
+                    }`}
                   >
-                    Explore Catalog
+                    {t('hero_btn_explore', 'Explore Catalog')}
                   </a>
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
                       openWhatsApp(product.name, product.duration, product.price);
                     }}
-                    className="ps-magnetic-btn flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-xs font-bold text-white transition-all duration-300 min-h-[44px]"
+                    className="keep-white ps-magnetic-btn flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-xs font-bold text-white transition-all duration-300 min-h-[44px]"
                     style={{
                       background: `linear-gradient(135deg, ${product.color} 0%, ${product.color}cc 100%)`,
                       boxShadow: `0 4px 20px ${product.color}35`,
                     }}
                   >
                     <MessageCircle size={14} className="shrink-0" />
-                    Buy Now
+                    {t('hero_btn_buy', 'Buy Now')}
                   </button>
                 </div>
               </motion.div>

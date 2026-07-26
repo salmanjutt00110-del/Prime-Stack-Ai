@@ -100,8 +100,9 @@ const SERVICES = [
   },
 ];
 
-const DigitalServicesSection = memo(function DigitalServicesSection() {
+export default memo(function DigitalServicesSection() {
   const [activeTab, setActiveTab] = useState("all");
+  const { t, isDark } = useLanguageTheme();
 
   const filteredServices = activeTab === "all" 
     ? SERVICES 
@@ -114,20 +115,13 @@ const DigitalServicesSection = memo(function DigitalServicesSection() {
     window.open(`https://wa.me/923227157125?text=${text}`, "_blank");
   };
 
-  const handleWhatsAppConsultation = () => {
-    const text = encodeURIComponent(
-      "Hi AmirAds, I saw your Meta & TikTok Ads agency section on Prime Tools Hub and I want to discuss advertising & growth services for my business!"
-    );
-    window.open(`https://wa.me/923227157125?text=${text}`, "_blank");
-  };
-
   return (
-    <section id="agency-services" className="relative py-24 px-4 sm:px-6 overflow-hidden bg-[#030307] scroll-mt-20">
+    <section id="agency-services" className={`relative py-24 px-4 sm:px-6 overflow-hidden scroll-mt-20 border-t ${
+      isDark ? "bg-[#030307] border-white/5" : "bg-slate-50 border-slate-200"
+    }`}>
       {/* Background Radial Ambient Glow Lights */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[950px] h-[600px] bg-radial from-indigo-900/30 via-purple-900/18 to-transparent blur-[160px]" />
-        <div className="absolute bottom-10 left-10 w-[500px] h-[500px] bg-radial from-pink-600/18 to-transparent blur-[140px]" />
-        <div className="absolute top-10 right-10 w-[500px] h-[500px] bg-radial from-blue-600/18 to-transparent blur-[140px]" />
+      <div className="absolute inset-0 pointer-events-none z-0 opacity-40">
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[950px] h-[600px] bg-radial from-indigo-900/20 via-purple-900/10 to-transparent blur-[160px]" />
       </div>
 
       <div className="mx-auto max-w-7xl relative z-10">
@@ -139,9 +133,13 @@ const DigitalServicesSection = memo(function DigitalServicesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full text-xs font-black bg-gradient-to-r from-blue-500/15 via-purple-500/15 to-pink-500/15 border border-blue-500/35 text-blue-300 shadow-[0_0_25px_rgba(59,130,246,0.3)] mb-4"
+            className={`inline-flex items-center gap-2.5 px-4 py-2 rounded-full text-xs font-black border shadow-sm mb-4 ${
+              isDark 
+                ? "bg-gradient-to-r from-blue-500/15 via-purple-500/15 to-pink-500/15 border-blue-500/35 text-blue-300"
+                : "bg-blue-100 border-blue-300 text-blue-900"
+            }`}
           >
-            <Sparkles size={15} className="text-blue-400 animate-spin" />
+            <Sparkles size={15} className="text-blue-500 animate-spin" />
             <span className="tracking-wider uppercase">AMIRADS DIGITAL AGENCY SERVICES</span>
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
           </motion.div>
@@ -151,12 +149,11 @@ const DigitalServicesSection = memo(function DigitalServicesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-display font-black text-3xl sm:text-5xl lg:text-6xl tracking-tight text-white leading-tight"
+            className={`font-display font-black text-3xl sm:text-5xl lg:text-6xl tracking-tight leading-tight ${
+              isDark ? "text-white" : "text-slate-900"
+            }`}
           >
-            Website Creation, Video Editing &{" "}
-            <span className="bg-gradient-to-r from-blue-400 via-purple-300 to-pink-400 bg-clip-text text-transparent ps-text-3d">
-              Meta / TikTok Ads
-            </span>
+            {t('services_heading', 'Professional Digital Agency Services')}
           </motion.h2>
 
           <motion.p
@@ -164,9 +161,11 @@ const DigitalServicesSection = memo(function DigitalServicesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-4 text-white/80 text-sm sm:text-base max-w-2xl mx-auto font-body leading-relaxed"
+            className={`mt-4 text-sm sm:text-base max-w-2xl mx-auto font-body leading-relaxed ${
+              isDark ? "text-white/80" : "text-slate-700"
+            }`}
           >
-            Empower your online business with full-stack digital solutions — custom high-converting web apps, viral video reel editing, and targeted Meta & TikTok ad scaling.
+            {t('services_subheading', 'Custom web development, high-converting Meta ads, TikTok organic growth, and professional video editing.')}
           </motion.p>
 
           {/* ACTION BUTTON & PROMO DISCOUNT CALLOUT */}
@@ -181,7 +180,7 @@ const DigitalServicesSection = memo(function DigitalServicesSection() {
               href="https://www.amirads.pro/"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-7 py-3.5 rounded-2xl font-display font-extrabold text-xs sm:text-sm text-white flex items-center gap-3 transition-all duration-300 hover:scale-[1.05] active:scale-95 shadow-[0_0_35px_rgba(59,130,246,0.45)] cursor-pointer group"
+              className="keep-white px-7 py-3.5 rounded-2xl font-display font-extrabold text-xs sm:text-sm text-white flex items-center gap-3 transition-all duration-300 hover:scale-[1.05] active:scale-95 shadow-lg cursor-pointer group"
               style={{
                 background: "linear-gradient(135deg, #2563EB 0%, #7C3AED 100%)",
               }}
@@ -191,10 +190,14 @@ const DigitalServicesSection = memo(function DigitalServicesSection() {
               <ExternalLink size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
 
-            <div className="px-5 py-3 rounded-2xl bg-gradient-to-r from-red-500/20 via-pink-500/20 to-purple-500/20 border border-red-500/40 text-red-300 text-xs sm:text-sm font-black uppercase tracking-wider flex items-center gap-2 shadow-[0_0_20px_rgba(239,68,68,0.25)]">
-              <Flame size={16} className="text-red-400 animate-bounce" />
+            <div className={`px-5 py-3 rounded-2xl border text-xs sm:text-sm font-black uppercase tracking-wider flex items-center gap-2 shadow-sm ${
+              isDark 
+                ? "bg-gradient-to-r from-red-500/20 via-pink-500/20 to-purple-500/20 border-red-500/40 text-red-300"
+                : "bg-red-100 border-red-300 text-red-900"
+            }`}>
+              <Flame size={16} className="text-red-500 animate-bounce" />
               <span>🔥 50% OFF For First 2 Website Clients!</span>
-              <span className="px-2 py-0.5 rounded-full bg-red-500/30 text-[10px] text-white font-bold">LIMITED SLOTS</span>
+              <span className="px-2 py-0.5 rounded-full bg-red-500 text-[10px] text-white font-bold">LIMITED SLOTS</span>
             </div>
           </motion.div>
 
@@ -489,5 +492,3 @@ const DigitalServicesSection = memo(function DigitalServicesSection() {
     </section>
   );
 });
-
-export default DigitalServicesSection;

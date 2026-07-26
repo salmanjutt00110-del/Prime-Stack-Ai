@@ -37,9 +37,15 @@ const STATS = [
   { value: "24/7", label: "WhatsApp Support", icon: Headphones, color: "#EC4899" },
 ];
 
+import { useLanguageTheme } from "@/lib/LanguageThemeContext";
+
 export default function AboutUs() {
+  const { t, isDark } = useLanguageTheme();
+
   return (
-    <section id="about" className="relative py-24 px-4 sm:px-6 scroll-mt-24 overflow-hidden">
+    <section id="about" className={`relative py-24 px-4 sm:px-6 scroll-mt-24 overflow-hidden border-t ${
+      isDark ? "bg-[#050505] border-white/5" : "bg-white border-slate-200"
+    }`}>
       {/* Background ambient lighting */}
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-96 h-96 bg-violet-600/10 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute top-1/3 right-0 w-96 h-96 bg-blue-600/10 rounded-full blur-[140px] pointer-events-none" />
@@ -52,14 +58,18 @@ export default function AboutUs() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-violet-500/15 border border-violet-500/30 text-violet-300 uppercase tracking-widest mb-4"
+            className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-4 border ${
+              isDark ? "bg-violet-500/15 border-violet-500/30 text-violet-300" : "bg-violet-100 border-violet-300 text-violet-900"
+            }`}
           >
             <span>✨</span>
-            <span>About Prime Tools Hub</span>
+            <span>{t('nav_about', 'About Prime Tools Hub')}</span>
           </motion.div>
 
-          <h2 className="font-display font-bold text-white text-[clamp(2rem,4.5vw,3.2rem)] tracking-tight">
-            <Animated3DText text="Empowering Your Digital Workflow" variant="heading" />
+          <h2 className={`font-display font-bold text-[clamp(2rem,4.5vw,3.2rem)] tracking-tight ${
+            isDark ? "text-white" : "text-slate-900"
+          }`}>
+            <Animated3DText text={t('about_heading', 'Why Choose Prime Tools Hub?')} variant="heading" />
           </h2>
 
           <motion.p
@@ -67,7 +77,9 @@ export default function AboutUs() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="mt-4 text-white/80 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed font-body"
+            className={`mt-4 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed font-body ${
+              isDark ? "text-white/80" : "text-slate-700"
+            }`}
           >
             Your trusted marketplace for authentic AI tools, premium subscriptions, and creator software with instant delivery & dedicated support.
           </motion.p>

@@ -37,10 +37,13 @@ const getProductColor = (product) => {
   return { bg: "rgba(255, 255, 255, 0.08)", border: "rgba(255, 255, 255, 0.15)", text: "#FFFFFF" };
 };
 
+import { useLanguageTheme } from "@/lib/LanguageThemeContext";
+
 export default function Reviews() {
   const navigate = useNavigate();
   const [reviews] = useState(SEED_REVIEWS);
   const [form, setForm] = useState({ name: "", product: "", rating: 5, text: "" });
+  const { t, isDark } = useLanguageTheme();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -58,7 +61,9 @@ export default function Reviews() {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#050505] text-white overflow-x-hidden flex flex-col justify-between">
+    <div className={`relative min-h-screen overflow-x-hidden flex flex-col justify-between ${
+      isDark ? "bg-[#050505] text-white" : "bg-slate-50 text-slate-900"
+    }`}>
       <Navbar />
       <main className="pt-20 flex-grow">
         {/* hero */}
@@ -66,23 +71,27 @@ export default function Reviews() {
           <div className="absolute inset-0 -z-10" style={{ background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(139,92,246,0.15), transparent 70%)" }} />
           <div className="mx-auto max-w-4xl text-center">
             <motion.span
-              className="text-xs font-semibold tracking-widest text-pink-400 uppercase inline-block"
+              className="text-xs font-semibold tracking-widest text-pink-500 uppercase inline-block"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
               Testimonials
             </motion.span>
-            <h1 className="mt-3 font-display font-bold text-white text-[clamp(2.2rem,6vw,3.5rem)] tracking-tight">
-              <Animated3DText text="What Our Clients Say" variant="heading" />
+            <h1 className={`mt-3 font-display font-bold text-[clamp(2.2rem,6vw,3.5rem)] tracking-tight ${
+              isDark ? "text-white" : "text-slate-900"
+            }`}>
+              <Animated3DText text={t('reviews_title_page', 'Verified Customer Testimonials & Proofs')} variant="heading" />
             </h1>
             <motion.p
-              className="mt-4 text-white/55 text-base max-w-xl mx-auto"
+              className={`mt-4 text-base max-w-xl mx-auto ${
+                isDark ? "text-white/70" : "text-slate-600"
+              }`}
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              Real reviews from 500+ happy clients who trust Prime Tools Hub for premium digital tools.
+              {t('reviews_subtitle_page', 'Real feedback from real users across Pakistan.')}
             </motion.p>
 
             <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto">

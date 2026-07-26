@@ -16,13 +16,19 @@ const FAQ = lazy(() => import("@/components/FAQ"));
 const CTASection = lazy(() => import("@/components/CTASection"));
 const Footer = lazy(() => import("@/components/Footer"));
 
+import { useLanguageTheme } from "@/lib/LanguageThemeContext";
+
 export default function Home() {
+  const { isDark } = useLanguageTheme();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-[#050505] text-white overflow-x-hidden">
+    <div className={`relative min-h-screen overflow-x-hidden transition-colors duration-500 ${
+      isDark ? "bg-[#050505] text-white" : "bg-slate-50 text-slate-900"
+    }`}>
       <AmbientGlow />
       <Navbar />
       <main>

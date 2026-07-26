@@ -77,9 +77,12 @@ function List({ items, accent }) {
   );
 }
 
+import { useLanguageTheme } from "@/lib/LanguageThemeContext";
+
 export default function ProductDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { t, isDark } = useLanguageTheme();
   const product = ALL_PRODUCTS.find((p) => p.id === id);
 
   useEffect(() => {
@@ -98,14 +101,8 @@ export default function ProductDetail() {
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "Products",
-          "item": "https://primetoolshub.store/#products"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": product.name,
-          "item": `https://primetoolshub.store/product/${product.id}`
+          "name": product?.name || "Product",
+          "item": `https://primetoolshub.store/product/${id}`
         }
       ]
     };
@@ -129,14 +126,14 @@ export default function ProductDetail() {
 
   if (!product) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-[#050505] text-white px-6">
+      <div className={`min-h-screen flex flex-col items-center justify-center px-6 ${isDark ? "bg-[#050505] text-white" : "bg-slate-50 text-slate-900"}`}>
         <Navbar />
         <main className="flex flex-col items-center justify-center pt-24 pb-12">
           <h1 className="font-display text-2xl font-bold mb-3">Product not found</h1>
-          <p className="text-white/50 mb-6">The product you're looking for doesn't exist.</p>
+          <p className="text-sm opacity-60 mb-6">The product you're looking for doesn't exist.</p>
           <button
             onClick={() => navigate("/")}
-            className="px-6 py-3 rounded-xl text-sm font-semibold text-white border border-white/15 hover:bg-white/8 transition-colors"
+            className="px-6 py-3 rounded-xl text-sm font-semibold border hover:bg-white/10 transition-colors"
           >
             Back to Home
           </button>
@@ -149,11 +146,13 @@ export default function ProductDetail() {
   const accent = product.color;
   const rgb = hexToRgb(accent) || [5, 5, 5];
   
-  // Create dynamic dark background mixing black with product accent color
-  const bgBaseColor = `rgb(${Math.max(4, Math.round(rgb[0] * 0.045))}, ${Math.max(4, Math.round(rgb[1] * 0.045))}, ${Math.max(4, Math.round(rgb[2] * 0.045))})`;
+  // Create dynamic background mixing with product accent color
+  const bgBaseColor = isDark
+    ? `rgb(${Math.max(4, Math.round(rgb[0] * 0.045))}, ${Math.max(4, Math.round(rgb[1] * 0.045))}, ${Math.max(4, Math.round(rgb[2] * 0.045))})`
+    : "#f8fafc";
 
   return (
-    <div className="relative min-h-screen text-white overflow-x-hidden flex flex-col justify-between">
+    <div className={`relative min-h-screen overflow-x-hidden flex flex-col justify-between ${isDark ? "text-white" : "text-slate-900"}`}>
       <Navbar />
 
       {/* Dynamic background container */}
@@ -189,9 +188,11 @@ export default function ProductDetail() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6 pt-4">
           <button
             onClick={() => navigate(-1)}
-            className="flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors"
+            className={`flex items-center gap-2 text-sm font-semibold transition-colors ${
+              isDark ? "text-white/60 hover:text-white" : "text-slate-600 hover:text-slate-900"
+            }`}
           >
-            <ArrowLeft size={16} /> Back
+            <ArrowLeft size={16} /> {t('detail_back', 'Back')}
           </button>
         </div>
 
