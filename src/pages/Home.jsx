@@ -14,6 +14,8 @@ import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
+import ScrollProgress from "@/components/ScrollProgress";
+import BackToTopButton from "@/components/BackToTopButton";
 
 export default function Home() {
   useEffect(() => {
@@ -22,6 +24,7 @@ export default function Home() {
 
   return (
     <div className="relative min-h-screen bg-[#050505] text-white overflow-x-hidden">
+      <ScrollProgress />
       <AmbientGlow />
       <Navbar />
       <main>
@@ -47,6 +50,7 @@ export default function Home() {
         <FAQ />
         <CTASection />
       </main>
+      <BackToTopButton />
       <Footer />
     </div>
   );
