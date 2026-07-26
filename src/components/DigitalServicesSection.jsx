@@ -114,6 +114,13 @@ export default memo(function DigitalServicesSection() {
     window.open(`https://wa.me/923227157125?text=${text}`, "_blank");
   };
 
+  const handleWhatsAppConsultation = () => {
+    const text = encodeURIComponent(
+      "Hi AmirAds, I saw your Digital Agency Services on Prime Tools Hub and I'd like a free consultation about Meta Ads, TikTok growth, web development, or video editing services!"
+    );
+    window.open(`https://wa.me/923227157125?text=${text}`, "_blank");
+  };
+
   return (
     <section id="agency-services" className="relative py-24 px-4 sm:px-6 overflow-hidden scroll-mt-20 border-t bg-[#030307] border-white/5">
       {/* Background Radial Ambient Glow Lights */}
