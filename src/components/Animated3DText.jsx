@@ -88,7 +88,7 @@ export default function Animated3DText({
         whileInView="visible"
         viewport={{ once: true, margin: "-20px" }}
         custom={delay}
-        className={`inline-block select-none ${baseShadow} ${className}`}
+        className={`inline select-none text-wrap break-words ${baseShadow} ${className}`}
       >
         {safeText}
       </motion.span>

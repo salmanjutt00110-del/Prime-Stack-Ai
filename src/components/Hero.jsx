@@ -196,16 +196,16 @@ export default function Hero() {
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="font-display font-black leading-[1.08] tracking-tight text-white text-[clamp(1.7rem,5.5vw,3.6rem)] break-words max-w-full px-1"
+            className="font-display font-black leading-[1.12] tracking-tight text-white text-[clamp(1.5rem,5.2vw,3.4rem)] text-center lg:text-left break-words max-w-full px-2"
           >
-            <Animated3DText text="Premium AI Tools for Creators & Professionals" />
+            <Animated3DText text="Premium AI Tools for Creators &amp; Professionals" />
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-4 text-sm sm:text-base text-white/80 max-w-xl mx-auto lg:mx-0 leading-relaxed font-body"
+            className="mt-4 text-xs sm:text-base text-white/80 max-w-xl mx-auto lg:mx-0 leading-relaxed font-body px-2 text-center lg:text-left break-words"
           >
             Unlock the world's most powerful AI tools, premium subscriptions, and creator services—all in one secure platform on PrimeTools.store with instant activation & 24/7 support.
           </motion.p>
@@ -215,18 +215,18 @@ export default function Hero() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
-            className="mt-5 flex flex-wrap items-center justify-center lg:justify-start gap-2.5"
+            className="mt-5 flex flex-col sm:flex-row flex-wrap items-center justify-center lg:justify-start gap-2.5 w-full max-w-full px-2"
           >
             <a
               href="#special-offers"
-              className="ps-pulse inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold border border-amber-500/40 bg-gradient-to-r from-amber-500/20 via-purple-500/20 to-pink-500/20 text-amber-200 backdrop-blur-md hover:scale-105 transition-transform"
+              className="ps-pulse w-full sm:w-auto inline-flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-bold border border-amber-500/40 bg-gradient-to-r from-amber-500/20 via-purple-500/20 to-pink-500/20 text-amber-200 backdrop-blur-md hover:scale-105 transition-transform text-center leading-snug"
             >
               <span>🎁</span>
               <span>FREE Gifts on Orders Rs. 2,000+ (Canva, Gemini, ChatGPT)</span>
             </a>
             <a
               href="#special-offers"
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold border border-emerald-500/35 bg-emerald-500/15 text-emerald-300 backdrop-blur-md hover:scale-105 transition-transform"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-bold border border-emerald-500/35 bg-emerald-500/15 text-emerald-300 backdrop-blur-md hover:scale-105 transition-transform text-center leading-snug"
             >
               <span>🤝</span>
               <span>Special Reseller Wholesale Discounts</span>
