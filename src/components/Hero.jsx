@@ -30,63 +30,45 @@ const THEMES = {
     particles: "#06B6D4",
   },
   "capcut-pro-1m": {
-    bg: "radial-gradient(ellipse 80% 60% at 50% 30%, rgba(255, 255, 255, 0.06) 0%, rgba(17, 17, 17, 0.15) 60%, transparent 70%)",
-    glow: "rgba(255, 255, 255, 0.15)",
-    glow2: "rgba(254, 44, 85, 0.08)",
-    particles: "#ffffff",
+    bg: "radial-gradient(ellipse 80% 60% at 50% 30%, rgba(236, 72, 153, 0.14) 0%, transparent 70%)",
+    glow: "rgba(236, 72, 153, 0.28)",
+    glow2: "rgba(168, 85, 247, 0.15)",
+    particles: "#EC4899",
   },
   "canva-pro-edu": {
-    bg: "radial-gradient(ellipse 80% 60% at 50% 30%, rgba(125, 42, 232, 0.14) 0%, rgba(236, 72, 153, 0.1) 50%, transparent 70%)",
-    glow: "rgba(125, 42, 232, 0.28)",
+    bg: "radial-gradient(ellipse 80% 60% at 50% 30%, rgba(139, 92, 246, 0.14) 0%, transparent 70%)",
+    glow: "rgba(139, 92, 246, 0.28)",
     glow2: "rgba(236, 72, 153, 0.15)",
-    particles: "#A78BFA",
+    particles: "#8B5CF6",
   },
   "supergrok-12m-premium": {
-    bg: "radial-gradient(ellipse 80% 60% at 50% 30%, rgba(29, 161, 242, 0.12) 0%, rgba(0, 0, 0, 0.3) 60%, transparent 70%)",
-    glow: "rgba(29, 161, 242, 0.25)",
-    glow2: "rgba(139, 92, 246, 0.15)",
+    bg: "radial-gradient(ellipse 80% 60% at 50% 30%, rgba(29, 161, 242, 0.14) 0%, rgba(139, 92, 246, 0.1) 50%, transparent 70%)",
+    glow: "rgba(29, 161, 242, 0.3)",
+    glow2: "rgba(139, 92, 246, 0.2)",
     particles: "#1DA1F2",
   },
   "surfshark-vpn-1y": {
-    bg: "radial-gradient(ellipse 80% 60% at 50% 30%, rgba(2, 132, 199, 0.12) 0%, rgba(13, 148, 136, 0.08) 50%, transparent 70%)",
-    glow: "rgba(2, 132, 199, 0.25)",
-    glow2: "rgba(13, 148, 136, 0.15)",
-    particles: "#0284C7",
+    bg: "radial-gradient(ellipse 80% 60% at 50% 30%, rgba(30, 190, 165, 0.14) 0%, transparent 70%)",
+    glow: "rgba(30, 190, 165, 0.28)",
+    glow2: "rgba(59, 130, 246, 0.15)",
+    particles: "#1EBEA5",
   },
   "tiktok-growth-challenge": {
     bg: "radial-gradient(ellipse 80% 60% at 50% 30%, rgba(254, 44, 85, 0.14) 0%, rgba(37, 244, 238, 0.08) 50%, transparent 70%)",
-    glow: "rgba(254, 44, 85, 0.25)",
-    glow2: "rgba(37, 244, 238, 0.15)",
+    glow: "rgba(254, 44, 85, 0.28)",
+    glow2: "rgba(37, 244, 238, 0.18)",
     particles: "#FE2C55",
   },
   "youtube-premium-12m": {
-    bg: "radial-gradient(ellipse 80% 60% at 50% 30%, rgba(255, 0, 0, 0.12) 0%, transparent 70%)",
-    glow: "rgba(255, 0, 0, 0.25)",
-    glow2: "rgba(204, 0, 0, 0.15)",
+    bg: "radial-gradient(ellipse 80% 60% at 50% 30%, rgba(255, 0, 0, 0.14) 0%, transparent 70%)",
+    glow: "rgba(255, 0, 0, 0.28)",
+    glow2: "rgba(220, 38, 38, 0.15)",
     particles: "#FF0000",
   },
-  "chatgpt-go-3m": {
-    bg: "radial-gradient(ellipse 80% 60% at 50% 30%, rgba(16, 163, 127, 0.12) 0%, transparent 70%)",
-    glow: "rgba(16, 163, 127, 0.25)",
-    glow2: "rgba(13, 138, 109, 0.15)",
-    particles: "#10A37F",
-  },
-  "capcut-pro-admin-7s": {
-    bg: "radial-gradient(ellipse 80% 60% at 50% 30%, rgba(254, 44, 85, 0.12) 0%, transparent 70%)",
-    glow: "rgba(254, 44, 85, 0.25)",
-    glow2: "rgba(37, 244, 238, 0.15)",
-    particles: "#FE2C55",
-  },
-  "surfshark-vpn-1m": {
-    bg: "radial-gradient(ellipse 80% 60% at 50% 30%, rgba(28, 159, 232, 0.12) 0%, transparent 70%)",
-    glow: "rgba(28, 159, 232, 0.25)",
-    glow2: "rgba(34, 211, 238, 0.15)",
-    particles: "#1C9FE8",
-  },
-  "nordvpn-3m": {
-    bg: "radial-gradient(ellipse 80% 60% at 50% 30%, rgba(0, 96, 255, 0.12) 0%, transparent 70%)",
-    glow: "rgba(0, 96, 255, 0.25)",
-    glow2: "rgba(139, 92, 246, 0.15)",
+  "nord-vpn-1y": {
+    bg: "radial-gradient(ellipse 80% 60% at 50% 30%, rgba(0, 96, 255, 0.14) 0%, transparent 70%)",
+    glow: "rgba(0, 96, 255, 0.28)",
+    glow2: "rgba(37, 99, 235, 0.15)",
     particles: "#0060FF",
   },
   "lovable-ai-100c": {
@@ -97,11 +79,8 @@ const THEMES = {
   },
 };
 
-import { useLanguageTheme } from "@/lib/LanguageThemeContext";
-
 export default function Hero() {
   const navigate = useNavigate();
-  const { t, isDark } = useLanguageTheme();
   const [index, setIndex] = useState(0);
   const timerRef = useRef(null);
   const [logoTilt, setLogoTilt] = useState({ x: 0, y: 0 });
@@ -139,9 +118,7 @@ export default function Hero() {
     const rect = el.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
     const y = e.clientY - rect.top - rect.height / 2;
-    const rx = -(y / (rect.height / 2)) * 12;
-    const ry = (x / (rect.width / 2)) * 12;
-    setLogoTilt({ x: ry, y: rx });
+    setLogoTilt({ x: x * 0.08, y: -y * 0.08 });
   };
 
   const handleLogoMouseLeave = () => {
@@ -154,29 +131,20 @@ export default function Hero() {
     const rect = el.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
     const y = e.clientY - rect.top - rect.height / 2;
-    const rx = -(y / (rect.height / 2)) * 6;
-    const ry = (x / (rect.width / 2)) * 6;
-    setCardTilt({ x: ry, y: rx });
+    setCardTilt({ x: x * 0.05, y: -y * 0.05 });
   };
 
   const handleCardMouseLeave = () => {
     setCardTilt({ x: 0, y: 0 });
   };
 
-  const go = (i) => {
-    setIndex((i + HERO_PRODUCTS.length) % HERO_PRODUCTS.length);
-  };
-
   return (
-    <section
-      id="home"
-      className="relative min-h-screen flex items-center overflow-hidden pt-36 sm:pt-40 pb-16"
-    >
-      {/* Dynamic Background Gradient */}
-      <div className={`absolute inset-0 -z-20 ${isDark ? "bg-[#050505]" : "bg-slate-50"}`} />
+    <section id="home" className="relative min-h-[92vh] pt-28 pb-16 flex items-center justify-center overflow-hidden">
+      {/* Dynamic Theme Radial Canvas Background */}
       <motion.div
-        className="absolute inset-0 -z-10"
-        animate={{ background: theme.bg }}
+        className="absolute inset-0 -z-10 transition-all duration-1000"
+        style={{ background: theme.bg }}
+        animate={{ opacity: [0.7, 1, 0.7] }}
         transition={{ duration: 1, ease: "easeInOut" }}
       />
 
@@ -218,34 +186,28 @@ export default function Hero() {
             initial={{ opacity: 0, y: -15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-bold border mb-4 shadow-sm backdrop-blur-md ${
-              isDark ? "bg-white/10 border-white/15 text-white/90" : "bg-slate-200/80 border-slate-300 text-slate-800"
-            }`}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-bold border border-white/15 bg-white/10 text-white/90 mb-4 shadow-sm backdrop-blur-md"
           >
             <span>✨</span>
-            <span>{t('hero_marketplace_badge', 'PRIME TOOLS HUB MARKETPLACE')}</span>
+            <span>PRIME TOOLS HUB MARKETPLACE</span>
           </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className={`font-display font-black leading-[1.05] tracking-tight text-[clamp(2.1rem,5vw,3.6rem)] ${
-              isDark ? "text-white" : "text-slate-900"
-            }`}
+            className="font-display font-black leading-[1.05] tracking-tight text-white text-[clamp(2.1rem,5vw,3.6rem)]"
           >
-            <Animated3DText text={t('hero_title', 'Premium AI Tools for Creators & Professionals')} />
+            <Animated3DText text="Premium AI Tools for Creators & Professionals" />
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className={`mt-4 text-sm sm:text-base max-w-xl mx-auto lg:mx-0 leading-relaxed font-body ${
-              isDark ? "text-white/80" : "text-slate-700"
-            }`}
+            className="mt-4 text-sm sm:text-base text-white/80 max-w-xl mx-auto lg:mx-0 leading-relaxed font-body"
           >
-            {t('hero_subtitle', 'Unlock the world\'s most powerful AI tools, premium subscriptions, and creator services—all in one secure platform on PrimeTools.store with instant activation & 24/7 support.')}
+            Unlock the world's most powerful AI tools, premium subscriptions, and creator services—all in one secure platform on PrimeTools.store with instant activation & 24/7 support.
           </motion.p>
 
           {/* Offer & Reseller Banners */}
@@ -257,25 +219,17 @@ export default function Hero() {
           >
             <a
               href="#special-offers"
-              className={`ps-pulse inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold border backdrop-blur-md hover:scale-105 transition-transform ${
-                isDark 
-                  ? "bg-gradient-to-r from-amber-500/20 via-purple-500/20 to-pink-500/20 border-amber-500/40 text-amber-200" 
-                  : "bg-amber-100/90 border-amber-300 text-amber-900"
-              }`}
+              className="ps-pulse inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold border border-amber-500/40 bg-gradient-to-r from-amber-500/20 via-purple-500/20 to-pink-500/20 text-amber-200 backdrop-blur-md hover:scale-105 transition-transform"
             >
               <span>🎁</span>
-              <span>{t('hero_free_gift_banner', 'FREE Gifts on Orders Rs. 2,000+ (Canva, Gemini, ChatGPT)')}</span>
+              <span>FREE Gifts on Orders Rs. 2,000+ (Canva, Gemini, ChatGPT)</span>
             </a>
             <a
               href="#special-offers"
-              className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold border backdrop-blur-md hover:scale-105 transition-transform ${
-                isDark 
-                  ? "bg-emerald-500/15 border-emerald-500/35 text-emerald-300" 
-                  : "bg-emerald-100/90 border-emerald-300 text-emerald-900"
-              }`}
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold border border-emerald-500/35 bg-emerald-500/15 text-emerald-300 backdrop-blur-md hover:scale-105 transition-transform"
             >
               <span>🤝</span>
-              <span>{t('hero_reseller_banner', 'Special Reseller Wholesale Discounts')}</span>
+              <span>Special Reseller Wholesale Discounts</span>
             </a>
           </motion.div>
 
@@ -291,7 +245,7 @@ export default function Hero() {
                 onClick={() => navigate(`/product/${product.id}`)}
                 onMouseMove={handleCardMouseMove}
                 onMouseLeave={handleCardMouseLeave}
-                className="ps-luxury-glass rounded-2xl p-5 sm:p-6 border shadow-2xl relative text-left cursor-pointer transition-colors"
+                className="ps-luxury-glass rounded-2xl p-5 sm:p-6 border border-white/10 shadow-2xl relative text-left cursor-pointer transition-colors"
                 style={{
                   borderColor: `${product.color}35`,
                   boxShadow: `0 20px 45px ${product.color}15, inset 0 1px 0 rgba(255,255,255,0.08)`,
@@ -314,143 +268,107 @@ export default function Hero() {
                   >
                     {product.tag}
                   </span>
-                  <span className={`text-[11px] font-medium ${isDark ? "text-white/75" : "text-slate-600"}`}>• {product.duration}</span>
+                  <span className="text-[11px] font-medium text-white/75">• {product.duration}</span>
                 </div>
 
-                <h2 className="text-xl sm:text-2xl font-bold tracking-tight">
-                  <Animated3DText text={product.name} hoverTilt={true} variant="subheading" />
+                <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-white">
+                  {product.name}
                 </h2>
 
-                <p className={`mt-2 text-xs sm:text-sm leading-relaxed max-w-lg font-body ${isDark ? "text-white/75" : "text-slate-700"}`}>
-                  {product.description}
+                <p className="mt-1 text-xs sm:text-sm text-white/80 line-clamp-2 leading-relaxed">
+                  {product.tagline}
                 </p>
 
-                <div className="mt-4 flex items-center gap-2.5 flex-wrap">
-                  {product.oldPrice && (
-                    <span className={`text-xs sm:text-sm line-through font-light ${isDark ? "text-white/60" : "text-slate-500"}`}>
-                      {product.oldPrice}
+                <div className="mt-4 pt-4 border-t border-white/10 flex items-center justify-between">
+                  <div>
+                    <span className="text-xs text-white/50 block">Price</span>
+                    <span className="text-lg font-bold font-mono text-emerald-400">
+                      {product.price}
                     </span>
-                  )}
-                  <span
-                    className="text-xl sm:text-2xl font-extrabold font-display tracking-tight"
-                    style={{ color: product.color }}
-                  >
-                    {product.price}
-                  </span>
-                </div>
+                  </div>
 
-                {/* Buttons */}
-                <div className="mt-5 flex items-center gap-3 flex-wrap">
-                  <a
-                    href="#products"
-                    onClick={(e) => e.stopPropagation()}
-                    className={`px-4.5 py-2.5 rounded-xl text-xs font-semibold border transition-all duration-300 min-h-[44px] inline-flex items-center ${
-                      isDark 
-                        ? "text-white border-white/15 bg-white/10 hover:bg-white/15" 
-                        : "text-slate-900 border-slate-300 bg-slate-100 hover:bg-slate-200"
-                    }`}
-                  >
-                    {t('hero_btn_explore', 'Explore Catalog')}
-                  </a>
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
-                      openWhatsApp(product.name, product.duration, product.price);
+                      openWhatsApp(product);
                     }}
-                    className="keep-white ps-magnetic-btn flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-xs font-bold text-white transition-all duration-300 min-h-[44px]"
+                    className="px-4 py-2 rounded-xl text-xs font-bold text-black flex items-center gap-1.5 shadow-lg hover:scale-105 transition-all min-h-[38px] cursor-pointer"
                     style={{
-                      background: `linear-gradient(135deg, ${product.color} 0%, ${product.color}cc 100%)`,
-                      boxShadow: `0 4px 20px ${product.color}35`,
+                      background: "linear-gradient(135deg, #25D366, #128C7E)",
                     }}
                   >
-                    <MessageCircle size={14} className="shrink-0" />
-                    {t('hero_btn_buy', 'Buy Now')}
+                    <MessageCircle size={14} />
+                    Order on WhatsApp
                   </button>
                 </div>
               </motion.div>
             </AnimatePresence>
-          </div>
 
-          {/* Dot Navigation with 44px touch targets */}
-          <div className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-1 max-w-full px-2">
-            {HERO_PRODUCTS.map((p, i) => (
-              <button
-                key={p.id}
-                onClick={() => go(i)}
-                aria-label={`Show ${p.name}`}
-                className="py-3 px-1.5 flex items-center justify-center min-w-[36px] min-h-[44px] transition-transform active:scale-95"
-              >
-                <span
-                  className="block rounded-full transition-all duration-500"
+            {/* Pagination Indicators */}
+            <div className="mt-4 flex items-center justify-center lg:justify-start gap-1.5">
+              {HERO_PRODUCTS.map((p, i) => (
+                <button
+                  key={p.id}
+                  onClick={() => setIndex(i)}
+                  className="h-1.5 rounded-full transition-all duration-300 min-w-[24px] cursor-pointer"
                   style={{
-                    width: i === index ? 32 : 8,
-                    height: 8,
-                    background:
-                      i === index ? product.color : "rgba(255,255,255,0.25)",
+                    width: i === index ? 32 : 12,
+                    background: i === index ? p.color : "rgba(255,255,255,0.2)",
                   }}
+                  aria-label={`Go to slide ${i + 1}`}
                 />
-              </button>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* RIGHT — floating logo card */}
-        <div className="order-1 lg:order-2 flex justify-center mb-6 lg:mb-0" style={{ perspective: 1000 }}>
-          <AnimatePresence mode="wait" initial={false}>
+        {/* RIGHT — Interactive Product Logo Sphere Display */}
+        <div className="order-1 lg:order-2 flex flex-col items-center justify-center relative">
+          <div className="relative w-64 h-64 sm:w-80 sm:h-80 flex items-center justify-center" style={{ perspective: 1000 }}>
+            {/* Outer Orbit Ring */}
             <motion.div
-              key={product.id}
-              initial={{ opacity: 0, scale: 0.75, rotateX: -25, rotateY: -25, y: 40 }}
-              animate={{ opacity: 1, scale: 1, rotateX: 0, rotateY: 0, y: 0 }}
-              exit={{ opacity: 0, scale: 0.75, rotateX: 25, rotateY: 25, y: -40 }}
-              transition={{
-                type: "spring",
-                stiffness: 140,
-                damping: 18
-              }}
-              onClick={() => navigate(`/product/${product.id}`)}
-              onMouseMove={handleLogoMouseMove}
-              onMouseLeave={handleLogoMouseLeave}
-              className="relative cursor-pointer group"
-              style={{
-                transform: `rotateX(${logoTilt.y}deg) rotateY(${logoTilt.x}deg)`,
-                transformStyle: "preserve-3d",
-                transition: "transform 0.15s ease-out",
-              }}
-              whileHover={{ scale: 1.03 }}
-            >
-              {/* glow behind */}
-              <div
-                className="absolute inset-0 rounded-[2rem] blur-[60px]"
-                style={{ background: `${product.color}40` }}
-              />
-              <div
-                className="ps-float relative flex items-center justify-center rounded-[1.5rem] sm:rounded-[2rem] w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80"
+              className="absolute inset-0 rounded-full border border-dashed opacity-40"
+              style={{ borderColor: product.color }}
+              animate={{ rotate: 360 }}
+              transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+            />
+
+            {/* Glowing Backdrop Circle */}
+            <motion.div
+              className="absolute inset-4 rounded-full blur-2xl opacity-40 transition-colors duration-1000"
+              style={{ background: product.color }}
+            />
+
+            {/* Central Product Image Frame */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={product.id}
+                initial={{ scale: 0.8, opacity: 0, rotateY: -30 }}
+                animate={{ scale: 1, opacity: 1, rotateY: 0 }}
+                exit={{ scale: 0.8, opacity: 0, rotateY: 30 }}
+                transition={SPRING}
+                onMouseMove={handleLogoMouseMove}
+                onMouseLeave={handleLogoMouseLeave}
+                className="relative z-10 w-44 h-44 sm:w-56 sm:h-56 rounded-3xl p-6 bg-white/10 border border-white/20 backdrop-blur-xl shadow-2xl flex items-center justify-center cursor-pointer group"
                 style={{
-                  background: `linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 50%, ${product.color}12 100%)`,
-                  backdropFilter: "blur(40px)",
-                  WebkitBackdropFilter: "blur(40px)",
-                  border: "1px solid rgba(255,255,255,0.18)",
-                  boxShadow: `0 24px 80px rgba(0,0,0,0.5), 0 0 60px ${product.color}25`,
+                  transform: `rotateX(${logoTilt.y}deg) rotateY(${logoTilt.x}deg)`,
+                  transformStyle: "preserve-3d",
+                  transition: "transform 0.1s ease-out",
                 }}
+                onClick={() => navigate(`/product/${product.id}`)}
               >
-                {/* shimmer */}
-                <span className="ps-shimmer absolute inset-0 rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden" />
                 <img
                   src={product.logo}
-                  alt={`${product.name} official logo`}
-                  fetchPriority="high"
+                  alt={product.name}
+                  className="w-full h-full object-contain drop-shadow-[0_10px_25px_rgba(0,0,0,0.5)] group-hover:scale-110 transition-transform duration-500"
+                  loading="eager"
                   decoding="async"
-                  width="160"
-                  height="160"
-                  className="relative w-[76%] h-[76%] object-contain transition-transform duration-300 group-hover:scale-105"
-                  style={{
-                    filter: `drop-shadow(0 8px 24px rgba(0,0,0,0.4)) drop-shadow(0 0 15px ${product.color}20)`
-                  }}
                 />
-              </div>
-            </motion.div>
-          </AnimatePresence>
+              </motion.div>
+            </AnimatePresence>
+          </div>
         </div>
+
       </div>
     </section>
   );

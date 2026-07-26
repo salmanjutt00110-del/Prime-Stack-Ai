@@ -37,13 +37,10 @@ const getProductColor = (product) => {
   return { bg: "rgba(255, 255, 255, 0.08)", border: "rgba(255, 255, 255, 0.15)", text: "#FFFFFF" };
 };
 
-import { useLanguageTheme } from "@/lib/LanguageThemeContext";
-
 export default function Reviews() {
   const navigate = useNavigate();
   const [reviews] = useState(SEED_REVIEWS);
   const [form, setForm] = useState({ name: "", product: "", rating: 5, text: "" });
-  const { t, isDark } = useLanguageTheme();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -61,9 +58,7 @@ export default function Reviews() {
   };
 
   return (
-    <div className={`relative min-h-screen overflow-x-hidden flex flex-col justify-between ${
-      isDark ? "bg-[#050505] text-white" : "bg-slate-50 text-slate-900"
-    }`}>
+    <div className="relative min-h-screen bg-[#050505] text-white overflow-x-hidden flex flex-col justify-between">
       <Navbar />
       <main className="pt-20 flex-grow">
         {/* hero */}

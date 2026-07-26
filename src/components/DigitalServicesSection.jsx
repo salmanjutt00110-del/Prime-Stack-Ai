@@ -102,7 +102,6 @@ const SERVICES = [
 
 export default memo(function DigitalServicesSection() {
   const [activeTab, setActiveTab] = useState("all");
-  const { t, isDark } = useLanguageTheme();
 
   const filteredServices = activeTab === "all" 
     ? SERVICES 
@@ -116,9 +115,7 @@ export default memo(function DigitalServicesSection() {
   };
 
   return (
-    <section id="agency-services" className={`relative py-24 px-4 sm:px-6 overflow-hidden scroll-mt-20 border-t ${
-      isDark ? "bg-[#030307] border-white/5" : "bg-slate-50 border-slate-200"
-    }`}>
+    <section id="agency-services" className="relative py-24 px-4 sm:px-6 overflow-hidden scroll-mt-20 border-t bg-[#030307] border-white/5">
       {/* Background Radial Ambient Glow Lights */}
       <div className="absolute inset-0 pointer-events-none z-0 opacity-40">
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[950px] h-[600px] bg-radial from-indigo-900/20 via-purple-900/10 to-transparent blur-[160px]" />

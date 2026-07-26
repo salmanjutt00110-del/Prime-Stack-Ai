@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { openWhatsApp } from "@/lib/whatsapp";
 import { motion } from "framer-motion";
 import LazyImage from "@/components/LazyImage";
-import { useLanguageTheme } from "@/lib/LanguageThemeContext";
 
 /* ── Inline SVG Icons ── */
 const LightningIcon = ({ size = 12, style = {}, className = "" }) => (
@@ -45,7 +44,6 @@ const getSideGlowColors = (id) => {
 
 const ProductCard = memo(function ProductCard({ product, index = 0, priority = false }) {
   const navigate = useNavigate();
-  const { t, isDark } = useLanguageTheme();
   const sideGlow = getSideGlowColors(product.id);
   const [isMobile, setIsMobile] = useState(() => typeof window !== "undefined" && window.innerWidth < 768);
 
@@ -79,7 +77,7 @@ const ProductCard = memo(function ProductCard({ product, index = 0, priority = f
         <div
           className="hidden md:block absolute -inset-2 rounded-[40px] pointer-events-none z-0 opacity-40 transition-opacity duration-500 group-hover:opacity-75"
           style={{
-            background: `radial-gradient(circle at 50% 50%, rgba(${sideGlow.primary}, ${isDark ? "0.22" : "0.15"}) 0%, rgba(${sideGlow.secondary}, 0.08) 50%, transparent 70%)`,
+            background: `radial-gradient(circle at 50% 50%, rgba(${sideGlow.primary}, 0.22) 0%, rgba(${sideGlow.secondary}, 0.08) 50%, transparent 70%)`,
             filter: "blur(25px)",
           }}
         />
@@ -89,13 +87,11 @@ const ProductCard = memo(function ProductCard({ product, index = 0, priority = f
           className="relative rounded-[32px] p-6 sm:p-7 flex flex-col cursor-pointer w-full overflow-hidden z-10 ps-glass-reflection shadow-xl border"
           onClick={() => navigate(`/product/${product.id}`)}
           style={{
-            background: isDark
-              ? "linear-gradient(180deg, rgba(15, 15, 20, 0.94) 0%, rgba(8, 8, 12, 0.98) 100%)"
-              : "linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(248, 250, 252, 0.98) 100%)",
+            background: "linear-gradient(180deg, rgba(15, 15, 20, 0.94) 0%, rgba(8, 8, 12, 0.98) 100%)",
             backdropFilter: isMobile ? "blur(12px)" : "blur(30px)",
             WebkitBackdropFilter: isMobile ? "blur(12px)" : "blur(30px)",
-            borderColor: isDark ? `rgba(${sideGlow.primary}, 0.2)` : `rgba(0, 0, 0, 0.08)`,
-            boxShadow: isDark ? "0 20px 50px rgba(0, 0, 0, 0.75)" : "0 10px 30px rgba(0, 0, 0, 0.06)",
+            borderColor: `rgba(${sideGlow.primary}, 0.2)`,
+            boxShadow: "0 20px 50px rgba(0, 0, 0, 0.75)",
             willChange: "transform",
             transform: "translateZ(0)",
           }}
@@ -103,9 +99,7 @@ const ProductCard = memo(function ProductCard({ product, index = 0, priority = f
             y: -6,
             scale: 1.015,
             borderColor: `rgba(${sideGlow.primary}, 0.4)`,
-            boxShadow: isDark 
-              ? `0 30px 65px rgba(0, 0, 0, 0.85), 0 0 30px rgba(${sideGlow.primary}, 0.15)`
-              : `0 20px 45px rgba(0, 0, 0, 0.1), 0 0 25px rgba(${sideGlow.primary}, 0.15)`,
+            boxShadow: `0 30px 65px rgba(0, 0, 0, 0.85), 0 0 30px rgba(${sideGlow.primary}, 0.15)`,
           }}
           whileTap={{ scale: 0.98 }}
           transition={{ type: "spring", stiffness: 300, damping: 25 }}
@@ -125,8 +119,8 @@ const ProductCard = memo(function ProductCard({ product, index = 0, priority = f
           <div
             className="absolute top-5 left-5 z-20 px-3 py-1.5 rounded-2xl flex items-center gap-1.5 shadow-md border"
             style={{
-              background: isDark ? "rgba(8, 8, 12, 0.85)" : "rgba(255, 255, 255, 0.9)",
-              borderColor: isDark ? "rgba(255, 255, 255, 0.15)" : "rgba(0, 0, 0, 0.1)",
+              background: "rgba(8, 8, 12, 0.85)",
+              borderColor: "rgba(255, 255, 255, 0.15)",
             }}
           >
             <div
@@ -139,8 +133,8 @@ const ProductCard = memo(function ProductCard({ product, index = 0, priority = f
               <LightningIcon size={10} style={{ color: product.color }} />
             </div>
             <div className="flex flex-col text-left leading-[1.1]">
-              <span className={`text-[8px] font-black uppercase tracking-widest ${isDark ? "text-white/70" : "text-slate-500"}`}>SAVE</span>
-              <span className={`text-xs font-black tracking-tight ${isDark ? "text-white" : "text-slate-900"}`}>{discountVal}</span>
+              <span className="text-[8px] font-black uppercase tracking-widest text-white/70">SAVE</span>
+              <span className="text-xs font-black tracking-tight text-white">{discountVal}</span>
             </div>
           </div>
 
@@ -170,9 +164,7 @@ const ProductCard = memo(function ProductCard({ product, index = 0, priority = f
           </div>
 
           {/* Product Title */}
-          <h3 className={`font-display font-bold text-lg sm:text-[20px] leading-snug tracking-tight mb-2 text-center min-h-[50px] flex items-center justify-center relative z-10 ${
-            isDark ? "text-white" : "text-slate-900"
-          }`}>
+          <h3 className="font-display font-bold text-lg sm:text-[20px] leading-snug tracking-tight mb-2 text-center min-h-[50px] flex items-center justify-center relative z-10 text-white">
             {product.name}
           </h3>
 
@@ -191,16 +183,14 @@ const ProductCard = memo(function ProductCard({ product, index = 0, priority = f
           </div>
 
           {/* Description */}
-          <p className={`text-[11px] sm:text-xs text-center leading-relaxed mb-5 font-body px-1 line-clamp-2 min-h-[36px] relative z-10 ${
-            isDark ? "text-white/75" : "text-slate-600"
-          }`}>
+          <p className="text-[11px] sm:text-xs text-center leading-relaxed mb-5 font-body px-1 line-clamp-2 min-h-[36px] relative z-10 text-white/75">
             Official {product.name} account with {product.duration} access.
           </p>
 
           {/* Pricing Block */}
           <div className="flex flex-col items-center gap-1 mb-5 relative z-10">
             {product.oldPrice && (
-              <span className={`text-xs line-through font-light tracking-wide ${isDark ? "text-white/60" : "text-slate-400"}`}>
+              <span className="text-xs line-through font-light tracking-wide text-white/60">
                 {product.oldPrice}
               </span>
             )}
@@ -218,16 +208,14 @@ const ProductCard = memo(function ProductCard({ product, index = 0, priority = f
           </div>
 
           {/* Features Row */}
-          <div className={`flex items-center justify-between gap-1.5 py-3 mb-5 text-[10px] font-semibold border-t relative z-10 ${
-            isDark ? "border-white/[0.08] text-white/85" : "border-slate-200 text-slate-700"
-          }`}>
+          <div className="flex items-center justify-between gap-1.5 py-3 mb-5 text-[10px] font-semibold border-t border-white/[0.08] text-white/85 relative z-10">
             <div className="flex items-center gap-1">
               <div className="flex items-center justify-center w-6 h-6 rounded-full bg-blue-500/15 text-blue-500 shrink-0">
                 <LightningIcon size={11} style={{ color: "#3B82F6" }} />
               </div>
               <div className="flex flex-col text-left leading-tight">
-                <span className={isDark ? "text-white/90" : "text-slate-800"}>{t('card_instant', 'Instant')}</span>
-                <span className={isDark ? "text-white/60 text-[8.5px]" : "text-slate-500 text-[8.5px]"}>Delivery</span>
+                <span className="text-white/90">Instant</span>
+                <span className="text-white/60 text-[8.5px]">Delivery</span>
               </div>
             </div>
 
@@ -236,8 +224,8 @@ const ProductCard = memo(function ProductCard({ product, index = 0, priority = f
                 <ShieldIcon size={11} style={{ color: "#8B5CF6" }} />
               </div>
               <div className="flex flex-col text-left leading-tight">
-                <span className={isDark ? "text-white/90" : "text-slate-800"}>{t('card_verified', 'Verified')}</span>
-                <span className={isDark ? "text-white/60 text-[8.5px]" : "text-slate-500 text-[8.5px]"}>Guarantee</span>
+                <span className="text-white/90">Verified</span>
+                <span className="text-white/60 text-[8.5px]">Guarantee</span>
               </div>
             </div>
 
@@ -246,8 +234,8 @@ const ProductCard = memo(function ProductCard({ product, index = 0, priority = f
                 <HeadsetIcon size={11} style={{ color: "#EC4899" }} />
               </div>
               <div className="flex flex-col text-left leading-tight">
-                <span className={isDark ? "text-white/90" : "text-slate-800"}>24/7</span>
-                <span className={isDark ? "text-white/60 text-[8.5px]" : "text-slate-500 text-[8.5px]"}>Support</span>
+                <span className="text-white/90">24/7</span>
+                <span className="text-white/60 text-[8.5px]">Support</span>
               </div>
             </div>
           </div>
@@ -259,7 +247,7 @@ const ProductCard = memo(function ProductCard({ product, index = 0, priority = f
                 e.stopPropagation();
                 openWhatsApp(product.name, product.duration, product.price);
               }}
-              className="keep-white relative flex items-center justify-center gap-2 w-full h-[50px] rounded-2xl text-[13px] font-bold text-white overflow-hidden active:scale-[0.97] transition-transform shadow-md"
+              className="relative flex items-center justify-center gap-2 w-full h-[50px] rounded-2xl text-[13px] font-bold text-white overflow-hidden active:scale-[0.97] transition-transform shadow-md"
               style={{
                 background: "linear-gradient(135deg, #25D366 0%, #128C7E 100%)",
                 boxShadow: "0 6px 20px rgba(37, 211, 102, 0.25)",
@@ -267,7 +255,7 @@ const ProductCard = memo(function ProductCard({ product, index = 0, priority = f
               whileHover={{ scale: 1.02 }}
             >
               <MessageCircle size={16} className="shrink-0 relative z-10" />
-              <span className="tracking-wide relative z-10">{t('card_buy_now', 'Order on WhatsApp')}</span>
+              <span className="tracking-wide relative z-10">Order on WhatsApp</span>
             </motion.button>
 
             {/* View Details Button */}
@@ -276,13 +264,9 @@ const ProductCard = memo(function ProductCard({ product, index = 0, priority = f
                 e.stopPropagation();
                 navigate(`/product/${product.id}`);
               }}
-              className={`flex items-center justify-center gap-1.5 w-full h-[42px] rounded-xl text-xs font-semibold border transition-all duration-300 active:scale-[0.97] ${
-                isDark
-                  ? "text-white/85 border-white/15 hover:border-white/30 hover:bg-white/10"
-                  : "text-slate-700 border-slate-300 hover:border-slate-400 hover:bg-slate-100"
-              }`}
+              className="flex items-center justify-center gap-1.5 w-full h-[42px] rounded-xl text-xs font-semibold border transition-all duration-300 active:scale-[0.97] text-white/85 border-white/15 hover:border-white/30 hover:bg-white/10"
             >
-              <span>{t('card_view_details', 'View Details')}</span>
+              <span>View Details</span>
               <span className="transition-transform group-hover:translate-x-1">→</span>
             </button>
           </div>

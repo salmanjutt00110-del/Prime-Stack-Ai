@@ -15,19 +15,13 @@ import FAQ from "@/components/FAQ";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 
-import { useLanguageTheme } from "@/lib/LanguageThemeContext";
-
 export default function Home() {
-  const { isDark } = useLanguageTheme();
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
-    <div className={`relative min-h-screen overflow-x-hidden transition-colors duration-500 ${
-      isDark ? "bg-[#050505] text-white" : "bg-slate-50 text-slate-900"
-    }`}>
+    <div className="relative min-h-screen bg-[#050505] text-white overflow-x-hidden">
       <AmbientGlow />
       <Navbar />
       <main>

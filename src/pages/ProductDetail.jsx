@@ -77,12 +77,9 @@ function List({ items, accent }) {
   );
 }
 
-import { useLanguageTheme } from "@/lib/LanguageThemeContext";
-
 export default function ProductDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { t, isDark } = useLanguageTheme();
   const product = ALL_PRODUCTS.find((p) => p.id === id);
 
   useEffect(() => {
