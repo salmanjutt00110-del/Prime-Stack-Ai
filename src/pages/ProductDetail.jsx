@@ -123,7 +123,7 @@ export default function ProductDetail() {
 
   if (!product) {
     return (
-      <div className={`min-h-screen flex flex-col items-center justify-center px-6 ${isDark ? "bg-[#050505] text-white" : "bg-slate-50 text-slate-900"}`}>
+      <div className="min-h-screen bg-[#050505] text-white flex flex-col items-center justify-center px-6">
         <Navbar />
         <main className="flex flex-col items-center justify-center pt-24 pb-12">
           <h1 className="font-display text-2xl font-bold mb-3">Product not found</h1>
@@ -144,12 +144,10 @@ export default function ProductDetail() {
   const rgb = hexToRgb(accent) || [5, 5, 5];
   
   // Create dynamic background mixing with product accent color
-  const bgBaseColor = isDark
-    ? `rgb(${Math.max(4, Math.round(rgb[0] * 0.045))}, ${Math.max(4, Math.round(rgb[1] * 0.045))}, ${Math.max(4, Math.round(rgb[2] * 0.045))})`
-    : "#f8fafc";
+  const bgBaseColor = `rgb(${Math.max(4, Math.round(rgb[0] * 0.045))}, ${Math.max(4, Math.round(rgb[1] * 0.045))}, ${Math.max(4, Math.round(rgb[2] * 0.045))})`;
 
   return (
-    <div className={`relative min-h-screen overflow-x-hidden flex flex-col justify-between ${isDark ? "text-white" : "text-slate-900"}`}>
+    <div className="relative min-h-screen text-white overflow-x-hidden flex flex-col justify-between">
       <Navbar />
 
       {/* Dynamic background container */}
@@ -185,11 +183,9 @@ export default function ProductDetail() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6 pt-4">
           <button
             onClick={() => navigate(-1)}
-            className={`flex items-center gap-2 text-sm font-semibold transition-colors ${
-              isDark ? "text-white/60 hover:text-white" : "text-slate-600 hover:text-slate-900"
-            }`}
+            className="flex items-center gap-2 text-sm font-semibold text-white/60 hover:text-white transition-colors min-h-[36px]"
           >
-            <ArrowLeft size={16} /> {t('detail_back', 'Back')}
+            <ArrowLeft size={16} /> Back
           </button>
         </div>
 

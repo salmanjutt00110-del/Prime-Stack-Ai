@@ -73,20 +73,16 @@ export default function Reviews() {
             >
               Testimonials
             </motion.span>
-            <h1 className={`mt-3 font-display font-bold text-[clamp(2.2rem,6vw,3.5rem)] tracking-tight ${
-              isDark ? "text-white" : "text-slate-900"
-            }`}>
-              <Animated3DText text={t('reviews_title_page', 'Verified Customer Testimonials & Proofs')} variant="heading" />
+            <h1 className="mt-3 font-display font-bold text-[clamp(2.2rem,6vw,3.5rem)] tracking-tight text-white">
+              <Animated3DText text="Verified Customer Testimonials & Proofs" variant="heading" />
             </h1>
             <motion.p
-              className={`mt-4 text-base max-w-xl mx-auto ${
-                isDark ? "text-white/70" : "text-slate-600"
-              }`}
+              className="mt-4 text-base max-w-xl mx-auto text-white/70"
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              {t('reviews_subtitle_page', 'Real feedback from real users across Pakistan.')}
+              Real feedback from real users across Pakistan.
             </motion.p>
 
             <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto">

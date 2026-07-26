@@ -130,11 +130,7 @@ export default memo(function DigitalServicesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className={`inline-flex items-center gap-2.5 px-4 py-2 rounded-full text-xs font-black border shadow-sm mb-4 ${
-              isDark 
-                ? "bg-gradient-to-r from-blue-500/15 via-purple-500/15 to-pink-500/15 border-blue-500/35 text-blue-300"
-                : "bg-blue-100 border-blue-300 text-blue-900"
-            }`}
+            className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full text-xs font-black border shadow-sm mb-4 bg-gradient-to-r from-blue-500/15 via-purple-500/15 to-pink-500/15 border-blue-500/35 text-blue-300"
           >
             <Sparkles size={15} className="text-blue-500 animate-spin" />
             <span className="tracking-wider uppercase">AMIRADS DIGITAL AGENCY SERVICES</span>
@@ -146,11 +142,9 @@ export default memo(function DigitalServicesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className={`font-display font-black text-3xl sm:text-5xl lg:text-6xl tracking-tight leading-tight ${
-              isDark ? "text-white" : "text-slate-900"
-            }`}
+            className="font-display font-black text-3xl sm:text-5xl lg:text-6xl tracking-tight leading-tight text-white"
           >
-            {t('services_heading', 'Professional Digital Agency Services')}
+            Professional Digital Agency Services
           </motion.h2>
 
           <motion.p
@@ -158,11 +152,9 @@ export default memo(function DigitalServicesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className={`mt-4 text-sm sm:text-base max-w-2xl mx-auto font-body leading-relaxed ${
-              isDark ? "text-white/80" : "text-slate-700"
-            }`}
+            className="mt-4 text-sm sm:text-base max-w-2xl mx-auto font-body leading-relaxed text-white/80"
           >
-            {t('services_subheading', 'Custom web development, high-converting Meta ads, TikTok organic growth, and professional video editing.')}
+            Custom web development, high-converting Meta ads, TikTok organic growth, and professional video editing.
           </motion.p>
 
           {/* ACTION BUTTON & PROMO DISCOUNT CALLOUT */}
@@ -187,11 +179,7 @@ export default memo(function DigitalServicesSection() {
               <ExternalLink size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
 
-            <div className={`px-5 py-3 rounded-2xl border text-xs sm:text-sm font-black uppercase tracking-wider flex items-center gap-2 shadow-sm ${
-              isDark 
-                ? "bg-gradient-to-r from-red-500/20 via-pink-500/20 to-purple-500/20 border-red-500/40 text-red-300"
-                : "bg-red-100 border-red-300 text-red-900"
-            }`}>
+            <div className="px-5 py-3 rounded-2xl border text-xs sm:text-sm font-black uppercase tracking-wider flex items-center gap-2 shadow-sm bg-gradient-to-r from-red-500/20 via-pink-500/20 to-purple-500/20 border-red-500/40 text-red-300">
               <Flame size={16} className="text-red-500 animate-bounce" />
               <span>🔥 50% OFF For First 2 Website Clients!</span>
               <span className="px-2 py-0.5 rounded-full bg-red-500 text-[10px] text-white font-bold">LIMITED SLOTS</span>
