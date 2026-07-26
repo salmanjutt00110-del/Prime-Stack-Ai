@@ -42,9 +42,17 @@ const getSideGlowColors = (id) => {
   return { primary: "139, 92, 246", secondary: "59, 130, 246" };
 };
 
-const ProductCard = memo(function ProductCard({ product, index = 0, priority = false }) {
+// Preload route chunk on hover for instant 0ms page navigation
+const preloadProductDetail = () => {
+  import('@/pages/ProductDetail');
+};
+
+/**
+ * @param {{ product: any, index?: number, priority?: boolean }} props
+ */
+function ProductCardComponent({ product, index = 0, priority = false }) {
   const navigate = useNavigate();
-  const sideGlow = getSideGlowColors(product.id);
+  const sideGlow = getSideGlowColors(product?.id || "");
   const [isMobile, setIsMobile] = useState(() => typeof window !== "undefined" && window.innerWidth < 768);
 
   useEffect(() => {
@@ -66,11 +74,11 @@ const ProductCard = memo(function ProductCard({ product, index = 0, priority = f
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-30px" }}
-      transition={{ duration: 0.5, delay: (index % 3) * 0.05, ease: "easeOut" }}
+      initial={{ opacity: 0, scale: 0.98 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.25, ease: "easeOut" }}
       className="w-full flex"
+      onMouseEnter={preloadProductDetail}
     >
       <div className="relative w-full group">
         {/* Combined Ambient Glow */}
@@ -139,10 +147,10 @@ const ProductCard = memo(function ProductCard({ product, index = 0, priority = f
               </div>
             </div>
 
-            {/* Rating & Stock Badge */}
-            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/10 border border-white/15 backdrop-blur-md text-[10px] font-bold text-emerald-300">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-              <span>In Stock • ⭐ 4.9</span>
+            {/* Stock & Rating Badge */}
+            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 backdrop-blur-md text-[10px] font-bold text-emerald-300">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+              <span>Stock: {product.stock ? `${product.stock} Units` : "Available"} • ⭐ 4.9</span>
             </div>
           </div>
 
@@ -176,8 +184,8 @@ const ProductCard = memo(function ProductCard({ product, index = 0, priority = f
             {product.name}
           </h3>
 
-          {/* Duration Badge */}
-          <div className="flex justify-center mb-3 relative z-10">
+          {/* Duration & Stock Badge */}
+          <div className="flex justify-center items-center gap-2 mb-3 relative z-10">
             <span
               className="inline-flex items-center px-3.5 py-1 rounded-full text-[10px] font-bold border backdrop-blur-sm"
               style={{
@@ -190,9 +198,9 @@ const ProductCard = memo(function ProductCard({ product, index = 0, priority = f
             </span>
           </div>
 
-          {/* Description */}
+          {/* Description / Tagline */}
           <p className="text-[11px] sm:text-xs text-center leading-relaxed mb-4 font-body px-1 line-clamp-2 min-h-[34px] relative z-10 text-white/75">
-            Official {product.name} account with {product.duration} access.
+            {product.tagline || product.description || `Official ${product.name} account with ${product.duration} access.`}
           </p>
 
           {/* Pricing Block */}
@@ -282,6 +290,7 @@ const ProductCard = memo(function ProductCard({ product, index = 0, priority = f
       </div>
     </motion.div>
   );
-});
+}
 
+const ProductCard = memo(ProductCardComponent);
 export default ProductCard;

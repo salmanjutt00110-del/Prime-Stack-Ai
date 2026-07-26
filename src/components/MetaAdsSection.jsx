@@ -1,6 +1,6 @@
 import { memo } from "react";
 import { motion } from "framer-motion";
-import { ExternalLink, MessageCircle, CheckCircle2, Globe, Rocket, TrendingUp, Target, BarChart3, Zap } from "lucide-react";
+import { ExternalLink, MessageCircle, CheckCircle2, Globe, Rocket } from "lucide-react";
 
 const META_FEATURES = [
   "High-ROAS Facebook & Instagram Ad Campaigns",

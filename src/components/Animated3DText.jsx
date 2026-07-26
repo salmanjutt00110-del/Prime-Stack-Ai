@@ -3,10 +3,8 @@ import { motion } from "framer-motion";
 
 /**
  * Animated3DText
- * A premium typography component that splits text into words and letters,
- * applying a staggered 3D entrance rotation (along the X-axis) and
- * interactive 3D parallax tilt effects on cursor hover.
- * Synchronous mobile detection prevents forced reflow and unneeded DOM node creation.
+ * Premium typography component that splits text into words/letters on desktop
+ * and renders clean, balanced text on mobile to ensure zero overflow clipping.
  */
 export default function Animated3DText({
   text = "",
@@ -24,7 +22,7 @@ export default function Animated3DText({
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    window.addEventListener("resize", checkMobile);
+    window.addEventListener("resize", checkMobile, { passive: true });
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
@@ -46,8 +44,8 @@ export default function Animated3DText({
     hidden: {
       opacity: 0,
       rotateX: 85,
-      y: 15,
-      z: -30,
+      y: 12,
+      z: -20,
     },
     visible: {
       opacity: 1,
@@ -56,14 +54,14 @@ export default function Animated3DText({
       z: 0,
       transition: {
         type: "spring",
-        damping: 12,
-        stiffness: 100,
+        damping: 14,
+        stiffness: 110,
       },
     },
   };
 
   const mobileVariants = {
-    hidden: { opacity: 0, y: 15 },
+    hidden: { opacity: 0, y: 12 },
     visible: (customDelay = 0) => ({
       opacity: 1,
       y: 0,
@@ -88,7 +86,7 @@ export default function Animated3DText({
         whileInView="visible"
         viewport={{ once: true, margin: "-20px" }}
         custom={delay}
-        className={`inline select-none text-wrap break-words ${baseShadow} ${className}`}
+        className={`inline-block w-full max-w-full text-balance break-normal select-none ${baseShadow} ${className}`}
       >
         {safeText}
       </motion.span>
@@ -103,7 +101,7 @@ export default function Animated3DText({
       whileInView="visible"
       viewport={{ once: true, margin: "-40px" }}
       custom={delay}
-      className={`inline-block select-none ${baseShadow} ${className}`}
+      className={`inline-block max-w-full select-none ${baseShadow} ${className}`}
     >
       {words.map((word, wordIdx) => (
         <span

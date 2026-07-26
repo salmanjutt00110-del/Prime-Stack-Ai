@@ -196,14 +196,22 @@ export default function ProductDetail() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
-            {product.tag && (
-              <span
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold mb-4 border"
-                style={{ background: `${accent}15`, borderColor: `${accent}30`, color: accent }}
-              >
-                {product.tag}
-              </span>
-            )}
+            <div className="flex items-center gap-2 flex-wrap mb-4">
+              {product.tag && (
+                <span
+                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold border"
+                  style={{ background: `${accent}15`, borderColor: `${accent}30`, color: accent }}
+                >
+                  {product.tag}
+                </span>
+              )}
+              {product.stock && (
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-emerald-500/15 border border-emerald-500/35 text-emerald-300">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+                  <span>Stock Status: {product.stock} Units Available</span>
+                </span>
+              )}
+            </div>
             <h1 className="font-display font-bold text-white text-[clamp(2.1rem,5vw,3.2rem)] leading-[1.05] tracking-tight">
               {product.name}
             </h1>

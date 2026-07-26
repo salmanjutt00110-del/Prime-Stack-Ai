@@ -38,25 +38,25 @@ export const LOGO = {
   primestack: primeToolsLogo,
 };
 
-// Hero showcase products (one per brand) — 8 total
+// Hero showcase products (one per brand) — 14 total
 export const HERO_PRODUCTS = [
-  { id: "chatgpt-plus-1m", name: "ChatGPT Plus", tag: "⚡ Instant Delivery", duration: "1 Month", price: "Rs. 1,799", oldPrice: "Rs. 2,099", description: "ChatGPT Plus subscription via the fast & stable iCloud method. Full premium access with instant delivery and 2FA code setup included.", logo: BRAND.chatgpt, color: "#10A37F", color2: "#0D8A6D", particle: "#10A37F" },
-  { id: "gemini-pro-18", name: "Google Gemini Pro", tag: "🚀 18 Months", duration: "18 Months", price: "Rs. 949", oldPrice: "Rs. 5,199", description: "Premium Gemini AI access on your personal Google account — 5TB storage, advanced AI image generation, Veo video generation, monthly credits & family sharing.", logo: BRAND.gemini, color: "#4285F4", color2: "#8B5CF6", particle: "#60A5FA" },
-  { id: "veo-3-video", name: "Google Veo 3", tag: "🎬 AI Video", duration: "30 Days Stable", price: "Rs. 3,799", oldPrice: "Rs. 4,449", description: "Unlimited AI video generation with 45,000+ credits. Only your Gmail address required. 20-day warranty on technical issues with full activation guide.", logo: BRAND.veo, color: "#4285F4", color2: "#EA4335", particle: "#60A5FA" },
-  { id: "capcut-pro-1m", name: "CapCut Pro", tag: "✂️ Pro Editing", duration: "1 Month", price: "Rs. 1,139", oldPrice: "Rs. 1,329", description: "CapCut Pro premium access with all pro editing features, premium effects, filters, templates, AI editing tools — export without watermark.", logo: BRAND.capcut, color: "#FE2C55", color2: "#25F4EE", particle: "#FE2C55" },
-  { id: "canva-pro-edu", name: "Canva Pro", tag: "🔥 Best Value", duration: "3 Years", price: "Rs. 279", oldPrice: "Rs. 329", description: "Canva Pro Edu invite for individual users — 3 years of access. Canva AI, magic design, magic write/edit, background remover and all AI-powered design tools.", logo: BRAND.canva, color: "#7D2AE8", color2: "#00C4CC", particle: "#A78BFA" },
-  { id: "supergrok-12m-premium", name: "SuperGrok", tag: "From Rs. 2,799", duration: "3 to 12 Months", price: "from Rs. 2,659", oldPrice: "", description: "SuperGrok premium access powered by X. Advanced AI models, fast responses, and premium AI features. Multiple plans from 3 to 12 months with optional warranty.", logo: BRAND.grok, color: "#1DA1F2", color2: "#8B5CF6", particle: "#60A5FA" },
-  { id: "surfshark-vpn-1y", name: "Surfshark VPN", tag: "🛡️ 1 Year", duration: "1 Year", price: "Rs. 3,320", oldPrice: "Rs. 3,899", description: "1-year premium VPN subscription with global server access, high-speed browsing & streaming, encrypted privacy, and easy redeem-code activation.", logo: BRAND.surfshark, color: "#1C9FE8", color2: "#22D3EE", particle: "#22D3EE" },
-  { id: "tiktok-growth-challenge", name: "TikTok Creator Growth", tag: "🇺🇸 USA Account", duration: "One-Time Activation", price: "Rs. 8,549", oldPrice: "Rs. 9,989", description: "Creator Growth Challenge activation on your eligible USA TikTok account. Policy-compliant, fast processing, with activation warranty included.", logo: BRAND.tiktok, color: "#FE2C55", color2: "#25F4EE", particle: "#FE2C55" },
-  { id: "youtube-premium-12m", name: "YouTube Premium", tag: "📺 Fixed Family Slot", duration: "12 Months", price: "Rs. 8,250", oldPrice: "Rs. 9,999", description: "12 Months of stable YouTube Premium and YouTube Music access on your personal Google account via a fixed family slot.", logo: BRAND.youtube, color: "#FF0000", color2: "#cc0000", particle: "#FF0000" },
-  { id: "chatgpt-go-3m", name: "ChatGPT Go", tag: "🎫 Coupon Code", duration: "3 Months", price: "Rs. 850", oldPrice: "Rs. 1,199", description: "ChatGPT Go subscription for 3 months. Fast delivery via coupon code. Stable service with easy activation.", logo: BRAND.chatgptGo, color: "#10A37F", color2: "#0D8A6D", particle: "#10A37F" },
-  { id: "capcut-pro-admin-7s", name: "CapCut Pro Admin Team", tag: "👑 Admin Team · 7 Seats", duration: "1 Month", price: "Rs. 4,749", oldPrice: "Rs. 5,499", description: "1 Month of CapCut Pro admin team account with 7 seats. Full premium editing and AI tools included.", logo: BRAND.capcut, color: "#FE2C55", color2: "#25F4EE", particle: "#FE2C55" },
-  { id: "surfshark-vpn-1m", name: "Surfshark VPN", tag: "🛡️ Single Device", duration: "1 Month", price: "Rs. 379", oldPrice: "Rs. 499", description: "1 Month of Surfshark VPN premium access. Fast & secure browsing with global servers on a single device.", logo: BRAND.surfshark, color: "#1C9FE8", color2: "#22D3EE", particle: "#22D3EE" },
-  { id: "nordvpn-3m", name: "NordVPN", tag: "🛡️ Redeem Link", duration: "3 Months", price: "Rs. 949", oldPrice: "Rs. 1,299", description: "3 Months NordVPN premium subscription via easy activation redeem link. High-speed global servers, secure and private.", logo: BRAND.nord, color: "#0060FF", color2: "#8B5CF6", particle: "#60A5FA" },
-  { id: "lovable-ai-100c", name: "Lovable AI Pro", tag: "💎 100 Credits", duration: "1 Month", price: "Rs. 1,139", oldPrice: "Rs. 1,499", description: "Lovable AI Pro with 100 credits for 1 month. Fast and reliable premium AI generation access with 1 day warranty.", logo: BRAND.lovable, color: "#EE0F79", color2: "#8B5CF6", particle: "#A78BFA" },
+  { id: "chatgpt-plus-1m", name: "ChatGPT Plus", tag: "⚡ Instant Delivery", duration: "1 Month", price: "Rs. 1,799", oldPrice: "Rs. 2,099", description: "ChatGPT Plus subscription via fast & stable iCloud method. Full premium access with instant delivery & 2FA setup.", tagline: "Fast & stable iCloud method with 2FA code setup included.", stock: "5", logo: BRAND.chatgpt, color: "#10A37F", color2: "#0D8A6D", particle: "#10A37F" },
+  { id: "gemini-pro-18", name: "Google Gemini Pro", tag: "🚀 18 Months", duration: "18 Months", price: "Rs. 949", oldPrice: "Rs. 5,199", description: "Premium Gemini AI access on your personal Google account — 5TB storage, advanced AI image generation, Veo video generation.", tagline: "5TB cloud storage, Veo video generation & monthly AI credits on your Gmail.", stock: "75", logo: BRAND.gemini, color: "#4285F4", color2: "#8B5CF6", particle: "#60A5FA" },
+  { id: "veo-3-video", name: "Google Veo 3", tag: "🎬 AI Video", duration: "30 Days Stable", price: "Rs. 3,799", oldPrice: "Rs. 4,449", description: "Unlimited AI video generation with 45,000+ credits. Only your Gmail address required with 20-day warranty.", tagline: "45,000+ AI Credits for 30-day stable high-quality video generation.", stock: "5", logo: BRAND.veo, color: "#4285F4", color2: "#EA4335", particle: "#60A5FA" },
+  { id: "capcut-pro-1m", name: "CapCut Pro", tag: "✂️ Pro Editing", duration: "1 Month", price: "Rs. 1,139", oldPrice: "Rs. 1,329", description: "CapCut Pro premium access with all pro editing features, premium effects, filters, templates, AI editing tools.", tagline: "All pro editing features, AI tools & export without watermark.", stock: "7", logo: BRAND.capcut, color: "#FE2C55", color2: "#25F4EE", particle: "#FE2C55" },
+  { id: "canva-pro-edu", name: "Canva Pro", tag: "🔥 Best Value", duration: "3 Years", price: "Rs. 279", oldPrice: "Rs. 329", description: "Canva Pro Edu invite for individual users — 3 years of access to Canva AI, magic design, background remover.", tagline: "3 Years access to all Canva AI tools & background remover.", stock: "99+", logo: BRAND.canva, color: "#7D2AE8", color2: "#00C4CC", particle: "#A78BFA" },
+  { id: "supergrok-12m-premium", name: "SuperGrok 12M Premium", tag: "👑 1× Replacement", duration: "12 Months", price: "Rs. 8,259", oldPrice: "Rs. 9,649", description: "SuperGrok 12-month premium subscription powered by X. Advanced AI models with 1× replacement warranty.", tagline: "Maximum stability with 1× replacement warranty & 2FA email security.", stock: "2", logo: BRAND.grok, color: "#1DA1F2", color2: "#8B5CF6", particle: "#60A5FA" },
+  { id: "surfshark-vpn-1y", name: "Surfshark VPN", tag: "🛡️ 1 Year", duration: "1 Year", price: "Rs. 3,320", oldPrice: "Rs. 3,899", description: "1-year premium VPN subscription with global server access, high-speed browsing & streaming, encrypted privacy.", tagline: "1-Year encrypted global privacy & high-speed streaming VPN.", stock: "5", logo: BRAND.surfshark, color: "#1C9FE8", color2: "#22D3EE", particle: "#22D3EE" },
+  { id: "tiktok-growth-challenge", name: "TikTok Creator Growth", tag: "🇺🇸 USA Account", duration: "One-Time", price: "Rs. 8,549", oldPrice: "Rs. 9,989", description: "Creator Growth Challenge activation on your eligible USA TikTok account with activation warranty.", tagline: "Fast policy-compliant activation on your USA TikTok creator account.", stock: "5", logo: BRAND.tiktok, color: "#FE2C55", color2: "#25F4EE", particle: "#FE2C55" },
+  { id: "youtube-premium-12m", name: "YouTube Premium", tag: "📺 Fixed Family Slot", duration: "12 Months", price: "Rs. 8,250", oldPrice: "Rs. 9,999", description: "12 Months of stable YouTube Premium and YouTube Music access on your personal Google account.", tagline: "Ad-free videos & YouTube Music for 12 months on your Google account.", stock: "4", logo: BRAND.youtube, color: "#FF0000", color2: "#cc0000", particle: "#FF0000" },
+  { id: "chatgpt-go-3m", name: "ChatGPT Go", tag: "🎫 Coupon Code", duration: "3 Months", price: "Rs. 850", oldPrice: "Rs. 1,199", description: "ChatGPT Go subscription for 3 months. Fast delivery via coupon code. Stable service.", tagline: "3 Months ChatGPT Go coupon code fast delivery.", stock: "85", logo: BRAND.chatgptGo, color: "#10A37F", color2: "#0D8A6D", particle: "#10A37F" },
+  { id: "capcut-pro-admin-7s", name: "CapCut Pro Admin Team", tag: "👑 Admin Team · 7 Seats", duration: "1 Month", price: "Rs. 4,749", oldPrice: "Rs. 5,499", description: "1 Month of CapCut Pro admin team account with 7 seats. Full premium editing included.", tagline: "7 Seats admin team account for 1 month full premium editing.", stock: "2", logo: BRAND.capcut, color: "#FE2C55", color2: "#25F4EE", particle: "#FE2C55" },
+  { id: "surfshark-vpn-1m", name: "Surfshark VPN 1M", tag: "🛡️ Single Device", duration: "1 Month", price: "Rs. 379", oldPrice: "Rs. 499", description: "1 Month of Surfshark VPN premium access for single device.", tagline: "1 Month single device high-speed VPN access.", stock: "99+", logo: BRAND.surfshark, color: "#1C9FE8", color2: "#22D3EE", particle: "#22D3EE" },
+  { id: "nordvpn-3m", name: "NordVPN 3 Months", tag: "🛡️ Redeem Link", duration: "3 Months", price: "Rs. 949", oldPrice: "Rs. 1,299", description: "3 Months NordVPN premium subscription via easy activation redeem link.", tagline: "3 Months fast redeem link activation without card required.", stock: "90", logo: BRAND.nord, color: "#0060FF", color2: "#8B5CF6", particle: "#60A5FA" },
+  { id: "lovable-ai-100c", name: "Lovable AI Pro", tag: "💎 100 Credits", duration: "1 Month", price: "Rs. 1,139", oldPrice: "Rs. 1,499", description: "Lovable AI Pro with 100 credits for 1 month. Fast premium AI generation.", tagline: "100 AI credits for 1 month smooth generation access.", stock: "9", logo: BRAND.lovable, color: "#EE0F79", color2: "#8B5CF6", particle: "#A78BFA" },
 ];
 
-// Full catalog — 12 products
+// Full catalog — 20 products
 export const ALL_PRODUCTS = [
   {
     id: "gemini-pro-18",
@@ -64,9 +64,11 @@ export const ALL_PRODUCTS = [
     duration: "18 Months",
     price: "Rs. 949",
     oldPrice: "Rs. 5,199",
+    stock: "75",
     color: "#4285F4",
     logo: BRAND.gemini,
-    tag: "",
+    tag: "🚀 18 Months",
+    tagline: "5TB storage, advanced AI image & Veo video generation on your Gmail.",
     description: "Get premium AI access on your personal Google account — 18 months of full Gemini Pro benefits.",
     features: ["5TB Cloud Storage", "Premium Gemini AI Access", "Advanced AI Image Generation", "Veo / AI Video Generation", "Monthly AI Credits", "Family Sharing Benefits", "Easy Redeem Link Activation"],
     whatsIncluded: ["5TB Cloud Storage", "Premium Gemini AI Access", "Advanced AI Image Generation", "Veo / AI Video Generation", "Monthly AI Credits", "Family Sharing Benefits", "Easy Redeem Link Activation"],
@@ -81,9 +83,11 @@ export const ALL_PRODUCTS = [
     duration: "30 Days Stable",
     price: "Rs. 3,799",
     oldPrice: "Rs. 4,449",
+    stock: "5",
     color: "#4285F4",
     logo: BRAND.veo,
     tag: "🎬 Unlimited AI Video",
+    tagline: "45,000+ AI Credits for 30-day stable high-quality video generation.",
     description: "Unlimited AI video generation with 45,000+ credits — 30 days stable. Only your Gmail address required.",
     features: ["Unlimited AI Video Generation", "45,000+ AI Credits (30 Days Stable)", "20 Days Warranty (Technical Issues Only)", "Complete Video Activation Guide", "Full Customer Support"],
     whatsIncluded: ["Unlimited AI Video Generation", "45,000+ AI Credits (30 Days Stable)", "20 Days Warranty (Technical Issues Only)", "Complete Video Activation Guide", "Full Customer Support"],
@@ -98,9 +102,11 @@ export const ALL_PRODUCTS = [
     duration: "1 Month",
     price: "Rs. 1,139",
     oldPrice: "Rs. 1,329",
+    stock: "7",
     color: "#FE2C55",
     logo: BRAND.capcut,
-    tag: "",
+    tag: "✂️ Pro Editing",
+    tagline: "All pro editing features, AI tools & export without watermark.",
     description: "CapCut Pro premium access with all pro editing features. Export without watermark.",
     features: ["CapCut Pro Premium Access", "Stable Account", "All Pro Editing Features", "Premium Effects & Filters", "Premium Templates", "AI Editing Tools", "Export Without Watermark"],
     whatsIncluded: ["CapCut Pro Premium Access", "Stable Account", "All Pro Editing Features", "Premium Effects & Filters", "Premium Templates", "AI Editing Tools", "Export Without Watermark"],
@@ -115,9 +121,11 @@ export const ALL_PRODUCTS = [
     duration: "3 Months",
     price: "Rs. 2,659",
     oldPrice: "Rs. 3,099",
+    stock: "4",
     color: "#1DA1F2",
     logo: BRAND.grok,
-    tag: "No Warranty",
+    tag: "⚡ Basic Plan",
+    tagline: "Advanced AI models & fast responses powered by X.",
     description: "SuperGrok premium access for 3 months — advanced AI models and fast responses, powered by X.",
     features: ["SuperGrok Premium Access", "Advanced AI Models", "Fast Responses", "Premium AI Features", "Stable Account"],
     whatsIncluded: ["SuperGrok Premium Access", "Advanced AI Models", "Fast Responses", "Premium AI Features", "Stable Account", "Email", "Email Password", "Grok Password"],
@@ -129,12 +137,14 @@ export const ALL_PRODUCTS = [
   {
     id: "supergrok-3m-warranty",
     name: "SuperGrok — 3 Months + Warranty",
-    duration: "3 Months + 1 Month Warranty",
+    duration: "3 Months + 1M Warranty",
     price: "Rs. 4,749",
     oldPrice: "Rs. 5,549",
+    stock: "5",
     color: "#1DA1F2",
     logo: BRAND.grok,
     tag: "⭐ Recommended",
+    tagline: "3 Months subscription with 1 month warranty and 2FA email security.",
     description: "SuperGrok 3-month subscription with 1 month warranty and 2FA email security included.",
     features: ["SuperGrok Premium Access", "3 Months Subscription", "Advanced AI Models", "Fast Responses", "Premium AI Features", "Stable Account", "1 Month Warranty", "2FA Email Security Included"],
     whatsIncluded: ["SuperGrok Premium Access", "3 Months Subscription", "Advanced AI Models", "Fast Responses", "Premium AI Features", "Stable Account", "Email", "Password", "2FA for Email"],
@@ -149,9 +159,11 @@ export const ALL_PRODUCTS = [
     duration: "12 Months",
     price: "Rs. 3,989",
     oldPrice: "Rs. 4,649",
+    stock: "3",
     color: "#1DA1F2",
     logo: BRAND.grok,
-    tag: "No Warranty",
+    tag: "⚡ 12M Value",
+    tagline: "12-month subscription powered by your X account.",
     description: "SuperGrok 12-month subscription powered by your X (Twitter) account — maximum value, no warranty.",
     features: ["SuperGrok Premium Access", "12 Months Subscription", "Powered by X (Twitter) Account", "Advanced AI Models", "Fast Responses", "Premium AI Features", "Stable Account"],
     whatsIncluded: ["SuperGrok Premium Access", "12 Months Subscription", "Powered by X (Twitter) Account", "Advanced AI Models", "Fast Responses", "Premium AI Features", "Stable Account", "Email", "Password"],
@@ -166,9 +178,11 @@ export const ALL_PRODUCTS = [
     duration: "12 Months",
     price: "Rs. 8,259",
     oldPrice: "Rs. 9,649",
+    stock: "2",
     color: "#1DA1F2",
     logo: BRAND.grok,
-    tag: "👑 Premium · 1× Replacement",
+    tag: "👑 1× Replacement",
+    tagline: "Maximum stability with 1× replacement warranty & 2FA email security.",
     description: "SuperGrok 12-month premium subscription with maximum stability and 1× replacement warranty.",
     features: ["SuperGrok Premium Access", "12 Months Subscription", "Powered by X (Twitter) Account", "Advanced AI Models", "Fast Responses", "Premium AI Features", "Maximum Stability", "1× Replacement Warranty", "2FA Email Security Included"],
     whatsIncluded: ["SuperGrok Premium Access", "12 Months Subscription", "Powered by X (Twitter) Account", "Advanced AI Models", "Fast Responses", "Premium AI Features", "Maximum Stability", "Email", "Password", "2FA for Email"],
@@ -183,9 +197,11 @@ export const ALL_PRODUCTS = [
     duration: "3 Years",
     price: "Rs. 279",
     oldPrice: "Rs. 329",
+    stock: "99+",
     color: "#7D2AE8",
     logo: BRAND.canva,
     tag: "🔥 Best Value",
+    tagline: "3 Years access to all Canva AI tools & background remover.",
     description: "Canva Pro Edu invite for individual users — 3 years of access to all AI-powered design tools.",
     features: ["Canva AI", "Generate AI Images", "Magic Design", "Magic Write", "Magic Edit", "Magic Layers", "Magic Eraser + Magic Expand", "Background Remover", "AI-Powered Design Tools"],
     whatsIncluded: ["Canva AI", "Generate AI Images", "Magic Design", "Magic Write", "Magic Edit", "Magic Layers", "Magic Eraser", "Magic Expand", "Background Remover", "AI-Powered Design Tools"],
@@ -200,9 +216,11 @@ export const ALL_PRODUCTS = [
     duration: "Full Admin Access",
     price: "Rs. 5,699",
     oldPrice: "Rs. 6,649",
+    stock: "7",
     color: "#7D2AE8",
     logo: BRAND.canva,
     tag: "👑 Admin · 499 Members",
+    tagline: "Add up to 499 members with full admin control & premium AI tools.",
     description: "Full Canva Pro admin panel access — add up to 499 members with all premium AI design features.",
     features: ["Add up to 499 Members", "Full Admin Control", "All Canva Pro Features", "AI Image Generation", "Background Remover", "Magic Design", "Magic Write", "Magic Edit", "Magic Expand", "Magic Eraser"],
     whatsIncluded: ["Admin Panel Access", "Add up to 499 Members", "Full Admin Control", "All Canva Pro Premium Features", "AI Image Generation", "Background Remover", "All Magic Tools"],
@@ -217,9 +235,11 @@ export const ALL_PRODUCTS = [
     duration: "1 Month",
     price: "Rs. 1,799",
     oldPrice: "Rs. 2,099",
+    stock: "5",
     color: "#10A37F",
     logo: BRAND.chatgpt,
     tag: "⚡ Instant Delivery",
+    tagline: "Fast & stable iCloud method with 2FA code setup included.",
     description: "ChatGPT Plus subscription via the fast & stable iCloud method — full premium access with instant delivery and 2FA code setup.",
     features: ["ChatGPT Plus Subscription", "Fast & Stable (iCloud Method)", "Full Premium Access", "Instant Delivery", "2FA Code Setup Included"],
     whatsIncluded: ["ChatGPT Plus Subscription", "Fast & Stable (iCloud Method)", "Full Premium Access", "Instant Delivery", "Email", "Password", "2FA Code Setup"],
@@ -234,9 +254,11 @@ export const ALL_PRODUCTS = [
     duration: "1 Year",
     price: "Rs. 3,320",
     oldPrice: "Rs. 3,899",
+    stock: "5",
     color: "#1C9FE8",
     logo: BRAND.surfshark,
     tag: "🛡️ 1 Year",
+    tagline: "1-Year encrypted global privacy & high-speed streaming VPN.",
     description: "1-year premium VPN subscription with global server access, high-speed browsing & streaming, encrypted privacy.",
     features: ["1 Year Premium Subscription", "Fast & Secure VPN", "Global Server Access", "High-Speed Browsing & Streaming", "Privacy & Encrypted Connection", "Easy Activation via Redeem Code", "Single Device Login"],
     whatsIncluded: ["1 Year Premium Subscription", "Fast & Secure VPN", "Global Server Access", "High-Speed Browsing & Streaming", "Privacy & Encrypted Connection", "Easy Activation via Redeem Code", "Single Device Login"],
@@ -248,12 +270,14 @@ export const ALL_PRODUCTS = [
   {
     id: "tiktok-growth-challenge",
     name: "TikTok Creator Growth Challenge",
-    duration: "One-Time Activation",
+    duration: "One-Time",
     price: "Rs. 8,549",
     oldPrice: "Rs. 9,989",
+    stock: "5",
     color: "#FE2C55",
     logo: BRAND.tiktok,
     tag: "🇺🇸 USA Account Required",
+    tagline: "Fast policy-compliant activation on your USA TikTok creator account.",
     description: "Creator Growth Challenge activation on your eligible USA TikTok account — policy-compliant, fast processing.",
     features: ["Creator Growth Challenge Activation", "Policy-Compliant Activation", "Fast Processing", "Activation on Your Eligible Account", "Activation Warranty Included"],
     whatsIncluded: ["Creator Growth Challenge Activation", "Policy-Compliant Activation", "Fast Processing", "Activation on Your Eligible Account", "Activation Warranty Included"],
@@ -264,170 +288,78 @@ export const ALL_PRODUCTS = [
   },
   {
     id: "youtube-premium-12m",
-    name: "YouTube Premium – 12 Months (Fixed Family Slot)",
+    name: "YouTube Premium – 12 Months",
     duration: "12 Months",
     price: "Rs. 8,250",
     oldPrice: "Rs. 9,999",
+    stock: "4",
     color: "#FF0000",
     logo: BRAND.youtube,
     tag: "📺 Fixed Family Slot",
+    tagline: "Ad-free videos & YouTube Music for 12 months on your Google account.",
     description: "12 Months of stable YouTube Premium and YouTube Music access on your personal Google account via a fixed family slot.",
-    features: [
-      "12 Months YouTube Premium",
-      "Ad-Free Videos",
-      "Background Play",
-      "Offline Downloads",
-      "YouTube Music Premium",
-      "Stable Family Slot"
-    ],
-    whatsIncluded: [
-      "12 Months YouTube Premium",
-      "Ad-Free Videos",
-      "Background Play",
-      "Offline Downloads",
-      "YouTube Music Premium",
-      "Stable Family Slot"
-    ],
-    requirements: [
-      "Only your Gmail address is required.",
-      "If you receive a 'Not in the same country' error: 1. Visit: https://pay.google.com, 2. Go to Settings, 3. Delete your Payments Profile, 4. Join the family again."
-    ],
-    termsOfUse: [
-      "Only your Gmail address is required.",
-      "If you receive a 'Not in the same country' error: 1. Visit: https://pay.google.com, 2. Go to Settings, 3. Delete your Payments Profile, 4. Join the family again."
-    ],
-    warrantyPolicy: [
-      "No warranty is provided.",
-      "Stable subscription under normal usage.",
-      "Activation support will be provided, In Sha Allah.",
-      "Any issues caused by Google policy changes, misuse, leaving the family group, or user-side modifications are not covered."
-    ],
-    warrantyNote: "Stable subscription · Activation support included",
+    features: ["12 Months YouTube Premium", "Ad-Free Videos", "Background Play", "Offline Downloads", "YouTube Music Premium", "Stable Family Slot"],
+    whatsIncluded: ["12 Months YouTube Premium", "Ad-Free Videos", "Background Play", "Offline Downloads", "YouTube Music Premium", "Stable Family Slot"],
+    requirements: ["Only your Gmail address is required."],
+    termsOfUse: ["Only your Gmail address is required."],
+    warrantyPolicy: ["No warranty is provided.", "Stable subscription under normal usage.", "Activation support will be provided."],
+    warrantyNote: "Stable family slot · Activation support included",
   },
   {
     id: "youtube-premium-3m",
-    name: "YouTube Premium – 3 Months (Redemption Link)",
+    name: "YouTube Premium – 3 Months",
     duration: "3 Months",
     price: "Rs. 1,230",
     oldPrice: "Rs. 1,599",
+    stock: "6",
     color: "#FF0000",
     logo: BRAND.youtube,
     tag: "🔗 Redemption Link",
+    tagline: "3 Months YouTube Premium via redemption link for fresh Gmail.",
     description: "3 Months of YouTube Premium via a redemption link. Easy activation for fresh Gmail accounts with a USA VPN.",
-    features: [
-      "3 Months YouTube Premium",
-      "Ad-Free Videos",
-      "Background Play",
-      "Offline Downloads",
-      "YouTube Music Premium",
-      "Easy Activation via Redemption Link"
-    ],
-    whatsIncluded: [
-      "3 Months YouTube Premium",
-      "Ad-Free Videos",
-      "Background Play",
-      "Offline Downloads",
-      "YouTube Music Premium",
-      "Easy Activation via Redemption Link"
-    ],
-    requirements: [
-      "Fresh Gmail account.",
-      "USA VPN.",
-      "Payment profile / credit card may be required by Google during redemption.",
-      "Redeem using a mobile device."
-    ],
-    termsOfUse: [
-      "Fresh Gmail account.",
-      "USA VPN.",
-      "Payment profile / credit card may be required by Google during redemption.",
-      "Redeem using a mobile device."
-    ],
-    warrantyPolicy: [
-      "No warranty is provided.",
-      "Stable subscription under normal usage.",
-      "Activation support will be provided, In Sha Allah.",
-      "Any issues caused by Google policy changes, misuse, or incorrect redemption are not covered."
-    ],
+    features: ["3 Months YouTube Premium", "Ad-Free Videos", "Background Play", "Offline Downloads", "YouTube Music Premium", "Easy Activation via Redemption Link"],
+    whatsIncluded: ["3 Months YouTube Premium", "Ad-Free Videos", "Background Play", "Offline Downloads", "YouTube Music Premium", "Easy Activation via Redemption Link"],
+    requirements: ["Fresh Gmail account.", "USA VPN."],
+    termsOfUse: ["Fresh Gmail account.", "USA VPN."],
+    warrantyPolicy: ["No warranty is provided.", "Activation support will be provided."],
     warrantyNote: "Fresh Gmail + USA VPN required",
   },
   {
     id: "youtube-premium-1m",
-    name: "YouTube Premium – 1 Month (Fixed Family Slot)",
+    name: "YouTube Premium – 1 Month",
     duration: "1 Month",
     price: "Rs. 1,040",
     oldPrice: "Rs. 1,299",
+    stock: "8",
     color: "#FF0000",
     logo: BRAND.youtube,
     tag: "📺 Fixed Family Slot",
+    tagline: "1 Month YouTube Premium fixed family slot on your Gmail.",
     description: "1 Month of YouTube Premium via a stable fixed family slot. Fast activation on your personal Google account.",
-    features: [
-      "1 Month YouTube Premium",
-      "Ad-Free Videos",
-      "Background Play",
-      "Offline Downloads",
-      "YouTube Music Premium",
-      "Stable Family Slot"
-    ],
-    whatsIncluded: [
-      "1 Month YouTube Premium",
-      "Ad-Free Videos",
-      "Background Play",
-      "Offline Downloads",
-      "YouTube Music Premium",
-      "Stable Family Slot"
-    ],
-    requirements: [
-      "Only your Gmail address is required.",
-      "If you receive a 'Not in the same country' error: 1. Visit: https://pay.google.com, 2. Go to Settings, 3. Delete your Payments Profile, 4. Rejoin the family using a Pakistan VPN."
-    ],
-    termsOfUse: [
-      "Only your Gmail address is required.",
-      "If you receive a 'Not in the same country' error: 1. Visit: https://pay.google.com, 2. Go to Settings, 3. Delete your Payments Profile, 4. Rejoin the family using a Pakistan VPN."
-    ],
-    warrantyPolicy: [
-      "No warranty is provided.",
-      "Stable subscription under normal usage.",
-      "Activation support will be provided, In Sha Allah.",
-      "Any issues caused by Google policy changes, misuse, or user-side modifications are not covered."
-    ],
+    features: ["1 Month YouTube Premium", "Ad-Free Videos", "Background Play", "Offline Downloads", "YouTube Music Premium", "Stable Family Slot"],
+    whatsIncluded: ["1 Month YouTube Premium", "Ad-Free Videos", "Background Play", "Offline Downloads", "YouTube Music Premium", "Stable Family Slot"],
+    requirements: ["Only your Gmail address is required."],
+    termsOfUse: ["Only your Gmail address is required."],
+    warrantyPolicy: ["No warranty is provided.", "Stable family slot."],
     warrantyNote: "Stable family slot · Activation support included",
   },
   {
     id: "chatgpt-go-3m",
-    name: "ChatGPT Go – 3 Months (Coupon Code)",
+    name: "ChatGPT Go – 3 Months",
     duration: "3 Months",
     price: "Rs. 850",
     oldPrice: "Rs. 1,199",
+    stock: "85",
     color: "#10A37F",
     logo: BRAND.chatgptGo,
     tag: "🎫 Coupon Code",
+    tagline: "3 Months ChatGPT Go coupon code fast delivery.",
     description: "ChatGPT Go subscription for 3 months. Fast delivery via coupon code. Stable service with easy activation.",
-    features: [
-      "3 Months ChatGPT Go Subscription",
-      "Easy Activation via Coupon Code",
-      "Fast Delivery",
-      "Stable Service"
-    ],
-    whatsIncluded: [
-      "3 Months ChatGPT Go Coupon Code",
-      "Coupon Activation Instructions"
-    ],
-    requirements: [
-      "A valid Credit/Debit Card is required to activate the coupon.",
-      "You must be able to complete the activation yourself.",
-      "This product includes the coupon code only."
-    ],
-    termsOfUse: [
-      "We only provide the coupon code.",
-      "We are not responsible for payment page errors or activation issues caused by your payment method or account.",
-      "Please purchase only if you can activate the coupon successfully.",
-      "No replacement or refund will be provided for activation or payment-related issues."
-    ],
-    warrantyPolicy: [
-      "No warranty is provided.",
-      "Activation support for the coupon will be provided, In Sha Allah.",
-      "Any issues related to payment methods, account eligibility, or platform policies are the user's responsibility."
-    ],
+    features: ["3 Months ChatGPT Go Subscription", "Easy Activation via Coupon Code", "Fast Delivery", "Stable Service"],
+    whatsIncluded: ["3 Months ChatGPT Go Coupon Code", "Coupon Activation Instructions"],
+    requirements: ["A valid Credit/Debit Card is required to activate the coupon."],
+    termsOfUse: ["We only provide the coupon code."],
+    warrantyPolicy: ["No warranty is provided.", "Activation support will be provided."],
     warrantyNote: "Coupon code only · Card required for activation",
   },
   {
@@ -436,121 +368,55 @@ export const ALL_PRODUCTS = [
     duration: "1 Month",
     price: "Rs. 4,749",
     oldPrice: "Rs. 5,499",
+    stock: "2",
     color: "#FE2C55",
     logo: BRAND.capcut,
     tag: "👑 Admin Team · 7 Seats",
+    tagline: "7 Seats admin team account for 1 month full premium editing.",
     description: "1 Month of CapCut Pro admin team account with 7 seats. Full premium editing and AI tools included.",
-    features: [
-      "1 Month CapCut Pro",
-      "Admin Team Account (7 Seats)",
-      "Premium Editing Features",
-      "AI Editing Tools",
-      "Premium Templates & Effects",
-      "4K HD Video Export",
-      "Cloud Sync & Storage"
-    ],
-    whatsIncluded: [
-      "Email & Password for CapCut Admin Team Account",
-      "7 Seats Access"
-    ],
-    requirements: [
-      "The account can be logged in on up to 2 devices only (Phone, PC, or Web – each counts as a separate device).",
-      "Please avoid logging in on unnecessary devices, as this may consume available device slots.",
-      "You may change the password only.",
-      "The email address cannot be changed."
-    ],
-    termsOfUse: [
-      "Strict device limit: up to 2 devices only.",
-      "Only password can be changed; email remains fixed.",
-      "Avoid unnecessary logins to preserve device slots."
-    ],
-    warrantyPolicy: [
-      "Full 30-Day Warranty.",
-      "Warranty is void if the account is accessed on too many devices or misused.",
-      "Warranty is void if platform policies are violated or the account is shared beyond the allowed limits.",
-      "Complete activation guidance and support will be provided, In Sha Allah."
-    ],
+    features: ["1 Month CapCut Pro", "Admin Team Account (7 Seats)", "Premium Editing Features", "AI Editing Tools", "4K HD Video Export"],
+    whatsIncluded: ["Email & Password for CapCut Admin Team Account", "7 Seats Access"],
+    requirements: ["The account can be logged in on up to 2 devices only."],
+    termsOfUse: ["Strict device limit: up to 2 devices only."],
+    warrantyPolicy: ["Full 30-Day Warranty."],
     warrantyNote: "Full 30-Day Warranty · Max 2 devices",
   },
   {
     id: "surfshark-vpn-1m",
-    name: "Surfshark VPN – 1 Month (Single Device)",
+    name: "Surfshark VPN – 1 Month",
     duration: "1 Month",
     price: "Rs. 379",
     oldPrice: "Rs. 499",
+    stock: "99+",
     color: "#1C9FE8",
     logo: BRAND.surfshark,
     tag: "🛡️ Single Device",
+    tagline: "1 Month single device high-speed VPN access.",
     description: "1 Month of Surfshark VPN premium access. Fast & secure browsing with global servers on a single device.",
-    features: [
-      "1 Month Premium Subscription",
-      "Single Device Login",
-      "Fast & Secure VPN",
-      "High-Speed Servers",
-      "Private & Encrypted Browsing",
-      "Global Server Access",
-      "Easy Login"
-    ],
-    whatsIncluded: [
-      "Premium VPN Access",
-      "Login Code or Credentials"
-    ],
-    requirements: [
-      "Login Code will be provided after purchase.",
-      "Follow the activation instructions carefully.",
-      "This subscription is for 1 Device Only."
-    ],
-    termsOfUse: [
-      "Strictly for 1 Device Only.",
-      "No sharing or logging in on multiple devices."
-    ],
-    warrantyPolicy: [
-      "No warranty is provided.",
-      "Stable subscription under normal usage.",
-      "Activation support will be provided, In Sha Allah.",
-      "Any issues caused by policy violations, misuse, account sharing, or logging in on unauthorized devices are not covered."
-    ],
+    features: ["1 Month Premium Subscription", "Single Device Login", "Fast & Secure VPN", "High-Speed Servers"],
+    whatsIncluded: ["Premium VPN Access", "Login Code or Credentials"],
+    requirements: ["This subscription is for 1 Device Only."],
+    termsOfUse: ["Strictly for 1 Device Only."],
+    warrantyPolicy: ["No warranty is provided."],
     warrantyNote: "1 Device Only · No Warranty",
   },
   {
     id: "nordvpn-3m",
-    name: "NordVPN – 3 Months (Redeem Link)",
+    name: "NordVPN – 3 Months",
     duration: "3 Months",
     price: "Rs. 949",
     oldPrice: "Rs. 1,299",
+    stock: "90",
     color: "#0060FF",
     logo: BRAND.nord,
     tag: "🛡️ Redeem Link",
+    tagline: "3 Months fast redeem link activation without card required.",
     description: "3 Months NordVPN premium subscription via easy activation redeem link. High-speed global servers, secure and private.",
-    features: [
-      "3 Months Premium Subscription",
-      "Easy Activation via Redeem Link",
-      "Fast & Secure VPN",
-      "Global Server Access",
-      "High-Speed Connection",
-      "Privacy & Online Protection"
-    ],
-    whatsIncluded: [
-      "NordVPN Redeem Link",
-      "Activation Instructions"
-    ],
-    requirements: [
-      "Only your email address is required.",
-      "No Credit/Debit Card required.",
-      "No payment method required.",
-      "Easy activation using the redeem link."
-    ],
-    termsOfUse: [
-      "Redeem using the provided link and your email.",
-      "No credit card or payment setup needed."
-    ],
-    warrantyPolicy: [
-      "No warranty after successful activation.",
-      "No hold warranty.",
-      "Stable subscription under normal usage.",
-      "Activation support will be provided, In Sha Allah.",
-      "Any issues caused by policy violations, misuse, or user-side changes are not covered."
-    ],
+    features: ["3 Months Premium Subscription", "Easy Activation via Redeem Link", "Fast & Secure VPN", "Global Server Access"],
+    whatsIncluded: ["NordVPN Redeem Link", "Activation Instructions"],
+    requirements: ["Only your email address is required.", "No Credit/Debit Card required."],
+    termsOfUse: ["Redeem using the provided link and your email."],
+    warrantyPolicy: ["No warranty after successful activation."],
     warrantyNote: "No warranty after successful activation",
   },
   {
@@ -559,37 +425,17 @@ export const ALL_PRODUCTS = [
     duration: "1 Month",
     price: "Rs. 1,139",
     oldPrice: "Rs. 1,499",
+    stock: "9",
     color: "#EE0F79",
     logo: BRAND.lovable,
     tag: "💎 100 Credits",
+    tagline: "100 AI credits for 1 month smooth generation access.",
     description: "Lovable AI Pro with 100 credits for 1 month. Fast and reliable premium AI generation access with 1 day warranty.",
-    features: [
-      "100 AI Credits",
-      "1 Month Premium Access",
-      "Fast & Reliable Service",
-      "Instant Delivery",
-      "Smooth & Stable Usage",
-      "Professional Support"
-    ],
-    whatsIncluded: [
-      "100 Lovable AI Credits",
-      "Account/Code Details"
-    ],
-    requirements: [
-      "Please read the product details carefully before placing your order.",
-      "Make sure this package meets your requirements before purchasing.",
-      "No refund or replacement will be provided for incorrect purchases or change of mind after delivery."
-    ],
-    termsOfUse: [
-      "Must check and verify the credits immediately after delivery.",
-      "Use according to Lovable's standard policies."
-    ],
-    warrantyPolicy: [
-      "Full 1-Day Warranty.",
-      "Warranty is valid for 1 day from the time of delivery.",
-      "Complete activation guidance and support will be provided, In Sha Allah.",
-      "Warranty is void in case of policy violations, misuse, or unauthorized changes made by the user."
-    ],
+    features: ["100 AI Credits", "1 Month Premium Access", "Fast & Reliable Service", "Instant Delivery"],
+    whatsIncluded: ["100 Lovable AI Credits", "Account/Code Details"],
+    requirements: ["Make sure this package meets your requirements before purchasing."],
+    termsOfUse: ["Must check and verify the credits immediately after delivery."],
+    warrantyPolicy: ["Full 1-Day Warranty."],
     warrantyNote: "1 Day Warranty from delivery",
   }
 ];

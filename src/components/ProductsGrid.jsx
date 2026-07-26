@@ -22,23 +22,23 @@ import { motion } from "framer-motion";
 const CATEGORY_MAP = {
   all: null,
   ai: ["gemini-pro-18", "veo-3-video", "supergrok-3m-basic", "supergrok-3m-warranty", "supergrok-12m-basic", "supergrok-12m-premium", "chatgpt-plus-1m", "chatgpt-go-3m", "lovable-ai-100c"],
-  "video-ai": ["veo-3-video", "capcut-pro-1m", "capcut-pro-admin-7s"],
+  "video-ai": ["veo-3-video", "capcut-pro-1m", "capcut-pro-admin-7s", "canva-pro-edu", "canva-pro-admin"],
   creator: ["capcut-pro-1m", "capcut-pro-admin-7s", "canva-pro-edu", "canva-pro-admin", "tiktok-growth-challenge", "youtube-premium-12m", "youtube-premium-3m", "youtube-premium-1m"],
-  subs: ["youtube-premium-12m", "youtube-premium-3m", "youtube-premium-1m", "canva-pro-edu", "canva-pro-admin", "chatgpt-plus-1m", "gemini-pro-18", "lovable-ai-100c"],
+  subs: ["youtube-premium-12m", "youtube-premium-3m", "youtube-premium-1m", "canva-pro-edu", "canva-pro-admin", "chatgpt-plus-1m", "gemini-pro-18", "lovable-ai-100c", "supergrok-12m-premium"],
   vpn: ["surfshark-vpn-1y", "surfshark-vpn-1m", "nordvpn-3m"],
-  automation: ["lovable-ai-100c", "tiktok-growth-challenge", "chatgpt-go-3m"],
-  trending: ["gemini-pro-18", "chatgpt-plus-1m", "canva-pro-edu", "veo-3-video", "supergrok-12m-premium"]
+  automation: ["lovable-ai-100c", "tiktok-growth-challenge", "chatgpt-go-3m", "veo-3-video"],
+  trending: ["gemini-pro-18", "chatgpt-plus-1m", "canva-pro-edu", "veo-3-video", "supergrok-12m-premium", "nordvpn-3m", "youtube-premium-12m"]
 };
 
 const CATEGORIES = [
-  { id: "all", label: "All Products", icon: LayoutGrid },
+  { id: "all", label: "All Products (20)", icon: LayoutGrid },
   { id: "ai", label: "AI Tools", icon: Cpu },
   { id: "video-ai", label: "Video & Creative AI", icon: Video },
   { id: "creator", label: "Creator Tools", icon: Paintbrush },
   { id: "subs", label: "Subscriptions", icon: CreditCard },
-  { id: "vpn", label: "VPN & Dev", icon: Shield },
+  { id: "vpn", label: "VPN & Security", icon: Shield },
   { id: "automation", label: "Automation", icon: Zap },
-  { id: "trending", label: "Trending", icon: Flame }
+  { id: "trending", label: "🔥 Trending Now", icon: Flame }
 ];
 
 export default function ProductsGrid() {
@@ -138,7 +138,7 @@ export default function ProductsGrid() {
         {filteredProducts.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
             {filteredProducts.map((p, i) => (
-              <ProductCard key={p.id} product={p} index={i} />
+              <ProductCard key={p.id} product={p} index={i} priority={i < 4} />
             ))}
           </div>
         ) : (

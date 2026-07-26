@@ -2,8 +2,8 @@ import { memo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Globe, Video, Megaphone, Sparkles, ExternalLink, MessageCircle,
-  CheckCircle2, Flame, ShieldCheck, Tag, ArrowRight, Zap, Star, Award, Layers,
-  Rocket, TrendingUp, Target, BarChart3, Clock
+  CheckCircle2, Flame, ShieldCheck, Tag, ArrowRight, Zap, Layers,
+  Rocket
 } from "lucide-react";
 
 const CATEGORIES = [

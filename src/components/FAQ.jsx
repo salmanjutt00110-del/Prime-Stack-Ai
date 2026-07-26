@@ -49,7 +49,7 @@ const FAQS = [
   },
 ];
 
-function Item({ item }) {
+function Item({ item, index }) {
   const [open, setOpen] = useState(false);
 
   return (
