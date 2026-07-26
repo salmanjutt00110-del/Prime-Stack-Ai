@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
  * Synchronous mobile detection prevents forced reflow and unneeded DOM node creation.
  */
 export default function Animated3DText({
-  text,
+  text = "",
   className = "",
   delay = 0,
   hoverTilt = true,
@@ -28,7 +28,8 @@ export default function Animated3DText({
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  const words = text.split(" ");
+  const safeText = typeof text === "string" ? text : String(text || "");
+  const words = safeText.split(" ");
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -89,7 +90,7 @@ export default function Animated3DText({
         custom={delay}
         className={`inline-block select-none ${baseShadow} ${className}`}
       >
-        {text}
+        {safeText}
       </motion.span>
     );
   }

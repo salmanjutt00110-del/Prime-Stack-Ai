@@ -1,20 +1,19 @@
-import { useEffect, lazy, Suspense } from "react";
+import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import StatsBar from "@/components/StatsBar";
 import ProductsGrid from "@/components/ProductsGrid";
-
-const TieredRewardsBanner = lazy(() => import("@/components/TieredRewardsBanner"));
-const ChatGPTSpecialOffer = lazy(() => import("@/components/ChatGPTSpecialOffer"));
-const BulkPurchaseBanner = lazy(() => import("@/components/BulkPurchaseBanner"));
-const DigitalServicesSection = lazy(() => import("@/components/DigitalServicesSection"));
-const AboutUs = lazy(() => import("@/components/AboutUs"));
-const HowItWorks = lazy(() => import("@/components/HowItWorks"));
-const WhyUs = lazy(() => import("@/components/WhyUs"));
-const Testimonials = lazy(() => import("@/components/Testimonials"));
-const FAQ = lazy(() => import("@/components/FAQ"));
-const CTASection = lazy(() => import("@/components/CTASection"));
-const Footer = lazy(() => import("@/components/Footer"));
+import TieredRewardsBanner from "@/components/TieredRewardsBanner";
+import ChatGPTSpecialOffer from "@/components/ChatGPTSpecialOffer";
+import BulkPurchaseBanner from "@/components/BulkPurchaseBanner";
+import DigitalServicesSection from "@/components/DigitalServicesSection";
+import AboutUs from "@/components/AboutUs";
+import HowItWorks from "@/components/HowItWorks";
+import WhyUs from "@/components/WhyUs";
+import Testimonials from "@/components/Testimonials";
+import FAQ from "@/components/FAQ";
+import CTASection from "@/components/CTASection";
+import Footer from "@/components/Footer";
 
 import { useLanguageTheme } from "@/lib/LanguageThemeContext";
 
@@ -36,38 +35,25 @@ export default function Home() {
         <StatsBar />
 
         {/* Tiered Free Gifts & Reseller Deals Section */}
-        <Suspense fallback={null}>
-          <TieredRewardsBanner />
-        </Suspense>
-        
-        {/* Below-fold lazy sections — loaded after initial paint */}
-        <Suspense fallback={null}>
-          <ChatGPTSpecialOffer />
-        </Suspense>
+        <TieredRewardsBanner />
 
-        <Suspense fallback={null}>
-          <BulkPurchaseBanner variant="card" />
-        </Suspense>
+        <ChatGPTSpecialOffer />
+
+        <BulkPurchaseBanner variant="card" />
 
         <ProductsGrid />
 
         {/* Unified Digital Agency Services: Website Creation, Video Editing, TikTok & Meta Ads */}
-        <Suspense fallback={null}>
-          <DigitalServicesSection />
-        </Suspense>
+        <DigitalServicesSection />
 
-        <Suspense fallback={null}>
-          <AboutUs />
-          <HowItWorks />
-          <WhyUs />
-          <Testimonials />
-          <FAQ />
-          <CTASection />
-        </Suspense>
+        <AboutUs />
+        <HowItWorks />
+        <WhyUs />
+        <Testimonials />
+        <FAQ />
+        <CTASection />
       </main>
-      <Suspense fallback={null}>
-        <Footer />
-      </Suspense>
+      <Footer />
     </div>
   );
 }
