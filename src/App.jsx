@@ -10,7 +10,7 @@ import ScrollToTop from './components/ScrollToTop';
 import StartupIntro from './components/StartupIntro';
 import PageTransition from './components/PageTransition';
 import Home from '@/pages/Home';
-
+import ErrorBoundary from '@/components/ErrorBoundary';
 import { LanguageThemeProvider } from '@/lib/LanguageThemeContext';
 
 const ProductDetail = lazy(() => import('@/pages/ProductDetail'));
@@ -63,25 +63,27 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   return (
-    <LanguageThemeProvider>
-      <AuthProvider>
-        <QueryClientProvider client={queryClientInstance}>
-          <StartupIntro onComplete={() => setIsLoaded(true)} />
-          <Router>
-            <ScrollToTop />
-            <Suspense fallback={
-              <div className="min-h-screen bg-[#050505] flex items-center justify-center">
-                <div className="w-10 h-10 border-t-2 border-violet-500 rounded-full animate-spin" />
-              </div>
-            }>
-              <AuthenticatedApp isLoaded={isLoaded} />
-            </Suspense>
-          </Router>
-          <Toaster />
-        </QueryClientProvider>
-      </AuthProvider>
-    </LanguageThemeProvider>
-  )
+    <ErrorBoundary>
+      <LanguageThemeProvider>
+        <AuthProvider>
+          <QueryClientProvider client={queryClientInstance}>
+            <StartupIntro onComplete={() => setIsLoaded(true)} />
+            <Router>
+              <ScrollToTop />
+              <Suspense fallback={
+                <div className="min-h-screen bg-[#050505] flex items-center justify-center">
+                  <div className="w-10 h-10 border-t-2 border-violet-500 rounded-full animate-spin" />
+                </div>
+              }>
+                <AuthenticatedApp isLoaded={isLoaded} />
+              </Suspense>
+            </Router>
+            <Toaster />
+          </QueryClientProvider>
+        </AuthProvider>
+      </LanguageThemeProvider>
+    </ErrorBoundary>
+  );
 }
 
-export default App
+export default App;

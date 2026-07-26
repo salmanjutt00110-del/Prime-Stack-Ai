@@ -3,56 +3,74 @@ import { translations } from './translations';
 
 const LanguageThemeContext = createContext();
 
-export function LanguageThemeProvider({ children }) {
-  // Initialize theme: check localStorage or default to 'dark'
-  const [theme, setThemeState] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const savedTheme = localStorage.getItem('ps_theme');
-      if (savedTheme === 'light' || savedTheme === 'dark') {
-        return savedTheme;
-      }
+const safeGetItem = (key, fallback) => {
+  try {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      const val = window.localStorage.getItem(key);
+      if (val !== null && val !== undefined) return val;
     }
-    return 'dark';
+  } catch (e) {
+    console.warn(`localStorage getItem failed for ${key}:`, e);
+  }
+  return fallback;
+};
+
+const safeSetItem = (key, val) => {
+  try {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      window.localStorage.setItem(key, val);
+    }
+  } catch (e) {
+    console.warn(`localStorage setItem failed for ${key}:`, e);
+  }
+};
+
+export function LanguageThemeProvider({ children }) {
+  // Initialize theme safely: check localStorage or default to 'dark'
+  const [theme, setThemeState] = useState(() => {
+    const savedTheme = safeGetItem('ps_theme', 'dark');
+    return savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : 'dark';
   });
 
-  // Initialize language: check localStorage or default to 'en'
+  // Initialize language safely: check localStorage or default to 'en'
   const [language, setLanguageState] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const savedLang = localStorage.getItem('ps_lang');
-      if (savedLang === 'ur' || savedLang === 'en') {
-        return savedLang;
-      }
-    }
-    return 'en';
+    const savedLang = safeGetItem('ps_lang', 'en');
+    return savedLang === 'ur' || savedLang === 'en' ? savedLang : 'en';
   });
 
   // Apply theme to document elements
   useEffect(() => {
-    const root = document.documentElement;
-    const body = document.body;
+    try {
+      const root = document.documentElement;
+      const body = document.body;
 
-    if (theme === 'light') {
-      root.classList.remove('dark');
-      root.classList.add('light');
-      body.classList.remove('dark');
-      body.classList.add('light');
-      body.style.backgroundColor = '#f8fafc';
-      body.style.color = '#0f172a';
-    } else {
-      root.classList.remove('light');
-      root.classList.add('dark');
-      body.classList.remove('light');
-      body.classList.add('dark');
-      body.style.backgroundColor = '#050505';
-      body.style.color = '#f8fafc';
+      if (!root || !body) return;
+
+      if (theme === 'light') {
+        root.classList.remove('dark');
+        root.classList.add('light');
+        body.classList.remove('dark');
+        body.classList.add('light');
+        body.style.backgroundColor = '#f8fafc';
+        body.style.color = '#0f172a';
+      } else {
+        root.classList.remove('light');
+        root.classList.add('dark');
+        body.classList.remove('light');
+        body.classList.add('dark');
+        body.style.backgroundColor = '#050505';
+        body.style.color = '#f8fafc';
+      }
+    } catch (e) {
+      console.warn('Error applying theme classes:', e);
     }
 
-    localStorage.setItem('ps_theme', theme);
+    safeSetItem('ps_theme', theme);
   }, [theme]);
 
   // Apply language setting
   useEffect(() => {
-    localStorage.setItem('ps_lang', language);
+    safeSetItem('ps_lang', language);
   }, [language]);
 
   const toggleTheme = () => {
