@@ -322,45 +322,48 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* RIGHT — Interactive Product Logo Sphere Display */}
-        <div className="order-1 lg:order-2 flex flex-col items-center justify-center relative">
-          <div className="relative w-64 h-64 sm:w-80 sm:h-80 flex items-center justify-center" style={{ perspective: 1000 }}>
-            {/* Outer Orbit Ring */}
+        {/* RIGHT — Interactive Glass Product Card Showcase */}
+        <div className="order-1 lg:order-2 flex flex-col items-center justify-center relative my-2 lg:my-0">
+          <div className="relative w-52 h-52 sm:w-72 sm:h-72 flex items-center justify-center" style={{ perspective: 1000 }}>
+            {/* Outer Animated Gradient Border Ring */}
             <motion.div
-              className="absolute inset-0 rounded-full border border-dashed opacity-40"
+              className="absolute -inset-2 rounded-[36px] border border-dashed opacity-40 pointer-events-none"
               style={{ borderColor: product.color }}
               animate={{ rotate: 360 }}
               transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
             />
 
-            {/* Glowing Backdrop Circle */}
+            {/* Ambient Radial Backglow */}
             <motion.div
-              className="absolute inset-4 rounded-full blur-2xl opacity-40 transition-colors duration-1000"
+              className="absolute inset-2 rounded-3xl blur-2xl opacity-50 transition-colors duration-1000"
               style={{ background: product.color }}
             />
 
-            {/* Central Product Image Frame */}
+            {/* Central Chauras Glass Showcase Box (Square Glassmorphism) */}
             <AnimatePresence mode="wait">
               <motion.div
                 key={product.id}
-                initial={{ scale: 0.8, opacity: 0, rotateY: -30 }}
-                animate={{ scale: 1, opacity: 1, rotateY: 0 }}
-                exit={{ scale: 0.8, opacity: 0, rotateY: 30 }}
+                initial={{ scale: 0.85, opacity: 0, rotateY: -20, y: 10 }}
+                animate={{ scale: 1, opacity: 1, rotateY: 0, y: 0 }}
+                exit={{ scale: 0.85, opacity: 0, rotateY: 20, y: -10 }}
                 transition={SPRING}
                 onMouseMove={handleLogoMouseMove}
                 onMouseLeave={handleLogoMouseLeave}
-                className="relative z-10 w-44 h-44 sm:w-56 sm:h-56 rounded-3xl p-6 bg-white/10 border border-white/20 backdrop-blur-xl shadow-2xl flex items-center justify-center cursor-pointer group"
+                className="relative z-10 w-44 h-44 sm:w-60 sm:h-60 rounded-3xl p-5 sm:p-6 bg-gradient-to-br from-white/12 via-white/8 to-white/4 border backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.7)] flex flex-col items-center justify-center cursor-pointer group"
                 style={{
+                  borderColor: `${product.color}60`,
+                  boxShadow: `0 20px 50px rgba(0,0,0,0.65), 0 0 35px ${product.color}25`,
                   transform: `rotateX(${logoTilt.y}deg) rotateY(${logoTilt.x}deg)`,
                   transformStyle: "preserve-3d",
                   transition: "transform 0.1s ease-out",
                 }}
                 onClick={() => navigate(`/product/${product.id}`)}
               >
+                <span className="ps-shimmer absolute inset-0 rounded-3xl overflow-hidden pointer-events-none" />
                 <img
                   src={product.logo}
                   alt={product.name}
-                  className="w-full h-full object-contain drop-shadow-[0_10px_25px_rgba(0,0,0,0.5)] group-hover:scale-110 transition-transform duration-500"
+                  className="w-full h-full object-contain drop-shadow-[0_12px_28px_rgba(0,0,0,0.6)] group-hover:scale-110 transition-transform duration-500 relative z-10"
                   loading="eager"
                   decoding="async"
                 />

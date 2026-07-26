@@ -115,46 +115,54 @@ const ProductCard = memo(function ProductCard({ product, index = 0, priority = f
             }}
           />
 
-          {/* SAVE Badge */}
-          <div
-            className="absolute top-5 left-5 z-20 px-3 py-1.5 rounded-2xl flex items-center gap-1.5 shadow-md border"
-            style={{
-              background: "rgba(8, 8, 12, 0.85)",
-              borderColor: "rgba(255, 255, 255, 0.15)",
-            }}
-          >
+          {/* SAVE & Rating Badges */}
+          <div className="flex items-center justify-between w-full mb-3 relative z-20">
             <div
-              className="flex items-center justify-center w-5 h-5 rounded-full shrink-0"
+              className="px-3 py-1.5 rounded-2xl flex items-center gap-1.5 shadow-md border"
               style={{
-                background: `rgba(${sideGlow.primary}, 0.2)`,
-                border: `1px solid rgba(${sideGlow.primary}, 0.4)`,
+                background: "rgba(8, 8, 12, 0.85)",
+                borderColor: "rgba(255, 255, 255, 0.15)",
               }}
             >
-              <LightningIcon size={10} style={{ color: product.color }} />
+              <div
+                className="flex items-center justify-center w-5 h-5 rounded-full shrink-0"
+                style={{
+                  background: `rgba(${sideGlow.primary}, 0.2)`,
+                  border: `1px solid rgba(${sideGlow.primary}, 0.4)`,
+                }}
+              >
+                <LightningIcon size={10} style={{ color: product.color }} />
+              </div>
+              <div className="flex flex-col text-left leading-[1.1]">
+                <span className="text-[8px] font-black uppercase tracking-widest text-white/70">SAVE</span>
+                <span className="text-xs font-black tracking-tight text-white">{discountVal}</span>
+              </div>
             </div>
-            <div className="flex flex-col text-left leading-[1.1]">
-              <span className="text-[8px] font-black uppercase tracking-widest text-white/70">SAVE</span>
-              <span className="text-xs font-black tracking-tight text-white">{discountVal}</span>
+
+            {/* Rating & Stock Badge */}
+            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/10 border border-white/15 backdrop-blur-md text-[10px] font-bold text-emerald-300">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+              <span>In Stock • ⭐ 4.9</span>
             </div>
           </div>
 
           {/* Logo Section */}
-          <div className="flex justify-center mb-6 mt-6 relative z-10">
+          <div className="flex justify-center mb-5 mt-2 relative z-10">
             <div
-              className="relative flex items-center justify-center rounded-full overflow-hidden md:ps-logo-float-loop"
+              className="relative flex items-center justify-center rounded-2xl overflow-hidden md:ps-logo-float-loop transition-transform group-hover:scale-105"
               style={{
-                width: 110,
-                height: 110,
-                background: `radial-gradient(circle at 50% 35%, rgba(${sideGlow.primary}, 0.15) 0%, rgba(255, 255, 255, 0.08) 50%, rgba(255, 255, 255, 0.03) 100%)`,
-                border: `3px solid rgba(${sideGlow.primary}, 0.55)`,
-                boxShadow: `0 15px 40px rgba(0, 0, 0, 0.2), 0 0 25px rgba(${sideGlow.primary}, 0.2)`,
+                width: 100,
+                height: 100,
+                background: `radial-gradient(circle at 50% 35%, rgba(${sideGlow.primary}, 0.2) 0%, rgba(255, 255, 255, 0.08) 50%, rgba(255, 255, 255, 0.03) 100%)`,
+                border: `2px solid rgba(${sideGlow.primary}, 0.55)`,
+                boxShadow: `0 15px 40px rgba(0, 0, 0, 0.25), 0 0 25px rgba(${sideGlow.primary}, 0.25)`,
               }}
             >
               <span className="ps-shimmer absolute inset-0" />
               <LazyImage
                 src={product.logo}
                 alt={`${product.name} official logo`}
-                className="w-[80px] h-[80px] relative z-10"
+                className="w-[75px] h-[75px] relative z-10"
                 imgStyle={{
                   filter: "brightness(1.1) contrast(1.1)"
                 }}
@@ -164,7 +172,7 @@ const ProductCard = memo(function ProductCard({ product, index = 0, priority = f
           </div>
 
           {/* Product Title */}
-          <h3 className="font-display font-bold text-lg sm:text-[20px] leading-snug tracking-tight mb-2 text-center min-h-[50px] flex items-center justify-center relative z-10 text-white">
+          <h3 className="font-display font-bold text-lg sm:text-[20px] leading-snug tracking-tight mb-2 text-center min-h-[48px] flex items-center justify-center relative z-10 text-white">
             {product.name}
           </h3>
 
@@ -183,12 +191,12 @@ const ProductCard = memo(function ProductCard({ product, index = 0, priority = f
           </div>
 
           {/* Description */}
-          <p className="text-[11px] sm:text-xs text-center leading-relaxed mb-5 font-body px-1 line-clamp-2 min-h-[36px] relative z-10 text-white/75">
+          <p className="text-[11px] sm:text-xs text-center leading-relaxed mb-4 font-body px-1 line-clamp-2 min-h-[34px] relative z-10 text-white/75">
             Official {product.name} account with {product.duration} access.
           </p>
 
           {/* Pricing Block */}
-          <div className="flex flex-col items-center gap-1 mb-5 relative z-10">
+          <div className="flex flex-col items-center gap-1 mb-4 relative z-10">
             {product.oldPrice && (
               <span className="text-xs line-through font-light tracking-wide text-white/60">
                 {product.oldPrice}
@@ -208,7 +216,7 @@ const ProductCard = memo(function ProductCard({ product, index = 0, priority = f
           </div>
 
           {/* Features Row */}
-          <div className="flex items-center justify-between gap-1.5 py-3 mb-5 text-[10px] font-semibold border-t border-white/[0.08] text-white/85 relative z-10">
+          <div className="flex items-center justify-between gap-1.5 py-2.5 mb-4 text-[10px] font-semibold border-t border-b border-white/[0.08] text-white/85 relative z-10">
             <div className="flex items-center gap-1">
               <div className="flex items-center justify-center w-6 h-6 rounded-full bg-blue-500/15 text-blue-500 shrink-0">
                 <LightningIcon size={11} style={{ color: "#3B82F6" }} />
