@@ -8,6 +8,7 @@ import { ALL_PRODUCTS, BUYING_STEPS } from "@/data/products";
 import { openWhatsApp, WHATSAPP_GENERAL, WHATSAPP_NUMBER } from "@/lib/whatsapp";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import MobileBottomNav from "@/components/MobileBottomNav";
 import ParticleBackground from "@/components/ParticleBackground";
 import BulkPurchaseBanner from "@/components/BulkPurchaseBanner";
 import { motion } from "framer-motion";
@@ -443,6 +444,7 @@ export default function ProductDetail() {
         </div>
       </main>
 
+      <MobileBottomNav />
       <Footer />
     </div>
   );

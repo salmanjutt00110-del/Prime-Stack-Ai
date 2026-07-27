@@ -211,7 +211,7 @@ export default function Hero() {
       <div className="mx-auto max-w-7xl w-full px-4 sm:px-6 grid lg:grid-cols-[52%_48%] gap-8 lg:gap-8 items-center relative z-10">
         
         {/* LEFT — Titles, Offer Banners, and Active Product Card */}
-        <div className="order-2 lg:order-1 text-center lg:text-left flex flex-col items-center lg:items-start w-full max-w-full">
+        <div className="order-1 lg:order-1 text-center lg:text-left flex flex-col items-center lg:items-start w-full max-w-full">
           
           {/* Announcement Badge */}
           <motion.div
@@ -361,7 +361,7 @@ export default function Hero() {
         </div>
 
         {/* RIGHT — Premium 3D Floating Glass Product Showcase */}
-        <div className="order-1 lg:order-2 flex flex-col items-center justify-center relative my-2 lg:my-0">
+        <div className="order-2 lg:order-2 flex flex-col items-center justify-center relative my-2 lg:my-0">
           <div className="relative w-52 h-52 sm:w-72 sm:h-72 flex items-center justify-center" style={{ perspective: 1000 }}>
             {/* Outer Animated Gradient Border Ring */}
             <motion.div

@@ -16,6 +16,7 @@ import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
 import BackToTopButton from "@/components/BackToTopButton";
+import MobileBottomNav from "@/components/MobileBottomNav";
 
 export default function Home() {
   useEffect(() => {
@@ -51,6 +52,7 @@ export default function Home() {
         <CTASection />
       </main>
       <BackToTopButton />
+      <MobileBottomNav />
       <Footer />
     </div>
   );
