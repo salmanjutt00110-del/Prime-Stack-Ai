@@ -1,0 +1,8 @@
+{
+  "appId": "store.primetools.app",
+  "appName": "Prime Tools Hub",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+  }
+}

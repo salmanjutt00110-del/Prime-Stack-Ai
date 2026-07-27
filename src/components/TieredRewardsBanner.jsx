@@ -1,5 +1,6 @@
 import { memo, useState } from "react";
 import { motion } from "framer-motion";
+import { WHATSAPP_NUMBER } from "@/data/products";
 import { Gift, Sparkles, MessageCircle, ShieldCheck, Award, CheckCircle2, ArrowRight } from "lucide-react";
 
 const BULK_TIERS = [
@@ -86,13 +87,13 @@ const TieredRewardsBanner = memo(function TieredRewardsBanner() {
 
   const handleClaimOffer = (title, threshold) => {
     const message = `Hi Prime Tools Hub, I want to claim the special bulk deal: ${threshold} (${title}). Please guide me!`;
-    const url = `https://wa.me/923227157125?text=${encodeURIComponent(message)}`;
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank");
   };
 
   const handleResellerClick = () => {
     const message = `Hi Prime Tools Hub, I am a Reseller / Agency Owner and I want to get special wholesale discounts (up to 35% OFF) & VIP dedicated handling for bulk orders.`;
-    const url = `https://wa.me/923227157125?text=${encodeURIComponent(message)}`;
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank");
   };
 

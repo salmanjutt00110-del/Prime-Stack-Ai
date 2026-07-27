@@ -1,5 +1,6 @@
 import { memo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { WHATSAPP_NUMBER } from "@/data/products";
 import {
   Globe, Video, Megaphone, Sparkles, ExternalLink, MessageCircle,
   CheckCircle2, Flame, ShieldCheck, Tag, ArrowRight, Zap, Layers,
@@ -111,14 +112,14 @@ export default memo(function DigitalServicesSection() {
     const text = encodeURIComponent(
       `Hi AmirAds / Prime Tools Hub, I am interested in your Digital Service: ${serviceTitle}. Please share pricing & details!`
     );
-    window.open(`https://wa.me/923227157125?text=${text}`, "_blank");
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${text}`, "_blank");
   };
 
   const handleWhatsAppConsultation = () => {
     const text = encodeURIComponent(
       "Hi AmirAds, I saw your Digital Agency Services on Prime Tools Hub and I'd like a free consultation about Meta Ads, TikTok growth, web development, or video editing services!"
     );
-    window.open(`https://wa.me/923227157125?text=${text}`, "_blank");
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${text}`, "_blank");
   };
 
   return (

@@ -91,13 +91,13 @@ export function generateHomepageGraph(products = []) {
     "description": "Pakistan & Global's premier destination for genuine AI tools, creator accounts, VPNs, and digital subscriptions.",
     "contactPoint": {
       "@type": "ContactPoint",
-      "telephone": "+923227157125",
+      "telephone": "+923707020580",
       "contactType": "customer service",
       "areaServed": ["PK", "WW"],
       "availableLanguage": ["English", "Urdu"]
     },
     "sameAs": [
-      "https://wa.me/923227157125",
+      "https://wa.me/923707020580",
       "https://primetoolshub.store/"
     ]
   };

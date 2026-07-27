@@ -1,5 +1,6 @@
 import { memo } from "react";
 import { motion } from "framer-motion";
+import { WHATSAPP_NUMBER } from "@/data/products";
 import { ExternalLink, MessageCircle, CheckCircle2, Globe, Rocket } from "lucide-react";
 
 const META_FEATURES = [
@@ -21,7 +22,7 @@ const MetaAdsSection = memo(function MetaAdsSection() {
     const text = encodeURIComponent(
       "Hi AmirAds, I saw your Meta & TikTok Ads section on Prime Tools Hub and I want to discuss Facebook/Instagram/TikTok advertising services for my business!"
     );
-    window.open(`https://wa.me/923227157125?text=${text}`, "_blank");
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${text}`, "_blank");
   };
 
   return (

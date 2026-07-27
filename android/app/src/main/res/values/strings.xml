@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Prime Tools Hub</string>
+    <string name="title_activity_main">Prime Tools Hub</string>
+    <string name="package_name">store.primetools.app</string>
+    <string name="custom_url_scheme">store.primetools.app</string>
+</resources>
