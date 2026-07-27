@@ -53,7 +53,7 @@ export const HERO_PRODUCTS = [
   { id: "capcut-pro-admin-7s", name: "CapCut Pro Admin Team", tag: "👑 Admin Team · 7 Seats", duration: "1 Month", price: "Rs. 4,749", oldPrice: "Rs. 5,499", description: "1 Month of CapCut Pro admin team account with 7 seats. Full premium editing included.", tagline: "7 Seats admin team account for 1 month full premium editing.", stock: "2", logo: BRAND.capcut, color: "#FE2C55", color2: "#25F4EE", particle: "#FE2C55" },
   { id: "surfshark-vpn-1m", name: "Surfshark VPN 1M", tag: "🛡️ Single Device", duration: "1 Month", price: "Rs. 379", oldPrice: "Rs. 499", description: "1 Month of Surfshark VPN premium access for single device.", tagline: "1 Month single device high-speed VPN access.", stock: "99+", logo: BRAND.surfshark, color: "#1C9FE8", color2: "#22D3EE", particle: "#22D3EE" },
   { id: "nordvpn-3m", name: "NordVPN 3 Months", tag: "🛡️ Redeem Link", duration: "3 Months", price: "Rs. 949", oldPrice: "Rs. 1,299", description: "3 Months NordVPN premium subscription via easy activation redeem link.", tagline: "3 Months fast redeem link activation without card required.", stock: "90", logo: BRAND.nord, color: "#0060FF", color2: "#8B5CF6", particle: "#60A5FA" },
-  { id: "lovable-ai-100c", name: "Lovable AI Pro", tag: "💎 100 Credits", duration: "1 Month", price: "Rs. 1,139", oldPrice: "Rs. 1,499", description: "Lovable AI Pro with 100 credits for 1 month. Fast premium AI generation.", tagline: "100 AI credits for 1 month smooth generation access.", stock: "9", logo: BRAND.lovable, color: "#EE0F79", color2: "#8B5CF6", particle: "#A78BFA" },
+  { id: "lovable-ai-100c", name: "Lovable AI Pro Lite", tag: "⚡ 12 Months", duration: "12 Months", price: "Rs. 1,999", oldPrice: "Rs. 2,999", description: "Lovable AI Pro Lite 12-month account subscription with full premium features.", tagline: "12 Months Lovable AI Pro Lite account with high-speed app building access.", stock: "9", logo: BRAND.lovable, color: "#EE0F79", color2: "#8B5CF6", particle: "#A78BFA" },
 ];
 
 // Full catalog — 20 products
@@ -421,22 +421,22 @@ export const ALL_PRODUCTS = [
   },
   {
     id: "lovable-ai-100c",
-    name: "Lovable AI Pro – 100 Credits",
-    duration: "1 Month",
-    price: "Rs. 1,139",
-    oldPrice: "Rs. 1,499",
+    name: "Lovable AI Pro Lite – 12 Months",
+    duration: "12 Months",
+    price: "Rs. 1,999",
+    oldPrice: "Rs. 2,999",
     stock: "9",
     color: "#EE0F79",
     logo: BRAND.lovable,
-    tag: "💎 100 Credits",
-    tagline: "100 AI credits for 1 month smooth generation access.",
-    description: "Lovable AI Pro with 100 credits for 1 month. Fast and reliable premium AI generation access with 1 day warranty.",
-    features: ["100 AI Credits", "1 Month Premium Access", "Fast & Reliable Service", "Instant Delivery"],
-    whatsIncluded: ["100 Lovable AI Credits", "Account/Code Details"],
+    tag: "⚡ 12 Months Pro Lite",
+    tagline: "12 Months Lovable AI Pro Lite account with high-speed app building access.",
+    description: "Lovable AI Pro Lite subscription account for 12 months. High-speed AI web app creation, prompt engineering & full developer capabilities.",
+    features: ["Lovable AI Pro Lite Account", "12 Months Subscription Access", "Fast AI Web App Generation", "Instant Delivery & Warranty"],
+    whatsIncluded: ["Lovable AI Pro Lite Account Login Credentials", "12 Months Full Plan Access"],
     requirements: ["Make sure this package meets your requirements before purchasing."],
-    termsOfUse: ["Must check and verify the credits immediately after delivery."],
-    warrantyPolicy: ["Full 1-Day Warranty."],
-    warrantyNote: "1 Day Warranty from delivery",
+    termsOfUse: ["Personal account access for 12 months full subscription period."],
+    warrantyPolicy: ["Full replacement warranty included for subscription period."],
+    warrantyNote: "Full Warranty included for 12 Months",
   }
 ];
 
