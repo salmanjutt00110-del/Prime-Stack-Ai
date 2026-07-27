@@ -95,6 +95,12 @@ const THEMES = {
     glow2: "rgba(139, 92, 246, 0.18)",
     particles: "#EE0F79",
   },
+  "lovable-ai-12m-pro-lite": {
+    bg: "radial-gradient(ellipse 80% 60% at 50% 30%, rgba(238, 15, 121, 0.14) 0%, transparent 70%)",
+    glow: "rgba(238, 15, 121, 0.28)",
+    glow2: "rgba(139, 92, 246, 0.18)",
+    particles: "#EE0F79",
+  },
 };
 
 export default function Hero() {

@@ -71,11 +71,12 @@ export default function Navbar() {
           WebkitBackdropFilter: "blur(24px) saturate(180%)",
           background: "rgba(5, 5, 5, 0.88)",
           borderBottom: "1px solid rgba(255,255,255,0.08)",
+          paddingTop: "env(safe-area-inset-top, 0px)",
         }}
       >
         <nav 
           className="mx-auto max-w-7xl px-4 sm:px-6 flex items-center justify-between transition-all duration-500"
-          style={{ height: scrolled ? 54 : 64 }}
+          style={{ height: scrolled ? 52 : 62 }}
         >
           <a href="/" onClick={handleLogoClick} className="flex items-center gap-2.5 group min-h-[44px]">
             <Logo size={scrolled ? 32 : 36} />
