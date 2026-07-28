@@ -17,7 +17,6 @@ import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
 import BackToTopButton from "@/components/BackToTopButton";
-import MobileBottomNav from "@/components/MobileBottomNav";
 import { scrollToSection } from "@/lib/scroll";
 
 export default function Home() {
@@ -63,7 +62,6 @@ export default function Home() {
         <CTASection />
       </main>
       <BackToTopButton />
-      <MobileBottomNav />
       <Footer />
     </div>
   );

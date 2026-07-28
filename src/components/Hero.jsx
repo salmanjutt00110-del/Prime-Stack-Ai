@@ -309,7 +309,7 @@ export default function Hero() {
                 
                 <div className="flex items-center gap-2 mb-3 flex-wrap">
                   <span
-                    className="px-2.5 py-0.5 rounded-full text-[10px] font-bold"
+                    className="px-2.5 py-0.5 rounded-full text-[10px] font-bold shrink-0"
                     style={{
                       background: `${product.color}25`,
                       border: `1px solid ${product.color}45`,
@@ -318,9 +318,9 @@ export default function Hero() {
                   >
                     {product.tag}
                   </span>
-                  <span className="text-[11px] font-medium text-white/75">• {product.duration}</span>
+                  <span className="text-[11px] font-medium text-white/75 shrink-0">• {product.duration}</span>
                   {product.stock && (
-                    <span className="ml-auto px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/15 border border-emerald-500/35 text-emerald-300 flex items-center gap-1">
+                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/15 border border-emerald-500/35 text-emerald-300 flex items-center gap-1 shrink-0">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
                       <span>Stock: {product.stock} Units Available</span>
                     </span>
@@ -335,9 +335,9 @@ export default function Hero() {
                   {product.tagline || product.description}
                 </p>
 
-                <div className="mt-4 pt-4 border-t border-white/10 flex items-center justify-between">
+                <div className="mt-4 pt-4 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                   <div>
-                    <span className="text-[11px] text-white/60 block uppercase font-mono tracking-wider">Price</span>
+                    <span className="text-[10px] sm:text-[11px] text-white/60 block uppercase font-mono tracking-wider">Price</span>
                     <span className="text-lg font-bold font-mono text-emerald-400">
                       {product.price}
                     </span>
@@ -348,12 +348,12 @@ export default function Hero() {
                       e.stopPropagation();
                       openWhatsApp(product);
                     }}
-                    className="px-4 py-2 rounded-xl text-xs font-bold text-black flex items-center gap-1.5 shadow-lg hover:scale-105 transition-all min-h-[38px] cursor-pointer"
+                    className="w-full sm:w-auto px-4 py-2.5 rounded-xl text-xs font-bold text-black flex items-center justify-center gap-1.5 shadow-lg hover:scale-[1.02] transition-all min-h-[40px] cursor-pointer"
                     style={{
                       background: "linear-gradient(135deg, #25D366, #128C7E)",
                     }}
                   >
-                    <MessageCircle size={14} />
+                    <MessageCircle size={15} />
                     Order on WhatsApp
                   </button>
                 </div>

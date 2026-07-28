@@ -124,7 +124,7 @@ function ProductCardComponent({ product, index = 0, priority = false }) {
           />
 
           {/* SAVE & Rating Badges */}
-          <div className="flex items-center justify-between w-full mb-3 relative z-20">
+          <div className="flex items-center justify-between flex-wrap gap-2 w-full mb-3 relative z-20">
             <div
               className="px-3 py-1.5 rounded-2xl flex items-center gap-1.5 shadow-md border"
               style={{
