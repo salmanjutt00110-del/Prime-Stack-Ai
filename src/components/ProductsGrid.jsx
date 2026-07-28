@@ -21,7 +21,7 @@ import { motion } from "framer-motion";
 
 const CATEGORY_MAP = {
   all: null,
-  ai: ["gemini-pro-18", "veo-3-video", "supergrok-3m-basic", "supergrok-3m-warranty", "supergrok-12m-basic", "supergrok-12m-premium", "chatgpt-plus-1m", "chatgpt-go-3m", "lovable-ai-100c", "lovable-ai-12m-pro-lite"],
+  ai: ["gemini-pro-18", "veo-3-video", "supergrok-1m", "supergrok-3m-basic", "supergrok-6m", "supergrok-12m-premium", "chatgpt-plus-1m", "chatgpt-go-3m", "lovable-ai-100c", "lovable-ai-12m-pro-lite"],
   "video-ai": ["veo-3-video", "capcut-pro-1m", "capcut-pro-admin-7s", "canva-pro-edu", "canva-pro-admin"],
   creator: ["capcut-pro-1m", "capcut-pro-admin-7s", "canva-pro-edu", "canva-pro-admin", "tiktok-growth-challenge", "youtube-premium-12m", "youtube-premium-3m", "youtube-premium-1m"],
   subs: ["youtube-premium-12m", "youtube-premium-3m", "youtube-premium-1m", "canva-pro-edu", "canva-pro-admin", "chatgpt-plus-1m", "gemini-pro-18", "lovable-ai-100c", "lovable-ai-12m-pro-lite", "supergrok-12m-premium"],
@@ -31,7 +31,7 @@ const CATEGORY_MAP = {
 };
 
 const CATEGORIES = [
-  { id: "all", label: "All Products (20)", icon: LayoutGrid },
+  { id: "all", label: "All Products", icon: LayoutGrid },
   { id: "ai", label: "AI Tools", icon: Cpu },
   { id: "video-ai", label: "Video & Creative AI", icon: Video },
   { id: "creator", label: "Creator Tools", icon: Paintbrush },

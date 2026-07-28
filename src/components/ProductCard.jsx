@@ -211,9 +211,9 @@ function ProductCardComponent({ product, index = 0, priority = false }) {
               </span>
             )}
             <span
-              className="text-2xl sm:text-3xl font-black font-display tracking-tight"
+              className="text-2xl sm:text-3xl font-black font-display tracking-tight drop-shadow-[0_0_15px_rgba(16,185,129,0.35)]"
               style={{
-                background: "linear-gradient(135deg, #2563EB 0%, #7C3AED 50%, #DB2777 100%)",
+                background: "linear-gradient(135deg, #10B981 0%, #34D399 50%, #6EE7B7 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
