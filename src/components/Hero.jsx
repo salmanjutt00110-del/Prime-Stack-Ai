@@ -238,6 +238,10 @@ export default function Hero() {
                     <img
                       src={currentBrand.logo}
                       alt={currentBrand.name}
+                      width="128"
+                      height="128"
+                      fetchpriority="high"
+                      decoding="async"
                       className="w-28 h-28 sm:w-32 sm:h-32 object-contain relative z-10 filter drop-shadow-[0_12px_25px_rgba(0,0,0,0.8)] group-hover:scale-110 transition-transform duration-300"
                     />
                   </motion.div>

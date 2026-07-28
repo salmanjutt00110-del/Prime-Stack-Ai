@@ -93,17 +93,22 @@ export default function ProductsGrid() {
             className="mt-8 max-w-xl mx-auto relative"
           >
             <div className="relative flex items-center">
+              <label htmlFor="catalog-search-input" className="sr-only">
+                Search products catalog
+              </label>
               <Search className="absolute left-4 text-slate-400 pointer-events-none" size={20} />
               <input
+                id="catalog-search-input"
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search ChatGPT, Gemini, Canva, CapCut..."
-                className="w-full pl-12 pr-10 h-[52px] sm:h-[56px] rounded-2xl bg-white/[0.04] border border-white/15 text-white placeholder-slate-400 text-sm focus:outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/25 transition-all font-body shadow-2xl backdrop-blur-2xl"
+                className="w-full pl-12 pr-10 h-[52px] sm:h-[56px] rounded-2xl bg-white/[0.04] border border-white/15 text-white placeholder-slate-300 text-sm focus:outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/25 transition-all font-body shadow-2xl backdrop-blur-2xl"
               />
               {query && (
                 <button
                   onClick={() => setQuery("")}
+                  aria-label="Clear search filter"
                   className="absolute right-3 p-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/10 transition-all min-h-[40px] min-w-[40px] flex items-center justify-center cursor-pointer"
                 >
                   <X size={16} />

@@ -124,16 +124,21 @@ export default function Footer() {
 
             <form onSubmit={handleSubscribe} className="mt-2 space-y-2">
               <div className="relative flex items-center">
+                <label htmlFor="footer-newsletter-email" className="sr-only">
+                  Subscribe to newsletter with your email
+                </label>
                 <input
+                  id="footer-newsletter-email"
                   type="email"
                   required
                   value={newsletterEmail}
                   onChange={(e) => setNewsletterEmail(e.target.value)}
                   placeholder="Enter your email"
-                  className="w-full pl-3.5 pr-12 h-[44px] rounded-xl bg-white/[0.05] border border-white/15 text-white placeholder-white/40 text-xs focus:outline-none focus:border-emerald-400 transition-all font-body"
+                  className="w-full pl-3.5 pr-12 h-[44px] rounded-xl bg-white/[0.05] border border-white/15 text-white placeholder-slate-300 text-xs focus:outline-none focus:border-emerald-400 transition-all font-body"
                 />
                 <button
                   type="submit"
+                  aria-label="Subscribe to newsletter"
                   className="absolute right-1.5 p-2 rounded-lg bg-emerald-500 text-white hover:bg-emerald-400 transition-colors cursor-pointer min-h-[36px] min-w-[36px] flex items-center justify-center"
                 >
                   <Send size={14} />

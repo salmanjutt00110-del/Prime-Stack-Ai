@@ -74,35 +74,41 @@ export default function ContactSection() {
             {/* Direct Form */}
             <form onSubmit={handleSubmit} className="space-y-3.5">
               <div>
+                <label htmlFor="contact-name" className="sr-only">Your Name</label>
                 <input
+                  id="contact-name"
                   type="text"
                   required
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   placeholder="Your Name"
-                  className="w-full px-4 h-[46px] rounded-xl bg-white/[0.04] border border-white/12 text-white placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-purple-500 transition-all font-body"
+                  className="w-full px-4 h-[46px] rounded-xl bg-white/[0.04] border border-white/12 text-white placeholder-slate-300 text-xs sm:text-sm focus:outline-none focus:border-purple-500 transition-all font-body"
                 />
               </div>
 
               <div>
+                <label htmlFor="contact-email" className="sr-only">Your Email</label>
                 <input
+                  id="contact-email"
                   type="email"
                   required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   placeholder="Your Email"
-                  className="w-full px-4 h-[46px] rounded-xl bg-white/[0.04] border border-white/12 text-white placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-purple-500 transition-all font-body"
+                  className="w-full px-4 h-[46px] rounded-xl bg-white/[0.04] border border-white/12 text-white placeholder-slate-300 text-xs sm:text-sm focus:outline-none focus:border-purple-500 transition-all font-body"
                 />
               </div>
 
               <div>
+                <label htmlFor="contact-message" className="sr-only">Your Message</label>
                 <textarea
+                  id="contact-message"
                   rows={3}
                   required
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   placeholder="Your Message"
-                  className="w-full p-4 rounded-xl bg-white/[0.04] border border-white/12 text-white placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-purple-500 transition-all font-body resize-none"
+                  className="w-full p-4 rounded-xl bg-white/[0.04] border border-white/12 text-white placeholder-slate-300 text-xs sm:text-sm focus:outline-none focus:border-purple-500 transition-all font-body resize-none"
                 />
               </div>
 

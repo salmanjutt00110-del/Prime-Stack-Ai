@@ -536,4 +536,16 @@ html.light [style*="background: linear-gradient"] {
     0% { opacity: 0.3; transform: scale(0.98); }
     100% { opacity: 0.7; transform: scale(1.02); }
   }
+
+  /* PageSpeed 100/100 Content-Visibility Paint Optimizations */
+  #agency-services,
+  #bulk-offers,
+  #about,
+  #reviews,
+  #faq,
+  #contact,
+  footer {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 600px;
+  }
 }
