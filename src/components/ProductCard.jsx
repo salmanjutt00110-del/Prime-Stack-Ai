@@ -222,6 +222,7 @@ function ProductCardComponent({ product, index = 0, priority = false }) {
   const theme = getBrandTheme(product.id, product.name);
   const discountVal = calculateDiscount(product.oldPrice, product.price);
   const chips = getFeatureChips(product);
+  const isOutOfStock = product.stock === "0" || product.stock === 0 || String(product.stock).toLowerCase().includes("out of stock") || String(product.id || "").toLowerCase().includes("grok") || String(product.name || "").toLowerCase().includes("grok");
 
   return (
     <motion.div
@@ -279,10 +280,17 @@ function ProductCardComponent({ product, index = 0, priority = false }) {
                   {discountVal}
                 </span>
 
-                <div className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/35 text-[9px] sm:text-[9.5px] font-bold text-emerald-300 shrink-0">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
-                  <span>{product.stock ? `${product.stock} Stock` : "In Stock"}</span>
-                </div>
+                {isOutOfStock ? (
+                  <div className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-red-500/20 border border-red-500/40 text-[9px] sm:text-[9.5px] font-bold text-red-300 shrink-0">
+                    <span className="w-1.5 h-1.5 rounded-full bg-red-500 shrink-0" />
+                    <span>Out of Stock</span>
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/35 text-[9px] sm:text-[9.5px] font-bold text-emerald-300 shrink-0">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+                    <span>{product.stock ? `${product.stock} Stock` : "In Stock"}</span>
+                  </div>
+                )}
               </div>
 
             </div>
@@ -366,22 +374,32 @@ function ProductCardComponent({ product, index = 0, priority = false }) {
             </button>
 
             {/* Buy Now Button (WhatsApp Order) */}
-            <motion.button
-              onClick={(e) => {
-                e.stopPropagation();
-                openWhatsApp(product);
-              }}
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.96 }}
-              className="py-2.5 px-2 rounded-xl text-[11px] sm:text-xs font-extrabold text-white flex items-center justify-center gap-1 transition-all duration-300 shadow-lg cursor-pointer min-h-[42px]"
-              style={{
-                background: "linear-gradient(135deg, #2563EB 0%, #7C3AED 100%)",
-                boxShadow: "0 4px 15px rgba(124, 58, 237, 0.35)",
-              }}
-            >
-              <MessageCircle size={14} className="text-white shrink-0" />
-              <span className="tracking-wide text-white font-extrabold">Buy Now</span>
-            </motion.button>
+            {isOutOfStock ? (
+              <button
+                disabled
+                onClick={(e) => e.stopPropagation()}
+                className="py-2.5 px-2 rounded-xl text-[11px] sm:text-xs font-extrabold text-red-300/80 bg-red-950/40 border border-red-500/30 flex items-center justify-center gap-1 cursor-not-allowed min-h-[42px]"
+              >
+                <span>Out of Stock</span>
+              </button>
+            ) : (
+              <motion.button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  openWhatsApp(product.name, product.duration, product.price);
+                }}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.96 }}
+                className="py-2.5 px-2 rounded-xl text-[11px] sm:text-xs font-extrabold text-white flex items-center justify-center gap-1 transition-all duration-300 shadow-lg cursor-pointer min-h-[42px]"
+                style={{
+                  background: "linear-gradient(135deg, #2563EB 0%, #7C3AED 100%)",
+                  boxShadow: "0 4px 15px rgba(124, 58, 237, 0.35)",
+                }}
+              >
+                <MessageCircle size={14} className="text-white shrink-0" />
+                <span className="tracking-wide text-white font-extrabold">Buy Now</span>
+              </motion.button>
+            )}
           </div>
 
         </div>

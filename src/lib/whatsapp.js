@@ -14,6 +14,10 @@ export function buildWhatsAppURL(productName, duration, price) {
 }
 
 export function openWhatsApp(productName, duration, price) {
+  if (productName && String(productName).toLowerCase().includes("grok")) {
+    alert("SuperGrok is currently Out of Stock. WhatsApp orders are temporarily disabled for this item.");
+    return;
+  }
   const url = buildWhatsAppURL(productName, duration, price);
   window.open(url, "_blank");
 }
