@@ -99,18 +99,18 @@ export default function Hero() {
 
       <div className="mx-auto max-w-4xl w-full px-4 sm:px-6 flex flex-col items-center text-center relative z-10">
         
-        {/* Top 1-Line Intro Badge */}
+        {/* Top Intro Badge Line */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold border border-violet-500/30 bg-violet-500/15 text-violet-300 mb-3 backdrop-blur-md"
+          className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold border border-violet-500/30 bg-violet-500/15 text-violet-300 mb-3 backdrop-blur-md"
         >
           <Sparkles size={13} className="text-yellow-400" />
           <span>PRIME TOOLS HUB MARKETPLACE</span>
         </motion.div>
 
-        {/* Clean, Non-Animated Crisp Heading */}
+        {/* Clean Professional Heading */}
         <motion.h1
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
@@ -120,7 +120,7 @@ export default function Hero() {
           Premium AI Tools for Creators &amp; Professionals
         </motion.h1>
 
-        {/* Crisp Sub-headline - 100% Visible on Mobile */}
+        {/* Sub-headline */}
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -130,7 +130,7 @@ export default function Hero() {
           Wholesale &amp; Reseller Rates · Instant Delivery · 100% Verified Warranty
         </motion.p>
 
-        {/* SHOWCASE PRODUCT CARD — FRONT & CENTER RIGHT UP TOP */}
+        {/* SHOWCASE PRODUCT CARD WITH PROMINENT LOGO & MOTION GRAPHICS */}
         <div className="mt-6 w-full max-w-xl relative" style={{ perspective: 1000 }}>
           <AnimatePresence mode="wait">
             <motion.div
@@ -140,7 +140,7 @@ export default function Hero() {
               exit={{ opacity: 0, y: -15, scale: 0.97 }}
               transition={{ duration: 0.35, ease: "easeOut" }}
               onClick={() => navigate(`/product/${product.id}`)}
-              className="ps-luxury-glass rounded-3xl p-5 sm:p-7 border shadow-2xl relative text-left cursor-pointer transition-colors"
+              className="ps-luxury-glass rounded-3xl p-5 sm:p-7 border shadow-2xl relative text-center cursor-pointer transition-colors"
               style={{
                 borderColor: `${product.color}45`,
                 boxShadow: `0 20px 50px ${product.color}25, inset 0 1px 0 rgba(255,255,255,0.12)`,
@@ -148,56 +148,59 @@ export default function Hero() {
             >
               <span className="ps-shimmer absolute inset-0 rounded-3xl overflow-hidden pointer-events-none" />
               
-              {/* Top Row: Logo + Tags */}
-              <div className="flex items-center gap-3 mb-4">
-                <div
-                  className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl p-2 shrink-0 flex items-center justify-center border shadow-md"
+              {/* Card Header Tags */}
+              <div className="flex items-center justify-center gap-2 mb-3 flex-wrap">
+                <span
+                  className="px-2.5 py-0.5 rounded-full text-[10px] font-bold shrink-0"
                   style={{
-                    background: `radial-gradient(circle, ${product.color}30 0%, rgba(10,10,15,0.9) 100%)`,
-                    borderColor: `${product.color}60`,
+                    background: `${product.color}25`,
+                    border: `1px solid ${product.color}45`,
+                    color: product.color,
                   }}
                 >
+                  {product.tag}
+                </span>
+                <span className="text-[11px] font-medium text-white/75 shrink-0">• {product.duration}</span>
+                {product.stock && (
+                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/15 border border-emerald-500/35 text-emerald-300 flex items-center gap-1 shrink-0">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+                    <span>Stock: {product.stock} Units</span>
+                  </span>
+                )}
+              </div>
+
+              {/* Product Title */}
+              <h2 className="text-xl sm:text-2xl font-black tracking-tight text-white mb-2">
+                {product.name}
+              </h2>
+
+              {/* Central Motion Graphics Image Showcase Box */}
+              <div className="relative my-4 flex items-center justify-center">
+                <div
+                  className="relative w-36 h-36 sm:w-44 sm:h-44 rounded-3xl p-3 sm:p-4 flex items-center justify-center border shadow-2xl overflow-hidden transition-transform group-hover:scale-105"
+                  style={{
+                    background: `radial-gradient(circle, ${product.color}35 0%, rgba(12,12,18,0.95) 100%)`,
+                    borderColor: `${product.color}65`,
+                    boxShadow: `0 15px 35px ${product.color}30, 0 0 25px ${product.color}20`,
+                  }}
+                >
+                  <span className="ps-shimmer absolute inset-0 pointer-events-none" />
                   <img
                     src={product.logo}
                     alt={product.name}
-                    className="w-full h-full object-contain filter drop-shadow-md"
+                    className="w-24 h-24 sm:w-32 sm:h-32 object-contain relative z-10 filter drop-shadow-[0_10px_25px_rgba(0,0,0,0.6)] transition-transform duration-300"
+                    loading="eager"
                   />
-                </div>
-
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-center gap-2 flex-wrap mb-1">
-                    <span
-                      className="px-2.5 py-0.5 rounded-full text-[10px] font-bold shrink-0"
-                      style={{
-                        background: `${product.color}25`,
-                        border: `1px solid ${product.color}45`,
-                        color: product.color,
-                      }}
-                    >
-                      {product.tag}
-                    </span>
-                    <span className="text-[11px] font-medium text-white/75 shrink-0">• {product.duration}</span>
-                    {product.stock && (
-                      <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/15 border border-emerald-500/35 text-emerald-300 flex items-center gap-1 shrink-0">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
-                        <span>Stock: {product.stock} Units</span>
-                      </span>
-                    )}
-                  </div>
-
-                  <h2 className="text-xl sm:text-2xl font-black tracking-tight text-white truncate">
-                    {product.name}
-                  </h2>
                 </div>
               </div>
 
-              {/* Tagline */}
-              <p className="text-xs sm:text-sm text-white/80 line-clamp-2 leading-relaxed font-body mb-4">
+              {/* Tagline / Description */}
+              <p className="text-xs sm:text-sm text-white/80 line-clamp-2 leading-relaxed font-body mb-4 px-2">
                 {product.tagline || product.description}
               </p>
 
               {/* Price & Full Width WhatsApp CTA Button */}
-              <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-left">
                 <div>
                   <span className="text-[10px] sm:text-[11px] text-white/60 block uppercase font-mono tracking-wider">Instant Price</span>
                   <span className="text-xl sm:text-2xl font-black font-mono text-emerald-400">
