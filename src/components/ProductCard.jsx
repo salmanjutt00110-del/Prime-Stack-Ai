@@ -154,25 +154,25 @@ function ProductCardComponent({ product, index = 0, priority = false }) {
             </div>
           </div>
 
-          {/* Full Prominent Product Logo Showcase Box */}
+          {/* Full Motion-Graphics Visual Glass Box */}
           <div className="flex justify-center mb-4 mt-1 relative z-10">
             <div
-              className="relative flex items-center justify-center rounded-3xl overflow-hidden md:ps-logo-float-loop transition-transform group-hover:scale-105 p-3"
+              className="relative flex items-center justify-center rounded-3xl overflow-hidden ps-logo-float-loop transition-transform group-hover:scale-105 p-4"
               style={{
-                width: 130,
-                height: 130,
-                background: `radial-gradient(circle at 50% 35%, rgba(${sideGlow.primary}, 0.25) 0%, rgba(255, 255, 255, 0.06) 60%, rgba(10, 10, 15, 0.9) 100%)`,
-                border: `2px solid rgba(${sideGlow.primary}, 0.55)`,
-                boxShadow: `0 18px 45px rgba(0, 0, 0, 0.4), 0 0 30px rgba(${sideGlow.primary}, 0.3)`,
+                width: 140,
+                height: 140,
+                background: `radial-gradient(circle at 50% 35%, rgba(${sideGlow.primary}, 0.3) 0%, rgba(255, 255, 255, 0.08) 50%, rgba(10, 10, 15, 0.95) 100%)`,
+                border: `2px solid rgba(${sideGlow.primary}, 0.6)`,
+                boxShadow: `0 20px 45px rgba(0, 0, 0, 0.5), 0 0 35px rgba(${sideGlow.primary}, 0.35)`,
               }}
             >
               <span className="ps-shimmer absolute inset-0 pointer-events-none" />
               <LazyImage
                 src={product.logo}
                 alt={`${product.name} official logo`}
-                className="w-[96px] h-[96px] sm:w-[105px] sm:h-[105px] relative z-10 object-contain"
+                className="w-[105px] h-[105px] sm:w-[115px] sm:h-[115px] relative z-10 object-contain"
                 imgStyle={{
-                  filter: "brightness(1.1) contrast(1.1) drop-shadow(0 8px 16px rgba(0,0,0,0.5))"
+                  filter: "brightness(1.15) contrast(1.15) drop-shadow(0 10px 20px rgba(0,0,0,0.6))"
                 }}
                 priority={priority}
               />
