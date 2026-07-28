@@ -60,7 +60,7 @@ export default function Reviews() {
   return (
     <div className="relative min-h-screen bg-[#050505] text-white overflow-x-hidden flex flex-col justify-between">
       <Navbar />
-      <main className="pt-20 flex-grow">
+      <main className="pt-32 sm:pt-36 flex-grow">
         {/* hero */}
         <section className="relative py-16 px-4 sm:px-6 overflow-hidden">
           <div className="absolute inset-0 -z-10" style={{ background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(139,92,246,0.15), transparent 70%)" }} />

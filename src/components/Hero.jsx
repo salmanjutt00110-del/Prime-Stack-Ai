@@ -189,7 +189,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="home" className="relative min-h-[90vh] pt-24 sm:pt-28 pb-14 flex items-center justify-center overflow-hidden">
+    <section id="home" className="relative min-h-[90vh] pt-32 sm:pt-36 lg:pt-40 pb-14 flex items-center justify-center overflow-hidden">
       {/* Dynamic Theme Radial Canvas Background */}
       <motion.div
         className="absolute inset-0 -z-10 transition-all duration-700 pointer-events-none"

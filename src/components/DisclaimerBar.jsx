@@ -111,8 +111,8 @@ export default function DisclaimerBar() {
   return (
     <>
       <div
-        className={`fixed inset-x-0 z-40 px-4 sm:px-6 transition-all duration-500 pointer-events-none ${
-          scrolled ? "top-[54px] md:top-[60px]" : "top-[72px] md:top-[80px]"
+        className={`fixed inset-x-0 z-40 px-3 sm:px-6 transition-all duration-500 pointer-events-none ${
+          scrolled ? "top-[54px] md:top-[58px]" : "top-[66px] md:top-[72px]"
         }`}
       >
         <div
