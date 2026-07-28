@@ -32,6 +32,18 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Lock body scroll when mobile drawer is open
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
   // Track active section on scroll when on home page
   useEffect(() => {
     if (location.pathname !== "/") {
@@ -178,10 +190,10 @@ export default function Navbar() {
             {/* Mobile Menu Trigger */}
             <button
               onClick={() => setOpen((v) => !v)}
-              className="lg:hidden p-2 min-w-[40px] min-h-[40px] flex items-center justify-center rounded-xl border text-white bg-white/5 border-white/10 cursor-pointer"
+              className="lg:hidden p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl border text-white bg-white/5 border-white/10 cursor-pointer active:scale-95 transition-transform"
               aria-label="Toggle menu navigation"
             >
-              {open ? <X size={20} /> : <Menu size={20} />}
+              {open ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
         </nav>
@@ -195,9 +207,9 @@ export default function Navbar() {
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.25 }}
-              className="lg:hidden overflow-hidden transition-all bg-[#050505]/95 backdrop-blur-xl border-b border-white/10"
+              className="lg:hidden overflow-hidden transition-all bg-[#050505]/98 backdrop-blur-2xl border-b border-white/10 max-h-[85vh] overflow-y-auto"
             >
-              <div className="px-6 py-4 flex flex-col gap-1">
+              <div className="px-5 py-4 flex flex-col gap-1">
                 {LINKS.map((l) => {
                   const isActive = l.route ? location.pathname === l.href : activeSection === l.href;
                   return (
@@ -205,12 +217,12 @@ export default function Navbar() {
                       key={l.label}
                       href={l.href}
                       onClick={(e) => handleNav(e, l)}
-                      className={`py-3 border-b border-white/5 text-sm font-semibold min-h-[44px] flex items-center justify-between transition-colors ${
+                      className={`py-3.5 border-b border-white/5 text-base font-semibold min-h-[48px] flex items-center justify-between transition-colors ${
                         isActive ? "text-blue-400 font-bold" : "text-white/90 hover:text-white"
                       }`}
                     >
                       <span>{l.label}</span>
-                      {isActive && <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />}
+                      {isActive && <span className="w-2 h-2 rounded-full bg-blue-400" />}
                     </a>
                   );
                 })}
@@ -220,10 +232,10 @@ export default function Navbar() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setOpen(false)}
-                  className="mt-3 flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-semibold text-white min-h-[44px]"
+                  className="mt-4 flex items-center justify-center gap-2 px-4 py-3.5 rounded-2xl text-base font-bold text-white min-h-[52px] shadow-lg active:scale-[0.98] transition-transform"
                   style={{ background: "linear-gradient(135deg, #25D366, #128C7E)" }}
                 >
-                  <MessageCircle size={16} />
+                  <MessageCircle size={18} />
                   WhatsApp Support
                 </a>
               </div>

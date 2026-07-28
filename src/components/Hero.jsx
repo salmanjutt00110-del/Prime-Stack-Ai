@@ -336,13 +336,14 @@ export default function Hero() {
                       e.stopPropagation();
                       openWhatsApp(product);
                     }}
-                    className="w-full sm:w-auto px-4 py-2.5 rounded-xl text-xs font-bold text-black flex items-center justify-center gap-1.5 shadow-lg hover:scale-[1.02] transition-all min-h-[40px] cursor-pointer"
+                    className="w-full sm:w-auto px-6 py-3.5 rounded-2xl text-sm font-bold text-white flex items-center justify-center gap-2 shadow-lg hover:scale-[1.02] active:scale-[0.97] transition-all h-[56px] min-h-[56px] cursor-pointer"
                     style={{
                       background: "linear-gradient(135deg, #25D366, #128C7E)",
+                      boxShadow: "0 8px 24px rgba(37,211,102,0.3)",
                     }}
                   >
-                    <MessageCircle size={15} />
-                    Order on WhatsApp
+                    <MessageCircle size={18} className="text-white shrink-0" />
+                    <span className="text-white font-extrabold tracking-wide">Order on WhatsApp</span>
                   </button>
                 </div>
               </motion.div>

@@ -263,15 +263,15 @@ function ProductCardComponent({ product, index = 0, priority = false }) {
                 e.stopPropagation();
                 openWhatsApp(product.name, product.duration, product.price);
               }}
-              className="relative flex items-center justify-center gap-2 w-full h-[50px] rounded-2xl text-[13px] font-bold text-white overflow-hidden active:scale-[0.97] transition-transform shadow-md"
+              className="relative flex items-center justify-center gap-2 w-full h-[56px] min-h-[56px] rounded-2xl text-sm font-bold text-white overflow-hidden active:scale-[0.97] transition-transform shadow-lg cursor-pointer"
               style={{
                 background: "linear-gradient(135deg, #25D366 0%, #128C7E 100%)",
-                boxShadow: "0 6px 20px rgba(37, 211, 102, 0.25)",
+                boxShadow: "0 8px 24px rgba(37, 211, 102, 0.3)",
               }}
               whileHover={{ scale: 1.02 }}
             >
-              <MessageCircle size={16} className="shrink-0 relative z-10" />
-              <span className="tracking-wide relative z-10">Order on WhatsApp</span>
+              <MessageCircle size={18} className="shrink-0 relative z-10 text-white" />
+              <span className="tracking-wide relative z-10 text-white font-extrabold">Order on WhatsApp</span>
             </motion.button>
 
             {/* View Details Button */}

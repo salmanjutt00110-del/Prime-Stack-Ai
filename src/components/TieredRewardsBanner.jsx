@@ -142,10 +142,10 @@ const TieredRewardsBanner = memo(function TieredRewardsBanner() {
           </motion.p>
 
           {/* TAB SWITCHER */}
-          <div className="mt-6 inline-flex p-1.5 rounded-2xl bg-white/[0.05] border border-white/10 backdrop-blur-xl">
+          <div className="mt-6 flex flex-col sm:flex-row w-full max-w-md mx-auto p-1.5 rounded-2xl bg-white/[0.05] border border-white/10 backdrop-blur-xl gap-1">
             <button
               onClick={() => setSelectedTab("quantity")}
-              className={`px-5 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+              className={`w-full py-2.5 px-4 rounded-xl text-xs font-bold transition-all cursor-pointer min-h-[44px] flex items-center justify-center text-center ${
                 selectedTab === "quantity"
                   ? "bg-gradient-to-r from-amber-500 to-purple-600 text-white shadow-lg"
                   : "text-white/70 hover:text-white"
@@ -155,7 +155,7 @@ const TieredRewardsBanner = memo(function TieredRewardsBanner() {
             </button>
             <button
               onClick={() => setSelectedTab("spend")}
-              className={`px-5 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+              className={`w-full py-2.5 px-4 rounded-xl text-xs font-bold transition-all cursor-pointer min-h-[44px] flex items-center justify-center text-center ${
                 selectedTab === "spend"
                   ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg"
                   : "text-white/70 hover:text-white"

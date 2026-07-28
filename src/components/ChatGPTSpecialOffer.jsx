@@ -163,13 +163,14 @@ const ChatGPTSpecialOffer = memo(function ChatGPTSpecialOffer() {
                     selectedOption.warranty
                   )
                 }
-                className="w-full sm:w-auto px-8 py-3.5 rounded-2xl font-display font-extrabold text-sm text-black flex items-center justify-center gap-2.5 transition-all duration-300 hover:scale-[1.03] shadow-[0_0_25px_rgba(37,211,102,0.4)] cursor-pointer min-h-[48px]"
+                className="w-full sm:w-auto px-8 py-3.5 rounded-2xl font-display font-extrabold text-sm text-white flex items-center justify-center gap-2.5 transition-all duration-300 hover:scale-[1.02] active:scale-[0.97] shadow-lg cursor-pointer h-[56px] min-h-[56px]"
                 style={{
                   background: "linear-gradient(135deg, #25D366 0%, #128C7E 100%)",
+                  boxShadow: "0 8px 24px rgba(37, 211, 102, 0.3)",
                 }}
               >
-                <MessageCircle size={18} className="fill-black/10" />
-                <span>Order Now via WhatsApp</span>
+                <MessageCircle size={18} className="text-white shrink-0" />
+                <span className="text-white font-extrabold tracking-wide">Order Now via WhatsApp</span>
               </button>
             </div>
           </div>

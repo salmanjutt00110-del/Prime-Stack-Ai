@@ -169,13 +169,14 @@ const BulkPurchaseBanner = memo(function BulkPurchaseBanner({
             <div className="relative z-10 shrink-0 w-full md:w-auto">
               <button
                 onClick={() => openBulkWhatsApp("5+ Same Accounts")}
-                className="w-full md:w-auto px-7 py-3.5 rounded-2xl font-display font-extrabold text-sm text-black flex items-center justify-center gap-2.5 transition-all duration-300 hover:scale-[1.04] shadow-[0_0_25px_rgba(37,211,102,0.4)] cursor-pointer"
+                className="w-full md:w-auto px-7 py-3.5 rounded-2xl font-display font-extrabold text-sm text-white flex items-center justify-center gap-2.5 transition-all duration-300 hover:scale-[1.02] active:scale-[0.97] shadow-lg cursor-pointer h-[56px] min-h-[56px]"
                 style={{
                   background: "linear-gradient(135deg, #25D366 0%, #128C7E 100%)",
+                  boxShadow: "0 8px 24px rgba(37, 211, 102, 0.3)",
                 }}
               >
-                <MessageCircle size={18} />
-                <span>Claim Bulk Discount on WhatsApp</span>
+                <MessageCircle size={18} className="text-white shrink-0" />
+                <span className="text-white font-extrabold tracking-wide">Claim Bulk Discount on WhatsApp</span>
               </button>
             </div>
           </div>

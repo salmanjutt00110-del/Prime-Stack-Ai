@@ -91,7 +91,7 @@ export default function ProductsGrid() {
         </div>
 
         {/* Search Bar */}
-        <div className="max-w-xl mx-auto mb-10 relative">
+        <div className="max-w-xl mx-auto mb-8 relative">
           <div className="relative flex items-center">
             <Search className="absolute left-4 text-white/40 pointer-events-none" size={18} />
             <input
@@ -99,12 +99,12 @@ export default function ProductsGrid() {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search ChatGPT, Gemini, CapCut, VPN, Canva..."
-              className="w-full pl-11 pr-10 py-3.5 rounded-2xl bg-white/5 border border-white/10 text-white placeholder-white/40 text-sm focus:outline-none focus:border-violet-500/50 focus:ring-1 focus:ring-violet-500/50 transition-all font-body shadow-inner"
+              className="w-full pl-11 pr-10 h-[48px] sm:h-[52px] rounded-2xl bg-white/5 border border-white/10 text-white placeholder-white/40 text-sm focus:outline-none focus:border-violet-500/50 focus:ring-1 focus:ring-violet-500/50 transition-all font-body shadow-inner"
             />
             {query && (
               <button
                 onClick={() => setQuery("")}
-                className="absolute right-3 p-1.5 rounded-lg text-white/50 hover:text-white hover:bg-white/10 transition-all min-h-[36px]"
+                className="absolute right-3 p-2 rounded-lg text-white/50 hover:text-white hover:bg-white/10 transition-all min-h-[40px] min-w-[40px] flex items-center justify-center"
               >
                 <X size={16} />
               </button>
@@ -113,7 +113,7 @@ export default function ProductsGrid() {
         </div>
 
         {/* Category Filters */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
+        <div className="flex overflow-x-auto no-scrollbar items-center justify-start sm:justify-center gap-2 mb-10 pb-2 px-1 w-full">
           {CATEGORIES.map((cat) => {
             const Icon = cat.icon;
             const active = selectedCategory === cat.id;
@@ -121,14 +121,14 @@ export default function ProductsGrid() {
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
-                className={`px-4 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all duration-300 min-h-[44px] ${
+                className={`px-4 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all duration-300 min-h-[44px] shrink-0 cursor-pointer ${
                   active
-                    ? "bg-violet-600 text-white shadow-lg shadow-violet-600/30 scale-[1.03]"
+                    ? "bg-violet-600 text-white shadow-lg shadow-violet-600/30 scale-[1.02]"
                     : "bg-white/5 text-white/70 hover:text-white hover:bg-white/10 border border-white/10"
                 }`}
               >
                 <Icon size={15} />
-                <span>{cat.label}</span>
+                <span className="whitespace-nowrap">{cat.label}</span>
               </button>
             );
           })}
@@ -136,7 +136,7 @@ export default function ProductsGrid() {
 
         {/* Product Cards Grid */}
         {filteredProducts.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
             {filteredProducts.map((p, i) => (
               <ProductCard key={p.id} product={p} index={i} priority={i < 4} />
             ))}
