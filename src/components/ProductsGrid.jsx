@@ -21,13 +21,13 @@ import { motion } from "framer-motion";
 
 const CATEGORY_MAP = {
   all: null,
-  ai: ["gemini-pro-18", "veo-3-video", "supergrok-1m", "supergrok-3m-basic", "supergrok-6m", "supergrok-12m-premium", "chatgpt-plus-1m", "chatgpt-go-3m", "lovable-ai-100c", "lovable-ai-12m-pro-lite"],
-  "video-ai": ["veo-3-video", "capcut-pro-1m", "capcut-pro-admin-7s", "canva-pro-edu", "canva-pro-admin"],
-  creator: ["capcut-pro-1m", "capcut-pro-admin-7s", "canva-pro-edu", "canva-pro-admin", "tiktok-growth-challenge", "youtube-premium-12m", "youtube-premium-3m", "youtube-premium-1m"],
-  subs: ["youtube-premium-12m", "youtube-premium-3m", "youtube-premium-1m", "canva-pro-edu", "canva-pro-admin", "chatgpt-plus-1m", "gemini-pro-18", "lovable-ai-100c", "lovable-ai-12m-pro-lite", "supergrok-12m-premium"],
+  ai: ["heygen-creator-600c", "notion-plus-12m", "gemini-pro-18", "veo-3-video", "supergrok-1m", "supergrok-3m-basic", "supergrok-6m", "supergrok-12m-premium", "chatgpt-plus-1m", "chatgpt-go-3m", "lovable-ai-100c", "lovable-ai-12m-pro-lite"],
+  "video-ai": ["heygen-creator-600c", "figma-pro-12m", "veo-3-video", "capcut-pro-1m", "capcut-pro-admin-7s", "canva-pro-edu", "canva-pro-admin"],
+  creator: ["heygen-creator-600c", "notion-plus-12m", "figma-pro-12m", "capcut-pro-1m", "capcut-pro-admin-7s", "canva-pro-edu", "canva-pro-admin", "tiktok-growth-challenge", "youtube-premium-12m", "youtube-premium-3m", "youtube-premium-1m"],
+  subs: ["heygen-creator-600c", "notion-plus-12m", "figma-pro-12m", "youtube-premium-12m", "youtube-premium-3m", "youtube-premium-1m", "canva-pro-edu", "canva-pro-admin", "chatgpt-plus-1m", "gemini-pro-18", "lovable-ai-100c", "lovable-ai-12m-pro-lite", "supergrok-12m-premium"],
   vpn: ["surfshark-vpn-1y", "surfshark-vpn-1m", "nordvpn-3m"],
-  automation: ["lovable-ai-100c", "lovable-ai-12m-pro-lite", "tiktok-growth-challenge", "chatgpt-go-3m", "veo-3-video"],
-  trending: ["gemini-pro-18", "chatgpt-plus-1m", "canva-pro-edu", "veo-3-video", "supergrok-12m-premium", "nordvpn-3m", "youtube-premium-12m"]
+  automation: ["heygen-creator-600c", "notion-plus-12m", "lovable-ai-100c", "lovable-ai-12m-pro-lite", "tiktok-growth-challenge", "chatgpt-go-3m", "veo-3-video"],
+  trending: ["heygen-creator-600c", "notion-plus-12m", "figma-pro-12m", "gemini-pro-18", "chatgpt-plus-1m", "canva-pro-edu", "veo-3-video", "supergrok-12m-premium", "nordvpn-3m", "youtube-premium-12m"]
 };
 
 const CATEGORIES = [

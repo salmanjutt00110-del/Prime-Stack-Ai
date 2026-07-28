@@ -101,6 +101,24 @@ const THEMES = {
     glow2: "rgba(139, 92, 246, 0.18)",
     particles: "#EE0F79",
   },
+  "heygen-creator-600c": {
+    bg: "radial-gradient(ellipse 80% 60% at 50% 30%, rgba(92, 36, 255, 0.16) 0%, rgba(0, 102, 255, 0.12) 50%, transparent 70%)",
+    glow: "rgba(92, 36, 255, 0.32)",
+    glow2: "rgba(0, 102, 255, 0.2)",
+    particles: "#6366F1",
+  },
+  "notion-plus-12m": {
+    bg: "radial-gradient(ellipse 80% 60% at 50% 30%, rgba(255, 255, 255, 0.12) 0%, rgba(100, 100, 100, 0.08) 50%, transparent 70%)",
+    glow: "rgba(255, 255, 255, 0.25)",
+    glow2: "rgba(150, 150, 150, 0.18)",
+    particles: "#FFFFFF",
+  },
+  "figma-pro-12m": {
+    bg: "radial-gradient(ellipse 80% 60% at 50% 30%, rgba(242, 78, 30, 0.16) 0%, rgba(162, 89, 255, 0.12) 50%, transparent 70%)",
+    glow: "rgba(242, 78, 30, 0.3)",
+    glow2: "rgba(10, 207, 131, 0.2)",
+    particles: "#F24E1E",
+  },
 };
 
 export default function Hero() {

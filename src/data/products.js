@@ -11,8 +11,11 @@ import youtubePremiumLogo from "../photo/youtube-premium.webp";
 import nordVpnLogo from "../photo/nord-vpn.webp";
 import lovableLogo from "../photo/lovable.webp";
 import chatgptGoLogo from "../photo/chatgpt-go.webp";
+import heygenLogo from "../photo/heygen.png";
+import notionLogo from "../photo/notion.png";
+import figmaLogo from "../photo/figma.png";
 
-const db = globalThis.__B44_DB__ || { auth:{ isAuthenticated: async()=>false, me: async()=>null }, entities:new Proxy({}, { get:()=>({ filter:async()=>[], get:async()=>null, create:async()=>({}), update:async()=>({}), delete:async()=>({}) }) }), integrations:{ Core:{ UploadFile:async()=>({ file_url:'' }) } } };
+const db = globalThis.__B44_DB__ || { auth: { isAuthenticated: async () => false, me: async () => null }, entities: new Proxy({}, { get: () => ({ filter: async () => [], get: async () => null, create: async () => ({}), update: async () => ({}), delete: async () => ({}) }) }), integrations: { Core: { UploadFile: async () => ({ file_url: '' }) } } };
 
 // Prime Tools Hub — Product Catalog (with full terms, warranty & buying instructions)
 export const WHATSAPP_NUMBER = "923707020580";
@@ -30,6 +33,9 @@ const BRAND = {
   nord: nordVpnLogo,
   lovable: lovableLogo,
   chatgptGo: chatgptGoLogo,
+  heygen: heygenLogo,
+  notion: notionLogo,
+  figma: figmaLogo,
 };
 export { BRAND };
 
@@ -38,9 +44,12 @@ export const LOGO = {
   primestack: primeToolsLogo,
 };
 
-// Hero showcase products (one per brand) — 14 total
+// Hero showcase products (one per brand)
 export const HERO_PRODUCTS = [
   { id: "chatgpt-plus-1m", name: "ChatGPT Plus", tag: "⚡ Instant Delivery", duration: "1 Month", price: "Rs. 1,799", oldPrice: "Rs. 2,099", description: "ChatGPT Plus subscription via fast & stable iCloud method. Full premium access with instant delivery & 2FA setup.", tagline: "Fast & stable iCloud method with 2FA code setup included.", stock: "5", logo: BRAND.chatgpt, color: "#10A37F", color2: "#0D8A6D", particle: "#10A37F" },
+  { id: "heygen-creator-600c", name: "HeyGen Creator", tag: "🎬 600 Credits", duration: "30 Days", price: "Rs. 3,999", oldPrice: "Rs. 4,999", description: "HeyGen Creator subscription with 600 AI credits for 30 days. Export Full HD 1080p videos with multi-language support. 24-hour warranty.", tagline: "600 AI Credits for 30 days · 1080p Full HD video export.", stock: "12", logo: BRAND.heygen, color: "#5C24FF", color2: "#0066FF", particle: "#6366F1" },
+  { id: "notion-plus-12m", name: "Notion Plus", tag: "🎓 12 Months", duration: "12 Months", price: "Rs. 1,199", oldPrice: "Rs. 1,999", description: "Notion Education Plus Account for 12 months with full Pro features and 3,000 AI credits per month. Email change allowed and Outlook mail access included.", tagline: "12 Months Education Plus · 3,000 AI credits/month & email change allowed.", stock: "15", logo: BRAND.notion, color: "#FFFFFF", color2: "#888888", particle: "#FFFFFF" },
+  { id: "figma-pro-12m", name: "Figma Pro", tag: "🎨 Full Warranty", duration: "12 Months", price: "Rs. 3,799", oldPrice: "Rs. 4,999", description: "Figma Pro premium subscription with full design and prototyping features for 12 months. Covered by full warranty.", tagline: "12 Months Figma Pro full subscription with 100% full warranty.", stock: "8", logo: BRAND.figma, color: "#F24E1E", color2: "#A259FF", particle: "#0ACF83" },
   { id: "gemini-pro-18", name: "Google Gemini Pro", tag: "🚀 18 Months", duration: "18 Months", price: "Rs. 1,999", oldPrice: "Rs. 5,199", description: "Premium Gemini AI access on your personal Google account — 5TB storage, advanced AI image generation, Veo video generation.", tagline: "5TB cloud storage, Veo video generation & monthly AI credits on your Gmail.", stock: "4", logo: BRAND.gemini, color: "#4285F4", color2: "#8B5CF6", particle: "#60A5FA" },
   { id: "veo-3-video", name: "Google Veo 3", tag: "🎬 AI Video", duration: "30 Days Stable", price: "Rs. 3,799", oldPrice: "Rs. 4,449", description: "Unlimited AI video generation with 45,000+ credits. Only your Gmail address required with 20-day warranty.", tagline: "45,000+ AI Credits for 30-day stable high-quality video generation.", stock: "5", logo: BRAND.veo, color: "#4285F4", color2: "#EA4335", particle: "#60A5FA" },
   { id: "capcut-pro-1m", name: "CapCut Pro", tag: "✂️ Pro Editing", duration: "1 Month", price: "Rs. 1,139", oldPrice: "Rs. 1,329", description: "CapCut Pro premium access with all pro editing features, premium effects, filters, templates, AI editing tools.", tagline: "All pro editing features, AI tools & export without watermark.", stock: "7", logo: BRAND.capcut, color: "#FE2C55", color2: "#25F4EE", particle: "#FE2C55" },
@@ -48,6 +57,7 @@ export const HERO_PRODUCTS = [
   { id: "supergrok-12m-premium", name: "SuperGrok 12 Months", tag: "👑 12 Months", duration: "12 Months", price: "Rs. 2,999", oldPrice: "Rs. 4,999", description: "SuperGrok 12-month premium subscription powered by X. Advanced AI models with fast responses.", tagline: "12 Months SuperGrok subscription with high-speed AI models.", stock: "3", logo: BRAND.grok, color: "#1DA1F2", color2: "#8B5CF6", particle: "#60A5FA" },
   { id: "surfshark-vpn-1y", name: "Surfshark VPN", tag: "🛡️ 1 Year", duration: "1 Year", price: "Rs. 3,320", oldPrice: "Rs. 3,899", description: "1-year premium VPN subscription with global server access, high-speed browsing & streaming, encrypted privacy.", tagline: "1-Year encrypted global privacy & high-speed streaming VPN.", stock: "5", logo: BRAND.surfshark, color: "#1C9FE8", color2: "#22D3EE", particle: "#22D3EE" },
   { id: "tiktok-growth-challenge", name: "TikTok Creator Growth", tag: "🇺🇸 USA Account", duration: "One-Time", price: "Rs. 8,549", oldPrice: "Rs. 9,989", description: "Creator Growth Challenge activation on your eligible USA TikTok account with activation warranty.", tagline: "Fast policy-compliant activation on your USA TikTok creator account.", stock: "5", logo: BRAND.tiktok, color: "#FE2C55", color2: "#25F4EE", particle: "#FE2C55" },
+
   { id: "youtube-premium-12m", name: "YouTube Premium", tag: "📺 Fixed Family Slot", duration: "12 Months", price: "Rs. 8,250", oldPrice: "Rs. 9,999", description: "12 Months of stable YouTube Premium and YouTube Music access on your personal Google account.", tagline: "Ad-free videos & YouTube Music for 12 months on your Google account.", stock: "4", logo: BRAND.youtube, color: "#FF0000", color2: "#cc0000", particle: "#FF0000" },
   { id: "chatgpt-go-3m", name: "ChatGPT Go", tag: "🎫 Coupon Code", duration: "3 Months", price: "Rs. 850", oldPrice: "Rs. 1,199", description: "ChatGPT Go subscription for 3 months. Fast delivery via coupon code. Stable service.", tagline: "3 Months ChatGPT Go coupon code fast delivery.", stock: "85", logo: BRAND.chatgptGo, color: "#10A37F", color2: "#0D8A6D", particle: "#10A37F" },
   { id: "capcut-pro-admin-7s", name: "CapCut Pro Admin Team", tag: "👑 Admin Team · 7 Seats", duration: "1 Month", price: "Rs. 4,749", oldPrice: "Rs. 5,499", description: "1 Month of CapCut Pro admin team account with 7 seats. Full premium editing included.", tagline: "7 Seats admin team account for 1 month full premium editing.", stock: "2", logo: BRAND.capcut, color: "#FE2C55", color2: "#25F4EE", particle: "#FE2C55" },
@@ -59,6 +69,129 @@ export const HERO_PRODUCTS = [
 
 // Full catalog
 export const ALL_PRODUCTS = [
+  {
+    id: "heygen-creator-600c",
+    name: "HeyGen Creator — 600 Credits",
+    duration: "30 Days",
+    price: "Rs. 3,999",
+    oldPrice: "Rs. 4,999",
+    stock: "12",
+    color: "#5C24FF",
+    logo: BRAND.heygen,
+    tag: "🎬 600 Credits",
+    tagline: "600 AI Credits for 30 days · 1080p Full HD video export.",
+    description: "HeyGen Creator subscription with 600 AI credits for 30 days. Export Full HD 1080p videos with multi-language support. 24-hour warranty.",
+    features: [
+      "600 AI Credits (30 Days)",
+      "Export Full HD 1080p Video",
+      "Multi-Language AI Support",
+      "Suitable for Ads, Sales, Training & Social Content",
+      "Handover Format: TK HeyGen | MK HeyGen",
+      "24-Hour Warranty Included"
+    ],
+    whatsIncluded: [
+      "HeyGen Creator Account Access",
+      "600 AI Video Generation Credits",
+      "Full HD 1080p Video Export Access",
+      "Handover Format: TK HeyGen | MK HeyGen",
+      "24-Hour Package Warranty"
+    ],
+    requirements: [
+      "NOTE: PLEASE USE PROXY OR VPN IP USA",
+      "Check and log in to your account immediately after delivery"
+    ],
+    termsOfUse: [
+      "Must use USA Proxy or VPN IP to log in and create content",
+      "Handover format: TK HeyGen | MK HeyGen",
+      "Package warranty only, no warranty due to use in violation of policy"
+    ],
+    warrantyPolicy: [
+      "24-Hour Warranty from the time of delivery",
+      "Warranty applies to package warranty only",
+      "No warranty for account suspensions due to policy violations or non-USA IP usage"
+    ],
+    warrantyNote: "24-Hour Warranty · Must use USA VPN/Proxy",
+  },
+  {
+    id: "notion-plus-12m",
+    name: "Notion Plus — 12 Months",
+    duration: "12 Months",
+    price: "Rs. 1,199",
+    oldPrice: "Rs. 1,999",
+    stock: "15",
+    color: "#6B7280",
+    logo: BRAND.notion,
+    tag: "🎓 12 Months Plus",
+    tagline: "12 Months Education Plus · 3,000 AI credits/month & email change allowed.",
+    description: "Notion Education Plus Account for 12 months with full Pro features and 3,000 AI credits per month. Email change allowed and Outlook mail access included.",
+    features: [
+      "Notion Education Plus Account (Full Pro Features)",
+      "3,000 AI Credits / Month",
+      "12 Months Access",
+      "Email Change Allowed",
+      "Reset Account Security After Login",
+      "365 Days Package Warranty"
+    ],
+    whatsIncluded: [
+      "Notion Education Plus Account Credentials (email:pass)",
+      "Outlook.com Mail Access",
+      "3,000 AI Credits / Month",
+      "365 Days Warranty Support"
+    ],
+    requirements: [
+      "To login go to outlook.com first then login there and login with same email:pass on Notion too",
+      "Reset account security / change password after logging in"
+    ],
+    termsOfUse: [
+      "First login to outlook.com, then login to Notion using the same email:pass credentials",
+      "Reset account security after login",
+      "Email change is allowed"
+    ],
+    warrantyPolicy: [
+      "365 Days Package Warranty after purchase",
+      "Change password to secure account after purchase",
+      "Full warranty support for the package duration under policy guidelines"
+    ],
+    warrantyNote: "365 Days Warranty · Outlook mail provided",
+  },
+  {
+    id: "figma-pro-12m",
+    name: "Figma Pro — 12 Months",
+    duration: "12 Months",
+    price: "Rs. 3,799",
+    oldPrice: "Rs. 4,999",
+    stock: "8",
+    color: "#F24E1E",
+    logo: BRAND.figma,
+    tag: "🎨 Full Warranty",
+    tagline: "12 Months Figma Pro full subscription with 100% full warranty.",
+    description: "Figma Pro premium subscription with full design and prototyping features for 12 months. Covered by full warranty.",
+    features: [
+      "Figma Pro Full Access",
+      "Unlimited Figma Files & Version History",
+      "Advanced Prototyping & Design Systems",
+      "Dev Mode & Team Collaboration Features",
+      "Full 12-Month Subscription Warranty"
+    ],
+    whatsIncluded: [
+      "Figma Pro Premium Access",
+      "12 Months Full Subscription",
+      "Full Warranty Support"
+    ],
+    requirements: [
+      "Valid email address for invite / account login",
+      "Verify and log in upon delivery"
+    ],
+    termsOfUse: [
+      "Follow Figma official terms of service and usage rules",
+      "No unauthorized account sharing or policy violation"
+    ],
+    warrantyPolicy: [
+      "Full 12-Month Replacement & Support Warranty",
+      "Guaranteed issue resolution or replacement during subscription period"
+    ],
+    warrantyNote: "Full Warranty included for 12 Months",
+  },
   {
     id: "gemini-pro-18",
     name: "Google Gemini Pro",
