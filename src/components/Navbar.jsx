@@ -11,7 +11,6 @@ const LINKS = [
   { label: "Home", href: "#home" },
   { label: "Products", href: "#products" },
   { label: "Services", href: "#agency-services" },
-  { label: "Meta Ads", href: "#meta-ads" },
   { label: "About", href: "#about" },
   { label: "Reviews", href: "/reviews", route: true },
   { label: "FAQ", href: "#faq" },
@@ -55,7 +54,6 @@ export default function Navbar() {
       { id: "contact", hash: "#contact" },
       { id: "faq", hash: "#faq" },
       { id: "about", hash: "#about" },
-      { id: "meta-ads", hash: "#meta-ads" },
       { id: "agency-services", hash: "#agency-services" },
       { id: "products", hash: "#products" },
       { id: "home", hash: "#home" },
@@ -114,18 +112,18 @@ export default function Navbar() {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        className="fixed top-0 inset-x-0 z-50 transition-all duration-500"
+        className="fixed top-0 inset-x-0 z-50 transition-all duration-300"
         style={{
           backdropFilter: "blur(24px) saturate(180%)",
           WebkitBackdropFilter: "blur(24px) saturate(180%)",
-          background: "rgba(5, 5, 5, 0.88)",
+          background: "rgba(5, 5, 5, 0.92)",
           borderBottom: "1px solid rgba(255,255,255,0.08)",
           paddingTop: "env(safe-area-inset-top, 0px)",
         }}
       >
         <nav 
-          className="mx-auto max-w-7xl px-4 sm:px-6 flex items-center justify-between transition-all duration-500"
-          style={{ height: scrolled ? 52 : 62 }}
+          className="mx-auto max-w-7xl px-4 sm:px-6 flex items-center justify-between transition-all duration-300"
+          style={{ height: scrolled ? 54 : 64 }}
         >
           <a href="/" onClick={handleLogoClick} className="flex items-center gap-2.5 group min-h-[44px]">
             <Logo size={scrolled ? 32 : 36} />
@@ -190,7 +188,7 @@ export default function Navbar() {
             {/* Mobile Menu Trigger */}
             <button
               onClick={() => setOpen((v) => !v)}
-              className="lg:hidden p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl border text-white bg-white/5 border-white/10 cursor-pointer active:scale-95 transition-transform"
+              className="lg:hidden p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl border text-white bg-white/10 border-white/20 cursor-pointer active:scale-95 transition-transform"
               aria-label="Toggle menu navigation"
             >
               {open ? <X size={22} /> : <Menu size={22} />}
@@ -199,47 +197,58 @@ export default function Navbar() {
         </nav>
         <DisclaimerBar />
 
-        {/* Mobile Navigation Menu */}
+        {/* Mobile Navigation Menu Drawer */}
         <AnimatePresence>
           {open && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.25 }}
-              className="lg:hidden overflow-hidden transition-all bg-[#050505]/98 backdrop-blur-2xl border-b border-white/10 max-h-[85vh] overflow-y-auto"
-            >
-              <div className="px-5 py-4 flex flex-col gap-1">
-                {LINKS.map((l) => {
-                  const isActive = l.route ? location.pathname === l.href : activeSection === l.href;
-                  return (
-                    <a
-                      key={l.label}
-                      href={l.href}
-                      onClick={(e) => handleNav(e, l)}
-                      className={`py-3.5 border-b border-white/5 text-base font-semibold min-h-[48px] flex items-center justify-between transition-colors ${
-                        isActive ? "text-blue-400 font-bold" : "text-white/90 hover:text-white"
-                      }`}
-                    >
-                      <span>{l.label}</span>
-                      {isActive && <span className="w-2 h-2 rounded-full bg-blue-400" />}
-                    </a>
-                  );
-                })}
+            <>
+              {/* Tap-outside Backdrop */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setOpen(false)}
+                className="fixed inset-0 top-[100%] bg-black/60 backdrop-blur-sm z-40 lg:hidden"
+              />
 
-                <a
-                  href={WHATSAPP_GENERAL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setOpen(false)}
-                  className="mt-4 flex items-center justify-center gap-2 px-4 py-3.5 rounded-2xl text-base font-bold text-white min-h-[52px] shadow-lg active:scale-[0.98] transition-transform"
-                  style={{ background: "linear-gradient(135deg, #25D366, #128C7E)" }}
-                >
-                  <MessageCircle size={18} />
-                  WhatsApp Support
-                </a>
-              </div>
-            </motion.div>
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.25, ease: "easeOut" }}
+                className="lg:hidden relative z-50 overflow-hidden bg-[#050508]/98 backdrop-blur-2xl border-b border-white/15 shadow-2xl max-h-[80vh] overflow-y-auto"
+              >
+                <div className="px-5 py-4 flex flex-col gap-1">
+                  {LINKS.map((l) => {
+                    const isActive = l.route ? location.pathname === l.href : activeSection === l.href;
+                    return (
+                      <a
+                        key={l.label}
+                        href={l.href}
+                        onClick={(e) => handleNav(e, l)}
+                        className={`py-3.5 border-b border-white/10 text-base font-bold min-h-[50px] flex items-center justify-between transition-colors ${
+                          isActive ? "text-cyan-400" : "text-white/90 hover:text-white"
+                        }`}
+                      >
+                        <span>{l.label}</span>
+                        {isActive && <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.8)]" />}
+                      </a>
+                    );
+                  })}
+
+                  <a
+                    href={WHATSAPP_GENERAL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setOpen(false)}
+                    className="mt-4 flex items-center justify-center gap-2 px-4 py-3.5 rounded-2xl text-base font-extrabold text-white min-h-[52px] shadow-xl active:scale-[0.98] transition-transform"
+                    style={{ background: "linear-gradient(135deg, #25D366, #128C7E)" }}
+                  >
+                    <MessageCircle size={20} />
+                    WhatsApp Support
+                  </a>
+                </div>
+              </motion.div>
+            </>
           )}
         </AnimatePresence>
       </motion.header>
