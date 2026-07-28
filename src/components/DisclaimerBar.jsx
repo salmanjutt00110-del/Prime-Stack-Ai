@@ -110,16 +110,12 @@ export default function DisclaimerBar() {
 
   return (
     <>
-      <div
-        className={`fixed inset-x-0 z-40 px-3 sm:px-6 transition-all duration-500 pointer-events-none ${
-          scrolled ? "top-[54px] md:top-[58px]" : "top-[66px] md:top-[72px]"
-        }`}
-      >
+      <div className="w-full px-2 sm:px-6 pb-2 pt-0 pointer-events-auto">
         <div
-          className="mx-auto max-w-7xl w-full h-9 rounded-full p-[1px] relative overflow-hidden transition-all duration-700 pointer-events-auto ps-gradient-border-anim"
+          className="mx-auto max-w-7xl w-full h-8 sm:h-9 rounded-full p-[1px] relative overflow-hidden transition-all duration-500 ps-gradient-border-anim"
           style={{
             background: `linear-gradient(90deg, ${themeColors.from}, ${themeColors.via}, ${themeColors.to})`,
-            boxShadow: `0 8px 32px rgba(0, 0, 0, 0.5), 0 4px 15px ${themeColors.from}1a`,
+            boxShadow: `0 4px 20px rgba(0, 0, 0, 0.5), 0 2px 10px ${themeColors.from}1a`,
           }}
         >
           <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
@@ -137,14 +133,14 @@ export default function DisclaimerBar() {
 
           <div
             onClick={() => setIsModalOpen(true)}
-            className="w-full h-full rounded-full bg-[#050506]/90 backdrop-blur-[24px] flex items-center relative z-20 px-3 overflow-hidden cursor-pointer"
+            className="w-full h-full rounded-full bg-[#050506]/95 backdrop-blur-[24px] flex items-center relative z-20 px-2.5 overflow-hidden cursor-pointer"
           >
             <button
               onClick={(e) => {
                 e.stopPropagation();
                 setIsModalOpen(true);
               }}
-              className="flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider text-white border border-amber-500/40 transition-all mr-3 shrink-0 cursor-pointer pointer-events-auto relative z-30 active:scale-95 bg-amber-500/20 text-amber-300 min-h-[32px]"
+              className="flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[9.5px] sm:text-[10px] font-black uppercase tracking-wider text-white border border-amber-500/40 transition-all mr-2.5 shrink-0 cursor-pointer pointer-events-auto relative z-30 active:scale-95 bg-amber-500/20 text-amber-300 min-h-[26px] sm:min-h-[28px]"
             >
               <span className="relative flex h-1.5 w-1.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />

@@ -185,6 +185,7 @@ export default function Navbar() {
             </button>
           </div>
         </nav>
+        <DisclaimerBar />
 
         {/* Mobile Navigation Menu */}
         <AnimatePresence>
@@ -230,7 +231,6 @@ export default function Navbar() {
           )}
         </AnimatePresence>
       </motion.header>
-      <DisclaimerBar />
     </>
   );
 }

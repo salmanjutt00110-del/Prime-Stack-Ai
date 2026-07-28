@@ -233,55 +233,43 @@ export default function Hero() {
           
           {/* Announcement Badge */}
           <motion.div
-            initial={{ opacity: 0, y: -12 }}
+            initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-bold border border-white/15 bg-white/10 text-white/90 mb-4 backdrop-blur-md shadow-sm"
+            transition={{ duration: 0.4 }}
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] sm:text-[11px] font-bold border border-violet-500/30 bg-violet-500/15 text-violet-300 mb-3 backdrop-blur-md"
           >
-            <Sparkles size={13} className="text-yellow-400" />
-            <span>PRIME TOOLS HUB MARKETPLACE</span>
+            <Sparkles size={12} className="text-yellow-400" />
+            <span>PREMIUM AI TOOLS MARKETPLACE</span>
           </motion.div>
 
           {/* Hero Heading */}
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="font-display font-black leading-[1.15] tracking-tight text-white text-[clamp(1.5rem,5.2vw,3.3rem)] text-center lg:text-left break-normal w-full max-w-full px-2 sm:px-0"
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="font-display font-black leading-[1.12] tracking-tight text-white text-[clamp(1.4rem,4.2vw,2.8rem)] text-center lg:text-left w-full max-w-full px-1 sm:px-0"
           >
             <Animated3DText text="Premium AI Tools for Creators & Professionals" />
           </motion.h1>
 
-          {/* Hero Description - FIX FOR MOBILE CROPPING & OVERFLOW */}
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-4 text-[clamp(0.85rem,3.4vw,1.05rem)] text-white/85 max-w-xl mx-auto lg:mx-0 leading-[1.65] font-body px-4 sm:px-0 text-center lg:text-left text-balance break-normal w-full"
-          >
-            Unlock the world's most powerful AI tools, premium subscriptions, and creator services—all in one secure platform on PrimeTools.store with instant activation &amp; 24/7 support.
-          </motion.p>
-
-          {/* Offer & Reseller Banners */}
+          {/* Subtitle Pills */}
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="mt-5 flex flex-col sm:flex-row flex-wrap items-center justify-center lg:justify-start gap-2.5 w-full max-w-full px-2 sm:px-0"
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="mt-3 flex flex-wrap items-center justify-center lg:justify-start gap-2 w-full text-[11px] sm:text-xs font-semibold"
           >
             <a
               href="#special-offers"
-              className="ps-pulse w-full sm:w-auto inline-flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-bold border border-amber-500/40 bg-gradient-to-r from-amber-500/20 via-purple-500/20 to-pink-500/20 text-amber-200 backdrop-blur-md hover:scale-[1.02] transition-transform text-center leading-snug"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-amber-500/35 bg-amber-500/15 text-amber-200 hover:bg-amber-500/25 transition-all text-center"
             >
-              <span>🎁</span>
-              <span>FREE Gifts on Orders Rs. 2,000+ (Canva, Gemini, ChatGPT)</span>
+              <span>🎁 FREE Gifts on Rs. 2,000+ Orders</span>
             </a>
             <a
               href="#special-offers"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-bold border border-emerald-500/35 bg-emerald-500/15 text-emerald-300 backdrop-blur-md hover:scale-[1.02] transition-transform text-center leading-snug"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-emerald-500/35 bg-emerald-500/15 text-emerald-300 hover:bg-emerald-500/25 transition-all text-center"
             >
-              <span>🤝</span>
-              <span>Special Reseller Wholesale Discounts</span>
+              <span>🤝 Reseller Wholesale Rates</span>
             </a>
           </motion.div>
 
