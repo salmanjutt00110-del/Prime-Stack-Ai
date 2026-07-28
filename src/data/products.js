@@ -64,7 +64,7 @@ export const HERO_PRODUCTS = [
   { id: "surfshark-vpn-1m", name: "Surfshark VPN 1M", tag: "🛡️ Single Device", duration: "1 Month", price: "Rs. 379", oldPrice: "Rs. 499", description: "1 Month of Surfshark VPN premium access for single device.", tagline: "1 Month single device high-speed VPN access.", stock: "99+", logo: BRAND.surfshark, color: "#1C9FE8", color2: "#22D3EE", particle: "#22D3EE" },
   { id: "nordvpn-3m", name: "NordVPN 3 Months", tag: "🛡️ Redeem Link", duration: "3 Months", price: "Rs. 1,599", oldPrice: "Rs. 1,999", description: "3 Months NordVPN premium subscription via easy activation redeem link.", tagline: "3 Months fast redeem link activation without card required.", stock: "90", logo: BRAND.nord, color: "#0060FF", color2: "#8B5CF6", particle: "#60A5FA" },
   { id: "lovable-ai-100c", name: "Lovable AI Pro", tag: "💎 100 Credits", duration: "1 Month", price: "Rs. 1,139", oldPrice: "Rs. 1,499", description: "Lovable AI Pro with 100 credits for 1 month. Fast premium AI generation.", tagline: "100 AI credits for 1 month smooth generation access.", stock: "9", logo: BRAND.lovable, color: "#EE0F79", color2: "#8B5CF6", particle: "#A78BFA" },
-  { id: "lovable-ai-12m-pro-lite", name: "Lovable AI Pro Lite", tag: "⚡ 12 Months", duration: "12 Months", price: "Rs. 1,999", oldPrice: "Rs. 2,999", description: "Lovable AI Pro Lite 12-month account subscription with full premium features.", tagline: "12 Months Lovable AI Pro Lite account with high-speed app building access.", stock: "9", logo: BRAND.lovable, color: "#EE0F79", color2: "#8B5CF6", particle: "#A78BFA" },
+  { id: "lovable-ai-12m-pro-lite", name: "Lovable AI Pro Lite", tag: "⚡ 12 Months", duration: "12 Months", price: "Rs. 3,999", oldPrice: "Rs. 4,999", description: "Lovable AI Pro Lite 12-month account subscription with full premium features.", tagline: "12 Months Lovable AI Pro Lite account with high-speed app building access.", stock: "9", logo: BRAND.lovable, color: "#EE0F79", color2: "#8B5CF6", particle: "#A78BFA" },
 ];
 
 // Full catalog
@@ -576,8 +576,8 @@ export const ALL_PRODUCTS = [
     id: "lovable-ai-12m-pro-lite",
     name: "Lovable AI Pro Lite – 12 Months",
     duration: "12 Months",
-    price: "Rs. 1,999",
-    oldPrice: "Rs. 2,999",
+    price: "Rs. 3,999",
+    oldPrice: "Rs. 4,999",
     stock: "9",
     color: "#EE0F79",
     logo: BRAND.lovable,
