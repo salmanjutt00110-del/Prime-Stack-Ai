@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import StatsBar from "@/components/StatsBar";
@@ -17,11 +18,21 @@ import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
 import BackToTopButton from "@/components/BackToTopButton";
 import MobileBottomNav from "@/components/MobileBottomNav";
+import { scrollToSection } from "@/lib/scroll";
 
 export default function Home() {
+  const location = useLocation();
+
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    if (location.hash) {
+      const timer = setTimeout(() => {
+        scrollToSection(location.hash);
+      }, 100);
+      return () => clearTimeout(timer);
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [location.hash]);
 
   return (
     <div className="relative min-h-screen bg-[#050505] text-white overflow-x-hidden">

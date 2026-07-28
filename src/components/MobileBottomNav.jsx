@@ -3,6 +3,8 @@ import { Home, Grid, Sparkles, Gift, MessageCircle } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { WHATSAPP_GENERAL } from "@/lib/whatsapp";
 
+import { scrollToSection } from "@/lib/scroll";
+
 const NAV_ITEMS = [
   { id: "home", label: "Home", icon: Home, href: "#home" },
   { id: "products", label: "Catalog", icon: Grid, href: "#products" },
@@ -44,15 +46,8 @@ export default memo(function MobileBottomNav() {
       return;
     }
 
-    if (item.href === "#home") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    } else {
-      const el = document.querySelector(item.href);
-      if (el) {
-        const top = el.getBoundingClientRect().top + window.pageYOffset - 70;
-        window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
-      }
-    }
+    window.history.pushState(null, "", item.href);
+    scrollToSection(item.href);
   };
 
   return (

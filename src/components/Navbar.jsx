@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Logo from "@/components/Logo";
 import { WHATSAPP_GENERAL } from "@/lib/whatsapp";
 import DisclaimerBar from "@/components/DisclaimerBar";
+import { scrollToSection } from "@/lib/scroll";
 
 const LINKS = [
   { label: "Home", href: "#home" },
@@ -20,6 +21,7 @@ const LINKS = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("#home");
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -30,15 +32,55 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Track active section on scroll when on home page
+  useEffect(() => {
+    if (location.pathname !== "/") {
+      setActiveSection("");
+      return;
+    }
+
+    const sections = [
+      { id: "contact", hash: "#contact" },
+      { id: "faq", hash: "#faq" },
+      { id: "about", hash: "#about" },
+      { id: "meta-ads", hash: "#meta-ads" },
+      { id: "agency-services", hash: "#agency-services" },
+      { id: "products", hash: "#products" },
+      { id: "home", hash: "#home" },
+    ];
+
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 140;
+      for (const s of sections) {
+        const el = document.getElementById(s.id);
+        if (el) {
+          const top = el.offsetTop;
+          if (scrollPosition >= top) {
+            setActiveSection(s.hash);
+            break;
+          }
+        }
+      }
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [location.pathname]);
+
   const handleLogoClick = (e) => {
     e.preventDefault();
     setOpen(false);
-    navigate("/");
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    if (location.pathname !== "/") {
+      navigate("/");
+    } else {
+      window.history.pushState(null, "", "/");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
 
   const handleNav = (e, link) => {
-    e.preventDefault();
+    if (e) e.preventDefault();
     setOpen(false);
 
     if (link.route) {
@@ -46,16 +88,11 @@ export default function Navbar() {
       return;
     }
 
-    if (location.pathname === "/") {
-      const el = document.querySelector(link.href);
-      if (el) {
-        const top = el.getBoundingClientRect().top + window.pageYOffset - 80;
-        window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
-      } else if (link.href === "#home") {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
-    } else {
+    if (location.pathname !== "/") {
       navigate("/" + link.href);
+    } else {
+      window.history.pushState(null, "", link.href);
+      scrollToSection(link.href);
     }
   };
 
@@ -64,7 +101,7 @@ export default function Navbar() {
       <motion.header
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
         className="fixed top-0 inset-x-0 z-50 transition-all duration-500"
         style={{
           backdropFilter: "blur(24px) saturate(180%)",
@@ -91,25 +128,35 @@ export default function Navbar() {
             </span>
           </a>
 
+          {/* Desktop Navigation Links */}
           <div className="hidden lg:flex items-center gap-6 xl:gap-8">
-            {LINKS.map((l) => (
-              <a
-                key={l.label}
-                href={l.route ? l.href : l.href}
-                onClick={(e) => handleNav(e, l)}
-                className="text-sm font-medium text-white/85 hover:text-white transition-colors duration-300 relative group py-3 px-1 min-h-[44px] flex items-center"
-              >
-                {l.label}
-                <span className="absolute bottom-1 left-0 w-0 h-px bg-gradient-to-r from-blue-500 to-pink-500 group-hover:w-full transition-all duration-300" />
-              </a>
-            ))}
+            {LINKS.map((l) => {
+              const isActive = l.route ? location.pathname === l.href : activeSection === l.href;
+              return (
+                <a
+                  key={l.label}
+                  href={l.href}
+                  onClick={(e) => handleNav(e, l)}
+                  className={`text-sm font-medium transition-colors duration-200 relative group py-3 px-1 min-h-[44px] flex items-center ${
+                    isActive ? "text-white font-bold" : "text-white/80 hover:text-white"
+                  }`}
+                >
+                  {l.label}
+                  <span
+                    className={`absolute bottom-1 left-0 h-0.5 bg-gradient-to-r from-blue-500 via-violet-500 to-pink-500 transition-all duration-300 ${
+                      isActive ? "w-full" : "w-0 group-hover:w-full"
+                    }`}
+                  />
+                </a>
+              );
+            })}
           </div>
 
           <div className="flex items-center gap-2 sm:gap-3">
             {/* Search Button */}
             <button
               onClick={(e) => handleNav(e, { href: "#products", route: false })}
-              className="hidden xl:flex items-center gap-2 px-3.5 py-2 rounded-full text-xs font-semibold text-white/90 hover:text-white border border-white/15 hover:bg-white/10 transition-all min-h-[40px]"
+              className="hidden xl:flex items-center gap-2 px-3.5 py-2 rounded-full text-xs font-semibold text-white/90 hover:text-white border border-white/15 hover:bg-white/10 transition-all min-h-[40px] cursor-pointer"
               aria-label="Search products catalog"
             >
               <Search size={14} />
@@ -131,7 +178,7 @@ export default function Navbar() {
             {/* Mobile Menu Trigger */}
             <button
               onClick={() => setOpen((v) => !v)}
-              className="lg:hidden p-2 min-w-[40px] min-h-[40px] flex items-center justify-center rounded-xl border text-white bg-white/5 border-white/10"
+              className="lg:hidden p-2 min-w-[40px] min-h-[40px] flex items-center justify-center rounded-xl border text-white bg-white/5 border-white/10 cursor-pointer"
               aria-label="Toggle menu navigation"
             >
               {open ? <X size={20} /> : <Menu size={20} />}
@@ -146,20 +193,26 @@ export default function Navbar() {
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.25 }}
               className="lg:hidden overflow-hidden transition-all bg-[#050505]/95 backdrop-blur-xl border-b border-white/10"
             >
               <div className="px-6 py-4 flex flex-col gap-1">
-                {LINKS.map((l) => (
-                  <a
-                    key={l.label}
-                    href={l.route ? l.href : l.href}
-                    onClick={(e) => handleNav(e, l)}
-                    className="py-3 border-b border-white/5 text-sm font-semibold text-white/90 hover:text-white min-h-[44px] flex items-center justify-between"
-                  >
-                    <span>{l.label}</span>
-                  </a>
-                ))}
+                {LINKS.map((l) => {
+                  const isActive = l.route ? location.pathname === l.href : activeSection === l.href;
+                  return (
+                    <a
+                      key={l.label}
+                      href={l.href}
+                      onClick={(e) => handleNav(e, l)}
+                      className={`py-3 border-b border-white/5 text-sm font-semibold min-h-[44px] flex items-center justify-between transition-colors ${
+                        isActive ? "text-blue-400 font-bold" : "text-white/90 hover:text-white"
+                      }`}
+                    >
+                      <span>{l.label}</span>
+                      {isActive && <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />}
+                    </a>
+                  );
+                })}
 
                 <a
                   href={WHATSAPP_GENERAL}
