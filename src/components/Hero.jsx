@@ -1,48 +1,28 @@
 import { useState, useEffect, Suspense, lazy } from "react";
-import { Sparkles, MessageCircle } from "lucide-react";
-import { ALL_PRODUCTS } from "@/data/products";
-import { openWhatsApp } from "@/lib/whatsapp";
+import { Sparkles, ArrowRight, ShieldCheck, Zap, Layers, Award, Star } from "lucide-react";
+import { BRAND } from "@/data/products";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
 const ParticleBackground = lazy(() => import("@/components/ParticleBackground"));
 
-const HERO_PRODUCTS = ALL_PRODUCTS.slice(0, 8);
-
-const HERO_THEMES = [
-  {
-    glow: "radial-gradient(circle, rgba(139, 92, 246, 0.4) 0%, rgba(99, 102, 241, 0.15) 50%, transparent 75%)",
-    glow2: "radial-gradient(circle, rgba(236, 72, 153, 0.3) 0%, rgba(168, 85, 247, 0.1) 50%, transparent 70%)",
-    border: "rgba(139, 92, 246, 0.35)",
-    particles: "#8B5CF6",
-  },
-  {
-    glow: "radial-gradient(circle, rgba(16, 163, 127, 0.4) 0%, rgba(52, 211, 153, 0.15) 50%, transparent 75%)",
-    glow2: "radial-gradient(circle, rgba(6, 182, 212, 0.3) 0%, rgba(16, 185, 129, 0.1) 50%, transparent 70%)",
-    border: "rgba(16, 163, 127, 0.35)",
-    particles: "#10A37F",
-  },
-  {
-    glow: "radial-gradient(circle, rgba(66, 133, 244, 0.4) 0%, rgba(139, 92, 246, 0.15) 50%, transparent 75%)",
-    glow2: "radial-gradient(circle, rgba(234, 67, 53, 0.3) 0%, rgba(251, 188, 5, 0.1) 50%, transparent 70%)",
-    border: "rgba(66, 133, 244, 0.35)",
-    particles: "#4285F4",
-  },
-  {
-    glow: "radial-gradient(circle, rgba(254, 44, 85, 0.4) 0%, rgba(37, 244, 238, 0.15) 50%, transparent 75%)",
-    glow2: "radial-gradient(circle, rgba(255, 0, 80, 0.3) 0%, rgba(0, 242, 254, 0.1) 50%, transparent 70%)",
-    border: "rgba(254, 44, 85, 0.35)",
-    particles: "#FE2C55",
-  },
+const FLOATING_BRANDS = [
+  { id: "chatgpt-plus-1m", name: "ChatGPT Plus", tag: "GPT-4o & Sora", logo: BRAND.chatgpt, glow: "#10A37F", border: "rgba(16,163,127,0.5)" },
+  { id: "gemini-pro-18", name: "Gemini Pro", tag: "5TB & Veo Video", logo: BRAND.gemini, glow: "#4285F4", border: "rgba(66,133,244,0.5)" },
+  { id: "canva-pro-edu", name: "Canva Pro", tag: "Magic AI Studio", logo: BRAND.canva, glow: "#7D2AE8", border: "rgba(125,42,232,0.5)" },
+  { id: "veo-3-video", name: "Google Veo 3", tag: "45K Video Credits", logo: BRAND.veo, glow: "#6366F1", border: "rgba(99,102,241,0.5)" },
+  { id: "capcut-pro-1m", name: "CapCut Pro", tag: "Pro Video Editing", logo: BRAND.capcut, glow: "#FFFFFF", border: "rgba(255,255,255,0.5)" },
+  { id: "notion-plus-12m", name: "Notion AI", tag: "3K AI Credits/Mo", logo: BRAND.notion, glow: "#F8FAFC", border: "rgba(255,255,255,0.5)" },
+  { id: "surfshark-vpn-1y", name: "Surfshark VPN", tag: "1-Yr Unlimited", logo: BRAND.surfshark, glow: "#00D1B2", border: "rgba(0,209,178,0.5)" },
+  { id: "supergrok-12m-premium", name: "SuperGrok", tag: "High-Speed AI", logo: BRAND.grok, glow: "#9333EA", border: "rgba(147,51,234,0.5)" },
 ];
 
 export default function Hero() {
-  const [index, setIndex] = useState(0);
+  const [activeBrandIndex, setActiveBrandIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(() => typeof window !== "undefined" && window.innerWidth < 768);
   const navigate = useNavigate();
 
-  const product = HERO_PRODUCTS[index];
-  const theme = HERO_THEMES[index % HERO_THEMES.length];
+  const currentBrand = FLOATING_BRANDS[activeBrandIndex];
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -52,211 +32,273 @@ export default function Hero() {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setIndex((prev) => (prev + 1) % HERO_PRODUCTS.length);
-    }, 6000);
+      setActiveBrandIndex((prev) => (prev + 1) % FLOATING_BRANDS.length);
+    }, 3800);
     return () => clearInterval(timer);
   }, []);
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      window.dispatchEvent(
-        new CustomEvent("hero-product-change", {
-          detail: {
-            color: product.color,
-            color2: product.color2 || product.color,
-            id: product.id,
-          },
-        })
-      );
-    }
-  }, [product]);
-
   return (
-    <section id="home" className="relative min-h-[85vh] pt-28 sm:pt-32 lg:pt-36 pb-12 flex items-center justify-center overflow-hidden">
+    <section id="home" className="relative min-h-[90vh] pt-28 sm:pt-32 lg:pt-36 pb-16 flex items-center justify-center overflow-hidden bg-[#02040a]">
       
       {/* Background Reactive Particle Engine */}
       {!isMobile && (
         <div className="absolute inset-0 pointer-events-none z-0">
           <Suspense fallback={null}>
-            <ParticleBackground color={theme.particles} count={20} />
+            <ParticleBackground color={currentBrand.glow} count={24} />
           </Suspense>
         </div>
       )}
 
-      {/* Hardware Accelerated Glow Orbs */}
+      {/* Dynamic Background Aurora Mesh & Neon Orbs */}
       <motion.div
-        className="absolute -z-10 rounded-full blur-[120px] pointer-events-none will-change-transform"
-        style={{ width: 400, height: 400, top: "8%", left: "52%" }}
-        animate={{ background: theme.glow }}
-        transition={{ duration: 0.8 }}
+        className="absolute -z-10 rounded-full blur-[150px] pointer-events-none will-change-transform ps-glow-pulse"
+        style={{ width: 600, height: 600, top: "8%", left: "42%" }}
+        animate={{
+          background: `radial-gradient(circle, ${currentBrand.glow}40 0%, rgba(139, 92, 246, 0.15) 50%, transparent 75%)`,
+        }}
+        transition={{ duration: 1 }}
       />
       <motion.div
-        className="absolute -z-10 rounded-full blur-[120px] pointer-events-none will-change-transform"
-        style={{ width: 320, height: 320, bottom: "4%", left: "8%" }}
-        animate={{ background: theme.glow2 }}
-        transition={{ duration: 0.8 }}
+        className="absolute -z-10 rounded-full blur-[130px] pointer-events-none will-change-transform"
+        style={{ width: 420, height: 420, bottom: "4%", left: "4%" }}
+        animate={{
+          background: `radial-gradient(circle, rgba(6, 182, 212, 0.25) 0%, rgba(99, 102, 241, 0.1) 50%, transparent 70%)`,
+        }}
+        transition={{ duration: 1 }}
       />
 
-      <div className="mx-auto max-w-4xl w-full px-4 sm:px-6 flex flex-col items-center text-center relative z-10">
+      <div className="mx-auto max-w-7xl w-full px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center relative z-10">
         
-        {/* Top Intro Badge Line */}
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold border border-violet-500/30 bg-violet-500/15 text-violet-300 mb-3 backdrop-blur-md"
-        >
-          <Sparkles size={13} className="text-yellow-400" />
-          <span>PRIME TOOLS HUB MARKETPLACE</span>
-        </motion.div>
+        {/* LEFT COLUMN: Main Typography & CTAs */}
+        <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
+          
+          {/* Small Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: -15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-black border shadow-2xl mb-6 backdrop-blur-2xl"
+            style={{
+              background: "rgba(10, 14, 26, 0.85)",
+              borderColor: `${currentBrand.glow}70`,
+              boxShadow: `0 0 25px ${currentBrand.glow}30`,
+            }}
+          >
+            <Sparkles size={14} className="text-yellow-400 animate-pulse" />
+            <span className="bg-gradient-to-r from-white via-slate-100 to-slate-300 bg-clip-text text-transparent uppercase tracking-widest font-mono">
+              Pakistan's #1 Premium AI Marketplace
+            </span>
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+          </motion.div>
 
-        {/* Clean Professional Heading */}
-        <motion.h1
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="font-display font-black text-2xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-tight w-full max-w-3xl"
-        >
-          Premium AI Tools for Creators &amp; Professionals
-        </motion.h1>
-
-        {/* Sub-headline */}
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-2 text-xs sm:text-sm font-semibold text-emerald-400 tracking-wide w-full"
-        >
-          Wholesale &amp; Reseller Rates · Instant Delivery · 100% Verified Warranty
-        </motion.p>
-
-        {/* SHOWCASE PRODUCT CARD WITH PROMINENT LOGO & MOTION GRAPHICS */}
-        <div className="mt-6 w-full max-w-xl relative" style={{ perspective: 1000 }}>
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={product.id}
-              initial={{ opacity: 0, y: 15, scale: 0.97 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -15, scale: 0.97 }}
-              transition={{ duration: 0.35, ease: "easeOut" }}
-              onClick={() => navigate(`/product/${product.id}`)}
-              className="ps-luxury-glass rounded-3xl p-5 sm:p-7 border shadow-2xl relative text-center cursor-pointer transition-colors"
+          {/* Huge Heading with Multi-Layer Gradient Typography */}
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="font-display font-black text-3xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.1] text-white"
+          >
+            Premium AI Tools <br className="hidden sm:inline" />
+            <span
+              className="bg-clip-text text-transparent ps-grad-text"
               style={{
-                borderColor: `${product.color}45`,
-                boxShadow: `0 20px 50px ${product.color}25, inset 0 1px 0 rgba(255,255,255,0.12)`,
+                backgroundImage: `linear-gradient(135deg, #FFFFFF 0%, ${currentBrand.glow} 50%, #38BDF8 100%)`,
               }}
             >
-              <span className="ps-shimmer absolute inset-0 rounded-3xl overflow-hidden pointer-events-none" />
-              
-              {/* Card Header Tags */}
-              <div className="flex items-center justify-center gap-2 mb-3 flex-wrap">
-                <span
-                  className="px-2.5 py-0.5 rounded-full text-[10px] font-bold shrink-0"
-                  style={{
-                    background: `${product.color}25`,
-                    border: `1px solid ${product.color}45`,
-                    color: product.color,
-                  }}
-                >
-                  {product.tag}
-                </span>
-                <span className="text-[11px] font-medium text-white/75 shrink-0">• {product.duration}</span>
-                {product.stock && (
-                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/15 border border-emerald-500/35 text-emerald-300 flex items-center gap-1 shrink-0">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
-                    <span>Stock: {product.stock} Units</span>
-                  </span>
-                )}
-              </div>
+              For Creators &amp; Professionals
+            </span>
+          </motion.h1>
 
-              {/* Product Title */}
-              <h2 className="text-xl sm:text-2xl font-black tracking-tight text-white mb-2">
-                {product.name}
-              </h2>
+          {/* Short Premium Description */}
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mt-6 text-sm sm:text-base lg:text-lg text-slate-300 font-body max-w-xl leading-relaxed"
+          >
+            Full official access to ChatGPT Plus, Gemini Pro, Canva, CapCut, Veo 3, Notion &amp; VPNs at wholesale pricing. Instant delivery backed by 100% verified replacement warranty.
+          </motion.p>
 
-              {/* Central Motion Graphics Image Showcase Box */}
-              <div className="relative my-4 flex items-center justify-center">
-                <div
-                  className="relative w-36 h-36 sm:w-44 sm:h-44 rounded-3xl p-3 sm:p-4 flex items-center justify-center border shadow-2xl overflow-hidden transition-transform group-hover:scale-105"
-                  style={{
-                    background: `radial-gradient(circle, ${product.color}35 0%, rgba(12,12,18,0.95) 100%)`,
-                    borderColor: `${product.color}65`,
-                    boxShadow: `0 15px 35px ${product.color}30, 0 0 25px ${product.color}20`,
-                  }}
-                >
-                  <span className="ps-shimmer absolute inset-0 pointer-events-none" />
-                  <img
-                    src={product.logo}
-                    alt={product.name}
-                    className="w-24 h-24 sm:w-32 sm:h-32 object-contain relative z-10 filter drop-shadow-[0_10px_25px_rgba(0,0,0,0.6)] transition-transform duration-300"
-                    loading="eager"
-                  />
-                </div>
-              </div>
+          {/* Premium CTA Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="mt-8 flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto"
+          >
+            <a
+              href="#products"
+              className="w-full sm:w-auto px-8 py-4 rounded-2xl font-display font-extrabold text-sm sm:text-base text-white flex items-center justify-center gap-3 transition-all duration-300 hover:scale-[1.04] active:scale-95 shadow-2xl cursor-pointer group h-[52px] min-h-[52px]"
+              style={{
+                background: `linear-gradient(135deg, ${currentBrand.glow} 0%, #3B82F6 100%)`,
+                boxShadow: `0 10px 35px ${currentBrand.glow}45`,
+              }}
+            >
+              <Zap size={19} className="text-yellow-300 group-hover:rotate-12 transition-transform" />
+              <span>Explore Products</span>
+              <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+            </a>
 
-              {/* Tagline / Description */}
-              <p className="text-xs sm:text-sm text-white/80 line-clamp-2 leading-relaxed font-body mb-4 px-2">
-                {product.tagline || product.description}
-              </p>
+            <a
+              href="#agency-services"
+              className="w-full sm:w-auto px-8 py-4 rounded-2xl font-display font-extrabold text-sm sm:text-base text-white border border-white/15 bg-white/[0.04] hover:bg-white/[0.12] hover:border-white/30 backdrop-blur-2xl flex items-center justify-center gap-2.5 transition-all duration-300 hover:scale-[1.04] active:scale-95 cursor-pointer shadow-lg h-[52px] min-h-[52px]"
+            >
+              <Layers size={19} className="text-cyan-400" />
+              <span>Browse Services</span>
+            </a>
+          </motion.div>
 
-              {/* Price & Full Width WhatsApp CTA Button */}
-              <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-left">
-                <div>
-                  <span className="text-[10px] sm:text-[11px] text-white/60 block uppercase font-mono tracking-wider">Instant Price</span>
-                  <span className="text-xl sm:text-2xl font-black font-mono text-emerald-400">
-                    {product.price}
-                  </span>
-                </div>
+          {/* Small Trust Badges */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-3 text-xs font-semibold text-slate-300"
+          >
+            <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 backdrop-blur-md">
+              <ShieldCheck size={15} />
+              <span>100% Verified</span>
+            </div>
+            <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-blue-500/10 border border-blue-500/25 text-blue-300 backdrop-blur-md">
+              <Zap size={14} className="text-blue-400" />
+              <span>Instant Delivery</span>
+            </div>
+            <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-purple-500/10 border border-purple-500/25 text-purple-300 backdrop-blur-md">
+              <Award size={14} className="text-purple-400" />
+              <span>Premium Warranty</span>
+            </div>
+          </motion.div>
 
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    openWhatsApp(product);
-                  }}
-                  className="w-full sm:w-auto px-6 py-3.5 rounded-2xl text-sm font-bold text-white flex items-center justify-center gap-2 shadow-lg hover:scale-[1.02] active:scale-[0.97] transition-all h-[56px] min-h-[56px] cursor-pointer"
-                  style={{
-                    background: "linear-gradient(135deg, #25D366, #128C7E)",
-                    boxShadow: "0 8px 24px rgba(37,211,102,0.3)",
-                  }}
-                >
-                  <MessageCircle size={18} className="text-white shrink-0" />
-                  <span className="text-white font-extrabold tracking-wide">Order on WhatsApp</span>
-                </button>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-
-          {/* Pagination Indicators */}
-          <div className="mt-4 flex items-center justify-center gap-1.5">
-            {HERO_PRODUCTS.map((p, i) => (
-              <button
-                key={p.id}
-                onClick={() => setIndex(i)}
-                className="h-1.5 rounded-full transition-all duration-300 min-w-[20px] cursor-pointer"
-                style={{
-                  width: i === index ? 32 : 12,
-                  background: i === index ? p.color : "rgba(255,255,255,0.2)",
-                }}
-                aria-label={`Go to slide ${i + 1}`}
-              />
-            ))}
-          </div>
         </div>
 
-        {/* Feature Pills & Details BELOW Product Card */}
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-2.5 w-full text-xs font-semibold">
-          <a
-            href="#special-offers"
-            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-amber-500/35 bg-amber-500/15 text-amber-200 hover:bg-amber-500/25 transition-all text-center"
-          >
-            <span>🎁 FREE Gifts on Rs. 2,000+ Orders</span>
-          </a>
-          <a
-            href="#special-offers"
-            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-emerald-500/35 bg-emerald-500/15 text-emerald-300 hover:bg-emerald-500/25 transition-all text-center"
-          >
-            <span>🤝 Wholesale Reseller Rates</span>
-          </a>
+        {/* RIGHT COLUMN: Large Interactive Glass Showcase Card */}
+        <div className="lg:col-span-5 relative flex items-center justify-center ps-3d-perspective">
+          <div className="w-full max-w-md relative">
+            
+            {/* Outer Glass Ring Glow */}
+            <div
+              className="absolute -inset-4 rounded-[40px] blur-2xl pointer-events-none transition-all duration-700 opacity-70"
+              style={{
+                background: `radial-gradient(circle, ${currentBrand.glow}45 0%, transparent 70%)`,
+              }}
+            />
+
+            {/* Central Animated Glass Stage Card */}
+            <motion.div
+              onClick={() => navigate(`/product/${currentBrand.id}`)}
+              className="relative rounded-3xl p-6 sm:p-8 border ps-luxury-glass ps-glass-reflection ps-3d-card shadow-2xl text-center overflow-hidden cursor-pointer group"
+              style={{
+                borderColor: `${currentBrand.glow}60`,
+                boxShadow: `0 30px 80px rgba(0,0,0,0.9), 0 0 55px ${currentBrand.glow}30`,
+              }}
+            >
+              {/* Shimmer Light Line */}
+              <span className="ps-shimmer absolute inset-0 rounded-3xl overflow-hidden pointer-events-none" />
+
+              {/* Card Header Tags */}
+              <div className="flex items-center justify-between gap-2 mb-4 relative z-10">
+                <span className="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-white/10 border border-white/15 text-white flex items-center gap-1">
+                  <Star size={11} className="text-amber-400 fill-amber-400" />
+                  FEATURED AI SUITE
+                </span>
+                <span className="flex items-center gap-1.5 text-xs font-bold text-emerald-400">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  Instant Activation
+                </span>
+              </div>
+
+              {/* Central Brand Logo Box & Orbiting Rings */}
+              <div className="relative my-6 py-6 flex items-center justify-center">
+                
+                {/* Orbital Neon Ring */}
+                <div
+                  className="absolute w-56 h-56 rounded-full border border-dashed animate-spin pointer-events-none"
+                  style={{
+                    borderColor: `${currentBrand.glow}40`,
+                    animationDuration: "22s",
+                  }}
+                />
+
+                {/* Central Brand Logo Box */}
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentBrand.name}
+                    initial={{ opacity: 0, scale: 0.85, rotateY: -30 }}
+                    animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+                    exit={{ opacity: 0, scale: 0.85, rotateY: 30 }}
+                    transition={{ duration: 0.45, ease: "easeOut" }}
+                    className="relative w-40 h-40 sm:w-44 sm:h-44 rounded-3xl p-4 flex items-center justify-center border shadow-2xl overflow-hidden"
+                    style={{
+                      background: `radial-gradient(circle, ${currentBrand.glow}45 0%, rgba(10,12,20,0.96) 100%)`,
+                      borderColor: `${currentBrand.glow}80`,
+                      boxShadow: `0 20px 50px ${currentBrand.glow}45, 0 0 35px ${currentBrand.glow}35`,
+                    }}
+                  >
+                    <span className="ps-shimmer absolute inset-0 pointer-events-none" />
+                    <img
+                      src={currentBrand.logo}
+                      alt={currentBrand.name}
+                      className="w-28 h-28 sm:w-32 sm:h-32 object-contain relative z-10 filter drop-shadow-[0_12px_25px_rgba(0,0,0,0.8)] group-hover:scale-110 transition-transform duration-300"
+                    />
+                  </motion.div>
+                </AnimatePresence>
+
+                {/* Satellite Floating Tags */}
+                <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
+                  <motion.div
+                    animate={{ y: [-6, 6, -6] }}
+                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute -top-2 left-2 px-3 py-1 rounded-xl text-[10px] font-extrabold bg-slate-900/95 border border-slate-700 text-slate-200 shadow-xl backdrop-blur-md"
+                  >
+                    {currentBrand.tag}
+                  </motion.div>
+                  <motion.div
+                    animate={{ y: [6, -6, 6] }}
+                    transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute -bottom-2 right-2 px-3 py-1 rounded-xl text-[10px] font-extrabold bg-slate-900/95 border border-slate-700 text-slate-200 shadow-xl backdrop-blur-md"
+                  >
+                    Verified License
+                  </motion.div>
+                </div>
+
+              </div>
+
+              {/* Title & Brand Dots */}
+              <div className="relative z-10">
+                <h3 className="font-display font-black text-xl text-white tracking-tight">
+                  {currentBrand.name}
+                </h3>
+                <p className="text-xs text-slate-400 mt-1 font-body">
+                  Full official access &amp; instant delivery
+                </p>
+
+                {/* Brand Selector Dots */}
+                <div className="mt-5 flex items-center justify-center gap-2">
+                  {FLOATING_BRANDS.map((b, i) => (
+                    <button
+                      key={b.name}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setActiveBrandIndex(i);
+                      }}
+                      className="h-2 rounded-full transition-all duration-300 cursor-pointer min-h-[16px] flex items-center"
+                      aria-label={`Select ${b.name}`}
+                    >
+                      <span
+                        className="block h-2 rounded-full transition-all duration-300"
+                        style={{
+                          width: i === activeBrandIndex ? 28 : 8,
+                          background: i === activeBrandIndex ? b.glow : "rgba(255,255,255,0.25)",
+                        }}
+                      />
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+            </motion.div>
+
+          </div>
         </div>
 
       </div>

@@ -1,13 +1,10 @@
 import { memo } from "react";
 import { motion } from "framer-motion";
-import { Sparkles, MessageCircle, Gift, ArrowRight, CheckCircle2 } from "lucide-react";
+import { Gift, MessageCircle } from "lucide-react";
 import { openBulkWhatsApp } from "@/lib/whatsapp";
 
-/**
- * @type {React.NamedExoticComponent<{ variant?: "card" | "compact" | "popup" | "hero", productName?: string }>}
- */
 const BulkPurchaseBanner = memo(function BulkPurchaseBanner({
-  variant = "card", // "card" | "compact" | "popup" | "hero"
+  variant = "card",
   productName = "",
 }) {
   if (variant === "compact" || variant === "hero") {
@@ -16,11 +13,11 @@ const BulkPurchaseBanner = memo(function BulkPurchaseBanner({
         initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="relative rounded-2xl p-[1px] overflow-hidden ps-gradient-border-anim my-4 group"
+        className="relative rounded-2xl p-[1.5px] overflow-hidden my-4 group cursor-pointer"
+        onClick={() => openBulkWhatsApp("5+", productName ? `Inquiring alongside ${productName}` : "")}
         style={{
-          background:
-            "linear-gradient(135deg, rgba(245,158,11,0.8), rgba(139,92,246,0.6), rgba(16,163,127,0.8))",
-          boxShadow: "0 10px 30px rgba(0,0,0,0.5), 0 0 20px rgba(245,158,11,0.15)",
+          background: "linear-gradient(135deg, rgba(139,92,246,0.8), rgba(59,130,246,0.8))",
+          boxShadow: "0 10px 30px rgba(0,0,0,0.5)",
         }}
       >
         <div
@@ -31,153 +28,120 @@ const BulkPurchaseBanner = memo(function BulkPurchaseBanner({
           }}
         >
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center shrink-0">
-              <Gift size={18} className="text-amber-400 animate-bounce" />
+            <div className="w-10 h-10 rounded-xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center shrink-0">
+              <Gift size={20} className="text-purple-400 animate-bounce" />
             </div>
             <div>
               <div className="flex items-center gap-2 flex-wrap">
-                <span className="text-[11px] font-black uppercase tracking-wider text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">
-                  🎉 Bulk Account Deals
+                <span className="text-[11px] font-black uppercase tracking-wider text-purple-300 bg-purple-500/10 px-2 py-0.5 rounded border border-purple-500/20">
+                  🎉 BUY MORE SAVE MORE
                 </span>
-                <span className="text-xs font-semibold text-white/90">5 Same Accounts = 15% OFF | 10 = 25% OFF</span>
+                <span className="text-xs font-semibold text-white/90">Buy 2 (10% OFF) | Buy 5 (15% OFF) | Buy 10+ (20% OFF)</span>
               </div>
-              <p className="text-xs text-white/70 mt-0.5">
-                Buy 5 same accounts to get 15% OFF or 1 Free Account (ChatGPT/Gemini/Canva). Buy 10 for 25% OFF + 2 Free Accounts!
-              </p>
             </div>
           </div>
-
-          <button
-            onClick={() => openBulkWhatsApp("5+", productName ? `Inquiring alongside ${productName}` : "")}
-            className="px-4 py-2 rounded-xl text-xs font-bold text-black flex items-center gap-1.5 shrink-0 transition-all hover:scale-105 shadow-md cursor-pointer"
-            style={{
-              background: "linear-gradient(135deg, #F59E0B, #10A37F)",
-            }}
-          >
-            <span>Get Quote</span>
-            <ArrowRight size={13} />
-          </button>
         </div>
       </motion.div>
     );
   }
 
-  if (variant === "popup") {
-    return (
-      <div
-        className="rounded-2xl p-4 my-3 relative overflow-hidden border border-amber-500/30"
-        style={{
-          background: "linear-gradient(135deg, rgba(245, 158, 11, 0.12) 0%, rgba(139, 92, 246, 0.1) 100%)",
-          backdropFilter: "blur(16px)",
-          boxShadow: "0 8px 25px rgba(245,158,11,0.15)",
-        }}
-      >
-        <div className="flex items-start gap-3">
-          <span className="text-xl">🎉</span>
-          <div>
-            <h4 className="font-display text-xs font-bold text-amber-300 uppercase tracking-wider mb-1 flex items-center gap-1.5">
-              Bulk Account Offers (Up to 35% OFF)
-              <span className="animate-pulse inline-block w-2 h-2 rounded-full bg-amber-400" />
-            </h4>
-            <p className="text-xs text-white/80 leading-relaxed">
-              <strong>Buy 5 Same Accounts:</strong> Get 15% OFF OR 1 Free Account (ChatGPT/Gemini/Canva).<br/>
-              <strong>Buy 10 Same Accounts:</strong> Get 25% OFF AND 2 Free Accounts!
-            </p>
-            <button
-              onClick={() => openBulkWhatsApp("5+", productName ? `Ordering ${productName}` : "")}
-              className="mt-2 text-xs font-semibold text-emerald-400 hover:text-emerald-300 flex items-center gap-1 underline underline-offset-4 cursor-pointer"
-            >
-              <MessageCircle size={13} />
-              Claim Bulk Discount on WhatsApp
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // Default "card" variant for sections
+  // Exact reference layout for Homepage "BUY MORE SAVE MORE" banner
   return (
-    <section className="relative py-8 px-4 sm:px-6">
-      <div className="mx-auto max-w-5xl">
+    <section className="relative py-12 px-4 sm:px-6 z-20">
+      <div className="mx-auto max-w-7xl">
         <motion.div
-          initial={{ opacity: 0, scale: 0.97 }}
+          initial={{ opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, margin: "-30px" }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="relative rounded-3xl p-[1.5px] overflow-hidden ps-gradient-border-anim shadow-[0_20px_50px_rgba(0,0,0,0.7),0_0_35px_rgba(245,158,11,0.2)]"
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="relative rounded-3xl p-[1.5px] overflow-hidden shadow-2xl"
           style={{
-            background:
-              "linear-gradient(135deg, rgba(245,158,11,0.9), rgba(139,92,246,0.8), rgba(16,163,127,0.9))",
+            background: "linear-gradient(135deg, rgba(139, 92, 246, 0.6) 0%, rgba(59, 130, 246, 0.5) 100%)",
           }}
         >
           <div
-            className="w-full rounded-[22.5px] p-6 sm:p-8 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6"
+            className="w-full rounded-[22.5px] p-6 sm:p-10 relative overflow-hidden grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
             style={{
-              background: "linear-gradient(135deg, rgba(18, 14, 28, 0.95) 0%, rgba(8, 8, 12, 0.98) 100%)",
+              background: "linear-gradient(135deg, rgba(10, 10, 20, 0.97) 0%, rgba(5, 5, 12, 0.99) 100%)",
               backdropFilter: "blur(30px)",
-              WebkitBackdropFilter: "blur(30px)",
             }}
           >
-            {/* Background shimmer */}
-            <div className="ps-glass-shine-line absolute inset-y-0 w-32 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-[-25deg] pointer-events-none" />
-
-            <div className="flex items-start gap-4 sm:gap-6 text-left relative z-10">
-              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-amber-500/25 to-violet-600/25 border border-amber-500/40 flex items-center justify-center shrink-0 shadow-[0_0_20px_rgba(245,158,11,0.3)] mt-1">
-                <Gift className="w-7 h-7 sm:w-8 sm:h-8 text-amber-400 animate-pulse" />
+            {/* Left Column: Gift Icon & Title */}
+            <div className="lg:col-span-4 flex items-center gap-5">
+              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-purple-500/20 border border-purple-500/35 flex items-center justify-center shrink-0 shadow-[0_0_40px_rgba(139,92,246,0.35)]">
+                <Gift size={44} className="text-purple-300 animate-pulse" />
               </div>
 
               <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-300 font-extrabold text-[11px] uppercase tracking-wider mb-2">
-                  <Sparkles size={12} className="text-amber-400" />
-                  🎉 Bulk Account Discount & Free Gift Deals
-                </div>
-
-                <h3 className="font-display font-extrabold text-xl sm:text-2xl text-white tracking-tight">
-                  Buy Same Accounts in Quantity & Unlock Massive Bonuses!
+                <h3 className="font-display font-black text-2xl sm:text-3xl text-white tracking-tight leading-none uppercase">
+                  BUY MORE <br />
+                  <span className="ps-grad-text bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
+                    SAVE MORE
+                  </span>
                 </h3>
-
-                {/* Specific 5 & 10 Account Deals */}
-                <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-                  <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20">
-                    <span className="font-black text-amber-400 uppercase tracking-wider block mb-1">
-                      🔥 Buy 5 Same Accounts
-                    </span>
-                    <p className="text-white/80 leading-relaxed">
-                      Get <strong>15% Instant Discount</strong> <br />
-                      <u>OR</u> <strong>1 FREE Account</strong> (Choose ChatGPT, Gemini, or Canva).
-                    </p>
-                  </div>
-
-                  <div className="p-3 rounded-xl bg-purple-500/10 border border-purple-500/20">
-                    <span className="font-black text-purple-300 uppercase tracking-wider block mb-1">
-                      👑 Buy 10 Same Accounts
-                    </span>
-                    <p className="text-white/80 leading-relaxed">
-                      Get <strong>25% Instant Discount</strong> <br />
-                      <u>AND</u> <strong>2 FREE Accounts</strong> (1 Canva FREE + Choice of ChatGPT/Gemini).
-                    </p>
-                  </div>
-                </div>
-
-                <p className="mt-3 text-emerald-400 text-xs font-semibold flex items-center gap-1.5">
-                  <CheckCircle2 size={14} /> Higher bulk quantities unlock up to 35% Maximum Wholesale Discount!
+                <p className="text-xs text-slate-400 mt-2 font-body">
+                  Special bulk discounts for resellers, teams, &amp; agency orders.
                 </p>
               </div>
             </div>
 
-            <div className="relative z-10 shrink-0 w-full md:w-auto">
-              <button
-                onClick={() => openBulkWhatsApp("5+ Same Accounts")}
-                className="w-full md:w-auto px-7 py-3.5 rounded-2xl font-display font-extrabold text-sm text-white flex items-center justify-center gap-2.5 transition-all duration-300 hover:scale-[1.02] active:scale-[0.97] shadow-lg cursor-pointer h-[56px] min-h-[56px]"
-                style={{
-                  background: "linear-gradient(135deg, #25D366 0%, #128C7E 100%)",
-                  boxShadow: "0 8px 24px rgba(37, 211, 102, 0.3)",
-                }}
+            {/* Right Column: 3 Tier Discount Glass Cards */}
+            <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
+              
+              {/* Buy 2 */}
+              <div
+                onClick={() => openBulkWhatsApp("Buy 2 Accounts")}
+                className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-purple-500/50 hover:bg-white/[0.06] transition-all cursor-pointer text-center group flex flex-col justify-between"
               >
-                <MessageCircle size={18} className="text-white shrink-0" />
-                <span className="text-white font-extrabold tracking-wide">Claim Bulk Discount on WhatsApp</span>
-              </button>
+                <div>
+                  <span className="text-xs font-bold text-slate-300 block mb-1">Buy 2</span>
+                  <span className="text-[11px] text-slate-400 block mb-2">Get Up To</span>
+                  <span className="font-display font-black text-2xl sm:text-3xl text-white tracking-tight group-hover:text-purple-300 transition-colors">
+                    10% OFF
+                  </span>
+                </div>
+                <div className="mt-4 pt-2 border-t border-white/10 text-[11px] font-extrabold text-purple-400 flex items-center justify-center gap-1">
+                  <MessageCircle size={13} />
+                  <span>Claim Bulk Rate</span>
+                </div>
+              </div>
+
+              {/* Buy 5 */}
+              <div
+                onClick={() => openBulkWhatsApp("Buy 5 Accounts")}
+                className="p-5 rounded-2xl bg-white/[0.03] border border-purple-500/30 hover:border-purple-500/70 hover:bg-purple-500/10 transition-all cursor-pointer text-center group flex flex-col justify-between relative shadow-[0_0_25px_rgba(139,92,246,0.2)]"
+              >
+                <div>
+                  <span className="text-xs font-bold text-purple-300 block mb-1">Buy 5</span>
+                  <span className="text-[11px] text-slate-400 block mb-2">Get Up To</span>
+                  <span className="font-display font-black text-2xl sm:text-3xl text-white tracking-tight group-hover:text-purple-300 transition-colors">
+                    15% OFF
+                  </span>
+                </div>
+                <div className="mt-4 pt-2 border-t border-purple-500/20 text-[11px] font-extrabold text-purple-300 flex items-center justify-center gap-1">
+                  <MessageCircle size={13} />
+                  <span>Claim Bulk Rate</span>
+                </div>
+              </div>
+
+              {/* Buy 10+ */}
+              <div
+                onClick={() => openBulkWhatsApp("Buy 10+ Accounts")}
+                className="p-5 rounded-2xl bg-white/[0.03] border border-blue-500/30 hover:border-blue-500/70 hover:bg-blue-500/10 transition-all cursor-pointer text-center group flex flex-col justify-between"
+              >
+                <div>
+                  <span className="text-xs font-bold text-blue-300 block mb-1">Buy 10+</span>
+                  <span className="text-[11px] text-slate-400 block mb-2">Get Up To</span>
+                  <span className="font-display font-black text-2xl sm:text-3xl text-white tracking-tight group-hover:text-blue-300 transition-colors">
+                    20% OFF
+                  </span>
+                </div>
+                <div className="mt-4 pt-2 border-t border-blue-500/20 text-[11px] font-extrabold text-blue-300 flex items-center justify-center gap-1">
+                  <MessageCircle size={13} />
+                  <span>Claim Bulk Rate</span>
+                </div>
+              </div>
+
             </div>
           </div>
         </motion.div>

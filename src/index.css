@@ -434,4 +434,106 @@ html.light [style*="background: linear-gradient"] {
     animation: ps-gradient-shift 6s ease infinite;
     will-change: background-position;
   }
+
+  /* === Product Brand Dynamic Glass & Glow Utility Classes === */
+  .brand-glow-chatgpt {
+    --brand-glow-primary: rgba(16, 163, 127, 0.45);
+    --brand-glow-secondary: rgba(52, 211, 153, 0.25);
+    --brand-border: rgba(16, 163, 127, 0.5);
+  }
+
+  .brand-glow-gemini {
+    --brand-glow-primary: rgba(66, 133, 244, 0.45);
+    --brand-glow-secondary: rgba(139, 92, 246, 0.25);
+    --brand-border: rgba(66, 133, 244, 0.5);
+  }
+
+  .brand-glow-canva {
+    --brand-glow-primary: rgba(125, 42, 232, 0.45);
+    --brand-glow-secondary: rgba(6, 182, 212, 0.25);
+    --brand-border: rgba(125, 42, 232, 0.5);
+  }
+
+  .brand-glow-capcut {
+    --brand-glow-primary: rgba(255, 255, 255, 0.35);
+    --brand-glow-secondary: rgba(254, 44, 85, 0.2);
+    --brand-border: rgba(255, 255, 255, 0.4);
+  }
+
+  .brand-glow-notion {
+    --brand-glow-primary: rgba(255, 255, 255, 0.3);
+    --brand-glow-secondary: rgba(148, 163, 184, 0.2);
+    --brand-border: rgba(255, 255, 255, 0.35);
+  }
+
+  .brand-glow-grok {
+    --brand-glow-primary: rgba(147, 51, 234, 0.45);
+    --brand-glow-secondary: rgba(192, 132, 252, 0.25);
+    --brand-border: rgba(147, 51, 234, 0.5);
+  }
+
+  .brand-glow-surfshark {
+    --brand-glow-primary: rgba(0, 209, 178, 0.45);
+    --brand-glow-secondary: rgba(6, 182, 212, 0.25);
+    --brand-border: rgba(0, 209, 178, 0.5);
+  }
+
+  .brand-glow-claude {
+    --brand-glow-primary: rgba(217, 119, 6, 0.45);
+    --brand-glow-secondary: rgba(249, 115, 22, 0.25);
+    --brand-border: rgba(217, 119, 6, 0.5);
+  }
+
+  .brand-glow-veo {
+    --brand-glow-primary: rgba(99, 102, 241, 0.45);
+    --brand-glow-secondary: rgba(139, 92, 246, 0.25);
+    --brand-border: rgba(99, 102, 241, 0.5);
+  }
+
+  .brand-glow-cursor {
+    --brand-glow-primary: rgba(59, 130, 246, 0.45);
+    --brand-glow-secondary: rgba(139, 92, 246, 0.25);
+    --brand-border: rgba(59, 130, 246, 0.5);
+  }
+
+  /* Infinite Marquee Ribbon Keyframes */
+  @keyframes marquee-horizontal {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); }
+  }
+
+  .ps-ribbon-track {
+    display: flex;
+    width: max-content;
+    animation: marquee-horizontal 35s linear infinite;
+    will-change: transform;
+  }
+
+  .ps-ribbon-track:hover {
+    animation-play-state: paused;
+  }
+
+  /* === Awwwards-Level 3D & Parallax Glass Utilities === */
+  .ps-3d-perspective {
+    perspective: 1200px;
+    transform-style: preserve-3d;
+  }
+
+  .ps-3d-card {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+  }
+
+  .ps-3d-card:hover {
+    transform: translateY(-8px) rotateX(2deg) rotateY(-2deg);
+  }
+
+  .ps-glow-pulse {
+    animation: ps-pulse-glow 4s ease-in-out infinite alternate;
+  }
+
+  @keyframes ps-pulse-glow {
+    0% { opacity: 0.3; transform: scale(0.98); }
+    100% { opacity: 0.7; transform: scale(1.02); }
+  }
 }

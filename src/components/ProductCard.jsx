@@ -1,296 +1,394 @@
-import { useState, useEffect, memo } from "react";
-import { MessageCircle } from "lucide-react";
+import { memo } from "react";
+import { MessageCircle, ArrowRight, Check } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { openWhatsApp } from "@/lib/whatsapp";
 import { motion } from "framer-motion";
 import LazyImage from "@/components/LazyImage";
 
-/* ── Inline SVG Icons ── */
-const LightningIcon = ({ size = 12, style = {}, className = "" }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="currentColor" style={style} className={className}>
-    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-  </svg>
-);
+/* Comprehensive Brand Color & Theme Glow Engine */
+const getBrandTheme = (id = "", name = "") => {
+  const str = (id + " " + name).toLowerCase();
 
-const ShieldIcon = ({ size = 12, style = {}, className = "" }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={style} className={className}>
-    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-  </svg>
-);
+  // ChatGPT → Emerald Green Glow
+  if (str.includes("chatgpt")) {
+    return {
+      glow: "#10A37F",
+      secondary: "#22C55E",
+      border: "rgba(16, 163, 127, 0.5)",
+      bgGradient: "linear-gradient(140deg, rgba(16, 163, 127, 0.18) 0%, rgba(8, 14, 12, 0.97) 100%)",
+      badgeBg: "rgba(16, 163, 127, 0.22)",
+      badgeColor: "#34D399",
+    };
+  }
 
-const HeadsetIcon = ({ size = 12, style = {}, className = "" }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={style} className={className}>
-    <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
-    <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
-  </svg>
-);
+  // Gemini → Google Blue
+  if (str.includes("gemini")) {
+    return {
+      glow: "#4285F4",
+      secondary: "#38BDF8",
+      border: "rgba(66, 133, 244, 0.5)",
+      bgGradient: "linear-gradient(140deg, rgba(66, 133, 244, 0.18) 0%, rgba(8, 10, 24, 0.97) 100%)",
+      badgeBg: "rgba(66, 133, 244, 0.22)",
+      badgeColor: "#60A5FA",
+    };
+  }
 
-/* ── Product-specific side-glow color pairs ── */
-const getSideGlowColors = (id) => {
-  const lowerId = id.toLowerCase();
-  if (lowerId.includes("chatgpt"))   return { primary: "16, 163, 127", secondary: "52, 211, 153" };
-  if (lowerId.includes("gemini"))    return { primary: "139, 92, 246",  secondary: "66, 133, 244" };
-  if (lowerId.includes("veo"))       return { primary: "66, 133, 244",  secondary: "37, 99, 235" };
-  if (lowerId.includes("capcut"))    return { primary: "255, 44, 85", secondary: "254, 44, 85" };
-  if (lowerId.includes("canva"))     return { primary: "125, 42, 232",  secondary: "236, 72, 153" };
-  if (lowerId.includes("grok"))      return { primary: "29, 161, 242",  secondary: "56, 189, 248" };
-  if (lowerId.includes("surfshark")) return { primary: "2, 132, 199",   secondary: "13, 148, 136" };
-  if (lowerId.includes("tiktok"))    return { primary: "254, 44, 85",   secondary: "37, 244, 238" };
-  if (lowerId.includes("lovable"))   return { primary: "238, 15, 121",  secondary: "139, 92, 246" };
-  if (lowerId.includes("youtube"))   return { primary: "255, 0, 0",     secondary: "204, 0, 0" };
-  if (lowerId.includes("nord"))      return { primary: "69, 130, 241",  secondary: "52, 101, 200" };
-  return { primary: "139, 92, 246", secondary: "59, 130, 246" };
+  // Canva → Purple + Cyan
+  if (str.includes("canva")) {
+    return {
+      glow: "#7D2AE8",
+      secondary: "#00C4CC",
+      border: "rgba(125, 42, 232, 0.5)",
+      bgGradient: "linear-gradient(140deg, rgba(125, 42, 232, 0.2) 0%, rgba(0, 196, 204, 0.1) 50%, rgba(10, 8, 24, 0.97) 100%)",
+      badgeBg: "rgba(125, 42, 232, 0.22)",
+      badgeColor: "#C084FC",
+    };
+  }
+
+  // CapCut → White + Dark Gray
+  if (str.includes("capcut")) {
+    return {
+      glow: "#FFFFFF",
+      secondary: "#475569",
+      border: "rgba(255, 255, 255, 0.45)",
+      bgGradient: "linear-gradient(140deg, rgba(255, 255, 255, 0.14) 0%, rgba(15, 23, 42, 0.97) 100%)",
+      badgeBg: "rgba(255, 255, 255, 0.18)",
+      badgeColor: "#F8FAFC",
+    };
+  }
+
+  // Google Veo → Blue Gradient
+  if (str.includes("veo")) {
+    return {
+      glow: "#6366F1",
+      secondary: "#3B82F6",
+      border: "rgba(99, 102, 241, 0.5)",
+      bgGradient: "linear-gradient(140deg, rgba(99, 102, 241, 0.18) 0%, rgba(10, 10, 24, 0.97) 100%)",
+      badgeBg: "rgba(99, 102, 241, 0.22)",
+      badgeColor: "#818CF8",
+    };
+  }
+
+  // YouTube → Red Glow
+  if (str.includes("youtube")) {
+    return {
+      glow: "#FF0000",
+      secondary: "#DC2626",
+      border: "rgba(255, 0, 0, 0.5)",
+      bgGradient: "linear-gradient(140deg, rgba(255, 0, 0, 0.18) 0%, rgba(20, 8, 10, 0.97) 100%)",
+      badgeBg: "rgba(255, 0, 0, 0.22)",
+      badgeColor: "#F87171",
+    };
+  }
+
+  // Notion → White + Gray
+  if (str.includes("notion")) {
+    return {
+      glow: "#F8FAFC",
+      secondary: "#64748B",
+      border: "rgba(255, 255, 255, 0.38)",
+      bgGradient: "linear-gradient(140deg, rgba(248, 250, 252, 0.12) 0%, rgba(6, 7, 12, 0.98) 100%)",
+      badgeBg: "rgba(255, 255, 255, 0.16)",
+      badgeColor: "#E2E8F0",
+    };
+  }
+
+  // Cursor → Blue
+  if (str.includes("cursor")) {
+    return {
+      glow: "#3B82F6",
+      secondary: "#1D4ED8",
+      border: "rgba(59, 130, 246, 0.5)",
+      bgGradient: "linear-gradient(140deg, rgba(59, 130, 246, 0.18) 0%, rgba(8, 10, 24, 0.97) 100%)",
+      badgeBg: "rgba(59, 130, 246, 0.22)",
+      badgeColor: "#60A5FA",
+    };
+  }
+
+  // Figma → Multi-color Accent
+  if (str.includes("figma")) {
+    return {
+      glow: "#F24E1E",
+      secondary: "#A259FF",
+      border: "rgba(242, 78, 30, 0.5)",
+      bgGradient: "linear-gradient(140deg, rgba(242, 78, 30, 0.18) 0%, rgba(162, 89, 255, 0.12) 50%, rgba(14, 8, 20, 0.97) 100%)",
+      badgeBg: "rgba(242, 78, 30, 0.22)",
+      badgeColor: "#FF8A65",
+    };
+  }
+
+  // Lovable → Purple Gradient
+  if (str.includes("lovable")) {
+    return {
+      glow: "#EE0F79",
+      secondary: "#9333EA",
+      border: "rgba(238, 15, 121, 0.5)",
+      bgGradient: "linear-gradient(140deg, rgba(238, 15, 121, 0.18) 0%, rgba(18, 8, 18, 0.97) 100%)",
+      badgeBg: "rgba(238, 15, 121, 0.22)",
+      badgeColor: "#F472B6",
+    };
+  }
+
+  // NordVPN → Blue
+  if (str.includes("nord")) {
+    return {
+      glow: "#0060FF",
+      secondary: "#3B82F6",
+      border: "rgba(0, 96, 255, 0.5)",
+      bgGradient: "linear-gradient(140deg, rgba(0, 96, 255, 0.18) 0%, rgba(6, 10, 24, 0.97) 100%)",
+      badgeBg: "rgba(0, 96, 255, 0.22)",
+      badgeColor: "#60A5FA",
+    };
+  }
+
+  // Surfshark / VPN → Teal
+  if (str.includes("surfshark") || str.includes("vpn")) {
+    return {
+      glow: "#00D1B2",
+      secondary: "#06B6D4",
+      border: "rgba(0, 209, 178, 0.5)",
+      bgGradient: "linear-gradient(140deg, rgba(0, 209, 178, 0.18) 0%, rgba(6, 14, 18, 0.97) 100%)",
+      badgeBg: "rgba(0, 209, 178, 0.22)",
+      badgeColor: "#2DD4BF",
+    };
+  }
+
+  // SuperGrok → Purple
+  if (str.includes("grok") || str.includes("supergrok")) {
+    return {
+      glow: "#9333EA",
+      secondary: "#C084FC",
+      border: "rgba(147, 51, 234, 0.5)",
+      bgGradient: "linear-gradient(140deg, rgba(147, 51, 234, 0.18) 0%, rgba(14, 8, 22, 0.97) 100%)",
+      badgeBg: "rgba(147, 51, 234, 0.22)",
+      badgeColor: "#C084FC",
+    };
+  }
+
+  // HeyGen → Deep Violet
+  if (str.includes("heygen")) {
+    return {
+      glow: "#5C24FF",
+      secondary: "#F97316",
+      border: "rgba(92, 36, 255, 0.5)",
+      bgGradient: "linear-gradient(140deg, rgba(92, 36, 255, 0.18) 0%, rgba(10, 8, 24, 0.97) 100%)",
+      badgeBg: "rgba(92, 36, 255, 0.22)",
+      badgeColor: "#A78BFA",
+    };
+  }
+
+  // TikTok → Pink / Cyan
+  if (str.includes("tiktok")) {
+    return {
+      glow: "#FE2C55",
+      secondary: "#25F4EE",
+      border: "rgba(254, 44, 85, 0.5)",
+      bgGradient: "linear-gradient(140deg, rgba(254, 44, 85, 0.18) 0%, rgba(37, 244, 238, 0.1) 50%, rgba(16, 8, 14, 0.97) 100%)",
+      badgeBg: "rgba(254, 44, 85, 0.22)",
+      badgeColor: "#FF6B8B",
+    };
+  }
+
+  // Default Luxury Theme
+  return {
+    glow: "#8B5CF6",
+    secondary: "#EC4899",
+    border: "rgba(139, 92, 246, 0.45)",
+    bgGradient: "linear-gradient(140deg, rgba(139, 92, 246, 0.15) 0%, rgba(10, 8, 16, 0.97) 100%)",
+    badgeBg: "rgba(139, 92, 246, 0.22)",
+    badgeColor: "#C084FC",
+  };
 };
 
-// Preload route chunk on hover for instant 0ms page navigation
-const preloadProductDetail = () => {
-  import('@/pages/ProductDetail');
+/* Discount calculation helper */
+const calculateDiscount = (oldPriceStr, priceStr) => {
+  if (!oldPriceStr || !priceStr) return "20% OFF";
+  const oldVal = parseInt(oldPriceStr.replace(/\D/g, ""), 10);
+  const newVal = parseInt(priceStr.replace(/\D/g, ""), 10);
+  if (isNaN(oldVal) || isNaN(newVal) || oldVal <= newVal) return "20% OFF";
+  return `${Math.round(((oldVal - newVal) / oldVal) * 100)}% OFF`;
 };
 
-/**
- * @param {{ product: any, index?: number, priority?: boolean }} props
- */
+// Default glass feature chips
+const getFeatureChips = (product) => {
+  if (product.features && product.features.length >= 3) {
+    return product.features.slice(0, 3).map(f => f.replace(/^[🔥⚡🎬👑🎨📺🛡️🚀\s]+/, ''));
+  }
+  return ["Instant Delivery", "100% Warranty", "Official Access"];
+};
+
 function ProductCardComponent({ product, index = 0, priority = false }) {
   const navigate = useNavigate();
-  const sideGlow = getSideGlowColors(product?.id || "");
-  const [isMobile, setIsMobile] = useState(() => typeof window !== "undefined" && window.innerWidth < 768);
-
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
-
-  /* Discount calculation */
-  const calculateDiscount = (oldPriceStr, priceStr) => {
-    if (!oldPriceStr || !priceStr) return "10%";
-    const oldVal = parseInt(oldPriceStr.replace(/\D/g, ""), 10);
-    const newVal = parseInt(priceStr.replace(/\D/g, ""), 10);
-    if (isNaN(oldVal) || isNaN(newVal) || oldVal <= newVal) return "10%";
-    return `${Math.round(((oldVal - newVal) / oldVal) * 100)}%`;
-  };
-
+  const theme = getBrandTheme(product.id, product.name);
   const discountVal = calculateDiscount(product.oldPrice, product.price);
+  const chips = getFeatureChips(product);
 
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.98 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.25, ease: "easeOut" }}
+      initial={{ opacity: 0, y: 25, scale: 0.96 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, margin: "-20px" }}
+      transition={{ duration: 0.4, delay: (index % 4) * 0.08, ease: [0.16, 1, 0.3, 1] }}
       className="w-full flex"
-      onMouseEnter={preloadProductDetail}
     >
       <div className="relative w-full group">
-        {/* Combined Ambient Glow */}
+        
+        {/* Brand-Colored Ambient Glow Halo */}
         <div
-          className="hidden md:block absolute -inset-2 rounded-[40px] pointer-events-none z-0 opacity-40 transition-opacity duration-500 group-hover:opacity-75"
+          className="absolute -inset-1.5 rounded-[34px] pointer-events-none z-0 opacity-35 transition-all duration-500 group-hover:opacity-85 blur-2xl"
           style={{
-            background: `radial-gradient(circle at 50% 50%, rgba(${sideGlow.primary}, 0.22) 0%, rgba(${sideGlow.secondary}, 0.08) 50%, transparent 70%)`,
-            filter: "blur(25px)",
+            background: `radial-gradient(circle at 50% 30%, ${theme.glow}50 0%, ${theme.secondary}20 60%, transparent 80%)`,
           }}
         />
 
-        {/* ── Main Card Body ── */}
-        <motion.div
-          className="relative rounded-[32px] p-6 sm:p-7 flex flex-col cursor-pointer w-full overflow-hidden z-10 ps-glass-reflection shadow-xl border"
+        {/* Unified 28px Rounded Glassmorphism Card Container */}
+        <div
           onClick={() => navigate(`/product/${product.id}`)}
+          className="relative w-full rounded-[28px] p-5 sm:p-6 flex flex-col justify-between cursor-pointer overflow-hidden z-10 ps-glass-reflection shadow-2xl border transition-all duration-400 group-hover:-translate-y-2.5 group-hover:shadow-[0_30px_70px_rgba(0,0,0,0.9)]"
           style={{
-            background: "linear-gradient(180deg, rgba(15, 15, 20, 0.94) 0%, rgba(8, 8, 12, 0.98) 100%)",
-            backdropFilter: isMobile ? "blur(12px)" : "blur(30px)",
-            WebkitBackdropFilter: isMobile ? "blur(12px)" : "blur(30px)",
-            borderColor: `rgba(${sideGlow.primary}, 0.2)`,
-            boxShadow: "0 20px 50px rgba(0, 0, 0, 0.75)",
-            willChange: "transform",
-            transform: "translateZ(0)",
+            background: theme.bgGradient,
+            borderColor: theme.border,
+            boxShadow: `0 20px 50px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.15)`,
           }}
-          whileHover={isMobile ? {} : {
-            y: -6,
-            scale: 1.015,
-            borderColor: `rgba(${sideGlow.primary}, 0.4)`,
-            boxShadow: `0 30px 65px rgba(0, 0, 0, 0.85), 0 0 30px rgba(${sideGlow.primary}, 0.15)`,
-          }}
-          whileTap={{ scale: 0.98 }}
-          transition={{ type: "spring", stiffness: 300, damping: 25 }}
         >
-          <div
-            className="absolute inset-0 rounded-[32px] pointer-events-none z-0"
-            style={{
-              padding: "1px",
-              background: `linear-gradient(135deg, rgba(${sideGlow.primary}, 0.3), rgba(${sideGlow.secondary}, 0.12))`,
-              WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-              WebkitMaskComposite: "xor",
-              maskComposite: "exclude",
-            }}
-          />
+          {/* Noise Overlay & Shimmer Reflection */}
+          <div className="absolute inset-0 opacity-15 pointer-events-none bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]" />
+          <span className="ps-shimmer absolute inset-0 rounded-[28px] overflow-hidden pointer-events-none" />
 
-          {/* SAVE & Rating Badges */}
-          <div className="flex items-center justify-between flex-wrap gap-2 w-full mb-3 relative z-20">
-            <div
-              className="px-3 py-1.5 rounded-2xl flex items-center gap-1.5 shadow-md border"
-              style={{
-                background: "rgba(8, 8, 12, 0.85)",
-                borderColor: "rgba(255, 255, 255, 0.15)",
-              }}
-            >
-              <div
-                className="flex items-center justify-center w-5 h-5 rounded-full shrink-0"
+          <div>
+            
+            {/* TOP BADGES ROW: Guaranteed single line with zero overlap */}
+            <div className="flex items-center justify-between gap-1 w-full mb-4 relative z-10 min-h-[28px]">
+              
+              {/* Top Left: Duration Badge */}
+              <span
+                className="px-2 py-1 rounded-full text-[9.5px] sm:text-[10px] font-black uppercase tracking-wider border backdrop-blur-md shadow-sm shrink-0 flex items-center gap-1"
                 style={{
-                  background: `rgba(${sideGlow.primary}, 0.2)`,
-                  border: `1px solid rgba(${sideGlow.primary}, 0.4)`,
+                  background: theme.badgeBg,
+                  borderColor: `${theme.glow}50`,
+                  color: theme.badgeColor,
                 }}
               >
-                <LightningIcon size={10} style={{ color: product.color }} />
-              </div>
-              <div className="flex flex-col text-left leading-[1.1]">
-                <span className="text-[8px] font-black uppercase tracking-widest text-white/70">SAVE</span>
-                <span className="text-xs font-black tracking-tight text-white">{discountVal}</span>
-              </div>
-            </div>
-
-            {/* Stock & Rating Badge */}
-            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 backdrop-blur-md text-[10px] font-bold text-emerald-300">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
-              <span>Stock: {product.stock ? `${product.stock} Units` : "Available"} • ⭐ 4.9</span>
-            </div>
-          </div>
-
-          {/* Full Motion-Graphics Visual Glass Box */}
-          <div className="flex justify-center mb-4 mt-1 relative z-10">
-            <div
-              className="relative flex items-center justify-center rounded-3xl overflow-hidden ps-logo-float-loop transition-transform group-hover:scale-105 p-4"
-              style={{
-                width: 140,
-                height: 140,
-                background: `radial-gradient(circle at 50% 35%, rgba(${sideGlow.primary}, 0.3) 0%, rgba(255, 255, 255, 0.08) 50%, rgba(10, 10, 15, 0.95) 100%)`,
-                border: `2px solid rgba(${sideGlow.primary}, 0.6)`,
-                boxShadow: `0 20px 45px rgba(0, 0, 0, 0.5), 0 0 35px rgba(${sideGlow.primary}, 0.35)`,
-              }}
-            >
-              <span className="ps-shimmer absolute inset-0 pointer-events-none" />
-              <LazyImage
-                src={product.logo}
-                alt={`${product.name} official logo`}
-                className="w-[105px] h-[105px] sm:w-[115px] sm:h-[115px] relative z-10 object-contain"
-                imgStyle={{
-                  filter: "brightness(1.15) contrast(1.15) drop-shadow(0 10px 20px rgba(0,0,0,0.6))"
-                }}
-                priority={priority}
-              />
-            </div>
-          </div>
-
-          {/* Product Title */}
-          <h3 className="font-display font-bold text-lg sm:text-[20px] leading-snug tracking-tight mb-2 text-center min-h-[48px] flex items-center justify-center relative z-10 text-white">
-            {product.name}
-          </h3>
-
-          {/* Duration & Stock Badge */}
-          <div className="flex justify-center items-center gap-2 mb-3 relative z-10">
-            <span
-              className="inline-flex items-center px-3.5 py-1 rounded-full text-[10px] font-bold border backdrop-blur-sm"
-              style={{
-                background: `rgba(${sideGlow.primary}, 0.12)`,
-                borderColor: `rgba(${sideGlow.primary}, 0.3)`,
-                color: product.color,
-              }}
-            >
-              {product.duration.includes("Stable") || product.duration.includes("Access") ? product.duration : `${product.duration} Access`}
-            </span>
-          </div>
-
-          {/* Description / Tagline */}
-          <p className="text-[11px] sm:text-xs text-center leading-relaxed mb-4 font-body px-1 line-clamp-2 min-h-[34px] relative z-10 text-white/75">
-            {product.tagline || product.description || `Official ${product.name} account with ${product.duration} access.`}
-          </p>
-
-          {/* Pricing Block */}
-          <div className="flex flex-col items-center gap-1 mb-4 relative z-10">
-            {product.oldPrice && (
-              <span className="text-xs line-through font-light tracking-wide text-white/60">
-                {product.oldPrice}
+                <span>🕒</span>
+                <span>{product.duration}</span>
               </span>
-            )}
-            <span
-              className="text-2xl sm:text-3xl font-black font-display tracking-tight drop-shadow-[0_0_15px_rgba(16,185,129,0.35)]"
-              style={{
-                background: "linear-gradient(135deg, #10B981 0%, #34D399 50%, #6EE7B7 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
-              {product.price}
-            </span>
+
+              {/* Top Right: Stock & Discount Badges */}
+              <div className="flex items-center gap-1 shrink-0">
+                <span className="px-2 py-0.5 rounded-full text-[9px] sm:text-[9.5px] font-extrabold bg-red-500/20 text-red-300 border border-red-500/40 uppercase tracking-wider shrink-0">
+                  {discountVal}
+                </span>
+
+                <div className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/35 text-[9px] sm:text-[9.5px] font-bold text-emerald-300 shrink-0">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+                  <span>{product.stock ? `${product.stock} Stock` : "In Stock"}</span>
+                </div>
+              </div>
+
+            </div>
+
+            {/* PRODUCT LOGO: Large Glass Box with Soft Brand Glow Lighting */}
+            <div className="flex justify-center my-3 relative z-10">
+              <div
+                className="relative w-32 h-32 sm:w-36 sm:h-36 rounded-2xl sm:rounded-3xl p-3 sm:p-4 flex items-center justify-center border shadow-2xl transition-transform duration-500 group-hover:scale-105"
+                style={{
+                  background: `radial-gradient(circle, ${theme.glow}35 0%, rgba(10, 12, 18, 0.98) 100%)`,
+                  borderColor: `${theme.glow}65`,
+                  boxShadow: `0 12px 30px rgba(0,0,0,0.8), 0 0 25px ${theme.glow}25`,
+                }}
+              >
+                <span className="ps-shimmer absolute inset-0 pointer-events-none" />
+                <LazyImage
+                  src={product.logo}
+                  alt={product.name}
+                  className="w-22 h-22 sm:w-26 sm:h-26 object-contain relative z-10 filter drop-shadow-[0_8px_18px_rgba(0,0,0,0.85)]"
+                  priority={priority}
+                />
+              </div>
+            </div>
+
+            {/* PRODUCT TITLE: Large Bold Luxury Typography */}
+            <h3 className="font-display font-black text-lg sm:text-xl text-white tracking-tight leading-snug text-center mb-1.5 min-h-[46px] flex items-center justify-center relative z-10 group-hover:text-cyan-300 transition-colors">
+              {product.name}
+            </h3>
+
+            {/* DESCRIPTION: Max 2 lines, clean gray text */}
+            <p className="text-xs text-slate-300 text-center leading-relaxed font-body mb-3.5 line-clamp-2 px-1 relative z-10 min-h-[36px]">
+              {product.tagline || product.description}
+            </p>
+
+            {/* FEATURE CHIPS: Glass Pills */}
+            <div className="flex flex-wrap items-center justify-center gap-1.5 mb-4 relative z-10">
+              {chips.map((chip, i) => (
+                <span
+                  key={i}
+                  className="px-2.5 py-0.5 rounded-lg text-[10px] font-semibold text-slate-200 bg-white/[0.06] border border-white/10 flex items-center gap-1 backdrop-blur-md"
+                >
+                  <Check size={11} className="text-emerald-400 shrink-0" />
+                  <span className="truncate max-w-[120px]">{chip}</span>
+                </span>
+              ))}
+            </div>
+
+            {/* PRICE AREA: Premium Pricing Layout */}
+            <div className="flex flex-col items-center justify-center gap-0.5 mb-4 relative z-10 py-2 border-y border-white/10 bg-white/[0.03] rounded-2xl">
+              {product.oldPrice && (
+                <span className="text-xs text-slate-400 line-through font-mono tracking-wide">
+                  {product.oldPrice}
+                </span>
+              )}
+              <span
+                className="text-2xl sm:text-3xl font-black font-display tracking-tight text-emerald-400 drop-shadow-[0_0_15px_rgba(16,185,129,0.35)]"
+                style={{
+                  background: "linear-gradient(135deg, #10B981 0%, #34D399 50%, #6EE7B7 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                {product.price}
+              </span>
+            </div>
+
           </div>
 
-          {/* Features Row */}
-          <div className="flex items-center justify-between gap-1.5 py-2.5 mb-4 text-[10px] font-semibold border-t border-b border-white/[0.08] text-white/85 relative z-10">
-            <div className="flex items-center gap-1">
-              <div className="flex items-center justify-center w-6 h-6 rounded-full bg-blue-500/15 text-blue-500 shrink-0">
-                <LightningIcon size={11} style={{ color: "#3B82F6" }} />
-              </div>
-              <div className="flex flex-col text-left leading-tight">
-                <span className="text-white/90">Instant</span>
-                <span className="text-white/60 text-[8.5px]">Delivery</span>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-1">
-              <div className="flex items-center justify-center w-6 h-6 rounded-full bg-violet-500/15 text-violet-500 shrink-0">
-                <ShieldIcon size={11} style={{ color: "#8B5CF6" }} />
-              </div>
-              <div className="flex flex-col text-left leading-tight">
-                <span className="text-white/90">Verified</span>
-                <span className="text-white/60 text-[8.5px]">Guarantee</span>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-1">
-              <div className="flex items-center justify-center w-6 h-6 rounded-full bg-pink-500/15 text-pink-500 shrink-0">
-                <HeadsetIcon size={11} style={{ color: "#EC4899" }} />
-              </div>
-              <div className="flex flex-col text-left leading-tight">
-                <span className="text-white/90">24/7</span>
-                <span className="text-white/60 text-[8.5px]">Support</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Buy Button */}
-          <div className="flex flex-col gap-2.5 w-full mt-auto font-body relative z-10">
-            <motion.button
-              onClick={(e) => {
-                e.stopPropagation();
-                openWhatsApp(product.name, product.duration, product.price);
-              }}
-              className="relative flex items-center justify-center gap-2 w-full h-[56px] min-h-[56px] rounded-2xl text-sm font-bold text-white overflow-hidden active:scale-[0.97] transition-transform shadow-lg cursor-pointer"
-              style={{
-                background: "linear-gradient(135deg, #25D366 0%, #128C7E 100%)",
-                boxShadow: "0 8px 24px rgba(37, 211, 102, 0.3)",
-              }}
-              whileHover={{ scale: 1.02 }}
-            >
-              <MessageCircle size={18} className="shrink-0 relative z-10 text-white" />
-              <span className="tracking-wide relative z-10 text-white font-extrabold">Order on WhatsApp</span>
-            </motion.button>
-
+          {/* BUTTONS ROW: Side-by-side View Details & Buy Now matching reference image */}
+          <div className="grid grid-cols-2 gap-2 w-full relative z-10 font-body">
             {/* View Details Button */}
             <button
               onClick={(e) => {
                 e.stopPropagation();
                 navigate(`/product/${product.id}`);
               }}
-              className="flex items-center justify-center gap-1.5 w-full h-[42px] rounded-xl text-xs font-semibold border transition-all duration-300 active:scale-[0.97] text-white/85 border-white/15 hover:border-white/30 hover:bg-white/10"
+              className="py-2.5 px-2 rounded-xl text-[11px] sm:text-xs font-bold text-slate-200 border border-white/15 bg-white/5 hover:bg-white/15 hover:text-white transition-all flex items-center justify-center min-h-[42px] cursor-pointer"
             >
               <span>View Details</span>
-              <span className="transition-transform group-hover:translate-x-1">→</span>
             </button>
+
+            {/* Buy Now Button (WhatsApp Order) */}
+            <motion.button
+              onClick={(e) => {
+                e.stopPropagation();
+                openWhatsApp(product);
+              }}
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.96 }}
+              className="py-2.5 px-2 rounded-xl text-[11px] sm:text-xs font-extrabold text-white flex items-center justify-center gap-1 transition-all duration-300 shadow-lg cursor-pointer min-h-[42px]"
+              style={{
+                background: "linear-gradient(135deg, #2563EB 0%, #7C3AED 100%)",
+                boxShadow: "0 4px 15px rgba(124, 58, 237, 0.35)",
+              }}
+            >
+              <MessageCircle size={14} className="text-white shrink-0" />
+              <span className="tracking-wide text-white font-extrabold">Buy Now</span>
+            </motion.button>
           </div>
-        </motion.div>
+
+        </div>
+
       </div>
     </motion.div>
   );
 }
 
-const ProductCard = memo(ProductCardComponent);
-export default ProductCard;
+export default memo(ProductCardComponent);
