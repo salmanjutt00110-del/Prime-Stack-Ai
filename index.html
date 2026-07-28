@@ -19,6 +19,17 @@
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <link rel="canonical" href="https://primetoolshub.store/" />
 
+  <!-- Force scroll to top on refresh/reload & disable browser auto-scroll restoration -->
+  <script>
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+    window.addEventListener('beforeunload', function () {
+      window.scrollTo(0, 0);
+    });
+  </script>
+
   <!-- Self-hosted Inter font — eliminates 150ms render-blocking Google Fonts request -->
   <link rel="preload" as="font" type="font/woff2" href="/fonts/inter-400.woff2" crossorigin />
   <link rel="preload" as="image" href="/prime-tools-logo.png" />

@@ -79,13 +79,13 @@ export default function Navbar() {
   }, [location.pathname]);
 
   const handleLogoClick = (e) => {
-    e.preventDefault();
+    if (e) e.preventDefault();
     setOpen(false);
     if (location.pathname !== "/") {
       navigate("/");
     } else {
       window.history.pushState(null, "", "/");
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     }
   };
 
@@ -100,6 +100,7 @@ export default function Navbar() {
 
     if (location.pathname !== "/") {
       navigate("/" + link.href);
+      setTimeout(() => scrollToSection(link.href), 100);
     } else {
       window.history.pushState(null, "", link.href);
       scrollToSection(link.href);

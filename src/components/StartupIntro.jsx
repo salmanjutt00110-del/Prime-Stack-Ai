@@ -9,11 +9,18 @@ export default function StartupIntro({ onComplete }) {
 
   const finish = () => {
     setVisible(false);
+    if (!window.location.hash) {
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    }
     if (onComplete) onComplete();
   };
 
   useEffect(() => {
     if (!visible) return;
+
+    if (!window.location.hash) {
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    }
 
     // Smooth & fast progress counter (1 second total)
     const startTime = performance.now();
