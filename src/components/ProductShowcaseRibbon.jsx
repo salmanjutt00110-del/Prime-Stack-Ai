@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const SHOWCASE_PRODUCTS = [
   { id: "chatgpt-plus-1m", name: "ChatGPT", brand: "OpenAI", logo: BRAND.chatgpt, glow: "#10A37F", border: "rgba(16, 163, 127, 0.4)", badge: "GPT-4o & Canvas" },
-  { id: "gemini-pro-18", name: "Gemini", brand: "Google AI", logo: BRAND.gemini, glow: "#4285F4", border: "rgba(66, 133, 244, 0.4)", badge: "5TB & Veo Video" },
+  { id: "gemini-pro-18", name: "Gemini Pro", brand: "Google AI", logo: BRAND.gemini, glow: "#4285F4", border: "rgba(66, 133, 244, 0.4)", badge: "🔥 Rs. 1,099 (24h Offer)" },
   { id: "canva-pro-edu", name: "Canva", brand: "Visual AI", logo: BRAND.canva, glow: "#7D2AE8", border: "rgba(125, 42, 232, 0.4)", badge: "Magic Studio" },
   { id: "veo-3-video", name: "Google Veo", brand: "Google DeepMind", logo: BRAND.veo, glow: "#6366F1", border: "rgba(99, 102, 241, 0.4)", badge: "45K AI Credits" },
   { id: "capcut-pro-1m", name: "CapCut Pro", brand: "ByteDance", logo: BRAND.capcut, glow: "#FFFFFF", border: "rgba(255, 255, 255, 0.4)", badge: "Pro Editing & FX" },

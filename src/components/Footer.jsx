@@ -96,7 +96,8 @@ export default function Footer() {
             <a href="#products" onClick={(e) => handleNavClick(e, "#products")} className="text-xs text-slate-300 hover:text-white transition-colors py-1">AI Products Catalog</a>
             <a href="#agency-services" onClick={(e) => handleNavClick(e, "#agency-services")} className="text-xs text-slate-300 hover:text-white transition-colors py-1">Agency Services</a>
             <a href="#bulk-offers" onClick={(e) => handleNavClick(e, "#bulk-offers")} className="text-xs text-slate-300 hover:text-white transition-colors py-1">Bulk Discounts</a>
-            <a href="#reviews" onClick={(e) => handleNavClick(e, "#reviews")} className="text-xs text-slate-300 hover:text-white transition-colors py-1">Customer Reviews</a>
+            <a href="/reviews" className="text-xs text-slate-300 hover:text-white transition-colors py-1">Customer Reviews</a>
+            <a href="/html-sitemap" className="text-xs text-slate-300 hover:text-white transition-colors py-1">HTML Sitemap</a>
             <a href="#faq" onClick={(e) => handleNavClick(e, "#faq")} className="text-xs text-slate-300 hover:text-white transition-colors py-1">FAQ &amp; Warranty</a>
           </div>
 

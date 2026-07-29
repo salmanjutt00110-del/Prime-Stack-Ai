@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useLocation } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
@@ -18,6 +18,9 @@ import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
 import BackToTopButton from "@/components/BackToTopButton";
 import SectionDivider from "@/components/SectionDivider";
+import SEOHead from "@/components/SEOHead";
+import { ALL_PRODUCTS } from "@/data/products";
+import { generateHomepageGraph, DOMAIN } from "@/lib/seoSchema";
 import { scrollToSection } from "@/lib/scroll";
 
 export default function Home() {
@@ -34,8 +37,16 @@ export default function Home() {
     }
   }, [location.hash]);
 
+  const homepageSchema = useMemo(() => generateHomepageGraph(ALL_PRODUCTS), []);
+
   return (
     <div className="relative min-h-screen bg-[#02040a] text-white overflow-x-hidden">
+      <SEOHead
+        title="Prime Tools Hub — Premium AI Tools & Digital Services Marketplace"
+        description="Pakistan & Global's #1 Marketplace for ChatGPT Plus, Google Gemini Pro, Veo 3, Canva Pro, CapCut Pro, SuperGrok, Surfshark VPN & Digital Agency Subscriptions."
+        canonicalUrl={`${DOMAIN}/`}
+        schemaJson={homepageSchema}
+      />
       <ScrollProgress />
       <AmbientGlow />
       <Navbar />

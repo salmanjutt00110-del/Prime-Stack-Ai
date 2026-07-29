@@ -237,7 +237,8 @@ export default function Hero() {
                     <span className="ps-shimmer absolute inset-0 pointer-events-none" />
                     <img
                       src={currentBrand.logo}
-                      alt={currentBrand.name}
+                      alt={`${currentBrand.name} Official Subscription Logo`}
+                      title={`${currentBrand.name} Subscription at Prime Tools Hub`}
                       width="128"
                       height="128"
                       fetchpriority="high"

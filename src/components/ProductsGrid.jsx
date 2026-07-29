@@ -8,8 +8,10 @@ import {
   RefreshCw,
   Zap
 } from "lucide-react";
-import { ALL_PRODUCTS } from "@/data/products";
+import { ALL_PRODUCTS, BRAND } from "@/data/products";
 import ProductCard from "@/components/ProductCard";
+import CountdownTimer from "@/components/CountdownTimer";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
 const FILTER_PILLS = [
@@ -28,6 +30,7 @@ const FILTER_PILLS = [
 ];
 
 export default function ProductsGrid() {
+  const navigate = useNavigate();
   const [query, setQuery] = useState("");
   const [activeFilter, setActiveFilter] = useState("all");
 
@@ -83,6 +86,51 @@ export default function ProductsGrid() {
             <span className="group-hover:translate-x-1 transition-transform">→</span>
           </a>
         </div>
+
+        {/* TOP GEMINI PRO 18M SPECIAL DISCOUNT BANNER */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          onClick={() => navigate("/product/gemini-pro-18")}
+          className="mb-8 p-5 sm:p-6 rounded-3xl border border-blue-500/40 bg-gradient-to-r from-blue-950/80 via-purple-950/70 to-indigo-950/80 backdrop-blur-2xl flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl cursor-pointer group hover:border-blue-400/80 transition-all relative overflow-hidden"
+        >
+          <div className="absolute inset-0 opacity-20 pointer-events-none bg-[radial-gradient(#4285F4_1px,transparent_1px)] [background-size:16px_16px]" />
+          
+          <div className="flex items-center gap-4 text-left relative z-10">
+            <div className="w-16 h-16 rounded-2xl bg-blue-500/20 border border-blue-400/40 flex items-center justify-center shrink-0 shadow-lg group-hover:scale-105 transition-transform">
+              <img src={BRAND.gemini} alt="Google Gemini Pro" className="w-11 h-11 object-contain filter drop-shadow-md" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2 mb-1">
+                <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-red-500/30 text-red-300 border border-red-500/50 animate-pulse">
+                  ⚡ 24-HOUR FLASH SALE
+                </span>
+                <span className="text-xs font-bold text-amber-300">Limited Offer</span>
+              </div>
+              <h3 className="font-display text-lg sm:text-xl font-black text-white tracking-tight group-hover:text-cyan-300 transition-colors">
+                Google Gemini Pro 18 Months — Only Rs. 1,099 <span className="text-sm font-normal line-through text-slate-400">(Regular Rs. 1,599)</span>
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-300 mt-1 font-body">
+                5TB Cloud Storage, Veo AI Video Generation &amp; Advanced AI Models on your Gmail. Price increases after 24h timer!
+              </p>
+            </div>
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0 w-full md:w-auto relative z-10">
+            <CountdownTimer compact targetPrice="Rs. 1,099" futurePrice="Rs. 1,599" />
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                navigate("/product/gemini-pro-18");
+              }}
+              className="w-full sm:w-auto px-6 py-3.5 rounded-2xl font-display font-extrabold text-xs text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-xl min-h-[46px]"
+            >
+              <span>Get Rs. 1,099 Deal</span>
+              <span className="group-hover:translate-x-1 transition-transform">→</span>
+            </button>
+          </div>
+        </motion.div>
 
           {/* PREMIUM SEARCH BAR: Rounded Glass Input */}
           <motion.div

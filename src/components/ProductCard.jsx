@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { openWhatsApp } from "@/lib/whatsapp";
 import { motion } from "framer-motion";
 import LazyImage from "@/components/LazyImage";
+import CountdownTimer from "@/components/CountdownTimer";
 
 /* Comprehensive Brand Color & Theme Glow Engine */
 const getBrandTheme = (id = "", name = "") => {
@@ -295,6 +296,12 @@ function ProductCardComponent({ product, index = 0, priority = false }) {
 
             </div>
 
+            {(product.hasTimer || product.id === "gemini-pro-18") && (
+              <div className="mb-3 relative z-10">
+                <CountdownTimer compact targetPrice={product.price} futurePrice={product.oldPrice} />
+              </div>
+            )}
+
             {/* PRODUCT LOGO: Large Glass Box with Soft Brand Glow Lighting */}
             <div className="flex justify-center my-3 relative z-10">
               <div
@@ -308,7 +315,10 @@ function ProductCardComponent({ product, index = 0, priority = false }) {
                 <span className="ps-shimmer absolute inset-0 pointer-events-none" />
                 <LazyImage
                   src={product.logo}
-                  alt={product.name}
+                  alt={`${product.name} Official Subscription Logo`}
+                  title={`${product.name} Subscription at Prime Tools Hub`}
+                  width={180}
+                  height={180}
                   className="w-22 h-22 sm:w-26 sm:h-26 object-contain relative z-10 filter drop-shadow-[0_8px_18px_rgba(0,0,0,0.85)]"
                   priority={priority}
                 />

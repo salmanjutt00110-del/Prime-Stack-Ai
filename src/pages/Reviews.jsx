@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { Star, MessageCircle, Quote, Send } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SEOHead from "@/components/SEOHead";
+import Breadcrumb from "@/components/Breadcrumb";
 import { WHATSAPP_GENERAL, WHATSAPP_NUMBER } from "@/lib/whatsapp";
+import { DOMAIN, generateBreadcrumbSchema } from "@/lib/seoSchema";
 import { motion } from "framer-motion";
 import Animated3DText from "@/components/Animated3DText";
 
@@ -25,7 +28,6 @@ const STATS = [
   { value: "100%", label: "Recommend Us" },
 ];
 
-// Helper to get color properties for brand matching
 const getProductColor = (product) => {
   const p = product?.toLowerCase() || "";
   if (p.includes("chatgpt")) return { bg: "rgba(16, 163, 127, 0.12)", border: "rgba(16, 163, 127, 0.25)", text: "#10A37F" };
@@ -57,12 +59,64 @@ export default function Reviews() {
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, "_blank");
   };
 
+  const schemaGraph = useMemo(() => {
+    const breadcrumbSchema = generateBreadcrumbSchema([{ name: "Verified Reviews", url: "/reviews" }]);
+    const aggregateSchema = {
+      "@type": "Product",
+      "@id": `${DOMAIN}/reviews#store-rating`,
+      "name": "Prime Tools Hub Premium Subscriptions & Agency Services",
+      "description": "Verified user reviews and ratings for Prime Tools Hub AI tools and digital agency services.",
+      "image": `${DOMAIN}/prime-tools-logo.webp`,
+      "brand": {
+        "@type": "Brand",
+        "name": "Prime Tools Hub"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": reviews.length.toString(),
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "review": reviews.map(r => ({
+        "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": r.rating.toString(),
+          "bestRating": "5"
+        },
+        "author": {
+          "@type": "Person",
+          "name": r.name
+        },
+        "reviewBody": r.text
+      }))
+    };
+
+    return {
+      "@context": "https://schema.org",
+      "@graph": [breadcrumbSchema, aggregateSchema]
+    };
+  }, [reviews]);
+
   return (
     <div className="relative min-h-screen bg-[#050505] text-white overflow-x-hidden flex flex-col justify-between">
+      <SEOHead
+        title="Verified Customer Testimonials & Client Reviews"
+        description="Read 100% verified customer reviews and feedback for ChatGPT Plus, Gemini Pro, Canva Pro, CapCut Pro, SuperGrok, Surfshark VPN, and agency services at Prime Tools Hub."
+        canonicalUrl={`${DOMAIN}/reviews`}
+        schemaJson={schemaGraph}
+      />
       <Navbar />
       <main className="pt-32 sm:pt-36 flex-grow">
-        {/* hero */}
-        <section className="relative py-16 px-4 sm:px-6 overflow-hidden">
+        
+        {/* Visual Breadcrumb */}
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <Breadcrumb items={[{ name: "Verified Reviews", url: "/reviews" }]} />
+        </div>
+
+        {/* Hero Section */}
+        <section className="relative py-12 px-4 sm:px-6 overflow-hidden">
           <div className="absolute inset-0 -z-10" style={{ background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(139,92,246,0.15), transparent 70%)" }} />
           <div className="mx-auto max-w-4xl text-center">
             <motion.span
@@ -71,20 +125,21 @@ export default function Reviews() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              Testimonials
+              100% Verified Feedback
             </motion.span>
             <h1 className="mt-3 font-display font-bold text-[clamp(2.2rem,6vw,3.5rem)] tracking-tight text-white">
               <Animated3DText text="Verified Customer Testimonials & Proofs" variant="heading" />
             </h1>
             <motion.p
-              className="mt-4 text-base max-w-xl mx-auto text-white/70"
+              className="mt-4 text-base max-w-xl mx-auto text-white/70 font-body"
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              Real feedback from real users across Pakistan.
+              Real feedback from creators, agencies, and students across Pakistan and globally.
             </motion.p>
 
+            <h2 className="sr-only">Overall Client Ratings &amp; Statistics</h2>
             <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto">
               {STATS.map((s, i) => (
                 <motion.div
@@ -104,96 +159,97 @@ export default function Reviews() {
                   <div className="text-2xl sm:text-3xl font-bold font-display bg-gradient-to-r from-blue-400 via-violet-400 to-pink-400 bg-clip-text text-transparent">
                     {s.value}
                   </div>
-                  <div className="text-xs text-white/50 mt-1">{s.label}</div>
+                  <div className="text-xs text-white/50 mt-1 font-body">{s.label}</div>
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* reviews grid */}
+        {/* Reviews Grid Section */}
         <section className="relative py-8 px-4 sm:px-6">
-          <div className="mx-auto max-w-6xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {reviews.map((r, i) => {
-              const colors = getProductColor(r.product);
-              return (
-                <motion.div
-                  key={r.name + r.product}
-                  className="relative rounded-2xl p-6 flex flex-col border overflow-hidden group transition-colors duration-300"
-                  style={{
-                    background: "rgba(255,255,255,0.03)",
-                    backdropFilter: "blur(20px)",
-                    borderColor: "rgba(255,255,255,0.07)",
-                  }}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-40px" }}
-                  transition={{ duration: 0.5, delay: (i % 3) * 0.08, ease: [0.16, 1, 0.3, 1] }}
-                  whileHover={{
-                    y: -4,
-                    borderColor: `${colors.text}50`,
-                    background: "rgba(255,255,255,0.05)",
-                    boxShadow: `0 20px 50px rgba(0,0,0,0.5), 0 0 30px ${colors.text}1a`,
-                  }}
-                >
-                  {/* Subtle brand radial glow inside review card on hover */}
-                  <div
-                    className="absolute inset-0 -z-10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+          <div className="mx-auto max-w-6xl">
+            <h2 className="sr-only">Client Review Feedbacks</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {reviews.map((r, i) => {
+                const colors = getProductColor(r.product);
+                return (
+                  <motion.div
+                    key={r.name + r.product}
+                    className="relative rounded-2xl p-6 flex flex-col border overflow-hidden group transition-colors duration-300"
                     style={{
-                      background: `radial-gradient(circle at 50% 0%, ${colors.text}0d, transparent 65%)`,
+                      background: "rgba(255,255,255,0.03)",
+                      backdropFilter: "blur(20px)",
+                      borderColor: "rgba(255,255,255,0.07)",
                     }}
-                  />
-                  <Quote className="absolute top-5 right-5 text-white/5 transition-transform duration-300 group-hover:scale-110" size={40} />
-                  <div className="flex gap-1 mb-3">
-                    {Array.from({ length: r.rating }).map((_, idx) => (
-                      <Star key={idx} size={15} className="text-yellow-400 fill-yellow-400" />
-                    ))}
-                  </div>
-                  <p className="text-white/70 text-sm leading-relaxed flex-1">"{r.text}"</p>
-                  
-                  <div className="mt-4 pt-4 border-t border-white/6 flex items-center gap-3">
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-40px" }}
+                    transition={{ duration: 0.5, delay: (i % 3) * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                    whileHover={{
+                      y: -4,
+                      borderColor: `${colors.text}50`,
+                      background: "rgba(255,255,255,0.05)",
+                      boxShadow: `0 20px 50px rgba(0,0,0,0.5), 0 0 30px ${colors.text}1a`,
+                    }}
+                  >
                     <div
-                      className="flex items-center justify-center rounded-full text-white font-semibold text-sm shrink-0"
-                      style={{ width: 40, height: 40, background: "linear-gradient(135deg, #3B82F6, #8B5CF6, #EC4899)" }}
-                    >
-                      {r.name.charAt(0)}
+                      className="absolute inset-0 -z-10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                      style={{
+                        background: `radial-gradient(circle at 50% 0%, ${colors.text}0d, transparent 65%)`,
+                      }}
+                    />
+                    <Quote className="absolute top-5 right-5 text-white/5 transition-transform duration-300 group-hover:scale-110" size={40} />
+                    <div className="flex gap-1 mb-3">
+                      {Array.from({ length: r.rating }).map((_, idx) => (
+                        <Star key={idx} size={15} className="text-yellow-400 fill-yellow-400" />
+                      ))}
                     </div>
-                    <div className="min-w-0 flex-1">
-                      <div className="text-white text-sm font-medium truncate">{r.name}</div>
-                      
-                      {/* Colorful Pill Badges for Client Role and Product Tag */}
-                      <div className="flex flex-wrap gap-1.5 mt-2">
-                        <span
-                          className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-semibold border"
-                          style={{
-                            background: "rgba(255, 255, 255, 0.05)",
-                            borderColor: "rgba(255, 255, 255, 0.1)",
-                            color: "rgba(255, 255, 255, 0.7)"
-                          }}
-                        >
-                          {r.role}
-                        </span>
-                        <span
-                          className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-semibold border"
-                          style={{
-                            background: colors.bg,
-                            borderColor: colors.border,
-                            color: colors.text
-                          }}
-                        >
-                          {r.product}
-                        </span>
+                    <p className="text-white/70 text-sm leading-relaxed flex-1 font-body">"{r.text}"</p>
+                    
+                    <div className="mt-4 pt-4 border-t border-white/6 flex items-center gap-3">
+                      <div
+                        className="flex items-center justify-center rounded-full text-white font-semibold text-sm shrink-0"
+                        style={{ width: 40, height: 40, background: "linear-gradient(135deg, #3B82F6, #8B5CF6, #EC4899)" }}
+                      >
+                        {r.name.charAt(0)}
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <div className="text-white text-sm font-medium truncate">{r.name}</div>
+                        
+                        <div className="flex flex-wrap gap-1.5 mt-2">
+                          <span
+                            className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-semibold border"
+                            style={{
+                              background: "rgba(255, 255, 255, 0.05)",
+                              borderColor: "rgba(255, 255, 255, 0.1)",
+                              color: "rgba(255, 255, 255, 0.7)"
+                            }}
+                          >
+                            {r.role}
+                          </span>
+                          <span
+                            className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-semibold border"
+                            style={{
+                              background: colors.bg,
+                              borderColor: colors.border,
+                              color: colors.text
+                            }}
+                          >
+                            {r.product}
+                          </span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="mt-3 text-white/30 text-[11px]">{r.date}</div>
-                </motion.div>
-              );
-            })}
+                    <div className="mt-3 text-white/30 text-[11px] font-mono">{r.date}</div>
+                  </motion.div>
+                );
+              })}
+            </div>
           </div>
         </section>
 
-        {/* submit review */}
+        {/* Submit Review Section */}
         <section className="relative py-16 px-4 sm:px-6">
           <div className="mx-auto max-w-2xl">
             <motion.div
@@ -208,10 +264,10 @@ export default function Reviews() {
               <div className="absolute -bottom-16 -right-16 w-48 h-48 rounded-full blur-[90px] bg-pink-500/30" />
               <div className="relative">
                 <h2 className="font-display font-bold text-white text-2xl text-center mb-2">
-                  Share Your Experience
+                  Submit Your Verified Review
                 </h2>
-                <p className="text-white/55 text-sm text-center mb-6">
-                  Loved your purchase? Send your review — we'll feature it here.
+                <p className="text-white/55 text-sm text-center mb-6 font-body">
+                  Loved your purchase or agency service? Submit your feedback via WhatsApp to be featured.
                 </p>
 
                 <div className="space-y-3">
@@ -219,26 +275,26 @@ export default function Reviews() {
                     <input
                       value={form.name}
                       onChange={(e) => setForm({ ...form, name: e.target.value })}
-                      placeholder="Your name"
-                      className="w-full px-4 py-3 rounded-xl text-sm text-white placeholder-white/35 outline-none focus:ring-1 focus:ring-purple-400 transition-all"
+                      placeholder="Your Name"
+                      className="w-full px-4 py-3 rounded-xl text-sm text-white placeholder-white/35 outline-none focus:ring-1 focus:ring-purple-400 transition-all font-body"
                       style={{ background: "rgba(0,0,0,0.3)", border: "1px solid rgba(255,255,255,0.1)" }}
                     />
                     <input
                       value={form.product}
                       onChange={(e) => setForm({ ...form, product: e.target.value })}
-                      placeholder="Which product?"
-                      className="w-full px-4 py-3 rounded-xl text-sm text-white placeholder-white/35 outline-none focus:ring-1 focus:ring-purple-400 transition-all"
+                      placeholder="Which Product/Service?"
+                      className="w-full px-4 py-3 rounded-xl text-sm text-white placeholder-white/35 outline-none focus:ring-1 focus:ring-purple-400 transition-all font-body"
                       style={{ background: "rgba(0,0,0,0.3)", border: "1px solid rgba(255,255,255,0.1)" }}
                     />
                   </div>
                   <div className="flex items-center gap-2 py-1">
-                    <span className="text-white/55 text-sm">Rating:</span>
+                    <span className="text-white/55 text-sm font-body">Rating:</span>
                     {[1, 2, 3, 4, 5].map((n) => (
                       <button
                         key={n}
                         onClick={() => setForm({ ...form, rating: n })}
-                        aria-label={`${n} stars`}
-                        className="transition-transform active:scale-95"
+                        aria-label={`${n} stars rating`}
+                        className="transition-transform active:scale-95 cursor-pointer"
                       >
                         <Star
                           size={20}
@@ -250,26 +306,26 @@ export default function Reviews() {
                   <textarea
                     value={form.text}
                     onChange={(e) => setForm({ ...form, text: e.target.value })}
-                    placeholder="Write your review..."
+                    placeholder="Write your detailed review..."
                     rows={4}
-                    className="w-full px-4 py-3 rounded-xl text-sm text-white placeholder-white/35 outline-none resize-none focus:ring-1 focus:ring-purple-400 transition-all"
+                    className="w-full px-4 py-3 rounded-xl text-sm text-white placeholder-white/35 outline-none resize-none focus:ring-1 focus:ring-purple-400 transition-all font-body"
                     style={{ background: "rgba(0,0,0,0.3)", border: "1px solid rgba(255,255,255,0.1)" }}
                   />
                   <button
                     onClick={submitReview}
-                    className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl text-sm font-semibold text-white transition-all hover:scale-[1.01]"
+                    className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl text-sm font-semibold text-white transition-all hover:scale-[1.01] cursor-pointer"
                     style={{ background: "linear-gradient(135deg, #25D366, #128C7E)" }}
                   >
                     <Send size={16} /> Send Review on WhatsApp
                   </button>
-                  <p className="text-white/35 text-center text-xs">Reviews are submitted via WhatsApp to +{WHATSAPP_NUMBER}</p>
+                  <p className="text-white/35 text-center text-xs font-mono">Submissions sent to WhatsApp: +{WHATSAPP_NUMBER}</p>
                 </div>
               </div>
             </motion.div>
           </div>
         </section>
 
-        {/* CTA */}
+        {/* Navigation links */}
         <section className="relative py-12 px-4 sm:px-6">
           <div className="mx-auto max-w-3xl text-center">
             <a
@@ -279,14 +335,23 @@ export default function Reviews() {
               className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-semibold text-white transition-all hover:scale-[1.03]"
               style={{ background: "linear-gradient(135deg, #25D366, #128C7E)", boxShadow: "0 4px 24px rgba(37,211,102,0.4)" }}
             >
-              <MessageCircle size={16} /> Browse Products on WhatsApp
+              <MessageCircle size={16} /> Contact Sales on WhatsApp
             </a>
-            <button
-              onClick={() => navigate("/")}
-              className="block mx-auto mt-4 text-sm text-white/55 hover:text-white transition-colors"
-            >
-              ← Back to Home
-            </button>
+            <div className="mt-4 flex items-center justify-center gap-4 text-sm text-white/55">
+              <button
+                onClick={() => navigate("/")}
+                className="hover:text-white transition-colors cursor-pointer"
+              >
+                ← Back to Home
+              </button>
+              <span>•</span>
+              <button
+                onClick={() => navigate("/html-sitemap")}
+                className="hover:text-white transition-colors cursor-pointer"
+              >
+                HTML Sitemap
+              </button>
+            </div>
           </div>
         </section>
       </main>

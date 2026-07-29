@@ -13,6 +13,7 @@ const LINKS = [
   { label: "Services", href: "#agency-services" },
   { label: "About", href: "#about" },
   { label: "Reviews", href: "/reviews", route: true },
+  { label: "Sitemap", href: "/html-sitemap", route: true },
   { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#contact" },
 ];

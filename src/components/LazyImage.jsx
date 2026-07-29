@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 
-export default function LazyImage({ src, alt, className = "", style = {}, imgStyle = {}, priority = false }) {
+export default function LazyImage({ src, alt, title, width, height, className = "", style = {}, imgStyle = {}, priority = false }) {
   const [visible, setVisible] = useState(priority);
   const [loaded, setLoaded] = useState(priority);
   const containerRef = useRef(null);
@@ -36,12 +36,14 @@ export default function LazyImage({ src, alt, className = "", style = {}, imgSty
     return () => observer.disconnect();
   }, [priority]);
 
-  // Check if image is already cached or complete in browser
   useEffect(() => {
     if (visible && imgRef.current && imgRef.current.complete) {
       setLoaded(true);
     }
   }, [visible, src]);
+
+  const altText = alt || "Prime Tools Hub Product Logo";
+  const titleText = title || altText;
 
   return (
     <div ref={containerRef} className={className} style={{ ...style, position: "relative" }}>
@@ -52,7 +54,10 @@ export default function LazyImage({ src, alt, className = "", style = {}, imgSty
         <img
           ref={imgRef}
           src={src}
-          alt={alt}
+          alt={altText}
+          title={titleText}
+          width={width || 200}
+          height={height || 200}
           className="w-full h-full object-contain transition-opacity duration-300 relative z-10"
           style={{ ...imgStyle, opacity: 1 }}
           loading={priority ? "eager" : "lazy"}

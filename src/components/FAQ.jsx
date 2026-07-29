@@ -68,9 +68,9 @@ function AppleFaqItem({ item, index }) {
         onClick={() => setOpen((v) => !v)}
         className="w-full px-6 py-5 text-left flex items-center justify-between gap-4 font-bold text-sm sm:text-base cursor-pointer"
       >
-        <span className={`font-display tracking-tight transition-colors ${open ? "text-cyan-300" : "text-white"}`}>
+        <h3 className={`font-display tracking-tight transition-colors text-left ${open ? "text-cyan-300" : "text-white"}`}>
           {item.q}
-        </span>
+        </h3>
         <div
           className={`w-9 h-9 rounded-xl border flex items-center justify-center shrink-0 transition-transform duration-300 ${
             open ? "bg-violet-600 text-white border-violet-500 rotate-180" : "bg-white/5 border-white/10 text-slate-300"

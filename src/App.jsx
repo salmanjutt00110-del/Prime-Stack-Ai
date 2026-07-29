@@ -14,6 +14,7 @@ import ErrorBoundary from '@/components/ErrorBoundary';
 
 const ProductDetail = lazy(() => import('@/pages/ProductDetail'));
 const Reviews = lazy(() => import('@/pages/Reviews'));
+const HtmlSitemap = lazy(() => import('@/pages/HtmlSitemap'));
 
 const AuthenticatedApp = ({ isLoaded }) => {
   const location = useLocation();
@@ -42,6 +43,14 @@ const AuthenticatedApp = ({ isLoaded }) => {
           element={
             <PageTransition>
               <Reviews />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/html-sitemap"
+          element={
+            <PageTransition>
+              <HtmlSitemap />
             </PageTransition>
           }
         />

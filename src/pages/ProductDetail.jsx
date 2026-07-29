@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import {
   ArrowLeft, Check, ShieldCheck, PackageCheck, ListChecks,
-  MessageCircle, AlertTriangle, ClipboardList, Star,
+  MessageCircle, AlertTriangle, ClipboardList, Star, Sparkles, ChevronRight
 } from "lucide-react";
 import { ALL_PRODUCTS, BUYING_STEPS } from "@/data/products";
 import { openWhatsApp, WHATSAPP_GENERAL, WHATSAPP_NUMBER } from "@/lib/whatsapp";
@@ -10,9 +10,11 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ParticleBackground from "@/components/ParticleBackground";
 import BulkPurchaseBanner from "@/components/BulkPurchaseBanner";
+import CountdownTimer from "@/components/CountdownTimer";
+import SEOHead from "@/components/SEOHead";
+import Breadcrumb from "@/components/Breadcrumb";
+import { generateProductSchema, generateBreadcrumbSchema, DOMAIN, getProductCategory } from "@/lib/seoSchema";
 import { motion } from "framer-motion";
-
-import { generateProductSchema } from "@/lib/seoSchema";
 
 // Helper to convert hex to rgb for background blending
 function hexToRgb(hex) {
@@ -47,7 +49,6 @@ function Section({ icon: Icon, title, accent, children }) {
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
     >
-      {/* Moving glass shine effect on hover */}
       <span className="ps-shimmer absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
       <div className="flex items-center gap-2.5 mb-4 relative z-10">
@@ -57,7 +58,7 @@ function Section({ icon: Icon, title, accent, children }) {
         >
           <Icon size={17} style={{ color: accent }} />
         </div>
-        <h3 className="font-display font-semibold text-white text-lg">{title}</h3>
+        <h2 className="font-display font-semibold text-white text-lg">{title}</h2>
       </div>
       <div className="relative z-10">{children}</div>
     </motion.div>
@@ -84,55 +85,21 @@ export default function ProductDetail() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    const productSchema = generateProductSchema(product);
-    const breadcrumbSchema = {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://primetoolshub.store/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": product?.name || "Product",
-          "item": `https://primetoolshub.store/product/${id}`
-        }
-      ]
-    };
-
-    const schemaData = [productSchema, breadcrumbSchema].filter(Boolean);
-
-    let scriptEl = document.getElementById("detail-product-jsonld");
-    if (!scriptEl) {
-      scriptEl = document.createElement("script");
-      scriptEl.id = "detail-product-jsonld";
-      scriptEl.setAttribute("type", "application/ld+json");
-      document.head.appendChild(scriptEl);
-    }
-    scriptEl.textContent = JSON.stringify(schemaData);
-
-    return () => {
-      const el = document.getElementById("detail-product-jsonld");
-      if (el) el.remove();
-    };
-  }, [id, product]);
+  }, [id]);
 
   if (!product) {
     return (
       <div className="min-h-screen bg-[#050505] text-white flex flex-col items-center justify-center px-6">
+        <SEOHead title="Product Not Found" description="The requested product subscription could not be found." />
         <Navbar />
         <main className="flex flex-col items-center justify-center pt-24 pb-12">
-          <h1 className="font-display text-2xl font-bold mb-3">Product not found</h1>
-          <p className="text-sm opacity-60 mb-6">The product you're looking for doesn't exist.</p>
+          <h1 className="font-display text-2xl font-bold mb-3">Product Not Found</h1>
+          <p className="text-sm opacity-60 mb-6">The product subscription you are looking for does not exist in our catalog.</p>
           <button
             onClick={() => navigate("/")}
             className="px-6 py-3 rounded-xl text-sm font-semibold border hover:bg-white/10 transition-colors"
           >
-            Back to Home
+            Back to Home Catalog
           </button>
         </main>
         <Footer />
@@ -140,15 +107,36 @@ export default function ProductDetail() {
     );
   }
 
-  const accent = product.color;
+  const categoryName = getProductCategory(product);
+  const accent = product.color || "#3B82F6";
   const rgb = hexToRgb(accent) || [5, 5, 5];
   const isOutOfStock = product.stock === "0" || product.stock === 0 || String(product.stock).toLowerCase().includes("out of stock") || String(product.id || "").toLowerCase().includes("grok") || String(product.name || "").toLowerCase().includes("grok");
   
-  // Create dynamic background mixing with product accent color
   const bgBaseColor = `rgb(${Math.max(4, Math.round(rgb[0] * 0.045))}, ${Math.max(4, Math.round(rgb[1] * 0.045))}, ${Math.max(4, Math.round(rgb[2] * 0.045))})`;
+
+  // Related products from same category or tag
+  const relatedProducts = ALL_PRODUCTS.filter(p => p.id !== product.id && getProductCategory(p) === categoryName).slice(0, 3);
+
+  // SEO Schemas
+  const productSchema = generateProductSchema(product);
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: categoryName, url: "/#products" },
+    { name: product.name, url: `/product/${id}` }
+  ]);
+  const schemaGraph = {
+    "@context": "https://schema.org",
+    "@graph": [productSchema, breadcrumbSchema].filter(Boolean)
+  };
 
   return (
     <div className="relative min-h-screen text-white overflow-x-hidden flex flex-col justify-between">
+      <SEOHead
+        title={`${product.name} Official Subscription`}
+        description={product.description || `Get ${product.name} subscription at wholesale pricing with instant WhatsApp activation and replacement warranty at Prime Tools Hub.`}
+        canonicalUrl={`${DOMAIN}/product/${id}`}
+        ogImage={product.logo?.startsWith("http") ? product.logo : `${DOMAIN}/${product.logo}`}
+        schemaJson={schemaGraph}
+      />
       <Navbar />
 
       {/* Dynamic background container */}
@@ -180,17 +168,20 @@ export default function ProductDetail() {
       </div>
 
       <main className="flex-grow pt-32 sm:pt-36">
-        {/* back */}
+        {/* Navigation & Breadcrumbs */}
         <div className="mx-auto max-w-5xl px-4 sm:px-6 pt-4">
-          <button
-            onClick={() => navigate(-1)}
-            className="flex items-center gap-2 text-sm font-semibold text-white/60 hover:text-white transition-colors min-h-[36px]"
-          >
-            <ArrowLeft size={16} /> Back
-          </button>
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+            <button
+              onClick={() => navigate(-1)}
+              className="flex items-center gap-2 text-sm font-semibold text-white/60 hover:text-white transition-colors min-h-[36px]"
+            >
+              <ArrowLeft size={16} /> Back
+            </button>
+            <Breadcrumb items={[{ name: categoryName, url: "/#products" }, { name: product.name, url: `/product/${id}` }]} />
+          </div>
         </div>
 
-        {/* hero */}
+        {/* Hero Section */}
         <div className="mx-auto max-w-5xl px-4 sm:px-6 py-8 grid md:grid-cols-2 gap-10 items-center">
           <motion.div
             initial={{ opacity: 0, x: -25 }}
@@ -209,7 +200,7 @@ export default function ProductDetail() {
               {isOutOfStock ? (
                 <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-red-500/20 border border-red-500/40 text-red-300">
                   <span className="w-2 h-2 rounded-full bg-red-500 shrink-0" />
-                  <span>Stock Status: Out of Stock (Currently Unavailable)</span>
+                  <span>Stock Status: Out of Stock (Unavailable)</span>
                 </span>
               ) : product.stock && (
                 <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-emerald-500/15 border border-emerald-500/35 text-emerald-300">
@@ -219,7 +210,7 @@ export default function ProductDetail() {
               )}
             </div>
             <h1 className="font-display font-bold text-white text-[clamp(2.1rem,5vw,3.2rem)] leading-[1.05] tracking-tight">
-              {product.name}
+              {product.name} Subscription
             </h1>
             <p className="mt-4 text-white/60 text-base leading-relaxed max-w-lg">
               {product.description}
@@ -231,7 +222,7 @@ export default function ProductDetail() {
               )}
               <span className="text-3xl font-bold" style={{ color: accent }}>{product.price}</span>
               <span className="ps-pulse px-2.5 py-1 rounded-full text-xs font-bold bg-white/8 border border-white/15 bg-gradient-to-r from-blue-400 via-violet-400 to-pink-400 bg-clip-text text-transparent">
-                10% OFF
+                SPECIAL OFFER
               </span>
             </div>
 
@@ -241,7 +232,7 @@ export default function ProductDetail() {
                   <Star key={i} size={15} className="text-yellow-400 fill-yellow-400" />
                 ))}
               </div>
-              <span className="ml-1">Trusted by 500+ happy clients</span>
+              <span className="ml-1">Trusted by 500+ verified users</span>
             </div>
 
             <div className="mt-7 flex items-center gap-3 flex-wrap">
@@ -278,9 +269,14 @@ export default function ProductDetail() {
 
             {/* Bulk Purchase Offer Callout */}
             <BulkPurchaseBanner variant="compact" productName={product.name} />
+
+            {/* 24-Hour Urgency Countdown Timer */}
+            {(product.hasTimer || product.id === "gemini-pro-18") && (
+              <CountdownTimer targetPrice={product.price} futurePrice={product.oldPrice} />
+            )}
           </motion.div>
 
-          {/* logo card */}
+          {/* Logo Card */}
           <div className="flex justify-center">
             <motion.div
               className="relative"
@@ -299,9 +295,14 @@ export default function ProductDetail() {
                 }}
               >
                 <span className="ps-shimmer absolute inset-0 rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden" />
-                 <img
+                <img
                   src={product.logo}
-                  alt={product.name}
+                  alt={`${product.name} Official Subscription Logo`}
+                  title={`${product.name} Subscription at Prime Tools Hub`}
+                  width="200"
+                  height="200"
+                  decoding="async"
+                  fetchpriority="high"
                   className="relative w-[76%] h-[76%] object-contain"
                 />
               </div>
@@ -309,7 +310,7 @@ export default function ProductDetail() {
           </div>
         </div>
 
-        {/* key features strip */}
+        {/* Key Features Strip */}
         <motion.div
           className="mx-auto max-w-5xl px-4 sm:px-6 pb-6"
           initial={{ opacity: 0, y: 20 }}
@@ -332,7 +333,7 @@ export default function ProductDetail() {
           </div>
         </motion.div>
 
-        {/* detail sections */}
+        {/* Detailed Information Sections */}
         <div id="details" className="mx-auto max-w-5xl px-4 sm:px-6 py-6 space-y-5">
           <div className="grid md:grid-cols-2 gap-5">
             <Section icon={ListChecks} title="Key Features" accent={accent}>
@@ -363,7 +364,7 @@ export default function ProductDetail() {
             </Section>
           </div>
 
-          {/* buying instructions */}
+          {/* Buying Instructions */}
           <motion.div
             className="rounded-2xl p-6 relative overflow-hidden group transition-all duration-300"
             style={{
@@ -382,7 +383,7 @@ export default function ProductDetail() {
             transition={{ duration: 0.7 }}
           >
             <span className="ps-shimmer absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-            <h3 className="font-display font-semibold text-white text-lg mb-5 relative z-10">How to Buy This Product</h3>
+            <h2 className="font-display font-semibold text-white text-lg mb-5 relative z-10">How to Order This Product</h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 relative z-10">
               {BUYING_STEPS.map((s, i) => (
                 <div
@@ -391,7 +392,7 @@ export default function ProductDetail() {
                   style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.05)" }}
                 >
                   <div className="absolute top-3 right-4 font-display font-bold text-3xl text-white/5">{i + 1}</div>
-                  <div className="text-sm font-semibold text-white mb-1">{s.title}</div>
+                  <h3 className="text-sm font-semibold text-white mb-1">{s.title}</h3>
                   <p className="text-xs text-white/50 leading-relaxed">{s.desc}</p>
                 </div>
               ))}
@@ -399,7 +400,48 @@ export default function ProductDetail() {
           </motion.div>
         </div>
 
-        {/* bottom CTA */}
+        {/* Related Products Recommendations (Internal Linking Enhancement) */}
+        {relatedProducts.length > 0 && (
+          <div className="mx-auto max-w-5xl px-4 sm:px-6 py-8">
+            <h2 className="font-display font-bold text-white text-xl mb-6 flex items-center gap-2">
+              <Sparkles size={18} className="text-purple-400" />
+              <span>Related Products in {categoryName}</span>
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {relatedProducts.map(rp => (
+                <Link
+                  key={rp.id}
+                  to={`/product/${rp.id}`}
+                  className="rounded-2xl p-4 border border-white/10 bg-white/[0.02] hover:bg-white/[0.06] hover:border-purple-500/40 transition-all flex flex-col justify-between group"
+                >
+                  <div className="flex items-center gap-3 mb-3">
+                    <img
+                      src={rp.logo}
+                      alt={`${rp.name} Logo`}
+                      width="36"
+                      height="36"
+                      loading="lazy"
+                      decoding="async"
+                      className="w-9 h-9 object-contain"
+                    />
+                    <div>
+                      <h3 className="font-display font-bold text-sm text-white group-hover:text-purple-300 transition-colors line-clamp-1">{rp.name}</h3>
+                      <span className="text-xs text-emerald-400 font-mono font-semibold">{rp.price}</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between text-xs text-slate-400 pt-2 border-t border-white/5">
+                    <span>{rp.duration}</span>
+                    <span className="flex items-center text-purple-400 font-semibold group-hover:translate-x-1 transition-transform">
+                      View <ChevronRight size={12} />
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Bottom CTA */}
         <div className="mx-auto max-w-5xl px-4 sm:px-6 pb-12">
           <motion.div
             className="rounded-2xl p-8 text-center relative overflow-hidden group transition-all duration-300"
@@ -418,9 +460,9 @@ export default function ProductDetail() {
             transition={{ duration: 0.7 }}
           >
             <span className="ps-shimmer absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-            <h3 className="font-display font-bold text-white text-xl sm:text-2xl relative z-10">
-              Ready to get {product.name}?
-            </h3>
+            <h2 className="font-display font-bold text-white text-xl sm:text-2xl relative z-10">
+              Ready to Order {product.name}?
+            </h2>
             <p className="mt-2 text-white/60 text-sm max-w-md mx-auto relative z-10">
               Order now on WhatsApp — your product details are pre-filled. Pay, activate, and start using premium access.
             </p>
@@ -461,10 +503,13 @@ export default function ProductDetail() {
           </motion.div>
         </div>
 
-        {/* explore more */}
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 pb-12 text-center">
+        {/* Explore More Links */}
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 pb-12 text-center flex items-center justify-center gap-6">
           <Link to="/#products" className="text-sm text-white/60 hover:text-white transition-colors">
-            ← Explore more products
+            ← Explore all catalog products
+          </Link>
+          <Link to="/html-sitemap" className="text-sm text-white/60 hover:text-white transition-colors">
+            HTML Sitemap
           </Link>
         </div>
       </main>
