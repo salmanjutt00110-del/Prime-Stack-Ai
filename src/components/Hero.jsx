@@ -7,10 +7,10 @@ import { motion, AnimatePresence } from "framer-motion";
 const ParticleBackground = lazy(() => import("@/components/ParticleBackground"));
 
 const FLOATING_BRANDS = [
+  { id: "veo-31-ultra", name: "Google VEO 3.1 Ultra", tag: "Unlimited Video AI", logo: BRAND.veo, glow: "#6366F1", border: "rgba(99,102,241,0.5)" },
   { id: "chatgpt-plus-1m", name: "ChatGPT Plus", tag: "GPT-4o & Sora", logo: BRAND.chatgpt, glow: "#10A37F", border: "rgba(16,163,127,0.5)" },
   { id: "gemini-pro-18", name: "Gemini Pro", tag: "5TB & Veo Video", logo: BRAND.gemini, glow: "#4285F4", border: "rgba(66,133,244,0.5)" },
   { id: "canva-pro-edu", name: "Canva Pro", tag: "Magic AI Studio", logo: BRAND.canva, glow: "#7D2AE8", border: "rgba(125,42,232,0.5)" },
-  { id: "veo-3-video", name: "Google Veo 3", tag: "45K Video Credits", logo: BRAND.veo, glow: "#6366F1", border: "rgba(99,102,241,0.5)" },
   { id: "capcut-pro-1m", name: "CapCut Pro", tag: "Pro Video Editing", logo: BRAND.capcut, glow: "#FFFFFF", border: "rgba(255,255,255,0.5)" },
   { id: "notion-plus-12m", name: "Notion AI", tag: "3K AI Credits/Mo", logo: BRAND.notion, glow: "#F8FAFC", border: "rgba(255,255,255,0.5)" },
   { id: "surfshark-vpn-1y", name: "Surfshark VPN", tag: "1-Yr Unlimited", logo: BRAND.surfshark, glow: "#00D1B2", border: "rgba(0,209,178,0.5)" },

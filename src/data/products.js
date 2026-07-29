@@ -46,8 +46,8 @@ export const LOGO = {
 
 // Hero showcase products (one per brand in requested display priority)
 export const HERO_PRODUCTS = [
+  { id: "veo-31-ultra", name: "Google VEO 3.1 Ultra", tag: "🚀 Official Semi-Private", duration: "20 Days Warranty", price: "Rs. 2,999", oldPrice: "Rs. 3,999", description: "🚀 Official Semi-Private Access to Google VEO 3.1 Ultra! Features Unlimited Video Generation (Low Priority 0 Credit Model) & Unlimited Image Generation directly on your Gmail without extension or portal required.", tagline: "Official Google AI Ultra Plan with Unlimited Video & Image Generation on your Gmail.", stock: "5", logo: BRAND.veo, color: "#4285F4", color2: "#EA4335", particle: "#60A5FA" },
   { id: "gemini-pro-18", name: "Google Gemini Pro", tag: "⚡ 24h Offer: Rs. 1,099", duration: "18 Months", price: "Rs. 1,099", oldPrice: "Rs. 1,599", description: "🔥 Limited 24-Hour Flash Sale: Premium Gemini AI access on your personal Google account for 18 Months. 5TB cloud storage, advanced AI image & Veo video generation. Price Rs. 1,099 (Regular Rs. 1,599).", tagline: "5TB cloud storage, Veo video generation & monthly AI credits on your Gmail.", stock: "4", logo: BRAND.gemini, color: "#4285F4", color2: "#8B5CF6", particle: "#60A5FA", hasTimer: true },
-  { id: "veo-3-video", name: "Google Veo 3", tag: "🎬 AI Video", duration: "30 Days Stable", price: "Rs. 3,799", oldPrice: "Rs. 4,449", description: "Unlimited AI video generation with 45,000+ credits. Only your Gmail address required with 20-day warranty.", tagline: "45,000+ AI Credits for 30-day stable high-quality video generation.", stock: "5", logo: BRAND.veo, color: "#4285F4", color2: "#EA4335", particle: "#60A5FA" },
   { id: "capcut-pro-1m", name: "CapCut Pro", tag: "✂️ Pro Editing", duration: "1 Month", price: "Rs. 1,139", oldPrice: "Rs. 1,329", description: "CapCut Pro premium access with all pro editing features, premium effects, filters, templates, AI editing tools.", tagline: "All pro editing features, AI tools & export without watermark.", stock: "7", logo: BRAND.capcut, color: "#FE2C55", color2: "#25F4EE", particle: "#FE2C55" },
   { id: "nordvpn-3m", name: "NordVPN 3 Months", tag: "🛡️ Redeem Link", duration: "3 Months", price: "Rs. 1,599", oldPrice: "Rs. 1,999", description: "3 Months NordVPN premium subscription via easy activation redeem link.", tagline: "3 Months fast redeem link activation without card required.", stock: "90", logo: BRAND.nord, color: "#0060FF", color2: "#8B5CF6", particle: "#60A5FA" },
   { id: "surfshark-vpn-1y", name: "Surfshark VPN", tag: "🛡️ 1 Year", duration: "1 Year", price: "Rs. 3,320", oldPrice: "Rs. 3,899", description: "1-year premium VPN subscription with global server access, high-speed browsing & streaming, encrypted privacy.", tagline: "1-Year encrypted global privacy & high-speed streaming VPN.", stock: "5", logo: BRAND.surfshark, color: "#1C9FE8", color2: "#22D3EE", particle: "#22D3EE" },
@@ -64,6 +64,52 @@ export const HERO_PRODUCTS = [
 
 // Full catalog strictly ordered according to user request
 export const ALL_PRODUCTS = [
+  {
+    id: "veo-31-ultra",
+    name: "Google VEO 3.1 Ultra",
+    duration: "20 Days Warranty",
+    price: "Rs. 2,999",
+    oldPrice: "Rs. 3,999",
+    stock: "5",
+    color: "#4285F4",
+    logo: BRAND.veo,
+    tag: "🚀 Official Semi-Private",
+    tagline: "Official Google AI Ultra Plan with Unlimited Video & Image Generation on your Gmail.",
+    description: "🚀 Official Semi-Private Access to Google VEO 3.1 Ultra. Official Google AI Ultra Plan with Gmail-based subscription, Unlimited Image Generation & Unlimited Video Generation (Low Priority 0 Credit Model). No extension or portal required.",
+    features: [
+      "Official Google AI Ultra Plan",
+      "Gmail-Based Official Subscription",
+      "Unlimited Image Generation",
+      "Unlimited Video Generation (Low Priority 0 Credit Model)",
+      "No Extension or Portal Required",
+      "Semi-Private Account Access",
+      "Single Device Login",
+      "20 Days Warranty Included"
+    ],
+    whatsIncluded: [
+      "Official Google VEO 3.1 Ultra Subscription Access",
+      "Unlimited Video Generation (Low Priority 0 Credit Model)",
+      "Unlimited Image Generation",
+      "Direct Gmail Login Access (No extension or portal needed)",
+      "20 Days Full Replacement Warranty",
+      "Complete Setup & Activation Support"
+    ],
+    requirements: [
+      "Only your Gmail address is required",
+      "Single Device Login Only"
+    ],
+    termsOfUse: [
+      "Single device login only — multi-device login or account sharing is strictly prohibited",
+      "No extension or external portal required — direct Gmail login access",
+      "No violation of Google AI policies or unauthorized activity"
+    ],
+    warrantyPolicy: [
+      "20 Days Full Warranty included from date of activation",
+      "Warranty covers technical issues & plan stability under normal usage",
+      "Misuse, account sharing, or Google AI policy violations will void warranty"
+    ],
+    warrantyNote: "20 Days Warranty · Single Device Login · Direct Gmail",
+  },
   {
     id: "gemini-pro-18",
     name: "Google Gemini Pro",
@@ -83,25 +129,6 @@ export const ALL_PRODUCTS = [
     termsOfUse: ["Activate on your personal Google account via the redeem link", "Features, credits and usage limits are subject to Google's applicable policies and availability"],
     warrantyPolicy: ["Warranty is provided until successful activation only", "Once the subscription is activated and the duration appears on your account, the order is considered complete", "Future changes due to Google policies, eligibility, account issues, feature limits, or regional restrictions are not covered by warranty or replacement"],
     warrantyNote: "Warranty valid until successful activation only.",
-  },
-  {
-    id: "veo-3-video",
-    name: "Google Veo 3",
-    duration: "30 Days Stable",
-    price: "Rs. 3,799",
-    oldPrice: "Rs. 4,449",
-    stock: "5",
-    color: "#4285F4",
-    logo: BRAND.veo,
-    tag: "🎬 Unlimited AI Video",
-    tagline: "45,000+ AI Credits for 30-day stable high-quality video generation.",
-    description: "Unlimited AI video generation with 45,000+ credits — 30 days stable. Only your Gmail address required.",
-    features: ["Unlimited AI Video Generation", "45,000+ AI Credits (30 Days Stable)", "20 Days Warranty (Technical Issues Only)", "Complete Video Activation Guide", "Full Customer Support"],
-    whatsIncluded: ["Unlimited AI Video Generation", "45,000+ AI Credits (30 Days Stable)", "20 Days Warranty (Technical Issues Only)", "Complete Video Activation Guide", "Full Customer Support"],
-    requirements: ["Only your Gmail address is required", "One Device Login Only"],
-    termsOfUse: ["One device login only", "No violation of Google's policies", "No unauthorized activity or account misuse"],
-    warrantyPolicy: ["Warranty is valid for 20 days from activation", "Applicable only if there is no violation of Google's policies or misuse of the account", "Any policy violation, unauthorized activity, or account misuse will void the warranty"],
-    warrantyNote: "Warranty valid 20 days · One device login only",
   },
   {
     id: "capcut-pro-1m",

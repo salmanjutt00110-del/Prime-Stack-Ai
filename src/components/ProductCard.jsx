@@ -5,6 +5,7 @@ import { openWhatsApp } from "@/lib/whatsapp";
 import { motion } from "framer-motion";
 import LazyImage from "@/components/LazyImage";
 import CountdownTimer from "@/components/CountdownTimer";
+import { useCurrency } from "@/context/CurrencyContext";
 
 /* Comprehensive Brand Color & Theme Glow Engine */
 const getBrandTheme = (id = "", name = "") => {
@@ -220,6 +221,7 @@ const getFeatureChips = (product) => {
 
 function ProductCardComponent({ product, index = 0, priority = false }) {
   const navigate = useNavigate();
+  const { formatPrice } = useCurrency();
   const theme = getBrandTheme(product.id, product.name);
   const discountVal = calculateDiscount(product.oldPrice, product.price);
   const chips = getFeatureChips(product);
@@ -352,7 +354,7 @@ function ProductCardComponent({ product, index = 0, priority = false }) {
             <div className="flex flex-col items-center justify-center gap-0.5 mb-4 relative z-10 py-2 border-y border-white/10 bg-white/[0.03] rounded-2xl">
               {product.oldPrice && (
                 <span className="text-xs text-slate-400 line-through font-mono tracking-wide">
-                  {product.oldPrice}
+                  {formatPrice(product.oldPrice)}
                 </span>
               )}
               <span
@@ -364,7 +366,7 @@ function ProductCardComponent({ product, index = 0, priority = false }) {
                   backgroundClip: "text",
                 }}
               >
-                {product.price}
+                {formatPrice(product.price)}
               </span>
             </div>
 

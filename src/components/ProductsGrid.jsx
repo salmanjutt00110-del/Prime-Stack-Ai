@@ -13,6 +13,7 @@ import ProductCard from "@/components/ProductCard";
 import CountdownTimer from "@/components/CountdownTimer";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useCurrency } from "@/context/CurrencyContext";
 
 const FILTER_PILLS = [
   { id: "all", label: "✨ All Catalog", keyword: "" },
@@ -31,6 +32,7 @@ const FILTER_PILLS = [
 
 export default function ProductsGrid() {
   const navigate = useNavigate();
+  const { formatPrice } = useCurrency();
   const [query, setQuery] = useState("");
   const [activeFilter, setActiveFilter] = useState("all");
 
@@ -87,36 +89,40 @@ export default function ProductsGrid() {
           </a>
         </div>
 
-        {/* TOP GEMINI PRO 18M SPECIAL DISCOUNT BANNER */}
+        {/* TOP EXCLUSIVE FEATURED GEMINI PRO 18M FLASH SALE BANNER */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           onClick={() => navigate("/product/gemini-pro-18")}
-          className="mb-8 p-5 sm:p-6 rounded-3xl border border-blue-500/40 bg-gradient-to-r from-blue-950/80 via-purple-950/70 to-indigo-950/80 backdrop-blur-2xl flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl cursor-pointer group hover:border-blue-400/80 transition-all relative overflow-hidden"
+          className="mb-10 p-6 sm:p-8 rounded-3xl border border-blue-500/50 bg-gradient-to-r from-blue-950/90 via-indigo-950/85 to-purple-950/90 backdrop-blur-3xl flex flex-col md:flex-row items-center justify-between gap-6 shadow-[0_20px_50px_rgba(66,133,244,0.25)] cursor-pointer group hover:border-blue-400/90 hover:shadow-[0_25px_60px_rgba(66,133,244,0.35)] transition-all relative overflow-hidden"
         >
-          <div className="absolute inset-0 opacity-20 pointer-events-none bg-[radial-gradient(#4285F4_1px,transparent_1px)] [background-size:16px_16px]" />
-          
-          <div className="flex items-center gap-4 text-left relative z-10">
-            <div className="w-16 h-16 rounded-2xl bg-blue-500/20 border border-blue-400/40 flex items-center justify-center shrink-0 shadow-lg group-hover:scale-105 transition-transform">
-              <img src={BRAND.gemini} alt="Google Gemini Pro" className="w-11 h-11 object-contain filter drop-shadow-md" />
+          {/* Subtle Grid Noise & Shimmer Light Ray */}
+          <div className="absolute inset-0 opacity-20 pointer-events-none bg-[radial-gradient(#4285F4_1px,transparent_1px)] [background-size:20px_20px]" />
+          <div className="ps-glass-shine-line absolute inset-y-0 w-36 bg-gradient-to-r from-transparent via-white/15 to-transparent skew-x-[-25deg] pointer-events-none" />
+
+          {/* Left Content Area */}
+          <div className="flex items-center gap-5 text-left relative z-10">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-blue-500/30 via-indigo-500/20 to-purple-500/30 border border-blue-400/50 flex items-center justify-center shrink-0 shadow-xl group-hover:scale-105 transition-transform">
+              <img src={BRAND.gemini} alt="Google Gemini Pro 18 Months" className="w-12 h-12 sm:w-14 sm:h-14 object-contain filter drop-shadow-md" />
             </div>
             <div>
-              <div className="flex items-center gap-2 mb-1">
-                <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-red-500/30 text-red-300 border border-red-500/50 animate-pulse">
-                  ⚡ 24-HOUR FLASH SALE
+              <div className="flex items-center gap-2 mb-1.5 flex-wrap">
+                <span className="px-3 py-0.5 rounded-full text-[10.5px] font-black uppercase tracking-wider bg-red-500/30 text-red-200 border border-red-500/50 animate-pulse">
+                  ⚡ 24-HOUR LIMITED FLASH SALE
                 </span>
-                <span className="text-xs font-bold text-amber-300">Limited Offer</span>
+                <span className="text-xs font-bold text-amber-300">🔥 Most Popular Deal</span>
               </div>
-              <h3 className="font-display text-lg sm:text-xl font-black text-white tracking-tight group-hover:text-cyan-300 transition-colors">
-                Google Gemini Pro 18 Months — Only Rs. 1,099 <span className="text-sm font-normal line-through text-slate-400">(Regular Rs. 1,599)</span>
+              <h3 className="font-display text-xl sm:text-2xl font-black text-white tracking-tight group-hover:text-cyan-300 transition-colors">
+                Google Gemini Pro 18 Months — Only {formatPrice("Rs. 1,099")} <span className="text-sm font-normal line-through text-slate-400">({formatPrice("Rs. 1,599")})</span>
               </h3>
-              <p className="text-xs sm:text-sm text-slate-300 mt-1 font-body">
-                5TB Cloud Storage, Veo AI Video Generation &amp; Advanced AI Models on your Gmail. Price increases after 24h timer!
+              <p className="text-xs sm:text-sm text-slate-300 mt-1 font-body leading-relaxed max-w-2xl">
+                Get 18 Months of full Gemini Pro AI access directly on your personal Gmail account. Includes 5TB Cloud Storage, Veo AI Video Generation &amp; monthly credits. Price increases after timer expires!
               </p>
             </div>
           </div>
 
+          {/* Right Action & Timer Area */}
           <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0 w-full md:w-auto relative z-10">
             <CountdownTimer compact targetPrice="Rs. 1,099" futurePrice="Rs. 1,599" />
             <button
@@ -124,9 +130,9 @@ export default function ProductsGrid() {
                 e.stopPropagation();
                 navigate("/product/gemini-pro-18");
               }}
-              className="w-full sm:w-auto px-6 py-3.5 rounded-2xl font-display font-extrabold text-xs text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-xl min-h-[46px]"
+              className="w-full sm:w-auto px-7 py-3.5 rounded-2xl font-display font-extrabold text-xs sm:text-sm text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-xl min-h-[48px]"
             >
-              <span>Get Rs. 1,099 Deal</span>
+              <span>Get {formatPrice("Rs. 1,099")} Deal</span>
               <span className="group-hover:translate-x-1 transition-transform">→</span>
             </button>
           </div>

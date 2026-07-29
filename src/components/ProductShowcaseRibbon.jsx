@@ -4,16 +4,15 @@ import { Sparkles, ArrowUpRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const SHOWCASE_PRODUCTS = [
+  { id: "veo-31-ultra", name: "Google VEO 3.1 Ultra", brand: "Google DeepMind", logo: BRAND.veo, glow: "#6366F1", border: "rgba(99, 102, 241, 0.4)", badge: "🚀 Unlimited Video AI" },
   { id: "chatgpt-plus-1m", name: "ChatGPT", brand: "OpenAI", logo: BRAND.chatgpt, glow: "#10A37F", border: "rgba(16, 163, 127, 0.4)", badge: "GPT-4o & Canvas" },
-  { id: "gemini-pro-18", name: "Gemini Pro", brand: "Google AI", logo: BRAND.gemini, glow: "#4285F4", border: "rgba(66, 133, 244, 0.4)", badge: "🔥 Rs. 1,099 (24h Offer)" },
+  { id: "gemini-pro-18", name: "Gemini Pro", brand: "Google AI", logo: BRAND.gemini, glow: "#4285F4", border: "rgba(66, 133, 244, 0.4)", badge: "🔥 18M Deal" },
   { id: "canva-pro-edu", name: "Canva", brand: "Visual AI", logo: BRAND.canva, glow: "#7D2AE8", border: "rgba(125, 42, 232, 0.4)", badge: "Magic Studio" },
-  { id: "veo-3-video", name: "Google Veo", brand: "Google DeepMind", logo: BRAND.veo, glow: "#6366F1", border: "rgba(99, 102, 241, 0.4)", badge: "45K AI Credits" },
   { id: "capcut-pro-1m", name: "CapCut Pro", brand: "ByteDance", logo: BRAND.capcut, glow: "#FFFFFF", border: "rgba(255, 255, 255, 0.4)", badge: "Pro Editing & FX" },
   { id: "notion-plus-12m", name: "Notion AI", brand: "Notion", logo: BRAND.notion, glow: "#F8FAFC", border: "rgba(255, 255, 255, 0.35)", badge: "3K AI Credits/Mo" },
   { id: "heygen-creator-600c", name: "HeyGen AI", brand: "AI Video", logo: BRAND.heygen, glow: "#5C24FF", border: "rgba(92, 36, 255, 0.4)", badge: "600 Credits" },
   { id: "supergrok-12m-premium", name: "SuperGrok", brand: "xAI", logo: BRAND.grok, glow: "#9333EA", border: "rgba(147, 51, 234, 0.4)", badge: "Fun & Fast AI" },
   { id: "surfshark-vpn-1y", name: "Surfshark", brand: "VPN Security", logo: BRAND.surfshark, glow: "#00D1B2", border: "rgba(0, 209, 178, 0.4)", badge: "1-Yr Unlimited" },
-  { id: "figma-pro-12m", name: "Cursor AI", brand: "Anysphere", logo: BRAND.figma, glow: "#3B82F6", border: "rgba(59, 130, 246, 0.4)", badge: "AI Code Editor" },
 ];
 
 export default memo(function ProductShowcaseRibbon() {

@@ -6,6 +6,7 @@ import Logo from "@/components/Logo";
 import { WHATSAPP_GENERAL } from "@/lib/whatsapp";
 import DisclaimerBar from "@/components/DisclaimerBar";
 import { scrollToSection } from "@/lib/scroll";
+import CurrencySwitcher from "@/components/CurrencySwitcher";
 
 const LINKS = [
   { label: "Home", href: "#home" },
@@ -165,6 +166,9 @@ export default function Navbar() {
           </div>
 
           <div className="flex items-center gap-2 sm:gap-3">
+            {/* Currency Switcher */}
+            <CurrencySwitcher />
+
             {/* Search Button */}
             <button
               onClick={(e) => handleNav(e, { href: "#products", route: false })}
@@ -220,6 +224,10 @@ export default function Navbar() {
                 className="lg:hidden relative z-50 overflow-hidden bg-[#050508]/98 backdrop-blur-2xl border-b border-white/15 shadow-2xl max-h-[80vh] overflow-y-auto"
               >
                 <div className="px-5 py-4 flex flex-col gap-1">
+                  <div className="flex items-center justify-between pb-3 mb-2 border-b border-white/10">
+                    <span className="text-xs font-bold text-slate-300">Select Currency:</span>
+                    <CurrencySwitcher />
+                  </div>
                   {LINKS.map((l) => {
                     const isActive = l.route ? location.pathname === l.href : activeSection === l.href;
                     return (

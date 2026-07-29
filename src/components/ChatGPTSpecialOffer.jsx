@@ -2,6 +2,7 @@ import { useState, memo } from "react";
 import { motion } from "framer-motion";
 import { Zap, ShieldCheck, CheckCircle2, MessageCircle, Sparkles, Star } from "lucide-react";
 import { openChatGPTPlusOfferWhatsApp } from "@/lib/whatsapp";
+import { useCurrency } from "@/context/CurrencyContext";
 
 const OPTIONS = [
   {
@@ -27,6 +28,7 @@ const OPTIONS = [
 
 const ChatGPTSpecialOffer = memo(function ChatGPTSpecialOffer() {
   const [selectedId, setSelectedId] = useState("chatgpt-1m");
+  const { formatPrice } = useCurrency();
   const selectedOption = OPTIONS.find((o) => o.id === selectedId) || OPTIONS[1];
 
   return (
@@ -142,7 +144,7 @@ const ChatGPTSpecialOffer = memo(function ChatGPTSpecialOffer() {
                     <div className="pt-3 border-t border-white/15 flex items-baseline justify-between">
                       <span className="text-xs text-white/70 font-medium">Price:</span>
                       <span className="font-display text-2xl font-black text-white tracking-tight">
-                        {opt.price}
+                        {formatPrice(opt.price)}
                       </span>
                     </div>
                   </motion.div>
@@ -152,7 +154,7 @@ const ChatGPTSpecialOffer = memo(function ChatGPTSpecialOffer() {
 
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-white/15">
               <div className="text-xs text-white/85 text-center sm:text-left font-body">
-                Selected: <span className="text-white font-bold">{selectedOption.title}</span> ({selectedOption.warranty}) — <span className="text-emerald-400 font-bold">{selectedOption.price}</span>
+                Selected: <span className="text-white font-bold">{selectedOption.title}</span> ({selectedOption.warranty}) — <span className="text-emerald-400 font-bold">{formatPrice(selectedOption.price)}</span>
               </div>
 
               <button

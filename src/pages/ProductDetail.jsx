@@ -15,6 +15,7 @@ import SEOHead from "@/components/SEOHead";
 import Breadcrumb from "@/components/Breadcrumb";
 import { generateProductSchema, generateBreadcrumbSchema, DOMAIN, getProductCategory } from "@/lib/seoSchema";
 import { motion } from "framer-motion";
+import { useCurrency } from "@/context/CurrencyContext";
 
 // Helper to convert hex to rgb for background blending
 function hexToRgb(hex) {
@@ -81,6 +82,7 @@ function List({ items, accent }) {
 export default function ProductDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { formatPrice } = useCurrency();
   const product = ALL_PRODUCTS.find((p) => p.id === id);
 
   useEffect(() => {
@@ -218,9 +220,9 @@ export default function ProductDetail() {
 
             <div className="mt-6 flex items-center gap-3 flex-wrap">
               {product.oldPrice && (
-                <span className="text-white/35 text-lg line-through">{product.oldPrice}</span>
+                <span className="text-white/35 text-lg line-through">{formatPrice(product.oldPrice)}</span>
               )}
-              <span className="text-3xl font-bold" style={{ color: accent }}>{product.price}</span>
+              <span className="text-3xl font-bold" style={{ color: accent }}>{formatPrice(product.price)}</span>
               <span className="ps-pulse px-2.5 py-1 rounded-full text-xs font-bold bg-white/8 border border-white/15 bg-gradient-to-r from-blue-400 via-violet-400 to-pink-400 bg-clip-text text-transparent">
                 SPECIAL OFFER
               </span>
@@ -426,7 +428,7 @@ export default function ProductDetail() {
                     />
                     <div>
                       <h3 className="font-display font-bold text-sm text-white group-hover:text-purple-300 transition-colors line-clamp-1">{rp.name}</h3>
-                      <span className="text-xs text-emerald-400 font-mono font-semibold">{rp.price}</span>
+                      <span className="text-xs text-emerald-400 font-mono font-semibold">{formatPrice(rp.price)}</span>
                     </div>
                   </div>
                   <div className="flex items-center justify-between text-xs text-slate-400 pt-2 border-t border-white/5">
