@@ -152,7 +152,7 @@ export default function AIChatBot() {
   };
 
   return (
-    <div className="ai-assistant-widget fixed bottom-6 left-6 z-50 pointer-events-auto">
+    <div className="ai-assistant-widget fixed bottom-[max(1.25rem,env(safe-area-inset-bottom))] left-3.5 sm:left-6 z-[9999] pointer-events-auto">
       
       {/* FLOATING TRIGGER BUTTON */}
       <AnimatePresence>
@@ -161,15 +161,17 @@ export default function AIChatBot() {
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0, opacity: 0 }}
+            whileHover={{ scale: 1.08 }}
+            whileTap={{ scale: 0.92 }}
             onClick={() => setIsOpen(true)}
-            className="group relative flex items-center gap-2.5 px-4 py-3.5 rounded-full bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white font-extrabold text-sm shadow-[0_0_25px_rgba(99,102,241,0.5)] hover:scale-105 transition-all cursor-pointer border border-white/20"
+            className="group relative flex items-center gap-2 sm:gap-2.5 px-3.5 sm:px-4 py-2.5 sm:py-3.5 rounded-full bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white font-extrabold text-xs sm:text-sm shadow-[0_0_30px_rgba(99,102,241,0.6),0_6px_20px_rgba(0,0,0,0.5)] hover:shadow-[0_0_40px_rgba(99,102,241,0.8)] transition-all cursor-pointer border border-cyan-400/50 backdrop-blur-md"
           >
-            <span className="relative flex h-3 w-3">
+            <span className="relative flex h-2.5 w-2.5 sm:h-3 sm:w-3">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-[#00ff88]" />
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 sm:h-3 sm:w-3 bg-[#00ff88]" />
             </span>
-            <Bot size={20} className="text-cyan-300 group-hover:rotate-12 transition-transform" />
-            <span className="font-display">AI Assistant</span>
+            <Bot size={18} className="text-cyan-300 group-hover:rotate-12 transition-transform sm:w-5 sm:h-5 shrink-0" />
+            <span className="font-display font-black tracking-wide">AI Assistant</span>
           </motion.button>
         )}
       </AnimatePresence>
@@ -182,7 +184,7 @@ export default function AIChatBot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.25 }}
-            className="w-[340px] sm:w-[380px] h-[520px] rounded-3xl bg-[#0d1117] border border-cyan-500/30 shadow-2xl flex flex-col overflow-hidden font-body text-slate-200"
+            className="w-[calc(100vw-1.75rem)] max-w-[380px] h-[500px] sm:h-[530px] rounded-3xl bg-[#080a16]/98 backdrop-blur-2xl border border-cyan-500/40 shadow-[0_25px_70px_rgba(0,0,0,0.95),0_0_40px_rgba(6,182,212,0.3)] flex flex-col overflow-hidden font-body text-slate-200 fixed bottom-3.5 left-3.5 right-3.5 sm:left-6 sm:right-auto sm:bottom-6 z-[99999]"
           >
             {/* HEADER */}
             <div className="p-4 bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 border-b border-white/10 flex items-center justify-between">

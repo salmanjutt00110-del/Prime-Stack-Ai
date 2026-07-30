@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { 
   Search, 
   X, 
@@ -35,6 +35,16 @@ export default function ProductsGrid() {
   const { formatPrice } = useCurrency();
   const [query, setQuery] = useState("");
   const [activeFilter, setActiveFilter] = useState("all");
+
+  useEffect(() => {
+    const handleMobileSearch = (e) => {
+      if (typeof e.detail === "string") {
+        setQuery(e.detail);
+      }
+    };
+    window.addEventListener("mobile-search", handleMobileSearch);
+    return () => window.removeEventListener("mobile-search", handleMobileSearch);
+  }, []);
 
   const filteredProducts = useMemo(() => {
     return ALL_PRODUCTS.filter((p) => {

@@ -14,7 +14,7 @@ export default function AnnouncementBar() {
   )}`;
 
   return (
-    <div className="announcement-bar relative z-40 w-full mt-[54px] sm:mt-[64px] bg-gradient-to-r from-violet-950 via-indigo-900 to-slate-950 text-white py-2 px-3 sm:px-4 text-xs font-semibold flex items-center justify-between border-b border-white/10 shadow-md">
+    <div className="announcement-bar relative z-40 w-full mt-[64px] bg-gradient-to-r from-violet-950 via-indigo-900 to-slate-950 text-white py-2 px-3 sm:px-4 text-xs font-semibold flex items-center justify-between border-b border-white/10 shadow-md">
       <div className="mx-auto flex flex-wrap items-center justify-center gap-2 text-center">
         <span className="bulk-badge inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-300 font-extrabold text-[10px] uppercase tracking-wider shrink-0">
           <Sparkles size={11} className="animate-pulse text-amber-400" /> {t("announcement_bulk")}
