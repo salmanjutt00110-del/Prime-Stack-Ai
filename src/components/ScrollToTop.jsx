@@ -36,13 +36,21 @@ export default function ScrollToTop() {
     if (navigationType === "POP" && scrollPositions.current[pathname] !== undefined) {
       const savedPosition = scrollPositions.current[pathname];
       const timer = window.setTimeout(() => {
-        window.scrollTo({ top: savedPosition, left: 0, behavior: "instant" });
+        try {
+          window.scrollTo(0, savedPosition);
+        } catch (e) {
+          console.error(e);
+        }
       }, 50);
       return () => window.clearTimeout(timer);
     }
 
     // 3. Otherwise (Refresh / Home Load / Route Change), ALWAYS force scroll to top
-    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    try {
+      window.scrollTo(0, 0);
+    } catch (e) {
+      console.error(e);
+    }
   }, [pathname, hash, navigationType]);
 
   return null;

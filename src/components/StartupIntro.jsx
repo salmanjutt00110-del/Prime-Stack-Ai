@@ -9,8 +9,12 @@ export default function StartupIntro({ onComplete }) {
 
   const finish = () => {
     setVisible(false);
-    if (!window.location.hash) {
-      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    try {
+      if (!window.location.hash) {
+        window.scrollTo(0, 0);
+      }
+    } catch (e) {
+      console.error(e);
     }
     if (onComplete) onComplete();
   };
@@ -18,13 +22,17 @@ export default function StartupIntro({ onComplete }) {
   useEffect(() => {
     if (!visible) return;
 
-    if (!window.location.hash) {
-      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    try {
+      if (!window.location.hash) {
+        window.scrollTo(0, 0);
+      }
+    } catch (e) {
+      console.error(e);
     }
 
-    // Smooth & fast progress counter (1 second total)
+    // Fast & smooth 0.8s progress counter
     const startTime = performance.now();
-    const duration = 1000;
+    const duration = 800;
 
     const updateProgress = (now) => {
       const elapsed = now - startTime;
@@ -34,7 +42,7 @@ export default function StartupIntro({ onComplete }) {
       if (pct < 100) {
         requestAnimationFrame(updateProgress);
       } else {
-        setTimeout(finish, 250);
+        setTimeout(finish, 150);
       }
     };
 
@@ -59,7 +67,7 @@ export default function StartupIntro({ onComplete }) {
           className="fixed inset-0 z-[9999] flex flex-col items-center justify-between bg-[#040407] text-white overflow-hidden select-none py-8 px-5 cursor-pointer will-change-transform"
           onClick={finish}
         >
-          {/* Subtle Ambient Radial Glow (Hardware Accelerated) */}
+          {/* Subtle Ambient Radial Glow */}
           <div className="absolute inset-0 pointer-events-none z-0 bg-[radial-gradient(circle_at_50%_45%,rgba(99,102,241,0.14),transparent_65%)]" />
 
           {/* Top Status Bar */}
