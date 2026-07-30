@@ -502,6 +502,21 @@ html.light [style*="background: linear-gradient"] {
     100% { transform: translate3d(-50%, 0, 0); }
   }
 
+  @keyframes marquee-horizontal-reverse {
+    0% { transform: translate3d(-50%, 0, 0); }
+    100% { transform: translate3d(0, 0, 0); }
+  }
+
+  .animate-marquee {
+    animation: marquee-horizontal 30s linear infinite;
+    will-change: transform;
+  }
+
+  .animate-marquee-reverse {
+    animation: marquee-horizontal-reverse 30s linear infinite;
+    will-change: transform;
+  }
+
   .ps-ribbon-track {
     display: flex;
     width: max-content;

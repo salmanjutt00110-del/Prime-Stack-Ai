@@ -12,7 +12,7 @@ export default function SEOHead({
 }) {
   useEffect(() => {
     // 1. Update Document Title
-    const fullTitle = title ? `${title} — ${STORE_NAME}` : `${STORE_NAME} — Premium AI Tools & Digital Services`;
+    const fullTitle = title || "Buy ChatGPT Plus in Pakistan | Canva Pro, Veo 3 — Prime Tools Hub";
     document.title = fullTitle;
 
     // Helper to create or update meta tag
@@ -37,7 +37,7 @@ export default function SEOHead({
       element.setAttribute("href", href);
     };
 
-    const finalDescription = description || "Pakistan & Global's #1 Marketplace for Premium AI Tools, ChatGPT Plus, Google Gemini Pro, Veo 3, Canva Pro, CapCut Pro, SuperGrok, Surfshark VPN & Digital Subscriptions.";
+    const finalDescription = description || "Pakistan's trusted marketplace for ChatGPT Plus, Canva Pro, Veo 3, CapCut, Gemini Pro & more. Fast delivery via JazzCash/EasyPaisa.";
     const finalKeywords = keywords || "ChatGPT Plus Pakistan, Google Gemini Advanced, Veo 3 AI Video, CapCut Pro subscription, Canva Pro account, SuperGrok 12m, Surfshark VPN, Prime Tools Hub, primetoolshub.store";
     const finalCanonical = canonicalUrl || (typeof window !== "undefined" ? window.location.href : DOMAIN);
     const finalImage = ogImage || LOGO_URL;

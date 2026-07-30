@@ -1,9 +1,12 @@
 import { useEffect, useMemo } from "react";
 import { useLocation } from "react-router-dom";
+import AnnouncementBar from "@/components/AnnouncementBar";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import TrustSection from "@/components/TrustSection";
 import ProductShowcaseRibbon from "@/components/ProductShowcaseRibbon";
 import ProductsGrid from "@/components/ProductsGrid";
+import ComparisonTable from "@/components/ComparisonTable";
 import TieredRewardsBanner from "@/components/TieredRewardsBanner";
 import ChatGPTSpecialOffer from "@/components/ChatGPTSpecialOffer";
 import BulkPurchaseBanner from "@/components/BulkPurchaseBanner";
@@ -15,6 +18,9 @@ import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import WhatsAppFloating from "@/components/WhatsAppFloating";
+import AIChatBot from "@/components/AIChatBot";
+import ExitIntentPopup from "@/components/ExitIntentPopup";
 import ScrollProgress from "@/components/ScrollProgress";
 import BackToTopButton from "@/components/BackToTopButton";
 import SectionDivider from "@/components/SectionDivider";
@@ -40,72 +46,91 @@ export default function Home() {
   const homepageSchema = useMemo(() => generateHomepageGraph(ALL_PRODUCTS), []);
 
   return (
-    <div className="relative min-h-screen bg-[#02040a] text-white overflow-x-hidden">
+    <div className="relative min-h-screen bg-[#050505] text-white overflow-x-hidden">
       <SEOHead
-        title="Prime Tools Hub — Premium AI Tools & Digital Services Marketplace"
-        description="Pakistan & Global's #1 Marketplace for ChatGPT Plus, Google Gemini Pro, Veo 3, Canva Pro, CapCut Pro, SuperGrok, Surfshark VPN & Digital Agency Subscriptions."
+        title="Buy ChatGPT Plus in Pakistan | Canva Pro, Veo 3 — Prime Tools Hub"
+        description="Pakistan's trusted marketplace for ChatGPT Plus, Canva Pro, Veo 3, CapCut, Gemini Pro & more. Fast delivery via JazzCash/EasyPaisa."
         canonicalUrl={`${DOMAIN}/`}
         schemaJson={homepageSchema}
       />
       <ScrollProgress />
       <AmbientGlow />
+      
+      {/* Top Sticky Announcement Bar */}
+      <AnnouncementBar />
+
+      {/* Navigation Bar */}
       <Navbar />
+
       <main>
         {/* Hero Section */}
         <Hero />
 
-        {/* Product Showcase Horizontal Floating Ribbon right below Hero */}
+        {/* Trust & Credibility Section */}
+        <TrustSection />
+
+        {/* Product Showcase Ribbon */}
         <ProductShowcaseRibbon />
 
         <SectionDivider color="rgba(59, 130, 246, 0.4)" />
 
-        {/* Product Cards Catalog with Dynamic Brand Color Glow */}
+        {/* Products Grid Catalog */}
         <ProductsGrid />
 
         <SectionDivider color="rgba(16, 163, 127, 0.4)" />
 
-        {/* Tiered Free Gifts & Reseller Deals Section */}
-        <TieredRewardsBanner />
+        {/* Why Buy From Us Comparison Table */}
+        <ComparisonTable />
 
         <SectionDivider color="rgba(125, 42, 232, 0.4)" />
 
-        {/* ChatGPT Special Offer Section */}
-        <ChatGPTSpecialOffer />
+        {/* Tiered Free Gifts & Reseller Deals */}
+        <TieredRewardsBanner />
 
         <SectionDivider color="rgba(245, 158, 11, 0.4)" />
 
-        {/* Bulk Offer Section */}
+        {/* ChatGPT Special Offer */}
+        <ChatGPTSpecialOffer />
+
+        <SectionDivider color="rgba(99, 102, 241, 0.4)" />
+
+        {/* Bulk Offer */}
         <div id="bulk-offers" className="scroll-mt-24">
           <BulkPurchaseBanner variant="card" />
         </div>
 
-        <SectionDivider color="rgba(99, 102, 241, 0.4)" />
-
-        {/* Unified Digital Agency Services */}
-        <DigitalServicesSection />
-
         <SectionDivider color="rgba(6, 182, 212, 0.4)" />
 
-        {/* Agency Intro & How It Works */}
+        {/* Digital Agency Services */}
+        <DigitalServicesSection />
+
+        <SectionDivider color="rgba(236, 72, 153, 0.4)" />
+
+        {/* About & How It Works */}
         <AboutUs />
         <HowItWorks />
         <WhyUs />
 
         <SectionDivider color="rgba(236, 72, 153, 0.4)" />
 
-        {/* Luxury Reviews Section */}
+        {/* Customer Reviews */}
         <Testimonials />
 
         <SectionDivider color="rgba(139, 92, 246, 0.4)" />
 
-        {/* Apple Style FAQ Accordion */}
+        {/* FAQ Accordion */}
         <FAQ />
 
         <SectionDivider color="rgba(16, 185, 129, 0.4)" />
 
-        {/* Premium Contact Form & Map Section */}
+        {/* Contact Section */}
         <ContactSection />
       </main>
+
+      {/* Conversion Floating & Modal Tools */}
+      <WhatsAppFloating />
+      <AIChatBot />
+      <ExitIntentPopup />
       <BackToTopButton />
       <Footer />
     </div>
