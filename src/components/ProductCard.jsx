@@ -237,7 +237,7 @@ function ProductCardComponent({ product, index = 0, priority = false }) {
               <div className="flex items-center gap-2">
                 {pricing.oldPrice && (
                   <span className="text-xs text-slate-400 line-through font-mono">
-                    {pricing.oldPrice}
+                    {formatPrice(pricing.oldPrice)}
                   </span>
                 )}
                 <span className="text-xs font-extrabold text-red-400 bg-red-500/10 px-2 py-0.5 rounded-full border border-red-500/20">
@@ -245,7 +245,7 @@ function ProductCardComponent({ product, index = 0, priority = false }) {
                 </span>
               </div>
               <span className="text-2xl font-black font-display text-[#00ff88] mt-0.5">
-                {pricing.price}
+                {formatPrice(pricing.price)}
               </span>
             </div>
 
