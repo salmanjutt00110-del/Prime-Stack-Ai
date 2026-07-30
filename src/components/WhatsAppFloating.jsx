@@ -6,14 +6,29 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function WhatsAppFloating() {
   const [showPopup, setShowPopup] = useState(false);
   const [closedManually, setClosedManually] = useState(false);
+  const [isScrolling, setIsScrolling] = useState(false);
 
   useEffect(() => {
-    // Show popup after 5 seconds
+    let scrollTimer;
+    const handleScroll = () => {
+      setIsScrolling(true);
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(() => {
+        setIsScrolling(false);
+      }, 500);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    // Show popup after 6 seconds
     const timer = setTimeout(() => {
       if (!closedManually) {
         setShowPopup(true);
       }
-    }, 5000);
+    }, 6000);
 
     // Auto disappear after 15 seconds
     const hideTimer = setTimeout(() => {
@@ -31,7 +46,12 @@ export default function WhatsAppFloating() {
   )}`;
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3 pointer-events-auto">
+    <div
+      className={`fixed right-4 sm:right-6 z-50 flex flex-col items-end gap-3 pointer-events-auto transition-all duration-300 ${
+        isScrolling ? "opacity-40 scale-90" : "opacity-100 scale-100"
+      }`}
+      style={{ bottom: "max(24px, env(safe-area-inset-bottom))" }}
+    >
       
       {/* POPUP CHAT BUBBLE */}
       <AnimatePresence>
@@ -52,7 +72,7 @@ export default function WhatsAppFloating() {
                   setShowPopup(false);
                   setClosedManually(true);
                 }}
-                className="text-slate-400 hover:text-white p-1 rounded-md transition-colors"
+                className="text-slate-400 hover:text-white p-1 rounded-md transition-colors cursor-pointer"
                 aria-label="Close popup"
               >
                 <X size={14} />
@@ -75,7 +95,7 @@ export default function WhatsAppFloating() {
                   setShowPopup(false);
                   setClosedManually(true);
                 }}
-                className="py-2 px-3 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-bold text-slate-300 transition-colors"
+                className="py-2 px-3 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-bold text-slate-300 transition-colors cursor-pointer"
               >
                 Close
               </button>
@@ -86,7 +106,6 @@ export default function WhatsAppFloating() {
 
       {/* FLOATING BUTTON WITH CONTINUOUS RING PULSE */}
       <div className="relative group">
-        {/* Continuous ring pulse animation */}
         <span className="absolute -inset-2 rounded-full bg-[#25D366]/40 animate-ping pointer-events-none" />
 
         <a
@@ -100,7 +119,7 @@ export default function WhatsAppFloating() {
         </a>
 
         {/* Hover Tooltip */}
-        <div className="absolute right-full top-1/2 -translate-y-1/2 mr-3 px-3 py-1.5 rounded-xl bg-slate-900 border border-white/15 text-xs font-extrabold text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-xl">
+        <div className="hidden sm:block absolute right-full top-1/2 -translate-y-1/2 mr-3 px-3 py-1.5 rounded-xl bg-slate-900 border border-white/15 text-xs font-extrabold text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-xl">
           Chat with us on WhatsApp
         </div>
       </div>

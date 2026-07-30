@@ -152,7 +152,7 @@ export default function AIChatBot() {
   };
 
   return (
-    <div className="fixed bottom-6 left-6 z-50 pointer-events-auto">
+    <div className="ai-assistant-widget fixed bottom-6 left-6 z-50 pointer-events-auto">
       
       {/* FLOATING TRIGGER BUTTON */}
       <AnimatePresence>
