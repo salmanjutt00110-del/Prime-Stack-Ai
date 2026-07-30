@@ -32,7 +32,7 @@ export default function Navbar() {
     let lastScrollY = typeof window !== "undefined" ? window.scrollY : 0;
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+      if (currentScrollY > lastScrollY && currentScrollY > 100 && !open) {
         setNavHidden(true);
       } else {
         setNavHidden(false);
@@ -44,7 +44,7 @@ export default function Navbar() {
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [open]);
 
   useEffect(() => {
     if (open) {
@@ -124,129 +124,134 @@ export default function Navbar() {
   )}`;
 
   return (
-    <header
-      className={`navbar fixed top-0 inset-x-0 z-[1000] transition-transform duration-300 ${
-        navHidden ? "-translate-y-full" : "translate-y-0"
-      }`}
-    >
-      <div
-        className="transition-all duration-300 border-b border-white/10"
-        style={{
-          background: scrolled ? "rgba(5, 5, 5, 0.98)" : "rgba(5, 5, 5, 0.92)",
-          boxShadow: scrolled ? "0 4px 24px rgba(37, 99, 235, 0.15)" : "none",
-        }}
+    <>
+      {/* HEADER TOP NAVBAR */}
+      <header
+        className={`navbar fixed top-0 inset-x-0 z-[1000] transition-transform duration-300 ${
+          navHidden && !open ? "-translate-y-full" : "translate-y-0"
+        }`}
       >
-        <nav
-          className="mx-auto max-w-7xl px-3 sm:px-6 flex items-center justify-between transition-all duration-300 gap-1.5 sm:gap-4"
-          style={{ height: scrolled ? 54 : 64 }}
+        <div
+          className="transition-all duration-300 border-b border-white/10"
+          style={{
+            background: scrolled ? "rgba(5, 5, 5, 0.98)" : "rgba(5, 5, 5, 0.92)",
+            boxShadow: scrolled ? "0 4px 24px rgba(37, 99, 235, 0.15)" : "none",
+          }}
         >
-          {/* LOGO: Single line non-wrapping logo */}
-          <a
-            href="/"
-            onClick={handleLogoClick}
-            className="flex items-center gap-2 group shrink-0 min-h-[44px] whitespace-nowrap"
+          <nav
+            className="mx-auto max-w-7xl px-3 sm:px-6 flex items-center justify-between transition-all duration-300 gap-1.5 sm:gap-4"
+            style={{ height: scrolled ? 54 : 64 }}
           >
-            <Logo size={scrolled ? 30 : 34} />
-            <span className="font-display font-black tracking-tight text-white text-xs sm:text-base flex items-center gap-1">
-              Prime <span className="bg-gradient-to-r from-blue-400 via-violet-400 to-[#00ff88] bg-clip-text text-transparent font-black">Tools Hub</span>
-            </span>
-          </a>
-
-          {/* DESKTOP NAV LINKS */}
-          <div className="hidden lg:flex items-center gap-5 xl:gap-7 flex-1 justify-center">
-            {LINKS.map((l) => {
-              const label = t(l.labelKey);
-              const isActive = l.route ? location.pathname === l.href : activeSection === l.href;
-              return (
-                <a
-                  key={l.labelKey}
-                  href={l.href}
-                  onClick={(e) => handleNav(e, l)}
-                  className={`text-xs xl:text-sm font-bold transition-colors duration-200 relative group py-2 px-1 min-h-[44px] flex items-center whitespace-nowrap ${
-                    isActive ? "text-[#00ff88]" : "text-slate-300 hover:text-white"
-                  }`}
-                >
-                  {label}
-                  <span
-                    className={`absolute bottom-1 left-0 h-0.5 bg-[#00ff88] transition-all duration-300 ${
-                      isActive ? "w-full" : "w-0 group-hover:w-full"
-                    }`}
-                  />
-                </a>
-              );
-            })}
-          </div>
-
-          {/* RIGHT SIDE ACTIONS */}
-          <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
-            {/* Live Support Badge */}
-            <div className="hidden xl:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[11px] font-bold shrink-0">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+            {/* LOGO */}
+            <a
+              href="/"
+              onClick={handleLogoClick}
+              className="flex items-center gap-2 group shrink-0 min-h-[44px] whitespace-nowrap"
+            >
+              <Logo size={scrolled ? 30 : 34} />
+              <span className="font-display font-black tracking-tight text-white text-xs sm:text-base flex items-center gap-1">
+                Prime <span className="bg-gradient-to-r from-blue-400 via-violet-400 to-[#00ff88] bg-clip-text text-transparent font-black">Tools Hub</span>
               </span>
-              {t("nav_live")}
+            </a>
+
+            {/* DESKTOP NAV LINKS */}
+            <div className="hidden lg:flex items-center gap-5 xl:gap-7 flex-1 justify-center">
+              {LINKS.map((l) => {
+                const label = t(l.labelKey);
+                const isActive = l.route ? location.pathname === l.href : activeSection === l.href;
+                return (
+                  <a
+                    key={l.labelKey}
+                    href={l.href}
+                    onClick={(e) => handleNav(e, l)}
+                    className={`text-xs xl:text-sm font-bold transition-colors duration-200 relative group py-2 px-1 min-h-[44px] flex items-center whitespace-nowrap ${
+                      isActive ? "text-[#00ff88]" : "text-slate-300 hover:text-white"
+                    }`}
+                  >
+                    {label}
+                    <span
+                      className={`absolute bottom-1 left-0 h-0.5 bg-[#00ff88] transition-all duration-300 ${
+                        isActive ? "w-full" : "w-0 group-hover:w-full"
+                      }`}
+                    />
+                  </a>
+                );
+              })}
             </div>
 
-            {/* Language Switcher */}
-            <LanguageSwitcher />
+            {/* RIGHT SIDE ACTIONS */}
+            <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
+              {/* Live Support Badge */}
+              <div className="hidden xl:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[11px] font-bold shrink-0">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                </span>
+                {t("nav_live")}
+              </div>
 
-            {/* Currency Switcher */}
-            <CurrencySwitcher />
+              {/* Language Switcher */}
+              <LanguageSwitcher />
 
-            {/* WhatsApp Button (Desktop) */}
-            <a
-              href={whatsappNavUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden sm:flex p-2 px-3 py-1.5 rounded-xl bg-[#25D366]/20 border border-[#25D366]/40 text-[#25D366] hover:bg-[#25D366] hover:text-white transition-all items-center gap-1.5 min-h-[38px] text-xs font-bold shrink-0"
-              aria-label="Chat on WhatsApp"
-            >
-              <MessageCircle size={16} />
-              <span>{t("nav_whatsapp")}</span>
-            </a>
+              {/* Currency Switcher */}
+              <CurrencySwitcher />
 
-            {/* "Order Now" CTA Button (Desktop) */}
-            <a
-              href="#products"
-              onClick={(e) => handleNav(e, { href: "#products", route: false })}
-              className="hidden sm:flex px-3.5 py-1.5 rounded-xl font-display font-black text-xs text-slate-950 bg-[#00ff88] hover:bg-[#20ff95] transition-all hover:scale-105 shadow-[0_0_15px_rgba(0,255,136,0.4)] items-center gap-1.5 cursor-pointer min-h-[38px] shrink-0"
-            >
-              <ShoppingBag size={14} />
-              <span>{t("nav_order")}</span>
-            </a>
+              {/* WhatsApp Button (Desktop) */}
+              <a
+                href={whatsappNavUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hidden sm:flex p-2 px-3 py-1.5 rounded-xl bg-[#25D366]/20 border border-[#25D366]/40 text-[#25D366] hover:bg-[#25D366] hover:text-white transition-all items-center gap-1.5 min-h-[38px] text-xs font-bold shrink-0"
+                aria-label="Chat on WhatsApp"
+              >
+                <MessageCircle size={16} />
+                <span>{t("nav_whatsapp")}</span>
+              </a>
 
-            {/* Mobile Hamburger Menu Trigger */}
-            <button
-              onClick={() => setOpen((v) => !v)}
-              className="lg:hidden p-2 min-w-[38px] min-h-[38px] flex items-center justify-center rounded-xl border text-white bg-white/10 border-white/20 cursor-pointer active:scale-95 transition-transform shrink-0"
-              aria-label="Toggle mobile menu"
-            >
-              {open ? <X size={20} /> : <Menu size={20} />}
-            </button>
-          </div>
-        </nav>
-        <DisclaimerBar />
-      </div>
+              {/* "Order Now" CTA Button (Desktop) */}
+              <a
+                href="#products"
+                onClick={(e) => handleNav(e, { href: "#products", route: false })}
+                className="hidden sm:flex px-3.5 py-1.5 rounded-xl font-display font-black text-xs text-slate-950 bg-[#00ff88] hover:bg-[#20ff95] transition-all hover:scale-105 shadow-[0_0_15px_rgba(0,255,136,0.4)] items-center gap-1.5 cursor-pointer min-h-[38px] shrink-0"
+              >
+                <ShoppingBag size={14} />
+                <span>{t("nav_order")}</span>
+              </a>
 
-      {/* MOBILE HAMBURGER MENU: Smooth Slide-In from Right */}
+              {/* Mobile Hamburger Menu Trigger */}
+              <button
+                onClick={() => setOpen((v) => !v)}
+                className="lg:hidden p-2 min-w-[38px] min-h-[38px] flex items-center justify-center rounded-xl border text-white bg-white/10 border-white/20 cursor-pointer active:scale-95 transition-transform shrink-0"
+                aria-label="Toggle mobile menu"
+              >
+                {open ? <X size={20} /> : <Menu size={20} />}
+              </button>
+            </div>
+          </nav>
+          <DisclaimerBar />
+        </div>
+      </header>
+
+      {/* MOBILE HAMBURGER MENU DRAWER (Rendered outside header to prevent transform clipping) */}
       <AnimatePresence>
         {open && (
-          <>
+          <div className="fixed inset-0 z-[99999] lg:hidden">
+            {/* Backdrop Overlay */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setOpen(false)}
-              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[1100] lg:hidden"
+              className="absolute inset-0 bg-black/85 backdrop-blur-md"
             />
 
+            {/* Slide-In Menu Drawer */}
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 220 }}
-              className="mobile-nav-menu fixed top-0 right-0 bottom-0 w-[85%] max-w-xs z-[1200] bg-[#0d1117] border-l border-white/15 p-5 flex flex-col justify-between shadow-2xl overflow-y-auto"
+              className="mobile-nav-menu absolute top-0 right-0 bottom-0 w-[85%] max-w-xs bg-[#0d1117] border-l border-white/15 p-5 flex flex-col justify-between shadow-2xl overflow-y-auto z-10"
             >
               <div>
                 <div className="flex items-center justify-between pb-4 border-b border-white/10">
@@ -307,9 +312,9 @@ export default function Navbar() {
                 </div>
               </div>
             </motion.div>
-          </>
+          </div>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 }

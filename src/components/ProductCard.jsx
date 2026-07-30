@@ -166,9 +166,7 @@ function ProductCardComponent({ product, index = 0, priority = false }) {
                 }}
               >
                 {String(product.id || "").toLowerCase().includes("notion") ||
-                String(product.name || "").toLowerCase().includes("notion") ||
-                String(product.id || "").toLowerCase().includes("capcut") ||
-                String(product.name || "").toLowerCase().includes("capcut") ? (
+                String(product.name || "").toLowerCase().includes("notion") ? (
                   <div className="w-full h-full rounded-xl bg-white/95 p-3 flex items-center justify-center shadow-lg border border-white">
                     <LazyImage
                       src={product.logo}
@@ -176,6 +174,18 @@ function ProductCardComponent({ product, index = 0, priority = false }) {
                       width={140}
                       height={140}
                       className="w-full h-full object-contain filter drop-shadow-sm"
+                      priority={priority}
+                    />
+                  </div>
+                ) : String(product.id || "").toLowerCase().includes("capcut") ||
+                  String(product.name || "").toLowerCase().includes("capcut") ? (
+                  <div className="w-full h-full rounded-xl bg-[#090d16] p-3 flex items-center justify-center shadow-xl border border-[#FE2C55]/70 shadow-red-950/50">
+                    <LazyImage
+                      src={product.logo}
+                      alt={product.name}
+                      width={140}
+                      height={140}
+                      className="w-full h-full object-contain filter drop-shadow-[0_0_10px_rgba(255,255,255,0.95)] drop-shadow-[0_0_20px_rgba(254,44,85,0.6)]"
                       priority={priority}
                     />
                   </div>
