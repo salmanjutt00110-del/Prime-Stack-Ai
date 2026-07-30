@@ -158,21 +158,37 @@ function ProductCardComponent({ product, index = 0, priority = false }) {
             {/* TOOL LOGO WITH HIGH-CONTRAST DUAL GLOW */}
             <div className="flex justify-center my-3 relative z-10">
               <div
-                className="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl p-3 flex items-center justify-center border shadow-2xl transition-transform duration-300 group-hover:scale-105"
+                className="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl p-2.5 flex items-center justify-center border shadow-2xl transition-transform duration-300 group-hover:scale-105"
                 style={{
                   background: `radial-gradient(circle at 50% 50%, ${theme.glow}45 0%, rgba(13, 17, 23, 0.98) 100%)`,
                   borderColor: `${theme.glow}70`,
                   boxShadow: `0 12px 30px rgba(0,0,0,0.8), 0 0 25px ${theme.glow}30`,
                 }}
               >
-                <LazyImage
-                  src={product.logo}
-                  alt={product.name}
-                  width={140}
-                  height={140}
-                  className="w-20 h-20 sm:w-24 sm:h-24 object-contain filter drop-shadow-[0_0_12px_rgba(255,255,255,0.75)] drop-shadow-[0_4px_10px_rgba(0,0,0,0.9)]"
-                  priority={priority}
-                />
+                {String(product.id || "").toLowerCase().includes("notion") ||
+                String(product.name || "").toLowerCase().includes("notion") ||
+                String(product.id || "").toLowerCase().includes("capcut") ||
+                String(product.name || "").toLowerCase().includes("capcut") ? (
+                  <div className="w-full h-full rounded-xl bg-white/95 p-3 flex items-center justify-center shadow-lg border border-white">
+                    <LazyImage
+                      src={product.logo}
+                      alt={product.name}
+                      width={140}
+                      height={140}
+                      className="w-full h-full object-contain filter drop-shadow-sm"
+                      priority={priority}
+                    />
+                  </div>
+                ) : (
+                  <LazyImage
+                    src={product.logo}
+                    alt={product.name}
+                    width={140}
+                    height={140}
+                    className="w-20 h-20 sm:w-24 sm:h-24 object-contain filter drop-shadow-[0_0_12px_rgba(255,255,255,0.75)] drop-shadow-[0_4px_10px_rgba(0,0,0,0.9)]"
+                    priority={priority}
+                  />
+                )}
               </div>
             </div>
 

@@ -3,6 +3,7 @@ import { Sparkles, ArrowRight, ShieldCheck, Zap, MessageCircle, Star, CheckCircl
 import { BRAND, WHATSAPP_NUMBER } from "@/data/products";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLanguage } from "@/context/LanguageContext";
 
 const ParticleBackground = lazy(() => import("@/components/ParticleBackground"));
 
@@ -28,6 +29,7 @@ export default function Hero() {
   const [activeBrandIndex, setActiveBrandIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(() => typeof window !== "undefined" && window.innerWidth < 768);
   const navigate = useNavigate();
+  const { t } = useLanguage();
 
   const currentBrand = SHOWCASE_BRANDS[activeBrandIndex];
 
@@ -51,8 +53,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="hero-section relative pt-20 sm:pt-28 lg:pt-32 pb-12 sm:pb-20 flex flex-col justify-center overflow-hidden bg-gradient-to-b from-[#050505] via-[#080c14] to-[#0d1117] contain-paint"
-      style={{ paddingTop: "max(84px, env(safe-area-inset-top))" }}
+      className="hero-section relative pt-8 sm:pt-16 lg:pt-20 pb-12 sm:pb-20 flex flex-col justify-center overflow-hidden bg-gradient-to-b from-[#050505] via-[#080c14] to-[#0d1117] contain-paint"
     >
       
       {/* Dynamic Animated Particles */}
@@ -94,38 +95,38 @@ export default function Hero() {
           {/* Social Proof Badge Row */}
           <div className="trust-badges-row inline-flex flex-wrap items-center justify-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold border shadow-md mb-4 bg-[#0d1117]/80 border-cyan-500/30 text-slate-200">
             <span className="flex items-center gap-1 text-emerald-400">
-              <CheckCircle2 size={13} /> 1,200+ Happy Customers
+              <CheckCircle2 size={13} /> {t("hero_badge_customers")}
             </span>
             <span className="text-slate-600 hidden sm:inline">|</span>
             <span className="flex items-center gap-1 text-amber-400">
-              <Star size={12} className="fill-amber-400" /> 4.9/5 Rating
+              <Star size={12} className="fill-amber-400" /> {t("hero_badge_rating")}
             </span>
             <span className="text-slate-600 hidden sm:inline">|</span>
             <span className="flex items-center gap-1 text-blue-400">
-              <Lock size={12} /> Secure Payment
+              <Lock size={12} /> {t("hero_badge_secure")}
             </span>
           </div>
 
           {/* Benefit-Driven Headline */}
           <h1 className="hero-headline font-display font-black text-2xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.15] text-white">
             <span className="relative inline-block">
-              Premium AI Tools
+              {t("hero_headline_1")}
               <span className="hidden sm:block absolute -bottom-1 left-0 w-20 h-1 bg-gradient-to-r from-blue-600 to-[#00ff88] rounded-full" />
             </span>{" "}
-            — <br className="hidden sm:inline" />
+            <br className="hidden sm:inline" />
             <span
               className="bg-clip-text text-transparent inline-block mt-1"
               style={{
                 backgroundImage: `linear-gradient(135deg, #00ff88 0%, #2563EB 50%, #60A5FA 100%)`,
               }}
             >
-              Delivered Instantly to Pakistan 🇵🇰
+              {t("hero_headline_2")}
             </span>
           </h1>
 
           {/* Benefit Subheadline */}
           <p className="hero-subtext mt-4 sm:mt-6 text-xs sm:text-base lg:text-lg text-slate-300 font-body max-w-xl leading-relaxed">
-            ChatGPT Plus, Canva Pro, Veo 3 &amp; 10+ more tools — Fast, Affordable, Trusted. Get full official access with 100% replacement warranty &amp; 24/7 WhatsApp support.
+            {t("hero_subtext")}
           </p>
 
           {/* Primary & Secondary CTA Buttons */}
@@ -136,7 +137,7 @@ export default function Hero() {
               className="w-full sm:w-auto px-7 py-3.5 sm:py-4 rounded-2xl font-display font-black text-sm sm:text-base text-slate-950 flex items-center justify-center gap-2.5 transition-all duration-300 hover:scale-[1.03] active:scale-95 shadow-[0_0_25px_rgba(0,255,136,0.4)] cursor-pointer group h-[52px] min-h-[52px] bg-[#00ff88] hover:bg-[#20ff95]"
             >
               <Zap size={19} className="fill-slate-950 group-hover:rotate-12 transition-transform" />
-              <span>Browse All Tools →</span>
+              <span>{t("hero_btn_browse")}</span>
             </a>
 
             {/* Secondary CTA: WhatsApp Green Button */}
@@ -147,28 +148,28 @@ export default function Hero() {
               className="w-full sm:w-auto px-7 py-3.5 sm:py-4 rounded-2xl font-display font-black text-sm sm:text-base text-white bg-[#25D366] hover:bg-[#22c35e] border border-emerald-400/30 flex items-center justify-center gap-2.5 transition-all duration-300 hover:scale-[1.03] active:scale-95 cursor-pointer shadow-lg shadow-emerald-900/30 h-[52px] min-h-[52px]"
             >
               <MessageCircle size={19} className="fill-white" />
-              <span>💬 Order on WhatsApp</span>
+              <span>{t("hero_btn_whatsapp")}</span>
             </a>
           </div>
 
-          {/* TRUST LOGOS ROW Below CTA */}
+          {/* TRUST LOGOS STRIP Below CTA */}
           <div className="mt-8 sm:mt-10 pt-4 sm:pt-6 border-t border-white/10 w-full">
             <p className="text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-3 text-center lg:text-left">
-              Official Tools We Provide
+              {t("hero_tools_label")}
             </p>
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-6 opacity-85">
+            <div className="tools-strip-row flex flex-wrap items-center justify-center lg:justify-start gap-2.5 sm:gap-3 opacity-90">
               {OFFICIAL_LOGOS.map((brand) => (
-                <div key={brand.name} className="flex items-center gap-2 group cursor-pointer">
+                <div key={brand.name} className="tools-strip-logo flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/[0.06] border border-white/10 hover:border-white/20 transition-all cursor-pointer">
                   <img
                     src={brand.logo}
                     alt={`${brand.name} Official Logo`}
-                    width="24"
-                    height="24"
+                    width="22"
+                    height="22"
                     loading="lazy"
                     decoding="async"
-                    className="w-5 h-5 sm:w-6 sm:h-6 object-contain grayscale group-hover:grayscale-0 transition-all duration-300 group-hover:scale-110"
+                    className="w-5 h-5 object-contain"
                   />
-                  <span className="text-xs font-semibold text-slate-400 group-hover:text-white transition-colors">
+                  <span className="text-xs font-bold text-slate-200">
                     {brand.name}
                   </span>
                 </div>
@@ -204,11 +205,11 @@ export default function Hero() {
               <div className="flex items-center justify-between gap-2 mb-3 relative z-10">
                 <span className="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-white/10 text-white flex items-center gap-1">
                   <Star size={11} className="text-amber-400 fill-amber-400" />
-                  TOP RECOMMENDED TOOL
+                  {t("card_top_recommended")}
                 </span>
                 <span className="flex items-center gap-1 text-xs font-extrabold text-[#00ff88]">
                   <span className="w-2 h-2 rounded-full bg-[#00ff88]" />
-                  Instant Access
+                  {t("card_instant_access")}
                 </span>
               </div>
 
@@ -242,7 +243,7 @@ export default function Hero() {
                   {currentBrand.name}
                 </h3>
                 <p className="text-xs text-slate-400 mt-1">
-                  100% Official &amp; Verified Access in Pakistan
+                  100% Official &amp; Verified Access
                 </p>
 
                 {/* Switcher Dots */}

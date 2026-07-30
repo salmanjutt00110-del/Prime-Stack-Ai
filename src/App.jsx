@@ -1,4 +1,4 @@
-import { useState, Suspense, lazy } from 'react';
+import { useState, useEffect, Suspense, lazy } from 'react';
 import { Toaster } from "@/components/ui/toaster"
 import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClientInstance } from '@/lib/query-client'
@@ -12,6 +12,7 @@ import PageTransition from './components/PageTransition';
 import Home from '@/pages/Home';
 import ErrorBoundary from '@/components/ErrorBoundary';
 import { CurrencyProvider } from '@/context/CurrencyContext';
+import { LanguageProvider } from '@/context/LanguageContext';
 
 const ProductDetail = lazy(() => import('@/pages/ProductDetail'));
 const Reviews = lazy(() => import('@/pages/Reviews'));
@@ -71,26 +72,37 @@ const AuthenticatedApp = ({ isLoaded }) => {
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
 
+  // Suppress unexpected automatic PWA install prompts (Fix #7)
+  useEffect(() => {
+    const handleBeforeInstallPrompt = (e) => {
+      e.preventDefault();
+    };
+    window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+    return () => window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+  }, []);
+
   return (
     <ErrorBoundary>
-      <CurrencyProvider>
-        <AuthProvider>
-          <QueryClientProvider client={queryClientInstance}>
-            <StartupIntro onComplete={() => setIsLoaded(true)} />
-            <Router>
-              <ScrollToTop />
-              <Suspense fallback={
-                <div className="min-h-screen bg-[#050505] flex items-center justify-center">
-                  <div className="w-10 h-10 border-t-2 border-violet-500 rounded-full animate-spin" />
-                </div>
-              }>
-                <AuthenticatedApp isLoaded={isLoaded} />
-              </Suspense>
-            </Router>
-            <Toaster />
-          </QueryClientProvider>
-        </AuthProvider>
-      </CurrencyProvider>
+      <LanguageProvider>
+        <CurrencyProvider>
+          <AuthProvider>
+            <QueryClientProvider client={queryClientInstance}>
+              <StartupIntro onComplete={() => setIsLoaded(true)} />
+              <Router>
+                <ScrollToTop />
+                <Suspense fallback={
+                  <div className="min-h-screen bg-[#050505] flex items-center justify-center">
+                    <div className="w-10 h-10 border-t-2 border-violet-500 rounded-full animate-spin" />
+                  </div>
+                }>
+                  <AuthenticatedApp isLoaded={isLoaded} />
+                </Suspense>
+              </Router>
+              <Toaster />
+            </QueryClientProvider>
+          </AuthProvider>
+        </CurrencyProvider>
+      </LanguageProvider>
     </ErrorBoundary>
   );
 }
