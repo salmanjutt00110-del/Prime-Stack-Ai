@@ -1,8 +1,8 @@
 import { useState, useEffect, Suspense, lazy } from "react";
-import { Sparkles, ArrowRight, ShieldCheck, Zap, MessageCircle, Star, CheckCircle2, Lock } from "lucide-react";
+import { Zap, MessageCircle, Star, CheckCircle2, Lock } from "lucide-react";
 import { BRAND, WHATSAPP_NUMBER } from "@/data/products";
 import { useNavigate } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 
 const ParticleBackground = lazy(() => import("@/components/ParticleBackground"));

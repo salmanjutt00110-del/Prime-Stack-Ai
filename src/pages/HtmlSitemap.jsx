@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
 import Breadcrumb from "@/components/Breadcrumb";
 import { DOMAIN, generateBreadcrumbSchema } from "@/lib/seoSchema";
-import { ChevronRight, Cpu, Layers, ShieldCheck, Zap, HelpCircle, MessageCircle, FileText } from "lucide-react";
+import { ChevronRight, Cpu, Layers, ShieldCheck, Zap, MessageCircle, FileText } from "lucide-react";
 
 export default function HtmlSitemap() {
   useEffect(() => {

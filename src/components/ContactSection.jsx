@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { MessageCircle, Mail, Clock, Send, CheckCircle2 } from "lucide-react";
+import { MessageCircle, Clock, Send, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { WHATSAPP_NUMBER } from "@/lib/whatsapp";
 
@@ -31,7 +31,7 @@ export default function ContactSection() {
             </h3>
 
             {/* Support Info Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
               <a
                 href={`https://wa.me/${WHATSAPP_NUMBER}`}
                 target="_blank"
@@ -44,19 +44,6 @@ export default function ContactSection() {
                 <div>
                   <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">WhatsApp Support</span>
                   <span className="text-xs font-extrabold text-white">+{WHATSAPP_NUMBER}</span>
-                </div>
-              </a>
-
-              <a
-                href="mailto:support@primetoolshub.store"
-                className="p-3 rounded-2xl bg-white/[0.04] border border-white/10 hover:border-blue-500/50 transition-all flex items-center gap-3 group"
-              >
-                <div className="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-400 shrink-0">
-                  <Mail size={20} />
-                </div>
-                <div>
-                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Email Support</span>
-                  <span className="text-xs font-extrabold text-white truncate max-w-[110px] block">support@...</span>
                 </div>
               </a>
 

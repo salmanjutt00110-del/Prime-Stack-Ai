@@ -1,4 +1,4 @@
-import { MessageCircle, Mail, Clock, MapPin, Instagram, Facebook } from "lucide-react";
+import { MessageCircle, Clock, MapPin, Instagram, Facebook } from "lucide-react";
 import Logo from "@/components/Logo";
 import { WHATSAPP_NUMBER } from "@/data/products";
 
@@ -106,10 +106,7 @@ export default function Footer() {
                   <span>📱 WhatsApp: +92-370-7020580</span>
                 </a>
               </li>
-              <li className="flex items-center gap-2 text-slate-300">
-                <Mail size={15} className="text-blue-400" />
-                <span>📧 Email: support@primetoolshub.store</span>
-              </li>
+
               <li className="flex items-center gap-2 text-slate-300">
                 <Clock size={15} className="text-purple-400" />
                 <span>🕐 Support Hours: 9 AM – 11 PM (PKT)</span>

@@ -2,7 +2,7 @@ import { memo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { WHATSAPP_NUMBER } from "@/data/products";
 import {
-  Globe, Video, Megaphone, Sparkles, ExternalLink, MessageCircle,
+  Globe, Video, Megaphone, ExternalLink, MessageCircle,
   Flame, Layers, Palette, Share2, Award, Check
 } from "lucide-react";
 

@@ -1,8 +1,7 @@
 import { useMemo, useState, useEffect } from "react";
 import { 
   Search, 
-  X, 
-  Sparkles,
+  X,
   Award,
   Headphones,
   RefreshCw,

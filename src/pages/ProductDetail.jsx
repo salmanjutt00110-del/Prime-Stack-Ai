@@ -304,7 +304,7 @@ export default function ProductDetail() {
                   width="200"
                   height="200"
                   decoding="async"
-                  fetchpriority="high"
+                  fetchPriority="high"
                   className="relative w-[76%] h-[76%] object-contain"
                 />
               </div>

@@ -1,10 +1,9 @@
-import { memo, useState } from "react";
-import { MessageCircle, Check, Flame, Zap, Gem, Sparkles } from "lucide-react";
+import { memo } from "react";
+import { MessageCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { openWhatsApp } from "@/lib/whatsapp";
 import { motion } from "framer-motion";
 import LazyImage from "@/components/LazyImage";
-import CountdownTimer from "@/components/CountdownTimer";
 import { useCurrency } from "@/context/CurrencyContext";
 
 const getBadgeConfig = (id = "", name = "") => {
@@ -72,7 +71,6 @@ const getBrandTheme = (id = "", name = "") => {
 function ProductCardComponent({ product, index = 0, priority = false }) {
   const navigate = useNavigate();
   const { formatPrice } = useCurrency();
-  const [selectedPlan, setSelectedPlan] = useState("monthly");
 
   const theme = getBrandTheme(product.id, product.name);
   const badge = getBadgeConfig(product.id, product.name);
@@ -85,25 +83,11 @@ function ProductCardComponent({ product, index = 0, priority = false }) {
     String(product.id || "").toLowerCase().includes("surfshark") ||
     String(product.name || "").toLowerCase().includes("surfshark");
 
-  // Dynamic price calculation based on selected plan
-  const getDynamicPricing = () => {
-    const rawPrice = parseInt(product.price.replace(/\D/g, ""), 10) || 1500;
-    const rawOldPrice = parseInt((product.oldPrice || "").replace(/\D/g, ""), 10) || rawPrice * 1.25;
-
-    if (selectedPlan === "3months") {
-      const p = Math.round(rawPrice * 2.6);
-      const op = Math.round(rawOldPrice * 2.7);
-      return { price: `Rs. ${p.toLocaleString()}`, oldPrice: `Rs. ${op.toLocaleString()}`, label: "3 Months" };
-    }
-    if (selectedPlan === "yearly") {
-      const p = Math.round(rawPrice * 8.5);
-      const op = Math.round(rawOldPrice * 9);
-      return { price: `Rs. ${p.toLocaleString()}`, oldPrice: `Rs. ${op.toLocaleString()}`, label: "Yearly" };
-    }
-    return { price: product.price, oldPrice: product.oldPrice, label: product.duration || "1 Month" };
+  const pricing = {
+    price: product.price,
+    oldPrice: product.oldPrice,
+    label: product.duration || "1 Month"
   };
-
-  const pricing = getDynamicPricing();
 
   return (
     <motion.div
@@ -212,51 +196,7 @@ function ProductCardComponent({ product, index = 0, priority = false }) {
               {product.tagline || product.description}
             </p>
 
-            {/* PLAN OPTIONS SELECTOR TABS */}
-            <div className="grid grid-cols-3 gap-1 p-1 bg-slate-900/90 border border-white/10 rounded-xl mb-4 text-[10px] font-bold text-center">
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setSelectedPlan("monthly");
-                }}
-                className={`py-1.5 rounded-lg transition-all ${
-                  selectedPlan === "monthly"
-                    ? "bg-[#2563EB] text-white font-extrabold shadow-sm"
-                    : "text-slate-400 hover:text-white"
-                }`}
-              >
-                Monthly
-              </button>
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setSelectedPlan("3months");
-                }}
-                className={`py-1.5 rounded-lg transition-all ${
-                  selectedPlan === "3months"
-                    ? "bg-[#2563EB] text-white font-extrabold shadow-sm"
-                    : "text-slate-400 hover:text-white"
-                }`}
-              >
-                3 Months
-              </button>
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setSelectedPlan("yearly");
-                }}
-                className={`py-1.5 rounded-lg transition-all ${
-                  selectedPlan === "yearly"
-                    ? "bg-[#2563EB] text-white font-extrabold shadow-sm"
-                    : "text-slate-400 hover:text-white"
-                }`}
-              >
-                Yearly
-              </button>
-            </div>
+
 
             {/* PRICE DISPLAY */}
             <div className="flex flex-col items-center justify-center py-2.5 px-3 bg-white/[0.04] border border-white/10 rounded-xl mb-4">

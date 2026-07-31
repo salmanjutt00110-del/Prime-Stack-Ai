@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { MessageSquare, X, Send, Bot, User, Sparkles, MessageCircle, ArrowRight, ShieldCheck, Zap } from "lucide-react";
+import { X, Send, Bot, MessageCircle } from "lucide-react";
 import { ALL_PRODUCTS, WHATSAPP_NUMBER } from "@/data/products";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -152,7 +152,7 @@ export default function AIChatBot() {
   };
 
   return (
-    <div className="ai-assistant-widget fixed bottom-[max(1.25rem,env(safe-area-inset-bottom))] left-3.5 sm:left-6 z-[9999] pointer-events-auto">
+    <div className="ai-assistant-widget fixed bottom-[calc(4.75rem+env(safe-area-inset-bottom))] lg:bottom-6 left-4 lg:left-6 z-[9999] pointer-events-auto">
       
       {/* FLOATING TRIGGER BUTTON */}
       <AnimatePresence>
@@ -184,7 +184,7 @@ export default function AIChatBot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.25 }}
-            className="w-[calc(100vw-1.75rem)] max-w-[380px] h-[500px] sm:h-[530px] rounded-3xl bg-[#080a16]/98 backdrop-blur-2xl border border-cyan-500/40 shadow-[0_25px_70px_rgba(0,0,0,0.95),0_0_40px_rgba(6,182,212,0.3)] flex flex-col overflow-hidden font-body text-slate-200 fixed bottom-3.5 left-3.5 right-3.5 sm:left-6 sm:right-auto sm:bottom-6 z-[99999]"
+            className="w-[calc(100vw-2rem)] max-w-[380px] h-[480px] sm:h-[530px] rounded-3xl bg-[#080a16]/98 backdrop-blur-2xl border border-cyan-500/40 shadow-[0_25px_70px_rgba(0,0,0,0.95),0_0_40px_rgba(6,182,212,0.3)] flex flex-col overflow-hidden font-body text-slate-200 fixed bottom-[calc(4.75rem+env(safe-area-inset-bottom))] lg:bottom-6 left-4 right-4 lg:left-6 lg:right-auto z-[99999]"
           >
             {/* HEADER */}
             <div className="p-4 bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 border-b border-white/10 flex items-center justify-between">

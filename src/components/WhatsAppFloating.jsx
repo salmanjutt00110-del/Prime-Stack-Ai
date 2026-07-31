@@ -47,10 +47,9 @@ export default function WhatsAppFloating() {
 
   return (
     <div
-      className={`fixed right-4 sm:right-6 z-50 flex flex-col items-end gap-3 pointer-events-auto transition-all duration-300 ${
+      className={`fixed right-4 lg:right-6 bottom-[calc(4.75rem+env(safe-area-inset-bottom))] lg:bottom-6 z-50 flex flex-col items-end gap-3 pointer-events-auto transition-all duration-300 ${
         isScrolling ? "opacity-40 scale-90" : "opacity-100 scale-100"
       }`}
-      style={{ bottom: "max(24px, env(safe-area-inset-bottom))" }}
     >
       
       {/* POPUP CHAT BUBBLE */}

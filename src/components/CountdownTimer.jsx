@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Flame, Clock } from "lucide-react";
+import { Flame } from "lucide-react";
 
 export default function CountdownTimer({
   targetPrice = "Rs. 1,099",
