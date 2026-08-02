@@ -147,12 +147,12 @@ export default function StartupIntro({ onComplete }) {
                 <span>PREMIER AI MARKETPLACE</span>
               </div>
 
-              <h1 className="font-display font-black text-4xl sm:text-5xl tracking-tight text-white leading-none">
+              <div role="heading" aria-level={2} className="font-display font-black text-4xl sm:text-5xl tracking-tight text-white leading-none">
                 PRIME TOOLS{" "}
                 <span className="bg-gradient-to-r from-cyan-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(129,140,248,0.2)]">
                   HUB
                 </span>
-              </h1>
+              </div>
               
               <p className="text-xs sm:text-sm text-slate-400 font-body max-w-sm mx-auto leading-relaxed">
                 Premium AI Subscriptions, Software Licenses & Creator Tools.

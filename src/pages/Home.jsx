@@ -25,6 +25,7 @@ import ScrollProgress from "@/components/ScrollProgress";
 import BackToTopButton from "@/components/BackToTopButton";
 import SectionDivider from "@/components/SectionDivider";
 import SEOHead from "@/components/SEOHead";
+import SeoContentSection from "@/components/SeoContentSection";
 import { ALL_PRODUCTS } from "@/data/products";
 import { generateHomepageGraph, DOMAIN } from "@/lib/seoSchema";
 import { scrollToSection } from "@/lib/scroll";
@@ -107,6 +108,7 @@ export default function Home() {
         <SectionDivider color="rgba(236, 72, 153, 0.4)" />
 
         {/* About & How It Works */}
+        <SeoContentSection />
         <AboutUs />
         <HowItWorks />
         <WhyUs />

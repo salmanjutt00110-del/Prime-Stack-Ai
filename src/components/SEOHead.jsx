@@ -19,10 +19,11 @@ export default function SEOHead({
   noindex = false,
 }) {
   useEffect(() => {
-    // 1. Update Document Title
-    const fullTitle = title
-      ? `${title} | ${STORE_NAME}`
-      : `Buy ChatGPT Plus in Pakistan | Canva Pro, Veo 3 — ${STORE_NAME}`;
+    // 1. Update Document Title (35 - 65 chars recommended)
+    let fullTitle = title || `Buy ChatGPT Plus in Pakistan — ${STORE_NAME}`;
+    if (title && !title.includes(STORE_NAME)) {
+      fullTitle = `${title} — ${STORE_NAME}`;
+    }
     document.title = fullTitle;
 
     // Helper to create or update meta tag

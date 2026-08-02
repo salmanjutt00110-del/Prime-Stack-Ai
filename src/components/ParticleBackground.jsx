@@ -100,7 +100,10 @@ export default function ParticleBackground({ color = "#8B5CF6", count }) {
 
     resize();
     spawn();
-    draw();
+
+    let initTimer = setTimeout(() => {
+      draw();
+    }, 200);
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -119,6 +122,7 @@ export default function ParticleBackground({ color = "#8B5CF6", count }) {
     window.addEventListener("mouseleave", onLeave);
 
     return () => {
+      clearTimeout(initTimer);
       cancelAnimationFrame(raf);
       observer.disconnect();
       window.removeEventListener("resize", resize);
