@@ -1,4 +1,4 @@
-import SEOHead from "@/components/SEOHead";
+﻿import SEOHead from "@/components/SEOHead";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloating from "@/components/WhatsAppFloating";
@@ -8,14 +8,14 @@ export default function RefundPolicy() {
   return (
     <div className="min-h-screen bg-[#050505] text-slate-100 font-sans selection:bg-[#00ff88] selection:text-black">
       <SEOHead
-        title="Refund & Replacement Policy | Prime Tools Hub — 100% Warranty Support"
+        title="Refund & Replacement Warranty Policy â€” Prime Tools Hub"
         description="Learn about Prime Tools Hub's clear Refund and Replacement Policy. Enjoy full duration replacement warranty and 100% money-back guarantee for invalid activations."
-        canonical="https://primetoolshub.store/refund-policy"
+        canonicalUrl="https://primetoolshub.store/refund-policy"
       />
 
       <Navbar />
 
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <main id="main-content" className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Header */}
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-4">
@@ -37,7 +37,7 @@ export default function RefundPolicy() {
               <CheckCircle2 size={20} />
             </div>
             <h3 className="font-bold text-white text-sm">Instant Replacement</h3>
-            <p className="text-xs text-slate-400 mt-1">Free credential replacement within 2–4 hours if account fails.</p>
+            <p className="text-xs text-slate-400 mt-1">Free credential replacement within 2â€“4 hours if account fails.</p>
           </div>
           <div className="p-5 rounded-2xl bg-[#0c0d12] border border-white/10 text-center">
             <div className="w-10 h-10 rounded-full bg-purple-500/10 text-purple-400 flex items-center justify-center mx-auto mb-3">

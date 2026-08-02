@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+﻿import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ALL_PRODUCTS } from "@/data/products";
 import Navbar from "@/components/Navbar";
@@ -35,11 +35,11 @@ export default function HtmlSitemap() {
     { name: "Meta Ads (Facebook & Instagram Ads Scaling)", link: "/#agency-services" },
     { name: "TikTok Ads & Video Reels Editing", link: "/#agency-services" },
     { name: "Brand Identity & Vector Logo Design", link: "/#agency-services" },
-    { name: "360° Social Media Management", link: "/#agency-services" },
+    { name: "360Â° Social Media Management", link: "/#agency-services" },
   ];
 
   const corePages = [
-    { name: "Home — Premium AI Marketplace", link: "/" },
+    { name: "Home â€” Premium AI Marketplace", link: "/" },
     { name: "Complete Website SEO Guide (2026)", link: "/seo-guide" },
     { name: "Verified Customer Reviews & Proofs", link: "/reviews" },
     { name: "Bulk Purchase Discounts & Reseller Pricing", link: "/#bulk-offers" },
@@ -53,14 +53,14 @@ export default function HtmlSitemap() {
   return (
     <div className="relative min-h-screen bg-[#02040a] text-white flex flex-col justify-between overflow-x-hidden">
       <SEOHead
-        title="HTML Sitemap — Complete Catalog & Site Architecture"
+        title="HTML Sitemap â€” Full Product & Page Index â€” Prime Tools Hub"
         description="Comprehensive HTML Sitemap for Prime Tools Hub. Easily navigate all premium AI tools, creator accounts, VPN subscriptions, agency services, and customer review pages."
         canonicalUrl={`${DOMAIN}/html-sitemap`}
         schemaJson={breadcrumbSchema}
       />
       <Navbar />
 
-      <main className="flex-grow pt-32 sm:pt-36 pb-16">
+      <main id="main-content" className="flex-grow pt-32 sm:pt-36 pb-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           
           {/* Visual Breadcrumb Navigation */}
@@ -72,7 +72,7 @@ export default function HtmlSitemap() {
               Site Index &amp; Internal Link Navigation
             </span>
             <h1 className="mt-3 font-display font-black text-3xl sm:text-5xl text-white tracking-tight">
-              Prime Tools Hub — <span className="ps-grad-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">HTML Sitemap</span>
+              Prime Tools Hub â€” <span className="ps-grad-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">HTML Sitemap</span>
             </h1>
             <p className="mt-3 text-base text-slate-300 max-w-2xl font-body leading-relaxed">
               Complete hierarchical index of all product listings, digital agency services, verified review collections, and essential marketplace resources for users and search crawlers.
@@ -232,25 +232,25 @@ export default function HtmlSitemap() {
                 <li>
                   <Link to="/lahore" className="flex items-center group text-slate-300 hover:text-white transition-colors">
                     <ChevronRight size={14} className="text-amber-400 shrink-0" />
-                    <span className="group-hover:translate-x-1 transition-transform ml-1.5">Lahore — AI Tools &amp; Subscriptions</span>
+                    <span className="group-hover:translate-x-1 transition-transform ml-1.5">Lahore â€” AI Tools &amp; Subscriptions</span>
                   </Link>
                 </li>
                 <li>
                   <Link to="/karachi" className="flex items-center group text-slate-300 hover:text-white transition-colors">
                     <ChevronRight size={14} className="text-amber-400 shrink-0" />
-                    <span className="group-hover:translate-x-1 transition-transform ml-1.5">Karachi — Fast Digital Delivery</span>
+                    <span className="group-hover:translate-x-1 transition-transform ml-1.5">Karachi â€” Fast Digital Delivery</span>
                   </Link>
                 </li>
                 <li>
                   <Link to="/islamabad" className="flex items-center group text-slate-300 hover:text-white transition-colors">
                     <ChevronRight size={14} className="text-amber-400 shrink-0" />
-                    <span className="group-hover:translate-x-1 transition-transform ml-1.5">Islamabad &amp; Pindi — Subscriptions</span>
+                    <span className="group-hover:translate-x-1 transition-transform ml-1.5">Islamabad &amp; Pindi â€” Subscriptions</span>
                   </Link>
                 </li>
                 <li>
                   <Link to="/faisalabad" className="flex items-center group text-slate-300 hover:text-white transition-colors">
                     <ChevronRight size={14} className="text-amber-400 shrink-0" />
-                    <span className="group-hover:translate-x-1 transition-transform ml-1.5">Faisalabad — Affordable AI Tools</span>
+                    <span className="group-hover:translate-x-1 transition-transform ml-1.5">Faisalabad â€” Affordable AI Tools</span>
                   </Link>
                 </li>
               </ul>

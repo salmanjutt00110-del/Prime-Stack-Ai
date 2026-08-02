@@ -1,4 +1,4 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 import SEOHead from "@/components/SEOHead";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -63,7 +63,7 @@ const FAQS_DATA = [
   {
     category: "warranty",
     q: "What happens if my account stops working during the subscription?",
-    a: "All products include a full duration replacement warranty. Contact our WhatsApp support and we will issue replacement credentials within 2–4 hours."
+    a: "All products include a full duration replacement warranty. Contact our WhatsApp support and we will issue replacement credentials within 2â€“4 hours."
   },
   {
     category: "warranty",
@@ -89,17 +89,44 @@ export default function FaqPage() {
     return matchesCat && matchesSearch;
   });
 
+  // Generate FAQ Schema for rich results
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "FAQPage",
+        "@id": "https://primetoolshub.store/faq#faqpage",
+        "mainEntity": FAQS_DATA.map(item => ({
+          "@type": "Question",
+          "name": item.q,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": item.a
+          }
+        }))
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://primetoolshub.store/" },
+          { "@type": "ListItem", "position": 2, "name": "FAQ", "item": "https://primetoolshub.store/faq" }
+        ]
+      }
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-[#050505] text-slate-100 font-sans selection:bg-[#00ff88] selection:text-black">
       <SEOHead
-        title="Frequently Asked Questions (FAQ) | Prime Tools Hub"
+        title="Frequently Asked Questions & Answers â€” Prime Tools Hub"
         description="Got questions about buying ChatGPT Plus, Canva Pro, Gemini, or VPNs in Pakistan? Read our comprehensive 25+ FAQ guide on pricing, delivery & replacement warranty."
-        canonical="https://primetoolshub.store/faq"
+        canonicalUrl="https://primetoolshub.store/faq"
+        schemaJson={faqSchema}
       />
 
       <Navbar />
 
-      <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <main id="main-content" className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#00ff88]/10 border border-[#00ff88]/30 text-[#00ff88] text-xs font-semibold uppercase tracking-wider mb-4">

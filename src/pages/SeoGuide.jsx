@@ -183,7 +183,7 @@ Output:
   return (
     <div className="min-h-screen bg-[#02040a] text-slate-100 font-sans selection:bg-[#00ff88]/30 selection:text-[#00ff88]">
       <SEOHead
-        title="Complete Website SEO Guide (2026) — Rank #1 on Google & AI Engines"
+        title="Website SEO Guide 2026 for Google Ranking — Prime Tools Hub"
         description="Comprehensive 2026 Website SEO Guide: Google Search Console registration, technical SEO checklist, image SEO, schema generator, and AI prompt for ranking on Google, Perplexity & ChatGPT."
         keywords="Website SEO Guide 2026, Google Search Console Setup, Technical SEO Checklist, AI SEO Prompt, Image SEO, Backlink Building, Schema Generator"
         canonicalUrl={`${DOMAIN}/seo-guide`}

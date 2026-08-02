@@ -1,4 +1,4 @@
-import SEOHead from "@/components/SEOHead";
+﻿import SEOHead from "@/components/SEOHead";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloating from "@/components/WhatsAppFloating";
@@ -8,12 +8,12 @@ export default function AcceptableUse() {
   return (
     <div className="min-h-screen bg-[#050505] text-slate-100 font-sans selection:bg-[#00ff88] selection:text-black">
       <SEOHead
-        title="Acceptable Use Policy | Prime Tools Hub"
+        title="Acceptable Use Policy for Subscriptions â€” Prime Tools Hub"
         description="Guidelines on acceptable and prohibited uses of software subscriptions, team slots, and digital assets purchased from Prime Tools Hub."
-        canonical="https://primetoolshub.store/acceptable-use"
+        canonicalUrl="https://primetoolshub.store/acceptable-use"
       />
       <Navbar />
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <main id="main-content" className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-4">
             <Shield size={14} />

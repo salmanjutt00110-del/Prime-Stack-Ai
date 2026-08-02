@@ -133,10 +133,11 @@ export default function ProductDetail() {
   return (
     <div className="relative min-h-screen text-white overflow-x-hidden flex flex-col justify-between">
       <SEOHead
-        title={`${product.name} Official Subscription`}
+        title={`Buy ${product.name} Subscription in Pakistan`}
         description={product.description || `Get ${product.name} subscription at wholesale pricing with instant WhatsApp activation and replacement warranty at Prime Tools Hub.`}
         canonicalUrl={`${DOMAIN}/product/${id}`}
         ogImage={product.logo?.startsWith("http") ? product.logo : `${DOMAIN}/${product.logo}`}
+        ogType="product"
         schemaJson={schemaGraph}
       />
       <Navbar />
@@ -169,7 +170,7 @@ export default function ProductDetail() {
         />
       </div>
 
-      <main className="flex-grow pt-32 sm:pt-36">
+      <main id="main-content" className="flex-grow pt-32 sm:pt-36">
         {/* Navigation & Breadcrumbs */}
         <div className="mx-auto max-w-5xl px-4 sm:px-6 pt-4">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">

@@ -1,4 +1,4 @@
-import SEOHead from "@/components/SEOHead";
+﻿import SEOHead from "@/components/SEOHead";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloating from "@/components/WhatsAppFloating";
@@ -8,12 +8,12 @@ export default function CookiePolicy() {
   return (
     <div className="min-h-screen bg-[#050505] text-slate-100 font-sans selection:bg-[#00ff88] selection:text-black">
       <SEOHead
-        title="Cookie Policy | Prime Tools Hub"
+        title="Cookie Policy & Site Storage Info â€” Prime Tools Hub"
         description="Learn how Prime Tools Hub uses essential cookies and local storage to enhance site functionality, shopping cart performance, and session security."
-        canonical="https://primetoolshub.store/cookie-policy"
+        canonicalUrl="https://primetoolshub.store/cookie-policy"
       />
       <Navbar />
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <main id="main-content" className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-semibold uppercase tracking-wider mb-4">
             <Cookie size={14} />

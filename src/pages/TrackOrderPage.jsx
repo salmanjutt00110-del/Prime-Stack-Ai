@@ -1,4 +1,4 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 import SEOHead from "@/components/SEOHead";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -23,14 +23,14 @@ export default function TrackOrderPage() {
   return (
     <div className="min-h-screen bg-[#050505] text-slate-100 font-sans selection:bg-[#00ff88] selection:text-black">
       <SEOHead
-        title="Track Order Status | Prime Tools Hub"
+        title="Track Your Subscription Order Status â€” Prime Tools Hub"
         description="Check your digital subscription order status at Prime Tools Hub. Track delivery progress and message support instantly."
-        canonical="https://primetoolshub.store/track-order"
+        canonicalUrl="https://primetoolshub.store/track-order"
       />
 
       <Navbar />
 
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <main id="main-content" className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-4">

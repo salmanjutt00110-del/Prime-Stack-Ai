@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+﻿import { useEffect, useMemo } from "react";
 import { useLocation } from "react-router-dom";
 import AnnouncementBar from "@/components/AnnouncementBar";
 import Navbar from "@/components/Navbar";
@@ -49,8 +49,8 @@ export default function Home() {
   return (
     <div className="relative min-h-screen bg-[#050505] text-white overflow-x-hidden">
       <SEOHead
-        title="Buy ChatGPT Plus in Pakistan | Canva Pro, Veo 3 — Prime Tools Hub"
-        description="Pakistan's trusted marketplace for ChatGPT Plus, Canva Pro, Veo 3, CapCut, Gemini Pro & more. Fast delivery via JazzCash/EasyPaisa."
+        title="Buy ChatGPT Plus &amp; AI Subscriptions â€” Prime Tools Hub"
+        description="Pakistan's trusted marketplace for ChatGPT Plus, Canva Pro, Veo 3, CapCut, Gemini Pro &amp; more. Fast delivery via JazzCash/EasyPaisa."
         canonicalUrl={`${DOMAIN}/`}
         schemaJson={homepageSchema}
       />
@@ -63,7 +63,7 @@ export default function Home() {
       {/* Navigation Bar */}
       <Navbar />
 
-      <main>
+      <main id="main-content">
         {/* Hero Section */}
         <Hero />
 

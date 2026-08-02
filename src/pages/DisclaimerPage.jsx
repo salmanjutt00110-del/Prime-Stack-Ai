@@ -1,4 +1,4 @@
-import SEOHead from "@/components/SEOHead";
+﻿import SEOHead from "@/components/SEOHead";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloating from "@/components/WhatsAppFloating";
@@ -8,14 +8,14 @@ export default function DisclaimerPage() {
   return (
     <div className="min-h-screen bg-[#050505] text-slate-100 font-sans selection:bg-[#00ff88] selection:text-black">
       <SEOHead
-        title="Reseller Disclaimer | Prime Tools Hub — Third-Party Brand Statement"
+        title="Reseller Disclaimer & Brand Statement â€” Prime Tools Hub"
         description="Read the independent reseller disclaimer for Prime Tools Hub. We operate as an independent digital marketplace and do not claim official ownership of third-party software."
-        canonical="https://primetoolshub.store/disclaimer"
+        canonicalUrl="https://primetoolshub.store/disclaimer"
       />
 
       <Navbar />
 
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <main id="main-content" className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Header */}
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-semibold uppercase tracking-wider mb-4">

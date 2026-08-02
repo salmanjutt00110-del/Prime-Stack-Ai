@@ -37,7 +37,7 @@ export default function HowItWorksPage() {
   return (
     <div className="min-h-screen bg-[#050505] text-slate-100 font-sans selection:bg-[#00ff88] selection:text-black">
       <SEOHead
-        title="How It Works — 4-Step Simple Order Guide"
+        title="How to Order AI Tools &amp; Subscriptions — Prime Tools Hub"
         description="Learn how to order ChatGPT Plus, Canva Pro, Gemini Pro & VPNs in 4 simple steps: Browse → Click WhatsApp → Pay via JazzCash/EasyPaisa → Get Instant Delivery."
         canonicalUrl={pageUrl}
         schemaJson={schemaGraph}

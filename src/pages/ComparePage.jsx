@@ -1,4 +1,4 @@
-import SEOHead from "@/components/SEOHead";
+﻿import SEOHead from "@/components/SEOHead";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloating from "@/components/WhatsAppFloating";
@@ -9,17 +9,27 @@ import { WHATSAPP_NUMBER } from "@/data/products";
 export default function ComparePage() {
   const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}`;
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://primetoolshub.store/" },
+      { "@type": "ListItem", "position": 2, "name": "Price Comparison", "item": "https://primetoolshub.store/compare" }
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-[#050505] text-slate-100 font-sans selection:bg-[#00ff88] selection:text-black">
       <SEOHead
-        title="Price Comparison | Prime Tools Hub vs Official Retail Prices"
+        title="Compare AI Subscription Prices in PKR â€” Prime Tools Hub"
         description="Compare Prime Tools Hub localized prices in PKR with official USD credit card prices for ChatGPT Plus, Canva Pro, Gemini, CapCut & NordVPN. Save up to 80%."
-        canonical="https://primetoolshub.store/compare"
+        canonicalUrl="https://primetoolshub.store/compare"
+        schemaJson={breadcrumbSchema}
       />
 
       <Navbar />
 
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <main id="main-content" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-semibold uppercase tracking-wider mb-4">
@@ -42,19 +52,19 @@ export default function ComparePage() {
         {/* Why Save Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-16">
           <div className="p-6 rounded-2xl bg-[#0c0d12] border border-white/10 text-center">
-            <h3 className="font-bold text-white text-base mb-2">💳 No International Card Taxes</h3>
+            <h3 className="font-bold text-white text-base mb-2">ðŸ’³ No International Card Taxes</h3>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Pakistani banks charge 10%–16% withholding tax + bank fees on foreign USD subscriptions. We eliminate currency taxes completely.
+              Pakistani banks charge 10%â€“16% withholding tax + bank fees on foreign USD subscriptions. We eliminate currency taxes completely.
             </p>
           </div>
           <div className="p-6 rounded-2xl bg-[#0c0d12] border border-white/10 text-center">
-            <h3 className="font-bold text-white text-base mb-2">⚡ Easy Local Payment</h3>
+            <h3 className="font-bold text-white text-base mb-2">âš¡ Easy Local Payment</h3>
             <p className="text-xs text-slate-400 leading-relaxed">
               Pay conveniently with EasyPaisa, JazzCash, or local Pakistani bank accounts without needing USD credit/debit cards.
             </p>
           </div>
           <div className="p-6 rounded-2xl bg-[#0c0d12] border border-white/10 text-center">
-            <h3 className="font-bold text-white text-base mb-2">🛡️ Full Duration Warranty</h3>
+            <h3 className="font-bold text-white text-base mb-2">ðŸ›¡ï¸ Full Duration Warranty</h3>
             <p className="text-xs text-slate-400 leading-relaxed">
               Every subscription is backed by our replacement guarantee, so you never lose access during your paid term.
             </p>

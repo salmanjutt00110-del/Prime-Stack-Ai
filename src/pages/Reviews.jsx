@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from "react";
+﻿import { useEffect, useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { Star, MessageCircle, Quote, Send } from "lucide-react";
 import Navbar from "@/components/Navbar";
@@ -50,11 +50,11 @@ export default function Reviews() {
 
   const submitReview = () => {
     const msg = encodeURIComponent(
-      `Hello Prime Tools Hub! 👋\n\nI'd like to leave a review:\n\n` +
-        `⭐ Rating: ${form.rating}/5\n` +
-        `👤 Name: ${form.name || "—"}\n` +
-        `🛒 Product: ${form.product || "—"}\n\n` +
-        `💬 "${form.text || "—"}"`
+      `Hello Prime Tools Hub! ðŸ‘‹\n\nI'd like to leave a review:\n\n` +
+        `â­ Rating: ${form.rating}/5\n` +
+        `ðŸ‘¤ Name: ${form.name || "â€”"}\n` +
+        `ðŸ›’ Product: ${form.product || "â€”"}\n\n` +
+        `ðŸ’¬ "${form.text || "â€”"}"`
     );
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, "_blank");
   };
@@ -102,13 +102,13 @@ export default function Reviews() {
   return (
     <div className="relative min-h-screen bg-[#050505] text-white overflow-x-hidden flex flex-col justify-between">
       <SEOHead
-        title="Verified Customer Testimonials & Client Reviews"
+        title="Verified Customer Reviews &amp; Ratings â€” Prime Tools Hub"
         description="Read 100% verified customer reviews and feedback for ChatGPT Plus, Gemini Pro, Canva Pro, CapCut Pro, SuperGrok, Surfshark VPN, and agency services at Prime Tools Hub."
         canonicalUrl={`${DOMAIN}/reviews`}
         schemaJson={schemaGraph}
       />
       <Navbar />
-      <main className="pt-32 sm:pt-36 flex-grow">
+      <main id="main-content" className="pt-32 sm:pt-36 flex-grow">
         
         {/* Visual Breadcrumb */}
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -342,9 +342,9 @@ export default function Reviews() {
                 onClick={() => navigate("/")}
                 className="hover:text-white transition-colors cursor-pointer"
               >
-                ← Back to Home
+                â† Back to Home
               </button>
-              <span>•</span>
+              <span>â€¢</span>
               <button
                 onClick={() => navigate("/html-sitemap")}
                 className="hover:text-white transition-colors cursor-pointer"

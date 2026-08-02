@@ -1,4 +1,4 @@
-import SEOHead from "@/components/SEOHead";
+﻿import SEOHead from "@/components/SEOHead";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloating from "@/components/WhatsAppFloating";
@@ -8,14 +8,14 @@ export default function PrivacyPolicy() {
   return (
     <div className="min-h-screen bg-[#050505] text-slate-100 font-sans selection:bg-[#00ff88] selection:text-black">
       <SEOHead
-        title="Privacy Policy | Prime Tools Hub — Customer Data Protection"
-        description="Read Prime Tools Hub's Privacy Policy. We respect your privacy — learn how customer data, WhatsApp contacts, and transactions are securely handled."
-        canonical="https://primetoolshub.store/privacy-policy"
+        title="Privacy Policy & Data Protection â€” Prime Tools Hub"
+        description="Read Prime Tools Hub's Privacy Policy. We respect your privacy â€” learn how customer data, WhatsApp contacts, and transactions are securely handled."
+        canonicalUrl="https://primetoolshub.store/privacy-policy"
       />
 
       <Navbar />
 
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <main id="main-content" className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Header */}
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-semibold uppercase tracking-wider mb-4">
@@ -26,7 +26,7 @@ export default function PrivacyPolicy() {
             Privacy Policy
           </h1>
           <p className="mt-3 text-sm text-slate-400">
-            Last Updated: August 2026 • Your Privacy Matters
+            Last Updated: August 2026 â€¢ Your Privacy Matters
           </p>
         </div>
 

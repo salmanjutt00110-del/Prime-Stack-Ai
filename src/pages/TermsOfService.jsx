@@ -1,4 +1,4 @@
-import SEOHead from "@/components/SEOHead";
+﻿import SEOHead from "@/components/SEOHead";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloating from "@/components/WhatsAppFloating";
@@ -8,14 +8,14 @@ export default function TermsOfService() {
   return (
     <div className="min-h-screen bg-[#050505] text-slate-100 font-sans selection:bg-[#00ff88] selection:text-black">
       <SEOHead
-        title="Terms of Service | Prime Tools Hub — Official Reseller Terms"
+        title="Terms of Service for Digital Subscriptions â€” Prime Tools Hub"
         description="Read the complete Terms of Service for Prime Tools Hub. Understand digital goods delivery, shared plan slot policies, 7-day replacement guarantee, and user obligations."
-        canonical="https://primetoolshub.store/terms-of-service"
+        canonicalUrl="https://primetoolshub.store/terms-of-service"
       />
 
       <Navbar />
 
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <main id="main-content" className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Header */}
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#00ff88]/10 border border-[#00ff88]/30 text-[#00ff88] text-xs font-semibold uppercase tracking-wider mb-4">
@@ -26,7 +26,7 @@ export default function TermsOfService() {
             Terms of Service
           </h1>
           <p className="mt-3 text-sm text-slate-400">
-            Last Updated: August 2026 • Effective Date: January 1, 2026
+            Last Updated: August 2026 â€¢ Effective Date: January 1, 2026
           </p>
         </div>
 
@@ -79,7 +79,7 @@ export default function TermsOfService() {
             </p>
             <ul className="list-disc pl-5 space-y-2">
               <li>Payments are accepted via JazzCash, EasyPaisa, Bank Account Transfer, and supported digital payment options.</li>
-              <li><strong className="text-white">Delivery SLA:</strong> 95% of orders are delivered within 15 to 30 minutes during standard support hours (9:00 AM – 11:00 PM PKT). Orders placed after hours will be processed first thing the following morning.</li>
+              <li><strong className="text-white">Delivery SLA:</strong> 95% of orders are delivered within 15 to 30 minutes during standard support hours (9:00 AM â€“ 11:00 PM PKT). Orders placed after hours will be processed first thing the following morning.</li>
             </ul>
           </section>
 
@@ -92,7 +92,7 @@ export default function TermsOfService() {
               Every product comes with a dedicated replacement warranty covering the active subscription duration:
             </p>
             <ul className="list-disc pl-5 space-y-2">
-              <li>If account credentials fail or upstream provider updates cause login issues within the warranty period, we will issue replacement credentials within 2–4 hours.</li>
+              <li>If account credentials fail or upstream provider updates cause login issues within the warranty period, we will issue replacement credentials within 2â€“4 hours.</li>
               <li>Misuse, password changes without authorization (on shared slots), reselling credentials, or violating software provider policies will void the warranty immediately.</li>
             </ul>
           </section>
