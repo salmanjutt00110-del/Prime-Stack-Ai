@@ -30,7 +30,7 @@ import { useLanguage } from "@/context/LanguageContext";
 const DESKTOP_LINKS = [
   { labelKey: "nav_home", href: "#home" },
   { labelKey: "nav_tools", href: "#products" },
-  { labelKey: "nav_pricing", href: "#products" },
+  { labelKey: "nav_seo", href: "/seo-guide", route: true, defaultLabel: "SEO Guide 2026" },
   { labelKey: "nav_reviews", href: "/reviews", route: true },
   { labelKey: "nav_faq", href: "#faq" },
   { labelKey: "nav_contact", href: "#contact" },
@@ -48,6 +48,17 @@ const MAIN_NAV_ITEMS = [
     text: "text-emerald-400"
   },
   { 
+    labelKey: "nav_seo", 
+    defaultLabel: "SEO Guide 2026", 
+    desc: "Google Ranking & AI SEO Tools", 
+    href: "/seo-guide", 
+    route: true,
+    icon: Search,
+    accent: "from-emerald-500/20 to-cyan-500/10",
+    border: "border-emerald-500/30",
+    text: "text-[#00ff88]"
+  },
+  { 
     labelKey: "nav_tools", 
     defaultLabel: "Products", 
     desc: "ChatGPT, Canva, Veo & More", 
@@ -56,16 +67,6 @@ const MAIN_NAV_ITEMS = [
     accent: "from-violet-500/20 to-purple-500/10",
     border: "border-violet-500/30",
     text: "text-violet-400"
-  },
-  { 
-    labelKey: "nav_services", 
-    defaultLabel: "Services", 
-    desc: "Digital Agency & Web Solutions", 
-    href: "#digital-services", 
-    icon: Sparkles,
-    accent: "from-cyan-500/20 to-blue-500/10",
-    border: "border-cyan-500/30",
-    text: "text-cyan-400"
   },
   { 
     labelKey: "nav_reviews", 

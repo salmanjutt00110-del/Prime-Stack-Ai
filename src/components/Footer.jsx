@@ -64,12 +64,13 @@ export default function Footer() {
               Quick Links
             </h4>
             <ul className="space-y-2.5 text-xs font-semibold">
-              <li><a href="#home" className="hover:text-white transition-colors">Home</a></li>
-              <li><a href="#products" className="hover:text-white transition-colors">All Tools</a></li>
-              <li><a href="#products" className="hover:text-white transition-colors">Pricing</a></li>
-              <li><a href="#testimonials" className="hover:text-white transition-colors">Reviews</a></li>
-              <li><a href="#faq" className="hover:text-white transition-colors">FAQ</a></li>
-              <li><a href="#contact" className="hover:text-white transition-colors">Contact</a></li>
+              <li><a href="/" className="hover:text-white transition-colors">Home</a></li>
+              <li><a href="/seo-guide" className="text-[#00ff88] font-bold hover:underline transition-colors flex items-center gap-1.5">SEO Guide (2026) <span className="text-[10px] bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 rounded">NEW</span></a></li>
+              <li><a href="/#products" className="hover:text-white transition-colors">All Tools</a></li>
+              <li><a href="/reviews" className="hover:text-white transition-colors">Reviews</a></li>
+              <li><a href="/html-sitemap" className="hover:text-white transition-colors">HTML Sitemap</a></li>
+              <li><a href="/#faq" className="hover:text-white transition-colors">FAQ</a></li>
+              <li><a href="/#contact" className="hover:text-white transition-colors">Contact</a></li>
             </ul>
           </div>
 

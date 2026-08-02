@@ -40,6 +40,7 @@ export default function HtmlSitemap() {
 
   const corePages = [
     { name: "Home — Premium AI Marketplace", link: "/" },
+    { name: "Complete Website SEO Guide (2026)", link: "/seo-guide" },
     { name: "Verified Customer Reviews & Proofs", link: "/reviews" },
     { name: "Bulk Purchase Discounts & Reseller Pricing", link: "/#bulk-offers" },
     { name: "Tiered Rewards & Free Gifts", link: "/#products" },
