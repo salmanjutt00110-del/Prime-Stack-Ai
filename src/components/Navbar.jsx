@@ -83,10 +83,22 @@ const MAIN_NAV_ITEMS = [
 
 const SUPPORT_NAV_ITEMS = [
   { 
+    labelKey: "nav_how_it_works", 
+    defaultLabel: "How It Works", 
+    desc: "4-Step Simple Order Guide", 
+    href: "/how-it-works", 
+    route: true,
+    icon: Zap,
+    accent: "from-emerald-500/20 to-teal-500/10",
+    border: "border-emerald-500/30",
+    text: "text-emerald-400"
+  },
+  { 
     labelKey: "nav_faq", 
     defaultLabel: "FAQ", 
-    desc: "Instant Answers & Ordering Info", 
-    href: "#faq", 
+    desc: "Instant Answers & Knowledge Base", 
+    href: "/faq", 
+    route: true,
     icon: HelpCircle,
     accent: "from-indigo-500/20 to-blue-500/10",
     border: "border-indigo-500/30",

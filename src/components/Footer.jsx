@@ -1,4 +1,5 @@
-import { MessageCircle, Clock, MapPin, Instagram, Facebook } from "lucide-react";
+import { Link } from "react-router-dom";
+import { MessageCircle, Clock, MapPin, Instagram, Facebook, ShieldCheck, Lock, CheckCircle2 } from "lucide-react";
 import Logo from "@/components/Logo";
 import { WHATSAPP_NUMBER } from "@/data/products";
 
@@ -18,15 +19,26 @@ export default function Footer() {
           
           {/* COLUMN 1 — BRAND */}
           <div className="space-y-4">
-            <a href="/" className="flex items-center gap-2.5">
+            <Link to="/" className="flex items-center gap-2.5">
               <Logo size={36} />
               <span className="font-display font-black text-xl text-white">
                 Prime <span className="text-[#00ff88]">Tools Hub</span>
               </span>
-            </a>
+            </Link>
             <p className="text-xs text-slate-400 leading-relaxed font-body">
               Pakistan's trusted digital tools marketplace since 2022. Delivering official ChatGPT Plus, Canva Pro, Gemini, CapCut &amp; VPNs with full warranty support.
             </p>
+
+            {/* Trust Badges */}
+            <div className="pt-2 flex flex-wrap items-center gap-2 text-[11px] font-bold">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
+                <Lock size={12} /> 256-Bit SSL Encrypted
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400">
+                <ShieldCheck size={12} /> SECP &amp; NTN Verified
+              </span>
+            </div>
+
             <div className="flex items-center gap-3 pt-2">
               <a
                 href={whatsappUrl}
@@ -61,39 +73,35 @@ export default function Footer() {
           {/* COLUMN 2 — QUICK LINKS */}
           <div>
             <h4 className="font-display font-black text-sm text-[#00ff88] uppercase tracking-wider mb-4">
-              Quick Links
+              Navigation &amp; Help
             </h4>
-            <ul className="space-y-2.5 text-xs font-semibold">
-              <li><a href="/" className="hover:text-white transition-colors">Home</a></li>
-              <li><a href="/seo-guide" className="text-[#00ff88] font-bold hover:underline transition-colors flex items-center gap-1.5">SEO Guide (2026) <span className="text-[10px] bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 rounded">NEW</span></a></li>
-              <li><a href="/#products" className="hover:text-white transition-colors">All Tools</a></li>
-              <li><a href="/reviews" className="hover:text-white transition-colors">Reviews</a></li>
-              <li><a href="/html-sitemap" className="hover:text-white transition-colors">HTML Sitemap</a></li>
-              <li><a href="/#faq" className="hover:text-white transition-colors">FAQ</a></li>
-              <li><a href="/#contact" className="hover:text-white transition-colors">Contact</a></li>
+            <ul className="space-y-2 text-xs font-semibold">
+              <li><Link to="/" className="hover:text-white transition-colors">Home</Link></li>
+              <li><Link to="/how-it-works" className="hover:text-white transition-colors">How It Works</Link></li>
+              <li><Link to="/faq" className="hover:text-white transition-colors">FAQ &amp; Knowledge Base</Link></li>
+              <li><Link to="/reviews" className="hover:text-white transition-colors">Customer Reviews (1,200+)</Link></li>
+              <li><Link to="/seo-guide" className="text-[#00ff88] font-bold hover:underline transition-colors flex items-center gap-1.5">SEO Guide (2026) <span className="text-[10px] bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 rounded">NEW</span></Link></li>
+              <li><Link to="/html-sitemap" className="hover:text-white transition-colors">HTML Sitemap</Link></li>
             </ul>
           </div>
 
-          {/* COLUMN 3 — TOOLS */}
+          {/* COLUMN 3 — LEGAL & COMPLIANCE */}
           <div>
             <h4 className="font-display font-black text-sm text-[#00ff88] uppercase tracking-wider mb-4">
-              Popular Tools
+              Legal &amp; Policies
             </h4>
-            <ul className="space-y-2.5 text-xs font-semibold">
-              <li><a href="#products" className="hover:text-white transition-colors">ChatGPT Plus</a></li>
-              <li><a href="#products" className="hover:text-white transition-colors">Canva Pro</a></li>
-              <li><a href="#products" className="hover:text-white transition-colors">Veo 3</a></li>
-              <li><a href="#products" className="hover:text-white transition-colors">CapCut Pro</a></li>
-              <li><a href="#products" className="hover:text-white transition-colors">Gemini Advanced</a></li>
-              <li><a href="#products" className="hover:text-white transition-colors">Surfshark VPN</a></li>
-              <li><a href="#products" className="hover:text-white transition-colors">SuperGrok</a></li>
+            <ul className="space-y-2 text-xs font-semibold">
+              <li><Link to="/terms-of-service" className="hover:text-white transition-colors">Terms of Service</Link></li>
+              <li><Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
+              <li><Link to="/refund-policy" className="hover:text-white transition-colors">Refund &amp; Guarantee Policy</Link></li>
+              <li><Link to="/disclaimer" className="hover:text-white transition-colors">Reseller Disclaimer</Link></li>
             </ul>
           </div>
 
           {/* COLUMN 4 — CONTACT */}
           <div>
             <h4 className="font-display font-black text-sm text-[#00ff88] uppercase tracking-wider mb-4">
-              Contact Us
+              Contact &amp; Support
             </h4>
             <ul className="space-y-3 text-xs font-semibold">
               <li>
@@ -114,22 +122,31 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2 text-slate-300">
                 <MapPin size={15} className="text-amber-400" />
-                <span>📍 Based in Pakistan 🇵🇰</span>
+                <span>📍 Based in Lahore, Pakistan 🇵🇰</span>
               </li>
             </ul>
           </div>
 
         </div>
 
+        {/* RESELLER DISCLOSURE BANNER */}
+        <div className="py-6 border-b border-white/10 text-[11px] text-slate-400 leading-relaxed text-center sm:text-left">
+          <p className="max-w-5xl">
+            <strong className="text-slate-300">Reseller Disclosure:</strong> Prime Tools Hub is an independent digital tools reseller platform. We are not officially affiliated with, endorsed by, or sponsored by OpenAI, Canva, Google, CapCut, Bytedance, Nord Security, or Surfshark. All product names, trademarks, and logos are property of their respective owners.
+          </p>
+        </div>
+
         {/* BOTTOM BAR */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400 font-body">
-          <p>© 2025 Prime Tools Hub. All Rights Reserved.</p>
-          <div className="flex items-center gap-4">
-            <a href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</a>
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400 font-body">
+          <p>© 2026 Prime Tools Hub. All Rights Reserved.</p>
+          <div className="flex items-center gap-4 text-[11px]">
+            <Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
             <span>•</span>
-            <a href="/terms" className="hover:text-white transition-colors">Terms of Service</a>
+            <Link to="/terms-of-service" className="hover:text-white transition-colors">Terms of Service</Link>
             <span>•</span>
-            <a href="/refund-policy" className="hover:text-white transition-colors">Refund Policy</a>
+            <Link to="/refund-policy" className="hover:text-white transition-colors">Refund Policy</Link>
+            <span>•</span>
+            <Link to="/disclaimer" className="hover:text-white transition-colors">Disclaimer</Link>
           </div>
         </div>
 

@@ -18,6 +18,12 @@ const ProductDetail = lazy(() => import('@/pages/ProductDetail'));
 const Reviews = lazy(() => import('@/pages/Reviews'));
 const HtmlSitemap = lazy(() => import('@/pages/HtmlSitemap'));
 const SeoGuide = lazy(() => import('@/pages/SeoGuide'));
+const TermsOfService = lazy(() => import('@/pages/TermsOfService'));
+const PrivacyPolicy = lazy(() => import('@/pages/PrivacyPolicy'));
+const RefundPolicy = lazy(() => import('@/pages/RefundPolicy'));
+const Disclaimer = lazy(() => import('@/pages/Disclaimer'));
+const FaqPage = lazy(() => import('@/pages/FaqPage'));
+const HowItWorksPage = lazy(() => import('@/pages/HowItWorksPage'));
 
 const AuthenticatedApp = ({ isLoaded }) => {
   const location = useLocation();
@@ -62,6 +68,62 @@ const AuthenticatedApp = ({ isLoaded }) => {
           element={
             <PageTransition>
               <SeoGuide />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/terms-of-service"
+          element={
+            <PageTransition>
+              <TermsOfService />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/terms"
+          element={
+            <PageTransition>
+              <TermsOfService />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/privacy-policy"
+          element={
+            <PageTransition>
+              <PrivacyPolicy />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/refund-policy"
+          element={
+            <PageTransition>
+              <RefundPolicy />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/disclaimer"
+          element={
+            <PageTransition>
+              <Disclaimer />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/faq"
+          element={
+            <PageTransition>
+              <FaqPage />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/how-it-works"
+          element={
+            <PageTransition>
+              <HowItWorksPage />
             </PageTransition>
           }
         />

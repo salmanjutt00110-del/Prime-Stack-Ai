@@ -60,7 +60,13 @@ function generateSitemap() {
   const staticPages = [
     { loc: `${DOMAIN}/`, priority: '1.0', changefreq: 'daily' },
     { loc: `${DOMAIN}/seo-guide`, priority: '0.9', changefreq: 'weekly' },
+    { loc: `${DOMAIN}/how-it-works`, priority: '0.8', changefreq: 'weekly' },
+    { loc: `${DOMAIN}/faq`, priority: '0.8', changefreq: 'weekly' },
     { loc: `${DOMAIN}/reviews`, priority: '0.8', changefreq: 'weekly' },
+    { loc: `${DOMAIN}/terms-of-service`, priority: '0.7', changefreq: 'monthly' },
+    { loc: `${DOMAIN}/privacy-policy`, priority: '0.7', changefreq: 'monthly' },
+    { loc: `${DOMAIN}/refund-policy`, priority: '0.7', changefreq: 'monthly' },
+    { loc: `${DOMAIN}/disclaimer`, priority: '0.7', changefreq: 'monthly' },
     { loc: `${DOMAIN}/html-sitemap`, priority: '0.7', changefreq: 'monthly' },
   ];
 
