@@ -59,7 +59,7 @@ export const HERO_PRODUCTS = [
   { id: "chatgpt-plus-10d", name: "ChatGPT Plus (10 Days Warranty)", tag: "⚡ 10 Days Warranty", duration: "10 Days Warranty", price: "Rs. 1,599", oldPrice: "Rs. 1,999", description: "ChatGPT Plus subscription with 10 Days replacement warranty. Fast delivery & full GPT-4o access.", tagline: "Official ChatGPT Plus access with 10 Days replacement warranty.", stock: "8", logo: BRAND.chatgpt, color: "#10A37F", color2: "#0D8A6D", particle: "#10A37F" },
   { id: "heygen-creator-600c", name: "HeyGen Creator", tag: "🎬 600 Credits", duration: "30 Days", price: "Rs. 3,999", oldPrice: "Rs. 4,999", description: "HeyGen Creator subscription with 600 AI credits for 30 days. Export Full HD 1080p videos with multi-language support. 24-hour warranty.", tagline: "600 AI Credits for 30 days · 1080p Full HD video export.", stock: "12", logo: BRAND.heygen, color: "#5C24FF", color2: "#0066FF", particle: "#6366F1" },
   { id: "notion-plus-12m", name: "Notion Plus", tag: "🎓 12 Months", duration: "12 Months", price: "Rs. 1,199", oldPrice: "Rs. 1,999", description: "Notion Education Plus Account for 12 months with full Pro features and 3,000 AI credits per month. Email change allowed and Outlook mail access included.", tagline: "12 Months Education Plus · 3,000 AI credits/month & email change allowed.", stock: "15", logo: BRAND.notion, color: "#FFFFFF", color2: "#888888", particle: "#FFFFFF" },
-  { id: "figma-pro-12m", name: "Figma Pro", tag: "🎨 Full Warranty", duration: "12 Months", price: "Rs. 3,799", oldPrice: "Rs. 4,999", description: "Figma Pro premium subscription with full design and prototyping features for 12 months. Covered by full warranty.", tagline: "12 Months Figma Pro full subscription with 100% full warranty.", stock: "8", logo: BRAND.figma, color: "#F24E1E", color2: "#A259FF", particle: "#0ACF83" },
+  { id: "figma-pro-12m", name: "Figma Pro", tag: "🎨 Full Warranty", duration: "12 Months", price: "Rs. 799", oldPrice: "Rs. 86,000", description: "Figma Pro premium subscription with full design and prototyping features for 12 months. Covered by full warranty.", tagline: "12 Months Figma Pro full subscription with 100% full warranty.", stock: "8", logo: BRAND.figma, color: "#F24E1E", color2: "#A259FF", particle: "#0ACF83" },
   { id: "supergrok-12m-premium", name: "SuperGrok 12 Months", tag: "❌ Out of Stock", duration: "12 Months", price: "Rs. 2,999", oldPrice: "Rs. 4,999", description: "SuperGrok 12-month premium subscription powered by X — Currently Out of Stock.", tagline: "12 Months SuperGrok subscription (Out of Stock).", stock: "0", logo: BRAND.grok, color: "#1DA1F2", color2: "#8B5CF6", particle: "#60A5FA" },
 ];
 
@@ -481,8 +481,8 @@ export const ALL_PRODUCTS = [
     id: "figma-pro-12m",
     name: "Figma Pro — 12 Months",
     duration: "12 Months",
-    price: "Rs. 3,799",
-    oldPrice: "Rs. 4,999",
+    price: "Rs. 799",
+    oldPrice: "Rs. 86,000",
     stock: "8",
     color: "#F24E1E",
     logo: BRAND.figma,

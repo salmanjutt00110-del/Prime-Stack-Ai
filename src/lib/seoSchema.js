@@ -103,7 +103,7 @@ export function generateOnlineStoreSchema() {
       "applicableCountry": ["PK", "WW"],
       "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
       "merchantReturnDays": 30,
-      "returnMethod": "https://schema.org/ReturnViaMail",
+      "returnMethod": "https://schema.org/ReturnByMail",
       "returnFees": "https://schema.org/FreeReturn"
     }
   };
@@ -170,7 +170,7 @@ export function generateProductSchema(product) {
     "applicableCountry": ["PK", "WW"],
     "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
     "merchantReturnDays": 30,
-    "returnMethod": "https://schema.org/ReturnOnline",
+    "returnMethod": "https://schema.org/ReturnByMail",
     "returnFees": "https://schema.org/FreeReturn",
     "description": product.warrantyNote || "Replacement warranty provided during subscription duration."
   };
@@ -225,6 +225,7 @@ export function generateProductSchema(product) {
       "priceCurrency": "PKR",
       "price": numericPrice,
       "priceValidUntil": "2026-12-31",
+      "validFrom": "2026-01-01",
       "availability": isOutOfStock ? "https://schema.org/OutOfStock" : "https://schema.org/InStock",
       "itemCondition": "https://schema.org/NewCondition",
       "seller": {
