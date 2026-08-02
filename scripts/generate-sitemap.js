@@ -59,14 +59,23 @@ function generateSitemap() {
 
   const staticPages = [
     { loc: `${DOMAIN}/`, priority: '1.0', changefreq: 'daily' },
-    { loc: `${DOMAIN}/seo-guide`, priority: '0.9', changefreq: 'weekly' },
-    { loc: `${DOMAIN}/how-it-works`, priority: '0.8', changefreq: 'weekly' },
-    { loc: `${DOMAIN}/faq`, priority: '0.8', changefreq: 'weekly' },
+    { loc: `${DOMAIN}/how-it-works`, priority: '0.9', changefreq: 'weekly' },
+    { loc: `${DOMAIN}/faq`, priority: '0.9', changefreq: 'weekly' },
+    { loc: `${DOMAIN}/compare`, priority: '0.9', changefreq: 'weekly' },
+    { loc: `${DOMAIN}/track-order`, priority: '0.8', changefreq: 'weekly' },
+    { loc: `${DOMAIN}/contact`, priority: '0.8', changefreq: 'weekly' },
     { loc: `${DOMAIN}/reviews`, priority: '0.8', changefreq: 'weekly' },
+    { loc: `${DOMAIN}/seo-guide`, priority: '0.9', changefreq: 'weekly' },
     { loc: `${DOMAIN}/terms-of-service`, priority: '0.7', changefreq: 'monthly' },
     { loc: `${DOMAIN}/privacy-policy`, priority: '0.7', changefreq: 'monthly' },
     { loc: `${DOMAIN}/refund-policy`, priority: '0.7', changefreq: 'monthly' },
     { loc: `${DOMAIN}/disclaimer`, priority: '0.7', changefreq: 'monthly' },
+    { loc: `${DOMAIN}/cookie-policy`, priority: '0.6', changefreq: 'monthly' },
+    { loc: `${DOMAIN}/acceptable-use`, priority: '0.6', changefreq: 'monthly' },
+    { loc: `${DOMAIN}/lahore`, priority: '0.8', changefreq: 'weekly' },
+    { loc: `${DOMAIN}/karachi`, priority: '0.8', changefreq: 'weekly' },
+    { loc: `${DOMAIN}/islamabad`, priority: '0.8', changefreq: 'weekly' },
+    { loc: `${DOMAIN}/faisalabad`, priority: '0.8', changefreq: 'weekly' },
     { loc: `${DOMAIN}/html-sitemap`, priority: '0.7', changefreq: 'monthly' },
   ];
 
@@ -122,28 +131,50 @@ ${imageEntries.join('\n')}
 </urlset>
 `;
 
-  // 3. Technical SEO Robots.txt
-  const robotsTxt = `User-agent: *
+  // 3. Sitemap Index (wraps both sitemaps)
+  const sitemapIndexXml = `<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>${DOMAIN}/sitemap.xml</loc>
+    <lastmod>${today}</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>${DOMAIN}/sitemap-images.xml</loc>
+    <lastmod>${today}</lastmod>
+  </sitemap>
+</sitemapindex>
+`;
+
+  // 4. Technical SEO Robots.txt
+  const robotsTxt = `# Prime Tools Hub — robots.txt
+# https://primetoolshub.store
+
+User-agent: *
 Allow: /
 Disallow: /login
 Disallow: /register
 Disallow: /forgot-password
 Disallow: /reset-password
 
-# Major Search Engine Crawlers
+# Google Search Crawlers
 User-agent: Googlebot
 Allow: /
 
 User-agent: Googlebot-Image
 Allow: /
 
+User-agent: Google-Extended
+Allow: /
+
+# Bing Search
 User-agent: Bingbot
 Allow: /
 
-User-agent: ByteDance
+# AI Search & Overviews
+User-agent: GPTBot
 Allow: /
 
-User-agent: GPTBot
+User-agent: ChatGPT-User
 Allow: /
 
 User-agent: PerplexityBot
@@ -152,6 +183,27 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+# Social Media
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+# Sitemaps
+Sitemap: ${DOMAIN}/sitemap-index.xml
 Sitemap: ${DOMAIN}/sitemap.xml
 Sitemap: ${DOMAIN}/sitemap-images.xml
 `;
@@ -164,14 +216,17 @@ Sitemap: ${DOMAIN}/sitemap-images.xml
 
   const publicSitemapPath = path.join(publicDir, 'sitemap.xml');
   const publicImageSitemapPath = path.join(publicDir, 'sitemap-images.xml');
+  const publicSitemapIndexPath = path.join(publicDir, 'sitemap-index.xml');
   const publicRobotsPath = path.join(publicDir, 'robots.txt');
 
   fs.writeFileSync(publicSitemapPath, sitemapXml, 'utf-8');
   fs.writeFileSync(publicImageSitemapPath, imageSitemapXml, 'utf-8');
+  fs.writeFileSync(publicSitemapIndexPath, sitemapIndexXml, 'utf-8');
   fs.writeFileSync(publicRobotsPath, robotsTxt, 'utf-8');
 
   console.log(`[sitemap-gen] Wrote ${publicSitemapPath} (${allUrls.length} URLs)`);
   console.log(`[sitemap-gen] Wrote ${publicImageSitemapPath} (${products.length + 1} Image URLs)`);
+  console.log(`[sitemap-gen] Wrote ${publicSitemapIndexPath} (Sitemap Index)`);
   console.log(`[sitemap-gen] Wrote ${publicRobotsPath}`);
 
   // Also write to dist/ if dist/ exists
@@ -179,8 +234,9 @@ Sitemap: ${DOMAIN}/sitemap-images.xml
   if (fs.existsSync(distDir)) {
     fs.writeFileSync(path.join(distDir, 'sitemap.xml'), sitemapXml, 'utf-8');
     fs.writeFileSync(path.join(distDir, 'sitemap-images.xml'), imageSitemapXml, 'utf-8');
+    fs.writeFileSync(path.join(distDir, 'sitemap-index.xml'), sitemapIndexXml, 'utf-8');
     fs.writeFileSync(path.join(distDir, 'robots.txt'), robotsTxt, 'utf-8');
-    console.log(`[sitemap-gen] Wrote sitemaps and robots.txt to dist/`);
+    console.log(`[sitemap-gen] Wrote sitemaps, sitemap-index, and robots.txt to dist/`);
   }
 }
 

@@ -220,26 +220,40 @@ export default function HtmlSitemap() {
               </ul>
             </div>
 
-            {/* 6. Contact & Support */}
+            {/* 6. Local City Pages */}
             <div className="rounded-2xl p-6 border bg-white/[0.02] border-white/10 backdrop-blur-xl shadow-xl">
               <div className="flex items-center gap-2.5 mb-5 pb-3 border-b border-white/10">
-                <div className="p-2 rounded-xl bg-yellow-500/20 text-yellow-400 border border-yellow-500/30">
+                <div className="p-2 rounded-xl bg-amber-500/20 text-amber-400 border border-amber-500/30">
                   <MessageCircle size={20} />
                 </div>
-                <h2 className="font-display font-bold text-lg text-white">Direct Support</h2>
+                <h2 className="font-display font-bold text-lg text-white">Local City Pages (Pakistan)</h2>
               </div>
-              <p className="text-xs text-slate-300 font-body leading-relaxed mb-4">
-                Have questions or need custom multi-seat agency billing? Contact our dedicated WhatsApp support for instant assistance.
-              </p>
-              <a
-                href="https://wa.me/923707020580"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-500 transition-all shadow-lg"
-              >
-                <MessageCircle size={15} />
-                <span>WhatsApp: +92 370 7020580</span>
-              </a>
+              <ul className="space-y-3 font-body text-sm">
+                <li>
+                  <Link to="/lahore" className="flex items-center group text-slate-300 hover:text-white transition-colors">
+                    <ChevronRight size={14} className="text-amber-400 shrink-0" />
+                    <span className="group-hover:translate-x-1 transition-transform ml-1.5">Lahore — AI Tools &amp; Subscriptions</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/karachi" className="flex items-center group text-slate-300 hover:text-white transition-colors">
+                    <ChevronRight size={14} className="text-amber-400 shrink-0" />
+                    <span className="group-hover:translate-x-1 transition-transform ml-1.5">Karachi — Fast Digital Delivery</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/islamabad" className="flex items-center group text-slate-300 hover:text-white transition-colors">
+                    <ChevronRight size={14} className="text-amber-400 shrink-0" />
+                    <span className="group-hover:translate-x-1 transition-transform ml-1.5">Islamabad &amp; Pindi — Subscriptions</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/faisalabad" className="flex items-center group text-slate-300 hover:text-white transition-colors">
+                    <ChevronRight size={14} className="text-amber-400 shrink-0" />
+                    <span className="group-hover:translate-x-1 transition-transform ml-1.5">Faisalabad — Affordable AI Tools</span>
+                  </Link>
+                </li>
+              </ul>
             </div>
 
           </div>

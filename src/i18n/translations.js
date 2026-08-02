@@ -3,6 +3,7 @@ export const translations = {
     // Navbar
     nav_home: "Home",
     nav_tools: "Tools",
+    nav_seo: "SEO Guide 2026",
     nav_services: "Services",
     nav_pricing: "Pricing",
     nav_reviews: "Reviews",

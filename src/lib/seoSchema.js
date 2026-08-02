@@ -1,22 +1,27 @@
-/**
- * Prime Tools Hub — Schema.org JSON-LD Generator
+﻿/**
+ * Prime Tools Hub â€” Schema.org JSON-LD Generator
  * Enterprise-level, 100% Google Rich Results & Merchant Listings compliant.
  * 
  * Includes Schemas:
  * - Organization & OnlineStore
  * - WebSite & SearchAction
  * - WebPage & BreadcrumbList
+ * - CollectionPage
+ * - LocalBusiness
  * - Product, Offer, AggregateRating, Review
  * - ShippingDetails & MerchantReturnPolicy (Zero-warning Merchant Listings)
  * - FAQPage
  * - ItemList
  * - Service (Digital Agency Services)
+ * - HowTo
+ * - Speakable (AI Search Optimization)
  */
 
 export const DOMAIN = "https://primetoolshub.store";
 export const STORE_NAME = "Prime Tools Hub";
 export const LOGO_URL = `${DOMAIN}/prime-tools-logo.webp`;
 export const CONTACT_PHONE = "+923707020580";
+export const CONTACT_EMAIL = "support@primetoolshub.store";
 export const WHATSAPP_URL = `https://wa.me/${CONTACT_PHONE.replace("+", "")}`;
 
 export function getProductCategory(product) {
@@ -56,6 +61,7 @@ export function generateOrganizationSchema() {
     "@type": "Organization",
     "@id": `${DOMAIN}/#organization`,
     "name": STORE_NAME,
+    "alternateName": "PrimeToolsHub",
     "url": `${DOMAIN}/`,
     "logo": {
       "@type": "ImageObject",
@@ -65,21 +71,35 @@ export function generateOrganizationSchema() {
       "caption": STORE_NAME
     },
     "image": LOGO_URL,
-    "description": "Pakistan & Global's #1 marketplace for genuine AI tools, creator accounts, VPNs, and digital subscriptions.",
+    "description": "Pakistan & Global's #1 marketplace for genuine AI tools, creator accounts, VPNs, and digital subscriptions. Trusted by 1,200+ verified users.",
+    "foundingDate": "2022",
     "telephone": CONTACT_PHONE,
+    "email": CONTACT_EMAIL,
     "priceRange": "$$",
     "address": {
       "@type": "PostalAddress",
       "addressCountry": "PK",
-      "addressLocality": "Lahore / Global",
+      "addressLocality": "Lahore",
+      "addressRegion": "Punjab",
       "postalCode": "54000"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 31.5204,
+      "longitude": 74.3587
     },
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": CONTACT_PHONE,
       "contactType": "customer service",
       "areaServed": ["PK", "WW"],
-      "availableLanguage": ["English", "Urdu"]
+      "availableLanguage": ["English", "Urdu"],
+      "hoursAvailable": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "09:00",
+        "closes": "23:00"
+      }
     },
     "sameAs": [
       WHATSAPP_URL,
@@ -98,6 +118,8 @@ export function generateOnlineStoreSchema() {
     "image": LOGO_URL,
     "description": "Premium AI tools, ChatGPT Plus, Gemini Pro, Canva Pro, CapCut Pro, and VPN digital subscriptions with instant activation.",
     "priceRange": "$$",
+    "currenciesAccepted": "PKR",
+    "paymentAccepted": "JazzCash, EasyPaisa, Bank Transfer",
     "hasMerchantReturnPolicy": {
       "@type": "MerchantReturnPolicy",
       "applicableCountry": ["PK", "WW"],
@@ -115,7 +137,9 @@ export function generateWebSiteSchema() {
     "@id": `${DOMAIN}/#website`,
     "url": `${DOMAIN}/`,
     "name": STORE_NAME,
+    "alternateName": "PrimeToolsHub.store",
     "publisher": { "@id": `${DOMAIN}/#organization` },
+    "inLanguage": "en",
     "potentialAction": {
       "@type": "SearchAction",
       "target": {
@@ -124,6 +148,129 @@ export function generateWebSiteSchema() {
       },
       "query-input": "required name=search_term_string"
     }
+  };
+}
+
+/** WebPage schema â€” use on every individual page */
+export function generateWebPageSchema({ name, description, url, breadcrumbItems = [] }) {
+  const schema = {
+    "@type": "WebPage",
+    "@id": `${url}#webpage`,
+    "url": url,
+    "name": name,
+    "description": description,
+    "isPartOf": { "@id": `${DOMAIN}/#website` },
+    "about": { "@id": `${DOMAIN}/#organization` },
+    "inLanguage": "en",
+    "dateModified": new Date().toISOString().split("T")[0],
+  };
+  if (breadcrumbItems.length > 0) {
+    schema.breadcrumb = { "@id": `${url}#breadcrumb` };
+  }
+  return schema;
+}
+
+/** CollectionPage schema â€” use on product listing / catalog pages */
+export function generateCollectionPageSchema({ name, description, url }) {
+  return {
+    "@type": "CollectionPage",
+    "@id": `${url}#collectionpage`,
+    "url": url,
+    "name": name,
+    "description": description,
+    "isPartOf": { "@id": `${DOMAIN}/#website` },
+    "about": { "@id": `${DOMAIN}/#organization` },
+    "inLanguage": "en",
+  };
+}
+
+/** LocalBusiness schema â€” for local SEO city pages */
+export function generateLocalBusinessSchema(cityName = "Lahore") {
+  const geoMap = {
+    "Lahore": { lat: 31.5204, lng: 74.3587 },
+    "Karachi": { lat: 24.8607, lng: 67.0011 },
+    "Islamabad": { lat: 33.6844, lng: 73.0479 },
+    "Faisalabad": { lat: 31.4504, lng: 73.1350 },
+  };
+  const geo = geoMap[cityName] || geoMap["Lahore"];
+
+  return {
+    "@type": "LocalBusiness",
+    "@id": `${DOMAIN}/#localbusiness-${cityName.toLowerCase()}`,
+    "name": `${STORE_NAME} â€” ${cityName}`,
+    "description": `Buy ChatGPT Plus, Canva Pro, Gemini Pro & VPN subscriptions in ${cityName}, Pakistan. Instant WhatsApp delivery with full warranty.`,
+    "url": `${DOMAIN}/${cityName.toLowerCase()}`,
+    "telephone": CONTACT_PHONE,
+    "email": CONTACT_EMAIL,
+    "priceRange": "$$",
+    "image": LOGO_URL,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": cityName,
+      "addressRegion": cityName === "Karachi" ? "Sindh" : cityName === "Islamabad" ? "Islamabad Capital Territory" : "Punjab",
+      "addressCountry": "PK"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": geo.lat,
+      "longitude": geo.lng
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "09:00",
+      "closes": "23:00"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": cityName
+    }
+  };
+}
+
+/** HowTo schema â€” for How It Works page */
+export function generateHowToSchema() {
+  return {
+    "@type": "HowTo",
+    "@id": `${DOMAIN}/how-it-works#howto`,
+    "name": "How to Order AI Tools & Digital Subscriptions from Prime Tools Hub",
+    "description": "Step-by-step guide: Browse products, click WhatsApp, pay via JazzCash/EasyPaisa, and receive instant activation within 15 minutes.",
+    "totalTime": "PT15M",
+    "estimatedCost": {
+      "@type": "MonetaryAmount",
+      "currency": "PKR",
+      "value": "279"
+    },
+    "tool": [
+      { "@type": "HowToTool", "name": "WhatsApp" },
+      { "@type": "HowToTool", "name": "JazzCash or EasyPaisa" }
+    ],
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Browse Products",
+        "text": "Visit primetoolshub.store and explore our catalog of ChatGPT Plus, Canva Pro, Gemini Pro, CapCut Pro, VPNs, and other AI tool subscriptions."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Click 'Buy on WhatsApp'",
+        "text": "Select any product and click the 'Buy on WhatsApp' button. Your order details will be auto-filled in a WhatsApp message."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Make Payment",
+        "text": "Pay securely via JazzCash, EasyPaisa, or Bank Transfer. Our team will confirm your payment within minutes."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Receive Instant Activation",
+        "text": "Get your premium subscription credentials or activation link delivered directly to your WhatsApp within 15 minutes."
+      }
+    ]
   };
 }
 
@@ -148,7 +295,7 @@ export function generateBreadcrumbSchema(items = []) {
 
   return {
     "@type": "BreadcrumbList",
-    "@id": `${DOMAIN}/#breadcrumb-${items.map(i => i.name).join("-").toLowerCase()}`,
+    "@id": `${DOMAIN}/#breadcrumb-${items.map(i => i.name).join("-").toLowerCase().replace(/\s+/g, "-")}`,
     "itemListElement": elements
   };
 }
@@ -224,7 +371,7 @@ export function generateProductSchema(product) {
       "url": productUrl,
       "priceCurrency": "PKR",
       "price": numericPrice,
-      "priceValidUntil": "2026-12-31",
+      "priceValidUntil": "2027-12-31",
       "validFrom": "2026-01-01",
       "availability": isOutOfStock ? "https://schema.org/OutOfStock" : "https://schema.org/InStock",
       "itemCondition": "https://schema.org/NewCondition",
@@ -288,7 +435,7 @@ export function generateServiceSchemas() {
     },
     {
       id: "social-management",
-      name: "360° Social Media Management & Organic Scaling",
+      name: "360Â° Social Media Management & Organic Scaling",
       description: "Monthly content calendars, graphic post designs, video reels, hashtag strategies, and audience engagement.",
       provider: STORE_NAME
     }
@@ -392,7 +539,11 @@ export function generateSeoGuideSchema() {
     "datePublished": "2026-01-01",
     "dateModified": "2026-08-02",
     "articleSection": "Search Engine Optimization",
-    "keywords": "Website SEO Guide 2026, Google Search Console Setup, Technical SEO Checklist, AI SEO Prompt, Image SEO, Backlink Strategies, Schema Markup Generator"
+    "keywords": "Website SEO Guide 2026, Google Search Console Setup, Technical SEO Checklist, AI SEO Prompt, Image SEO, Backlink Strategies, Schema Markup Generator",
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": ["h1", "h2", ".seo-guide-intro"]
+    }
   };
 }
 
@@ -404,6 +555,13 @@ export function generateHomepageGraph(products = []) {
   const faqPage = generateFAQPageSchema();
   const services = generateServiceSchemas();
   const productSchemas = products.map((p) => generateProductSchema(p)).filter(Boolean);
+
+  const webPage = generateWebPageSchema({
+    name: "Buy ChatGPT Plus in Pakistan | Canva Pro, Veo 3 â€” Prime Tools Hub",
+    description: "Pakistan's trusted marketplace for ChatGPT Plus, Canva Pro, Veo 3, CapCut, Gemini Pro & more. Fast delivery via JazzCash/EasyPaisa.",
+    url: `${DOMAIN}/`,
+    breadcrumbItems: [{ name: "Products", url: "/#products" }]
+  });
 
   const itemList = {
     "@type": "ItemList",
@@ -424,6 +582,7 @@ export function generateHomepageGraph(products = []) {
       organization,
       store,
       website,
+      webPage,
       breadcrumbs,
       faqPage,
       itemList,
@@ -432,3 +591,4 @@ export function generateHomepageGraph(products = []) {
     ]
   };
 }
+

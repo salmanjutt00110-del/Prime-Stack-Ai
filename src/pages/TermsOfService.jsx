@@ -1,175 +1,134 @@
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
-import { ShieldCheck, FileText, CheckCircle2, AlertTriangle, HelpCircle, ArrowLeft } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import WhatsAppFloating from "@/components/WhatsAppFloating";
+import { ShieldCheck, FileText, AlertCircle, HelpCircle } from "lucide-react";
 
 export default function TermsOfService() {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
-    <div className="min-h-screen bg-[#050505] text-slate-200 flex flex-col font-body selection:bg-emerald-500/30 selection:text-emerald-300">
+    <div className="min-h-screen bg-[#050505] text-slate-100 font-sans selection:bg-[#00ff88] selection:text-black">
       <SEOHead
-        title="Terms of Service & Usage Policy | Prime Tools Hub"
-        description="Official Terms of Service for Prime Tools Hub. Read our digital goods terms, shared account guidelines, 7-day replacement policy, and reseller terms."
-        canonicalUrl="https://primetoolshub.store/terms-of-service"
+        title="Terms of Service | Prime Tools Hub — Official Reseller Terms"
+        description="Read the complete Terms of Service for Prime Tools Hub. Understand digital goods delivery, shared plan slot policies, 7-day replacement guarantee, and user obligations."
+        canonical="https://primetoolshub.store/terms-of-service"
       />
+
       <Navbar />
 
-      <main className="flex-grow pt-28 pb-16 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto w-full">
-        {/* Header Breadcrumb & Title */}
-        <div className="mb-8 border-b border-white/10 pb-8">
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 text-xs font-semibold text-emerald-400 hover:text-emerald-300 transition-colors mb-4"
-          >
-            <ArrowLeft size={14} /> Back to Home
-          </Link>
-          <div className="flex items-center gap-3 mb-3">
-            <span className="p-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
-              <FileText size={24} />
-            </span>
-            <span className="text-xs font-bold uppercase tracking-wider text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
-              Legal Agreement
-            </span>
+      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#00ff88]/10 border border-[#00ff88]/30 text-[#00ff88] text-xs font-semibold uppercase tracking-wider mb-4">
+            <ShieldCheck size={14} />
+            <span>Legal Agreement</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-display font-black text-white tracking-tight">
-            Terms of Service & Terms of Use
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+            Terms of Service
           </h1>
-          <p className="text-sm text-slate-400 mt-2">
-            Last Updated: August 2026 • Applies to all purchases on PrimeToolsHub.store
+          <p className="mt-3 text-sm text-slate-400">
+            Last Updated: August 2026 • Effective Date: January 1, 2026
           </p>
         </div>
 
         {/* Reseller Disclosure Alert Box */}
-        <div className="mb-8 p-5 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-200 text-xs sm:text-sm leading-relaxed flex gap-4 items-start">
-          <AlertTriangle size={24} className="text-amber-400 shrink-0 mt-0.5" />
+        <div className="mb-10 p-5 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-200 text-sm leading-relaxed flex items-start gap-4">
+          <AlertCircle size={22} className="text-amber-400 flex-shrink-0 mt-0.5" />
           <div>
-            <h2 className="font-bold text-amber-300 text-sm mb-1 uppercase tracking-wide">
-              Independent Reseller Compliance Disclosure
-            </h2>
+            <h3 className="font-bold text-amber-300 mb-1">Independent Reseller Disclosure</h3>
             <p>
-              Prime Tools Hub (<strong className="text-white">primetoolshub.store</strong>) operates as an independent digital subscription reseller. We are not officially affiliated with, endorsed by, or sponsored by OpenAI, Canva, Google, CapCut, NordVPN, Surfshark, or any software provider listed. All product names, logos, and trademarks belong to their respective copyright holders.
+              Prime Tools Hub (primetoolshub.store) operates as an independent digital subscription reseller. We are not officially affiliated with, endorsed by, or partnered with OpenAI, Canva, Google, CapCut, or any software provider listed. All brand names and trademarks belong to their respective owners.
             </p>
           </div>
         </div>
 
-        {/* Content Sections */}
-        <div className="space-y-8 text-sm leading-relaxed text-slate-300">
+        {/* Legal Content Sections */}
+        <div className="space-y-10 text-slate-300 text-sm leading-relaxed bg-[#0c0d12] p-6 sm:p-10 rounded-3xl border border-white/10 shadow-2xl">
           
-          {/* Section 1 */}
-          <section className="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 space-y-4">
-            <h2 className="text-xl font-display font-bold text-white flex items-center gap-2">
-              <CheckCircle2 size={18} className="text-emerald-400" />
+          <section className="space-y-3">
+            <h2 className="text-xl font-bold text-white flex items-center gap-2">
+              <FileText size={20} className="text-[#00ff88]" />
               1. Acceptance of Terms
             </h2>
             <p>
-              By accessing, browsing, or purchasing from Prime Tools Hub, you agree to be bound by these Terms of Service. If you do not agree with any part of these terms, you must not use our website or purchase any digital subscriptions.
+              By accessing or purchasing digital goods from Prime Tools Hub ("we", "us", or "our"), you agree to be bound by these Terms of Service. If you do not agree to all terms, please refrain from using our service. These terms apply to all visitors, users, and buyers.
             </p>
           </section>
 
-          {/* Section 2 */}
-          <section className="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 space-y-4">
-            <h2 className="text-xl font-display font-bold text-white flex items-center gap-2">
-              <CheckCircle2 size={18} className="text-emerald-400" />
-              2. Nature of Digital Goods & Account Types
+          <section className="space-y-3">
+            <h2 className="text-xl font-bold text-white flex items-center gap-2">
+              <ShieldCheck size={20} className="text-[#00ff88]" />
+              2. Nature of Digital Services &amp; Account Types
             </h2>
             <p>
-              We provide access to legitimate digital accounts, redeem links, and multi-user slots for premium productivity and AI software.
+              Prime Tools Hub provides access to digital tools, software subscriptions, and education/team accounts. Depending on the product tier selected:
             </p>
-            <ul className="list-disc list-inside space-y-2 text-slate-400 pl-2">
-              <li><strong className="text-slate-200">Official Semi-Private / Shared Slots:</strong> Access is provided on managed account slots. Your personal files and workspaces remain private, but login credentials must not be altered without authorization.</li>
-              <li><strong className="text-slate-200">Personal Account Activations:</strong> Activations (e.g., Gemini Pro, Canva Edu) are linked directly to your personal email address via official redeem invites.</li>
-              <li><strong className="text-slate-200">Device Limits:</strong> Each single-user purchase is strictly restricted to 1 active device at a time unless explicitly sold as a multi-seat admin team package.</li>
+            <ul className="list-disc pl-5 space-y-2">
+              <li><strong className="text-white">Shared Plan Slots / Team Seats:</strong> Products marked as shared slots provide multi-user access under a managed team or family plan. Personal workspace items remain private, but plan credentials must be respected.</li>
+              <li><strong className="text-white">Dedicated / Redeem Link Accounts:</strong> Products delivered via redeem link or direct Gmail activation belong to your personal account.</li>
+              <li><strong className="text-white">Device &amp; Login Limits:</strong> Standard products are restricted to 1 device per user unless explicitly stated (e.g. CapCut Admin Team seats).</li>
             </ul>
           </section>
 
-          {/* Section 3 */}
-          <section className="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 space-y-4">
-            <h2 className="text-xl font-display font-bold text-white flex items-center gap-2">
-              <CheckCircle2 size={18} className="text-emerald-400" />
-              3. Delivery & Setup SLA
+          <section className="space-y-3">
+            <h2 className="text-xl font-bold text-white flex items-center gap-2">
+              <HelpCircle size={20} className="text-[#00ff88]" />
+              3. Orders, Payments &amp; Delivery SLA
             </h2>
             <p>
-              Orders placed via WhatsApp or website checkout are processed promptly:
+              Orders are placed via our website and fulfilled over WhatsApp or automated delivery links.
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-              <div className="p-4 rounded-xl bg-black/40 border border-white/10">
-                <span className="text-emerald-400 font-bold block mb-1">Standard Delivery SLA</span>
-                <span className="text-xs text-slate-400">15 to 30 minutes after payment verification during working hours (9 AM – 11 PM PKT).</span>
-              </div>
-              <div className="p-4 rounded-xl bg-black/40 border border-white/10">
-                <span className="text-emerald-400 font-bold block mb-1">Custom Growth Services</span>
-                <span className="text-xs text-slate-400">Up to 24 hours for special accounts like TikTok Creator Growth Challenges.</span>
-              </div>
-            </div>
-          </section>
-
-          {/* Section 4 */}
-          <section className="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 space-y-4">
-            <h2 className="text-xl font-display font-bold text-white flex items-center gap-2">
-              <CheckCircle2 size={18} className="text-emerald-400" />
-              4. Replacement Warranty & Refund SLA
-            </h2>
-            <p>
-              All products include a dedicated replacement warranty for the duration specified on the product page.
-            </p>
-            <ul className="list-disc list-inside space-y-2 text-slate-400 pl-2">
-              <li>If an account credential fails during your valid warranty period, our team will provide replacement credentials within 2 to 4 hours.</li>
-              <li>If we are unable to resolve or replace a non-working account within 24 hours, you are entitled to a full prorated refund via JazzCash, EasyPaisa, or Bank Transfer.</li>
-              <li>Warranty is void if credentials are shared outside authorized device limits, or if account settings are modified without consent.</li>
+            <ul className="list-disc pl-5 space-y-2">
+              <li>Payments are accepted via JazzCash, EasyPaisa, Bank Account Transfer, and supported digital payment options.</li>
+              <li><strong className="text-white">Delivery SLA:</strong> 95% of orders are delivered within 15 to 30 minutes during standard support hours (9:00 AM – 11:00 PM PKT). Orders placed after hours will be processed first thing the following morning.</li>
             </ul>
           </section>
 
-          {/* Section 5 */}
-          <section className="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 space-y-4">
-            <h2 className="text-xl font-display font-bold text-white flex items-center gap-2">
-              <CheckCircle2 size={18} className="text-emerald-400" />
-              5. User Conduct & Acceptable Use
+          <section className="space-y-3">
+            <h2 className="text-xl font-bold text-white flex items-center gap-2">
+              <ShieldCheck size={20} className="text-[#00ff88]" />
+              4. Replacement &amp; Warranty Policy
             </h2>
             <p>
-              Users must refrain from taking unauthorized actions on delivered accounts:
+              Every product comes with a dedicated replacement warranty covering the active subscription duration:
             </p>
-            <ul className="list-disc list-inside space-y-2 text-slate-400 pl-2">
-              <li>Do not attempt to change the account billing details, email, or master password unless instructed.</li>
-              <li>Do not use AI tools for illegal, abusive, harmful, or automated spamming activity.</li>
-              <li>Violations will result in immediate subscription termination without a refund.</li>
+            <ul className="list-disc pl-5 space-y-2">
+              <li>If account credentials fail or upstream provider updates cause login issues within the warranty period, we will issue replacement credentials within 2–4 hours.</li>
+              <li>Misuse, password changes without authorization (on shared slots), reselling credentials, or violating software provider policies will void the warranty immediately.</li>
             </ul>
           </section>
 
-          {/* Section 6 */}
-          <section className="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 space-y-4">
-            <h2 className="text-xl font-display font-bold text-white flex items-center gap-2">
-              <ShieldCheck size={18} className="text-emerald-400" />
-              6. Dispute Resolution & Customer Rights
+          <section className="space-y-3">
+            <h2 className="text-xl font-bold text-white flex items-center gap-2">
+              <AlertCircle size={20} className="text-[#00ff88]" />
+              5. User Conduct &amp; Prohibited Uses
             </h2>
-            <p>
-              If you experience any issues with your order, please contact our support team immediately:
-            </p>
-            <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-xs sm:text-sm text-emerald-300">
-              📱 <strong>WhatsApp Support:</strong> +92-370-7020580 (9 AM – 11 PM PKT)<br />
-              📧 <strong>Email Support:</strong> support@primetoolshub.store
-            </div>
+            <p>You agree NOT to:</p>
+            <ul className="list-disc pl-5 space-y-2">
+              <li>Share, sell, or publicly post account credentials provided to you.</li>
+              <li>Attempt to change security settings, recovery emails, or passwords on shared team accounts.</li>
+              <li>Use subscriptions for illegal, abusive, or spam activities.</li>
+            </ul>
           </section>
 
-        </div>
+          <section className="space-y-3">
+            <h2 className="text-xl font-bold text-white flex items-center gap-2">
+              <FileText size={20} className="text-[#00ff88]" />
+              6. Limitation of Liability &amp; Governing Law
+            </h2>
+            <p>
+              To the maximum extent permitted by applicable Pakistani law, Prime Tools Hub shall not be liable for indirect, incidental, or consequential damages resulting from upstream provider service outages. These terms are governed by the laws of the Islamic Republic of Pakistan.
+            </p>
+          </section>
 
-        {/* Bottom Contact CTA */}
-        <div className="mt-12 text-center border-t border-white/10 pt-8">
-          <p className="text-xs text-slate-400 mb-3">Have questions about our Terms of Service?</p>
-          <Link
-            to="/#contact"
-            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-emerald-500 text-black font-bold text-xs hover:bg-emerald-400 transition-colors"
-          >
-            <HelpCircle size={15} /> Contact Support
-          </Link>
+          <section className="pt-6 border-t border-white/10 text-xs text-slate-400">
+            <p>For questions or formal dispute resolution, contact our team on WhatsApp at +92-370-7020580 or via support@primetoolshub.store.</p>
+          </section>
+
         </div>
       </main>
 
       <Footer />
+      <WhatsAppFloating />
     </div>
   );
 }

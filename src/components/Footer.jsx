@@ -1,5 +1,5 @@
+import { MessageCircle, Clock, MapPin, Instagram, Facebook } from "lucide-react";
 import { Link } from "react-router-dom";
-import { MessageCircle, Clock, MapPin, Instagram, Facebook, ShieldCheck, Lock, CheckCircle2 } from "lucide-react";
 import Logo from "@/components/Logo";
 import { WHATSAPP_NUMBER } from "@/data/products";
 
@@ -7,8 +7,11 @@ export default function Footer() {
   const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}`;
 
   return (
-    <footer className="bg-[#0a0a0a] text-slate-300 relative z-10 border-t border-gradient-to-r from-blue-600 via-purple-600 to-emerald-500 pt-16 pb-8">
-      
+    <footer
+      role="contentinfo"
+      aria-label="Site footer"
+      className="bg-[#0a0a0a] text-slate-300 relative z-10 border-t border-gradient-to-r from-blue-600 via-purple-600 to-emerald-500 pt-16 pb-8"
+    >
       {/* Top subtle border gradient */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 via-purple-600 to-[#00ff88]" />
 
@@ -28,24 +31,13 @@ export default function Footer() {
             <p className="text-xs text-slate-400 leading-relaxed font-body">
               Pakistan's trusted digital tools marketplace since 2022. Delivering official ChatGPT Plus, Canva Pro, Gemini, CapCut &amp; VPNs with full warranty support.
             </p>
-
-            {/* Trust Badges */}
-            <div className="pt-2 flex flex-wrap items-center gap-2 text-[11px] font-bold">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
-                <Lock size={12} /> 256-Bit SSL Encrypted
-              </span>
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400">
-                <ShieldCheck size={12} /> SECP &amp; NTN Verified
-              </span>
-            </div>
-
             <div className="flex items-center gap-3 pt-2">
               <a
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full bg-[#25D366]/10 border border-[#25D366]/30 text-[#25D366] flex items-center justify-center hover:bg-[#25D366] hover:text-white transition-all"
-                aria-label="WhatsApp"
+                aria-label="WhatsApp Support"
               >
                 <MessageCircle size={18} />
               </a>
@@ -54,7 +46,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full bg-pink-500/10 border border-pink-500/30 text-pink-400 flex items-center justify-center hover:bg-pink-500 hover:text-white transition-all"
-                aria-label="Instagram"
+                aria-label="Instagram Page"
               >
                 <Instagram size={18} />
               </a>
@@ -63,7 +55,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 flex items-center justify-center hover:bg-blue-500 hover:text-white transition-all"
-                aria-label="Facebook"
+                aria-label="Facebook Page"
               >
                 <Facebook size={18} />
               </a>
@@ -72,39 +64,48 @@ export default function Footer() {
 
           {/* COLUMN 2 — QUICK LINKS */}
           <div>
-            <h4 className="font-display font-black text-sm text-[#00ff88] uppercase tracking-wider mb-4">
-              Navigation &amp; Help
-            </h4>
-            <ul className="space-y-2 text-xs font-semibold">
+            <h3 className="font-display font-black text-sm text-[#00ff88] uppercase tracking-wider mb-4">
+              Navigation
+            </h3>
+            <ul className="space-y-2.5 text-xs font-semibold">
               <li><Link to="/" className="hover:text-white transition-colors">Home</Link></li>
               <li><Link to="/how-it-works" className="hover:text-white transition-colors">How It Works</Link></li>
-              <li><Link to="/faq" className="hover:text-white transition-colors">FAQ &amp; Knowledge Base</Link></li>
-              <li><Link to="/reviews" className="hover:text-white transition-colors">Customer Reviews (1,200+)</Link></li>
-              <li><Link to="/seo-guide" className="text-[#00ff88] font-bold hover:underline transition-colors flex items-center gap-1.5">SEO Guide (2026) <span className="text-[10px] bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 rounded">NEW</span></Link></li>
-              <li><Link to="/html-sitemap" className="hover:text-white transition-colors">HTML Sitemap</Link></li>
+              <li><Link to="/faq" className="hover:text-white transition-colors">FAQ</Link></li>
+              <li><Link to="/compare" className="hover:text-white transition-colors">Price Comparison</Link></li>
+              <li><Link to="/track-order" className="hover:text-white transition-colors">Track Order</Link></li>
+              <li><Link to="/reviews" className="hover:text-white transition-colors">Customer Reviews</Link></li>
+              <li><Link to="/contact" className="hover:text-white transition-colors">Contact Support</Link></li>
+              <li>
+                <Link to="/seo-guide" className="text-[#00ff88] font-bold hover:underline transition-colors flex items-center gap-1.5">
+                  SEO Guide (2026) <span className="text-[10px] bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 rounded">NEW</span>
+                </Link>
+              </li>
             </ul>
           </div>
 
           {/* COLUMN 3 — LEGAL & COMPLIANCE */}
           <div>
-            <h4 className="font-display font-black text-sm text-[#00ff88] uppercase tracking-wider mb-4">
-              Legal &amp; Policies
-            </h4>
-            <ul className="space-y-2 text-xs font-semibold">
+            <h3 className="font-display font-black text-sm text-[#00ff88] uppercase tracking-wider mb-4">
+              Legal &amp; Policy
+            </h3>
+            <ul className="space-y-2.5 text-xs font-semibold">
               <li><Link to="/terms-of-service" className="hover:text-white transition-colors">Terms of Service</Link></li>
               <li><Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
-              <li><Link to="/refund-policy" className="hover:text-white transition-colors">Refund &amp; Guarantee Policy</Link></li>
+              <li><Link to="/refund-policy" className="hover:text-white transition-colors">Refund &amp; Replacement</Link></li>
               <li><Link to="/disclaimer" className="hover:text-white transition-colors">Reseller Disclaimer</Link></li>
+              <li><Link to="/cookie-policy" className="hover:text-white transition-colors">Cookie Policy</Link></li>
+              <li><Link to="/acceptable-use" className="hover:text-white transition-colors">Acceptable Use Policy</Link></li>
+              <li><Link to="/html-sitemap" className="hover:text-white transition-colors">HTML Sitemap</Link></li>
             </ul>
           </div>
 
-          {/* COLUMN 4 — CONTACT */}
+          {/* COLUMN 4 — TRUST & CONTACT */}
           <div>
-            <h4 className="font-display font-black text-sm text-[#00ff88] uppercase tracking-wider mb-4">
-              Contact &amp; Support
-            </h4>
-            <ul className="space-y-3 text-xs font-semibold">
-              <li>
+            <h3 className="font-display font-black text-sm text-[#00ff88] uppercase tracking-wider mb-4">
+              Trust &amp; Contact
+            </h3>
+            <address className="not-italic space-y-3 text-xs font-semibold mb-4">
+              <div>
                 <a
                   href={whatsappUrl}
                   target="_blank"
@@ -114,37 +115,58 @@ export default function Footer() {
                   <MessageCircle size={15} />
                   <span>📱 WhatsApp: +92-370-7020580</span>
                 </a>
-              </li>
+              </div>
 
-              <li className="flex items-center gap-2 text-slate-300">
+              <div className="flex items-center gap-2 text-slate-300">
                 <Clock size={15} className="text-purple-400" />
                 <span>🕐 Support Hours: 9 AM – 11 PM (PKT)</span>
-              </li>
-              <li className="flex items-center gap-2 text-slate-300">
+              </div>
+              <div className="flex items-center gap-2 text-slate-300">
                 <MapPin size={15} className="text-amber-400" />
                 <span>📍 Based in Lahore, Pakistan 🇵🇰</span>
-              </li>
-            </ul>
+              </div>
+            </address>
+
+            {/* Local SEO Cities Links */}
+            <div className="mb-4 pt-2 border-t border-white/10">
+              <span className="text-[11px] font-bold text-slate-400 block mb-1.5">Top Cities Served:</span>
+              <div className="flex items-center gap-2 flex-wrap text-[11px] text-emerald-400 font-medium">
+                <Link to="/lahore" className="hover:underline">Lahore</Link>
+                <span>•</span>
+                <Link to="/karachi" className="hover:underline">Karachi</Link>
+                <span>•</span>
+                <Link to="/islamabad" className="hover:underline">Islamabad</Link>
+                <span>•</span>
+                <Link to="/faisalabad" className="hover:underline">Faisalabad</Link>
+              </div>
+            </div>
+
+            {/* TRUST BADGES BOX */}
+            <div className="p-3 rounded-xl bg-white/[0.04] border border-white/10 space-y-1.5 text-[10px] text-slate-400">
+              <div className="flex items-center justify-between text-emerald-400 font-bold">
+                <span>🔒 256-Bit SSL Encrypted</span>
+                <span>⭐ 4.9/5 Rating</span>
+              </div>
+              <p>Independent Authorized Digital Reseller</p>
+            </div>
           </div>
 
         </div>
 
-        {/* RESELLER DISCLOSURE BANNER */}
-        <div className="py-6 border-b border-white/10 text-[11px] text-slate-400 leading-relaxed text-center sm:text-left">
-          <p className="max-w-5xl">
-            <strong className="text-slate-300">Reseller Disclosure:</strong> Prime Tools Hub is an independent digital tools reseller platform. We are not officially affiliated with, endorsed by, or sponsored by OpenAI, Canva, Google, CapCut, Bytedance, Nord Security, or Surfshark. All product names, trademarks, and logos are property of their respective owners.
-          </p>
+        {/* RESELLER TRANSPARENCY STATEMENT */}
+        <div className="my-6 p-4 rounded-xl bg-amber-500/5 border border-amber-500/20 text-[11px] text-amber-200/80 leading-relaxed text-center">
+          <strong>Disclaimer:</strong> Prime Tools Hub is an independent reseller. We are not officially affiliated with, endorsed by, or partnered with OpenAI, Canva, Google, CapCut, or any software provider listed. All trademarks belong to their respective owners.
         </div>
 
         {/* BOTTOM BAR */}
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400 font-body">
+        <div className="pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400 font-body">
           <p>© 2026 Prime Tools Hub. All Rights Reserved.</p>
-          <div className="flex items-center gap-4 text-[11px]">
-            <Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
+          <div className="flex items-center gap-3 flex-wrap justify-center text-[11px]">
+            <Link to="/terms-of-service" className="hover:text-white transition-colors">Terms</Link>
             <span>•</span>
-            <Link to="/terms-of-service" className="hover:text-white transition-colors">Terms of Service</Link>
+            <Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy</Link>
             <span>•</span>
-            <Link to="/refund-policy" className="hover:text-white transition-colors">Refund Policy</Link>
+            <Link to="/refund-policy" className="hover:text-white transition-colors">Refunds</Link>
             <span>•</span>
             <Link to="/disclaimer" className="hover:text-white transition-colors">Disclaimer</Link>
           </div>

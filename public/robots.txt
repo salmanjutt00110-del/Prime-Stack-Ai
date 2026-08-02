@@ -1,3 +1,6 @@
+# Prime Tools Hub — robots.txt
+# https://primetoolshub.store
+
 User-agent: *
 Allow: /
 Disallow: /login
@@ -5,20 +8,25 @@ Disallow: /register
 Disallow: /forgot-password
 Disallow: /reset-password
 
-# Major Search Engine Crawlers
+# Google Search Crawlers
 User-agent: Googlebot
 Allow: /
 
 User-agent: Googlebot-Image
 Allow: /
 
+User-agent: Google-Extended
+Allow: /
+
+# Bing Search
 User-agent: Bingbot
 Allow: /
 
-User-agent: ByteDance
+# AI Search & Overviews
+User-agent: GPTBot
 Allow: /
 
-User-agent: GPTBot
+User-agent: ChatGPT-User
 Allow: /
 
 User-agent: PerplexityBot
@@ -27,5 +35,26 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+# Social Media
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+# Sitemaps
+Sitemap: https://primetoolshub.store/sitemap-index.xml
 Sitemap: https://primetoolshub.store/sitemap.xml
 Sitemap: https://primetoolshub.store/sitemap-images.xml

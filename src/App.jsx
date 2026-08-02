@@ -21,9 +21,15 @@ const SeoGuide = lazy(() => import('@/pages/SeoGuide'));
 const TermsOfService = lazy(() => import('@/pages/TermsOfService'));
 const PrivacyPolicy = lazy(() => import('@/pages/PrivacyPolicy'));
 const RefundPolicy = lazy(() => import('@/pages/RefundPolicy'));
-const Disclaimer = lazy(() => import('@/pages/Disclaimer'));
-const FaqPage = lazy(() => import('@/pages/FaqPage'));
+const DisclaimerPage = lazy(() => import('@/pages/DisclaimerPage'));
+const CookiePolicy = lazy(() => import('@/pages/CookiePolicy'));
+const AcceptableUse = lazy(() => import('@/pages/AcceptableUse'));
 const HowItWorksPage = lazy(() => import('@/pages/HowItWorksPage'));
+const FaqPage = lazy(() => import('@/pages/FaqPage'));
+const ComparePage = lazy(() => import('@/pages/ComparePage'));
+const TrackOrderPage = lazy(() => import('@/pages/TrackOrderPage'));
+const ContactPage = lazy(() => import('@/pages/ContactPage'));
+const CitySeoPage = lazy(() => import('@/pages/CitySeoPage'));
 
 const AuthenticatedApp = ({ isLoaded }) => {
   const location = useLocation();
@@ -36,6 +42,38 @@ const AuthenticatedApp = ({ isLoaded }) => {
           element={
             <PageTransition>
               <Home isLoaded={isLoaded} />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/lahore"
+          element={
+            <PageTransition>
+              <CitySeoPage />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/karachi"
+          element={
+            <PageTransition>
+              <CitySeoPage />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/islamabad"
+          element={
+            <PageTransition>
+              <CitySeoPage />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/faisalabad"
+          element={
+            <PageTransition>
+              <CitySeoPage />
             </PageTransition>
           }
         />
@@ -80,14 +118,6 @@ const AuthenticatedApp = ({ isLoaded }) => {
           }
         />
         <Route
-          path="/terms"
-          element={
-            <PageTransition>
-              <TermsOfService />
-            </PageTransition>
-          }
-        />
-        <Route
           path="/privacy-policy"
           element={
             <PageTransition>
@@ -107,7 +137,31 @@ const AuthenticatedApp = ({ isLoaded }) => {
           path="/disclaimer"
           element={
             <PageTransition>
-              <Disclaimer />
+              <DisclaimerPage />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/cookie-policy"
+          element={
+            <PageTransition>
+              <CookiePolicy />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/acceptable-use"
+          element={
+            <PageTransition>
+              <AcceptableUse />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/how-it-works"
+          element={
+            <PageTransition>
+              <HowItWorksPage />
             </PageTransition>
           }
         />
@@ -120,10 +174,26 @@ const AuthenticatedApp = ({ isLoaded }) => {
           }
         />
         <Route
-          path="/how-it-works"
+          path="/compare"
           element={
             <PageTransition>
-              <HowItWorksPage />
+              <ComparePage />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/track-order"
+          element={
+            <PageTransition>
+              <TrackOrderPage />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+            <PageTransition>
+              <ContactPage />
             </PageTransition>
           }
         />

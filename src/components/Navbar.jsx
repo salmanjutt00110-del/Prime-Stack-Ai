@@ -9,7 +9,6 @@ import {
   Sun, 
   Moon, 
   Home as HomeIcon, 
-  Sparkles, 
   Star, 
   HelpCircle, 
   PhoneCall, 
@@ -30,7 +29,6 @@ import { useLanguage } from "@/context/LanguageContext";
 const DESKTOP_LINKS = [
   { labelKey: "nav_home", href: "#home" },
   { labelKey: "nav_tools", href: "#products" },
-  { labelKey: "nav_seo", href: "/seo-guide", route: true, defaultLabel: "SEO Guide 2026" },
   { labelKey: "nav_reviews", href: "/reviews", route: true },
   { labelKey: "nav_faq", href: "#faq" },
   { labelKey: "nav_contact", href: "#contact" },
@@ -46,17 +44,6 @@ const MAIN_NAV_ITEMS = [
     accent: "from-emerald-500/20 to-teal-500/10",
     border: "border-emerald-500/30",
     text: "text-emerald-400"
-  },
-  { 
-    labelKey: "nav_seo", 
-    defaultLabel: "SEO Guide 2026", 
-    desc: "Google Ranking & AI SEO Tools", 
-    href: "/seo-guide", 
-    route: true,
-    icon: Search,
-    accent: "from-emerald-500/20 to-cyan-500/10",
-    border: "border-emerald-500/30",
-    text: "text-[#00ff88]"
   },
   { 
     labelKey: "nav_tools", 
@@ -83,22 +70,10 @@ const MAIN_NAV_ITEMS = [
 
 const SUPPORT_NAV_ITEMS = [
   { 
-    labelKey: "nav_how_it_works", 
-    defaultLabel: "How It Works", 
-    desc: "4-Step Simple Order Guide", 
-    href: "/how-it-works", 
-    route: true,
-    icon: Zap,
-    accent: "from-emerald-500/20 to-teal-500/10",
-    border: "border-emerald-500/30",
-    text: "text-emerald-400"
-  },
-  { 
     labelKey: "nav_faq", 
     defaultLabel: "FAQ", 
-    desc: "Instant Answers & Knowledge Base", 
-    href: "/faq", 
-    route: true,
+    desc: "Instant Answers & Ordering Info", 
+    href: "#faq", 
     icon: HelpCircle,
     accent: "from-indigo-500/20 to-blue-500/10",
     border: "border-indigo-500/30",
@@ -277,6 +252,7 @@ export default function Navbar() {
           }}
         >
           <nav
+            aria-label="Main navigation"
             className="mx-auto max-w-7xl px-3.5 sm:px-6 flex items-center justify-between transition-all duration-300 h-[64px]"
           >
             {/* LOGO (Always visible on left, perfectly aligned) */}

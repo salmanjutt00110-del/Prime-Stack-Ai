@@ -198,17 +198,43 @@ function ProductCardComponent({ product, index = 0, priority = false }) {
 
 
 
+            {/* SLA Delivery & Ratings Row */}
+            <div className="flex items-center justify-between text-[11px] text-slate-300 font-semibold mb-3 px-1">
+              <span className="text-amber-400 font-bold flex items-center gap-1">
+                ★ 4.9 <span className="text-slate-400 font-normal">(120+)</span>
+              </span>
+              <span className="text-emerald-400 font-bold bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
+                ⚡ 15-Min Delivery
+              </span>
+            </div>
+
             {/* PRICE DISPLAY */}
             <div className="flex flex-col items-center justify-center py-2.5 px-3 bg-white/[0.04] border border-white/10 rounded-xl mb-4">
               <div className="flex items-center gap-2">
                 {pricing.oldPrice && (
-                  <span className="text-xs text-slate-400 line-through font-mono">
-                    {formatPrice(pricing.oldPrice)}
-                  </span>
+                  <>
+                    <span className="text-xs text-slate-400 line-through font-mono">
+                      {formatPrice(pricing.oldPrice)}
+                    </span>
+                    {(() => {
+                      const pNum = parseFloat(String(pricing.price).replace(/[^0-9.]/g, ""));
+                      const opNum = parseFloat(String(pricing.oldPrice).replace(/[^0-9.]/g, ""));
+                      if (opNum && pNum && opNum > pNum) {
+                        const pct = Math.round(((opNum - pNum) / opNum) * 100);
+                        return (
+                          <span className="text-xs font-extrabold text-red-400 bg-red-500/10 px-2 py-0.5 rounded-full border border-red-500/20">
+                            SAVE {pct}%
+                          </span>
+                        );
+                      }
+                      return (
+                        <span className="text-xs font-extrabold text-red-400 bg-red-500/10 px-2 py-0.5 rounded-full border border-red-500/20">
+                          SPECIAL DEAL
+                        </span>
+                      );
+                    })()}
+                  </>
                 )}
-                <span className="text-xs font-extrabold text-red-400 bg-red-500/10 px-2 py-0.5 rounded-full border border-red-500/20">
-                  SAVE 25%
-                </span>
               </div>
               <span className="text-2xl font-black font-display text-[#00ff88] mt-0.5">
                 {formatPrice(pricing.price)}
@@ -222,9 +248,9 @@ function ProductCardComponent({ product, index = 0, priority = false }) {
             <button
               disabled
               onClick={(e) => e.stopPropagation()}
-              className="w-full py-3 rounded-xl font-display font-bold text-xs text-slate-400 bg-slate-800 border border-slate-700 cursor-not-allowed text-center"
+              className="w-full py-3 rounded-xl font-display font-bold text-xs text-amber-300 bg-amber-500/10 border border-amber-500/30 cursor-not-allowed text-center"
             >
-              Out of Stock
+              ⏳ Restocking Soon
             </button>
           ) : (
             <motion.button

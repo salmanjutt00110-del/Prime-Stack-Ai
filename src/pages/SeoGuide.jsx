@@ -10,29 +10,19 @@ import {
   Zap, 
   Sparkles, 
   Cpu, 
-  Layers, 
   ArrowRight, 
   BarChart3, 
   Terminal, 
-  ExternalLink, 
-  Share2, 
   BookOpen, 
   Award, 
-  Download, 
-  RefreshCw, 
-  AlertCircle, 
-  Key, 
   FileText, 
-  Layout, 
   ImageIcon, 
   Link as LinkIcon, 
   Bot,
-  HelpCircle,
   TrendingUp,
-  Sliders,
   Code2
 } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";

@@ -1,125 +1,95 @@
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
-import { ShieldCheck, Lock, CheckCircle2, ArrowLeft, Mail } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import WhatsAppFloating from "@/components/WhatsAppFloating";
+import { Lock, Shield, Eye, Database } from "lucide-react";
 
 export default function PrivacyPolicy() {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
-    <div className="min-h-screen bg-[#050505] text-slate-200 flex flex-col font-body selection:bg-emerald-500/30 selection:text-emerald-300">
+    <div className="min-h-screen bg-[#050505] text-slate-100 font-sans selection:bg-[#00ff88] selection:text-black">
       <SEOHead
-        title="Privacy Policy & Data Security | Prime Tools Hub"
-        description="Official Privacy Policy for Prime Tools Hub. Learn how we protect customer privacy, store data securely, and maintain 100% data confidentiality."
-        canonicalUrl="https://primetoolshub.store/privacy-policy"
+        title="Privacy Policy | Prime Tools Hub — Customer Data Protection"
+        description="Read Prime Tools Hub's Privacy Policy. We respect your privacy — learn how customer data, WhatsApp contacts, and transactions are securely handled."
+        canonical="https://primetoolshub.store/privacy-policy"
       />
+
       <Navbar />
 
-      <main className="flex-grow pt-28 pb-16 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto w-full">
-        {/* Header Breadcrumb & Title */}
-        <div className="mb-8 border-b border-white/10 pb-8">
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 text-xs font-semibold text-emerald-400 hover:text-emerald-300 transition-colors mb-4"
-          >
-            <ArrowLeft size={14} /> Back to Home
-          </Link>
-          <div className="flex items-center gap-3 mb-3">
-            <span className="p-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
-              <Lock size={24} />
-            </span>
-            <span className="text-xs font-bold uppercase tracking-wider text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
-              Privacy & Security
-            </span>
+      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-semibold uppercase tracking-wider mb-4">
+            <Lock size={14} />
+            <span>Data Security</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-display font-black text-white tracking-tight">
-            Privacy Policy & Data Rights
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+            Privacy Policy
           </h1>
-          <p className="text-sm text-slate-400 mt-2">
-            Last Updated: August 2026 • GDPR & Pakistan Personal Data Protection Compliant
+          <p className="mt-3 text-sm text-slate-400">
+            Last Updated: August 2026 • Your Privacy Matters
           </p>
         </div>
 
-        {/* Content Sections */}
-        <div className="space-y-8 text-sm leading-relaxed text-slate-300">
+        {/* Policy Container */}
+        <div className="space-y-10 text-slate-300 text-sm leading-relaxed bg-[#0c0d12] p-6 sm:p-10 rounded-3xl border border-white/10 shadow-2xl">
           
-          <section className="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 space-y-4">
-            <h2 className="text-xl font-display font-bold text-white flex items-center gap-2">
-              <ShieldCheck size={18} className="text-emerald-400" />
-              1. Our Privacy Commitment
+          <section className="space-y-3">
+            <h2 className="text-xl font-bold text-white flex items-center gap-2">
+              <Eye size={20} className="text-[#00ff88]" />
+              1. Information We Collect
             </h2>
             <p>
-              At Prime Tools Hub (<strong className="text-white">primetoolshub.store</strong>), we take customer privacy with absolute seriousness. We never sell, rent, trade, or leak customer personal information to third parties under any circumstances.
+              When you interact with Prime Tools Hub (primetoolshub.store), we collect minimal required information to process your order and provide warranty support:
             </p>
-          </section>
-
-          <section className="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 space-y-4">
-            <h2 className="text-xl font-display font-bold text-white flex items-center gap-2">
-              <CheckCircle2 size={18} className="text-emerald-400" />
-              2. Data We Collect
-            </h2>
-            <p>
-              To fulfill order activations and provide replacement warranty support, we only collect essential operational details:
-            </p>
-            <ul className="list-disc list-inside space-y-2 text-slate-400 pl-2">
-              <li><strong className="text-slate-200">Contact Details:</strong> Your WhatsApp phone number or Email address for sending login credentials and order receipts.</li>
-              <li><strong className="text-slate-200">Transaction References:</strong> Payment confirmation transaction ID or screenshot (JazzCash, EasyPaisa, Bank Transfer) to verify payments.</li>
-              <li><strong className="text-slate-200">Account Credentials:</strong> If activating a product on your personal Gmail (e.g. Gemini Pro), only your email address is used for sending the official redeem invite link.</li>
+            <ul className="list-disc pl-5 space-y-2">
+              <li><strong className="text-white">Contact Details:</strong> Your WhatsApp phone number and email address (if provided for direct account invite/redeem).</li>
+              <li><strong className="text-white">Transaction Data:</strong> Payment confirmation reference numbers or screenshots sent via WhatsApp for order validation.</li>
+              <li><strong className="text-white">Technical Logs:</strong> Basic browser analytics, IP address, and cookie identifiers for performance monitoring.</li>
             </ul>
           </section>
 
-          <section className="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 space-y-4">
-            <h2 className="text-xl font-display font-bold text-white flex items-center gap-2">
-              <CheckCircle2 size={18} className="text-emerald-400" />
-              3. Data Storage & Security Controls
+          <section className="space-y-3">
+            <h2 className="text-xl font-bold text-white flex items-center gap-2">
+              <Database size={20} className="text-[#00ff88]" />
+              2. How We Use Your Information
+            </h2>
+            <p>We strictly utilize your data for the following legitimate business purposes:</p>
+            <ul className="list-disc pl-5 space-y-2">
+              <li>Fulfilling your digital tool orders and delivering activation links/credentials.</li>
+              <li>Providing replacement support and active warranty management.</li>
+              <li>Sending optional renewal reminders 7 days prior to subscription expiration.</li>
+            </ul>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-xl font-bold text-white flex items-center gap-2">
+              <Shield size={20} className="text-[#00ff88]" />
+              3. Data Sharing &amp; Third-Party Protection
             </h2>
             <p>
-              All customer communication and order records are encrypted end-to-end. Our system employs SSL 256-bit encryption for all web sessions, preventing unauthorized access or data interception.
+              We <strong className="text-white">NEVER sell, rent, or trade</strong> your personal information to marketing agencies or third parties. Information is only accessed by authorized customer support personnel strictly for order delivery.
             </p>
           </section>
 
-          <section className="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 space-y-4">
-            <h2 className="text-xl font-display font-bold text-white flex items-center gap-2">
-              <CheckCircle2 size={18} className="text-emerald-400" />
-              4. Cookies & Local Analytics
+          <section className="space-y-3">
+            <h2 className="text-xl font-bold text-white flex items-center gap-2">
+              <Lock size={20} className="text-[#00ff88]" />
+              4. Data Retention &amp; Deletion Rights
             </h2>
             <p>
-              Our website uses minimal essential browser storage (Cookies & LocalStorage) solely to remember your preferences (such as selected Currency PKR/USD, Theme mode, and Language settings). No intrusive tracking scripts or third-party ad networks are active.
+              Order records are retained for the duration of your active subscription warranty plus 90 days. You have the right to request full deletion of your contact records at any time by messaging privacy@primetoolshub.store or contacting our WhatsApp support.
             </p>
           </section>
 
-          <section className="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 space-y-4">
-            <h2 className="text-xl font-display font-bold text-white flex items-center gap-2">
-              <CheckCircle2 size={18} className="text-emerald-400" />
-              5. Right to Erasure (Data Deletion Request)
-            </h2>
-            <p>
-              Under our privacy policy, any customer has the right to request total deletion of their contact history and order records after their warranty duration completes.
-            </p>
-            <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-xs sm:text-sm text-emerald-300 flex items-center gap-3">
-              <Mail size={18} className="shrink-0 text-emerald-400" />
-              <span>To request data deletion, send an email to <strong className="text-white underline">privacy@primetoolshub.store</strong> with your phone number or Order ID. Requests are processed within 48 hours.</span>
-            </div>
+          <section className="pt-6 border-t border-white/10 text-xs text-slate-400">
+            <p>If you have privacy concerns or questions regarding data protection, reach out via WhatsApp at +92-370-7020580.</p>
           </section>
 
-        </div>
-
-        {/* Bottom CTA */}
-        <div className="mt-12 text-center border-t border-white/10 pt-8">
-          <Link
-            to="/terms-of-service"
-            className="text-xs text-emerald-400 hover:underline font-semibold"
-          >
-            Read our Terms of Service &rarr;
-          </Link>
         </div>
       </main>
 
       <Footer />
+      <WhatsAppFloating />
     </div>
   );
 }

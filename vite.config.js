@@ -15,8 +15,10 @@ export default defineConfig({
     }
   },
   build: {
+    target: 'es2020',
     cssCodeSplit: true,
     chunkSizeWarningLimit: 1000,
+    reportCompressedSize: true,
     minify: 'esbuild',
     rollupOptions: {
       output: {
@@ -25,6 +27,9 @@ export default defineConfig({
           'vendor-motion': ['framer-motion'],
           'vendor-icons': ['lucide-react'],
         },
+        chunkFileNames: 'assets/[name]-[hash].js',
+        entryFileNames: 'assets/[name]-[hash].js',
+        assetFileNames: 'assets/[name]-[hash].[ext]',
       },
     },
   },
@@ -35,3 +40,4 @@ export default defineConfig({
     react(),
   ]
 });
+

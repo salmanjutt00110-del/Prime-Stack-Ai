@@ -1,126 +1,119 @@
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
-import { RefreshCw, CheckCircle2, AlertCircle, ArrowLeft, ShieldCheck } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import WhatsAppFloating from "@/components/WhatsAppFloating";
+import { RefreshCw, CheckCircle2, AlertTriangle, ShieldCheck } from "lucide-react";
 
 export default function RefundPolicy() {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
-    <div className="min-h-screen bg-[#050505] text-slate-200 flex flex-col font-body selection:bg-emerald-500/30 selection:text-emerald-300">
+    <div className="min-h-screen bg-[#050505] text-slate-100 font-sans selection:bg-[#00ff88] selection:text-black">
       <SEOHead
-        title="Refund & Replacement Policy | Prime Tools Hub"
-        description="Official Refund & Replacement Warranty Policy for Prime Tools Hub. Enjoy 100% money-back guarantee if non-working accounts cannot be resolved within 24 hours."
-        canonicalUrl="https://primetoolshub.store/refund-policy"
+        title="Refund & Replacement Policy | Prime Tools Hub — 100% Warranty Support"
+        description="Learn about Prime Tools Hub's clear Refund and Replacement Policy. Enjoy full duration replacement warranty and 100% money-back guarantee for invalid activations."
+        canonical="https://primetoolshub.store/refund-policy"
       />
+
       <Navbar />
 
-      <main className="flex-grow pt-28 pb-16 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto w-full">
-        {/* Header Breadcrumb & Title */}
-        <div className="mb-8 border-b border-white/10 pb-8">
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 text-xs font-semibold text-emerald-400 hover:text-emerald-300 transition-colors mb-4"
-          >
-            <ArrowLeft size={14} /> Back to Home
-          </Link>
-          <div className="flex items-center gap-3 mb-3">
-            <span className="p-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
-              <RefreshCw size={24} />
-            </span>
-            <span className="text-xs font-bold uppercase tracking-wider text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
-              Guarantee & SLA
-            </span>
+      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-4">
+            <RefreshCw size={14} />
+            <span>Guaranteed Satisfaction</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-display font-black text-white tracking-tight">
-            Refund & Replacement Guarantee Policy
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+            Refund &amp; Replacement Policy
           </h1>
-          <p className="text-sm text-slate-400 mt-2">
-            Clear, transparent, customer-first policy • Guaranteed resolution or 100% refund
+          <p className="mt-3 text-sm text-slate-400">
+            Fair, Transparent &amp; Customer-First Protection
           </p>
         </div>
 
-        {/* Highlight Guarantee Box */}
-        <div className="mb-8 p-6 rounded-2xl bg-gradient-to-r from-emerald-950/60 via-emerald-900/40 to-teal-950/60 border border-emerald-500/30 text-slate-200">
-          <div className="flex items-center gap-3 mb-2">
-            <ShieldCheck size={28} className="text-emerald-400" />
-            <h2 className="text-lg font-bold text-white">Our 100% Resolution Guarantee</h2>
+        {/* Policy Highlights Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
+          <div className="p-5 rounded-2xl bg-[#0c0d12] border border-white/10 text-center">
+            <div className="w-10 h-10 rounded-full bg-emerald-500/10 text-emerald-400 flex items-center justify-center mx-auto mb-3">
+              <CheckCircle2 size={20} />
+            </div>
+            <h3 className="font-bold text-white text-sm">Instant Replacement</h3>
+            <p className="text-xs text-slate-400 mt-1">Free credential replacement within 2–4 hours if account fails.</p>
           </div>
-          <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-            Every subscription purchased at Prime Tools Hub comes with a dedicated replacement warranty for the complete package duration. If your access is interrupted, we guarantee a replacement within <strong className="text-emerald-300">4 hours</strong>. If we cannot resolve your issue within <strong className="text-emerald-300">24 hours</strong>, we issue a <strong className="text-emerald-300">100% full or prorated refund</strong>.
-          </p>
+          <div className="p-5 rounded-2xl bg-[#0c0d12] border border-white/10 text-center">
+            <div className="w-10 h-10 rounded-full bg-purple-500/10 text-purple-400 flex items-center justify-center mx-auto mb-3">
+              <ShieldCheck size={20} />
+            </div>
+            <h3 className="font-bold text-white text-sm">Full Warranty Period</h3>
+            <p className="text-xs text-slate-400 mt-1">Covered for the entire duration specified on your product card.</p>
+          </div>
+          <div className="p-5 rounded-2xl bg-[#0c0d12] border border-white/10 text-center">
+            <div className="w-10 h-10 rounded-full bg-blue-500/10 text-blue-400 flex items-center justify-center mx-auto mb-3">
+              <RefreshCw size={20} />
+            </div>
+            <h3 className="font-bold text-white text-sm">Money-Back Guarantee</h3>
+            <p className="text-xs text-slate-400 mt-1">100% refund if we fail to deliver working access within 24 hours.</p>
+          </div>
         </div>
 
-        {/* Content Sections */}
-        <div className="space-y-8 text-sm leading-relaxed text-slate-300">
+        {/* Policy Details */}
+        <div className="space-y-10 text-slate-300 text-sm leading-relaxed bg-[#0c0d12] p-6 sm:p-10 rounded-3xl border border-white/10 shadow-2xl">
           
-          <section className="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 space-y-4">
-            <h2 className="text-xl font-display font-bold text-white flex items-center gap-2">
-              <CheckCircle2 size={18} className="text-emerald-400" />
-              1. Replacement Process Step-by-Step
-            </h2>
-            <ol className="list-decimal list-inside space-y-3 text-slate-300 pl-1">
-              <li><strong className="text-white">Report Issue:</strong> Send a message on WhatsApp (+92-370-7020580) with your Order ID and screenshot of the error.</li>
-              <li><strong className="text-white">Verification:</strong> Our team checks the login log within 15 minutes.</li>
-              <li><strong className="text-white">Replacement Delivery:</strong> Fresh login credentials or redeem links are provided immediately.</li>
-              <li><strong className="text-white">Refund Trigger:</strong> If stock is unavailable or access cannot be restored within 24 hours, money is refunded instantly.</li>
-            </ol>
-          </section>
-
-          <section className="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 space-y-4">
-            <h2 className="text-xl font-display font-bold text-white flex items-center gap-2">
-              <CheckCircle2 size={18} className="text-emerald-400" />
-              2. Eligible Refund Scenarios
-            </h2>
-            <ul className="list-disc list-inside space-y-2 text-slate-400 pl-2">
-              <li>Account credentials fail to work upon delivery and cannot be fixed within 24 hours.</li>
-              <li>Product is out of stock after payment confirmation.</li>
-              <li>Duplicate or accidental overpayment by customer.</li>
-            </ul>
-          </section>
-
-          <section className="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 space-y-4">
-            <h2 className="text-xl font-display font-bold text-white flex items-center gap-2">
-              <AlertCircle size={18} className="text-amber-400" />
-              3. Non-Eligible Scenarios
-            </h2>
-            <ul className="list-disc list-inside space-y-2 text-slate-400 pl-2">
-              <li>Sharing delivered account credentials with unauthorized secondary users exceeding package device limits.</li>
-              <li>Attempting to change account email, password, or security settings without support guidance.</li>
-              <li>Violations of official software vendor terms of service resulting in platform bans.</li>
-              <li>Change of mind after successful activation and product usage.</li>
-            </ul>
-          </section>
-
-          <section className="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 space-y-4">
-            <h2 className="text-xl font-display font-bold text-white flex items-center gap-2">
-              <CheckCircle2 size={18} className="text-emerald-400" />
-              4. Payment Refund Methods & Speed
+          <section className="space-y-3">
+            <h2 className="text-xl font-bold text-white flex items-center gap-2">
+              <CheckCircle2 size={20} className="text-[#00ff88]" />
+              1. Full Duration Replacement Guarantee
             </h2>
             <p>
-              Refunds are dispatched back via your original payment channel:
+              At Prime Tools Hub, every product comes with a mandatory replacement warranty for its entire active period (e.g. 1 Month, 3 Months, 12 Months). If your account experiences login difficulties, plan downgrades, or access restrictions, message our support team on WhatsApp immediately for a quick replacement.
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 text-xs font-semibold">
-              <div className="p-3.5 rounded-xl bg-black/40 border border-white/10 text-center text-emerald-300">
-                EasyPaisa (Instant - 1 Hour)
-              </div>
-              <div className="p-3.5 rounded-xl bg-black/40 border border-white/10 text-center text-emerald-300">
-                JazzCash (Instant - 1 Hour)
-              </div>
-              <div className="p-3.5 rounded-xl bg-black/40 border border-white/10 text-center text-emerald-300">
-                Bank Transfer (2 to 4 Hours)
-              </div>
-            </div>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-xl font-bold text-white flex items-center gap-2">
+              <RefreshCw size={20} className="text-[#00ff88]" />
+              2. 100% Refund Eligibility
+            </h2>
+            <p>You are eligible for a 100% full monetary refund under the following conditions:</p>
+            <ul className="list-disc pl-5 space-y-2">
+              <li>We are unable to deliver your ordered digital item or activation link within 24 hours of payment.</li>
+              <li>A replacement credential cannot be provided within 24 hours of a reported valid issue.</li>
+              <li>You were charged incorrectly or duplicated payment.</li>
+            </ul>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-xl font-bold text-white flex items-center gap-2">
+              <AlertTriangle size={20} className="text-amber-400" />
+              3. Non-Refundable Scenarios
+            </h2>
+            <p>Refunds or replacements will NOT be granted under the following circumstances:</p>
+            <ul className="list-disc pl-5 space-y-2">
+              <li>Changing your mind after credentials have been successfully delivered and verified.</li>
+              <li>Attempting to change account security settings (password/email) on shared team slots.</li>
+              <li>Violating the official terms of service of third-party software providers.</li>
+            </ul>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-xl font-bold text-white flex items-center gap-2">
+              <ShieldCheck size={20} className="text-[#00ff88]" />
+              4. How to Request a Replacement or Refund
+            </h2>
+            <p>
+              Simply send a WhatsApp message to <strong className="text-emerald-400">+92-370-7020580</strong> containing:
+            </p>
+            <ol className="list-decimal pl-5 space-y-1">
+              <li>Your Order ID or WhatsApp Order Chat reference.</li>
+              <li>A description or screenshot of the issue.</li>
+            </ol>
+            <p className="mt-2">Our team will resolve the issue or process your refund to JazzCash / EasyPaisa / Bank Account within 24 hours.</p>
           </section>
 
         </div>
       </main>
 
       <Footer />
+      <WhatsAppFloating />
     </div>
   );
 }

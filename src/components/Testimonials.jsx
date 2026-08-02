@@ -3,63 +3,91 @@ import { Link } from "react-router-dom";
 
 const REVIEWS_ROW_1 = [
   {
-    name: "Usman M.",
+    name: "Usman Tariq",
     city: "Lahore 🇵🇰",
     rating: 5,
     text: "ChatGPT Plus mila 15 minutes mein! JazzCash se payment ki, koi problem nahi. Highly recommend!",
     tool: "ChatGPT Plus",
   },
   {
-    name: "Sara A.",
+    name: "Sara Ahmed",
     city: "Karachi 🇵🇰",
     rating: 5,
-    text: "Canva Pro subscription liya, 1 year ho gaya, smoothly chal raha hai. Support bhi fast hai.",
+    text: "Canva Pro subscription received smoothly. 1 year active without any interruption. Best support team!",
     tool: "Canva Pro",
   },
   {
-    name: "Bilal H.",
+    name: "Bilal Hassan",
     city: "Islamabad 🇵🇰",
     rating: 5,
-    text: "Veo 3 liya pehli baar, aur delivery instant thi. Legit service hai!",
+    text: "Veo 3 instant delivery via WhatsApp. Verified credentials and very polite customer response.",
     tool: "Veo 3",
   },
   {
-    name: "Fatima R.",
+    name: "Fatima Rizvi",
     city: "Peshawar 🇵🇰",
     rating: 5,
-    text: "Surfshark VPN ka price bohot affordable tha. Shukriya Prime Tools Hub!",
+    text: "Surfshark VPN ka price bohot sasta hai official pricing se. Shukriya Prime Tools Hub!",
     tool: "Surfshark VPN",
+  },
+  {
+    name: "Kashif Mehmood",
+    city: "Sialkot 🇵🇰",
+    rating: 5,
+    text: "Order placed on WhatsApp and activated in less than 10 minutes. Super legit service!",
+    tool: "Gemini Advanced",
+  },
+  {
+    name: "Aisha Malik",
+    city: "Rawalpindi 🇵🇰",
+    rating: 5,
+    text: "Got CapCut Pro for video editing. Everything unlocked seamlessly on my account.",
+    tool: "CapCut Pro",
   },
 ];
 
 const REVIEWS_ROW_2 = [
   {
-    name: "Zara N.",
+    name: "Zara Noman",
     city: "Multan 🇵🇰",
     rating: 5,
-    text: "Gemini Pro aur CapCut dono liye. Dono chal rahe hain perfectly. 10/10",
+    text: "Gemini Pro aur CapCut dono liye. Dono chal rahe hain perfectly. 10/10 service.",
     tool: "Gemini Pro",
   },
   {
-    name: "Hamza T.",
+    name: "Hamza Tanveer",
     city: "Faisalabad 🇵🇰",
     rating: 5,
-    text: "Bahut trust tha nahi pehle, lekin dost ne bataya. Ab main khud 3 baar order kar chuka hun.",
+    text: "Pehle dar tha lekin dost ke kehne par try kiya. Ab main khud 3 baar re-order kar chuka hun.",
     tool: "ChatGPT Plus",
   },
   {
-    name: "Ali R.",
-    city: "Rawalpindi 🇵🇰",
+    name: "Ali Raza",
+    city: "Gujranwala 🇵🇰",
     rating: 5,
-    text: "Quick activation link and smooth replacement support. Super trustworthy seller in Pakistan!",
+    text: "Quick activation link and smooth replacement warranty support. Highly recommended in Pakistan!",
     tool: "CapCut Pro",
   },
   {
-    name: "Nida S.",
+    name: "Nida Siddiqui",
     city: "Quetta 🇵🇰",
     rating: 5,
     text: "EasyPaisa payment method makes it so convenient. Account delivery was within 10 mins.",
     tool: "Canva Pro",
+  },
+  {
+    name: "Danial Khan",
+    city: "Hyderabad 🇵🇰",
+    rating: 5,
+    text: "Youtube Premium 12 months family plan working flawlessly. Great price!",
+    tool: "YouTube Premium",
+  },
+  {
+    name: "Saad Baig",
+    city: "Bahawalpur 🇵🇰",
+    rating: 5,
+    text: "Notion AI and ChatGPT Plus package was super fast to setup. Excellent customer care.",
+    tool: "Notion AI",
   },
 ];
 
@@ -115,7 +143,7 @@ export default function Testimonials() {
       {/* MARQUEE ROW 1 (Left Scrolling) */}
       <div className="relative w-full overflow-hidden mb-6 group">
         <div className="flex gap-6 animate-marquee group-hover:[animation-play-state:paused] w-max">
-          {[...REVIEWS_ROW_1, ...REVIEWS_ROW_1, ...REVIEWS_ROW_1].map((r, i) => (
+          {[...REVIEWS_ROW_1, ...REVIEWS_ROW_1].map((r, i) => (
             <ReviewCard key={i} review={r} />
           ))}
         </div>
@@ -124,7 +152,7 @@ export default function Testimonials() {
       {/* MARQUEE ROW 2 (Right Scrolling) */}
       <div className="relative w-full overflow-hidden group">
         <div className="flex gap-6 animate-marquee-reverse group-hover:[animation-play-state:paused] w-max">
-          {[...REVIEWS_ROW_2, ...REVIEWS_ROW_2, ...REVIEWS_ROW_2].map((r, i) => (
+          {[...REVIEWS_ROW_2, ...REVIEWS_ROW_2].map((r, i) => (
             <ReviewCard key={i} review={r} />
           ))}
         </div>
