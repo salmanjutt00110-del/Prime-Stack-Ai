@@ -17,7 +17,6 @@ import { LanguageProvider } from '@/context/LanguageContext';
 const ProductDetail = lazy(() => import('@/pages/ProductDetail'));
 const Reviews = lazy(() => import('@/pages/Reviews'));
 const HtmlSitemap = lazy(() => import('@/pages/HtmlSitemap'));
-const SeoGuide = lazy(() => import('@/pages/SeoGuide'));
 const TermsOfService = lazy(() => import('@/pages/TermsOfService'));
 const PrivacyPolicy = lazy(() => import('@/pages/PrivacyPolicy'));
 const RefundPolicy = lazy(() => import('@/pages/RefundPolicy'));
@@ -98,14 +97,6 @@ const AuthenticatedApp = ({ isLoaded }) => {
           element={
             <PageTransition>
               <HtmlSitemap />
-            </PageTransition>
-          }
-        />
-        <Route
-          path="/seo-guide"
-          element={
-            <PageTransition>
-              <SeoGuide />
             </PageTransition>
           }
         />

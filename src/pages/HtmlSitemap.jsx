@@ -1,4 +1,4 @@
-﻿import { useEffect } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ALL_PRODUCTS } from "@/data/products";
 import Navbar from "@/components/Navbar";
@@ -35,12 +35,11 @@ export default function HtmlSitemap() {
     { name: "Meta Ads (Facebook & Instagram Ads Scaling)", link: "/#agency-services" },
     { name: "TikTok Ads & Video Reels Editing", link: "/#agency-services" },
     { name: "Brand Identity & Vector Logo Design", link: "/#agency-services" },
-    { name: "360Â° Social Media Management", link: "/#agency-services" },
+    { name: "360° Social Media Management", link: "/#agency-services" },
   ];
 
   const corePages = [
-    { name: "Home â€” Premium AI Marketplace", link: "/" },
-    { name: "Complete Website SEO Guide (2026)", link: "/seo-guide" },
+    { name: "Home — Premium AI Marketplace", link: "/" },
     { name: "Verified Customer Reviews & Proofs", link: "/reviews" },
     { name: "Bulk Purchase Discounts & Reseller Pricing", link: "/#bulk-offers" },
     { name: "Tiered Rewards & Free Gifts", link: "/#products" },

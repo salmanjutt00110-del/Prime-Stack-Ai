@@ -65,7 +65,6 @@ function generateSitemap() {
     { loc: `${DOMAIN}/track-order`, priority: '0.8', changefreq: 'weekly' },
     { loc: `${DOMAIN}/contact`, priority: '0.8', changefreq: 'weekly' },
     { loc: `${DOMAIN}/reviews`, priority: '0.8', changefreq: 'weekly' },
-    { loc: `${DOMAIN}/seo-guide`, priority: '0.9', changefreq: 'weekly' },
     { loc: `${DOMAIN}/terms-of-service`, priority: '0.7', changefreq: 'monthly' },
     { loc: `${DOMAIN}/privacy-policy`, priority: '0.7', changefreq: 'monthly' },
     { loc: `${DOMAIN}/refund-policy`, priority: '0.7', changefreq: 'monthly' },

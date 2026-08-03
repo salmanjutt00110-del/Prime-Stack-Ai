@@ -75,11 +75,6 @@ export default function Footer() {
               <li><Link to="/track-order" className="hover:text-white transition-colors">Track Order</Link></li>
               <li><Link to="/reviews" className="hover:text-white transition-colors">Customer Reviews</Link></li>
               <li><Link to="/contact" className="hover:text-white transition-colors">Contact Support</Link></li>
-              <li>
-                <Link to="/seo-guide" className="text-[#00ff88] font-bold hover:underline transition-colors flex items-center gap-1.5">
-                  SEO Guide (2026) <span className="text-[10px] bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 rounded">NEW</span>
-                </Link>
-              </li>
             </ul>
           </div>
 

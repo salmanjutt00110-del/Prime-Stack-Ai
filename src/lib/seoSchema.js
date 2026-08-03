@@ -637,39 +637,7 @@ export function generateFAQPageSchema() {
   };
 }
 
-export function generateSeoGuideSchema() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "TechArticle",
-    "@id": `${DOMAIN}/seo-guide#article`,
-    "headline": "Complete Website SEO Guide (2026): How to Rank Your Website on Google & Search Engines",
-    "description": "Step-by-step 2026 Website SEO guide covering Google Search Console setup, technical SEO, content optimization, image SEO, backlinks, AI website ranking, and AI prompts.",
-    "url": `${DOMAIN}/seo-guide`,
-    "inLanguage": "en",
-    "mainEntityOfPage": `${DOMAIN}/seo-guide`,
-    "author": {
-      "@type": "Organization",
-      "name": STORE_NAME,
-      "url": `${DOMAIN}/`
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": STORE_NAME,
-      "logo": {
-        "@type": "ImageObject",
-        "url": LOGO_URL
-      }
-    },
-    "datePublished": "2026-01-01",
-    "dateModified": "2026-08-02",
-    "articleSection": "Search Engine Optimization",
-    "keywords": "Website SEO Guide 2026, Google Search Console Setup, Technical SEO Checklist, AI SEO Prompt, Image SEO, Backlink Strategies, Schema Markup Generator",
-    "speakable": {
-      "@type": "SpeakableSpecification",
-      "cssSelector": ["h1", "h2", ".seo-guide-intro"]
-    }
-  };
-}
+
 
 export function generateHomepageGraph(products = []) {
   const organization = generateOrganizationSchema();
