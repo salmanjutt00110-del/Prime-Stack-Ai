@@ -25,6 +25,8 @@ import { scrollToSection } from "@/lib/scroll";
 import CurrencySwitcher from "@/components/CurrencySwitcher";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { useLanguage } from "@/context/LanguageContext";
+import { useCurrency } from "@/context/CurrencyContext";
+import { Globe } from "lucide-react";
 
 const DESKTOP_LINKS = [
   { labelKey: "nav_home", href: "#home" },
@@ -100,6 +102,7 @@ export default function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
   const { t } = useLanguage();
+  const { countryFlag, countryName, currency } = useCurrency();
 
   const [isDarkMode, setIsDarkMode] = useState(() => {
     if (typeof window !== "undefined") {
@@ -303,6 +306,17 @@ export default function Navbar() {
                   </span>
                   {t("nav_live")}
                 </div>
+
+                <button
+                  type="button"
+                  onClick={() => window.__openPrimeOnboarding && window.__openPrimeOnboarding()}
+                  className="hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-white/[0.08] hover:bg-white/[0.15] border border-white/15 backdrop-blur-md text-[11px] font-bold text-slate-200 transition-all cursor-pointer shadow-sm hover:border-cyan-400/40"
+                  title={`Location: ${countryName || "Pakistan"} (${currency}) — Click to change setup`}
+                >
+                  <span className="text-xs">{countryFlag || "🇵🇰"}</span>
+                  <span className="font-mono text-cyan-300 font-extrabold">{currency}</span>
+                  <Globe size={12} className="text-slate-400" />
+                </button>
 
                 <LanguageSwitcher />
                 <CurrencySwitcher />
@@ -572,8 +586,17 @@ export default function Navbar() {
                 {/* Language & Currency Controls Glass Box */}
                 <div className="p-3 rounded-2xl bg-gradient-to-r from-white/[0.07] to-white/[0.03] backdrop-blur-xl border border-white/15 shadow-[0_4px_20px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.15)] space-y-2">
                   <div className="flex items-center justify-between text-[9.5px] font-extrabold text-slate-400 uppercase tracking-widest px-0.5">
-                    <span>Language & Currency</span>
-                    <span className="text-[9px] text-emerald-400 font-mono">PKR / USD / GBP</span>
+                    <span>Region &amp; Preferences</span>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setOpen(false);
+                        if (window.__openPrimeOnboarding) window.__openPrimeOnboarding();
+                      }}
+                      className="text-[9px] text-[#00D4FF] hover:underline font-mono font-bold cursor-pointer"
+                    >
+                      Reset Setup ⚙️
+                    </button>
                   </div>
                   <div className="flex items-center justify-between gap-2 flex-wrap pt-0.5">
                     <LanguageSwitcher />
