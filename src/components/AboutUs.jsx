@@ -118,13 +118,53 @@ export default function AboutUs() {
           })}
         </div>
 
+        {/* EEAT Founder & Business Verification Card */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+          className="mt-12 p-6 sm:p-8 rounded-3xl bg-[#0d1117]/80 border border-white/10 text-left space-y-4"
+        >
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pb-4 border-b border-white/10">
+            <div>
+              <span className="text-[11px] font-mono font-bold text-emerald-400 uppercase tracking-widest block mb-1">
+                E-E-A-T VERIFIED BRAND &amp; FOUNDER STORY
+              </span>
+              <h3 className="font-display font-extrabold text-xl sm:text-2xl text-white">
+                Founded by Salman Jutt — Serving Pakistan Since 2022
+              </h3>
+            </div>
+            <div className="px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold shrink-0">
+              Verified 5,000+ Orders Delivered
+            </div>
+          </div>
+          <p className="text-xs sm:text-sm text-slate-300 font-body leading-relaxed">
+            Prime Tools Hub was established in Lahore, Pakistan by <strong>Salman Jutt</strong> to address the severe international credit card payment barriers faced by local freelancers, content creators, software developers, and students. By establishing direct bulk licensing partnerships and localized PKR payment rails (JazzCash, EasyPaisa, Meezan, HBL), Prime Tools Hub makes global SaaS and AI subscriptions seamlessly accessible without PayPal or foreign transaction surcharges.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2 text-xs">
+            <div className="p-3 rounded-xl bg-white/[0.03] border border-white/10">
+              <span className="text-emerald-400 font-bold block mb-0.5">🔒 100% Verified Accounts</span>
+              <span className="text-slate-400 text-[11px]">No trial scams or temporary links. Official team &amp; email invites only.</span>
+            </div>
+            <div className="p-3 rounded-xl bg-white/[0.03] border border-white/10">
+              <span className="text-blue-400 font-bold block mb-0.5">⚡ 15-Minute Activation</span>
+              <span className="text-slate-400 text-[11px]">Instant delivery directly to your WhatsApp with full 2FA support.</span>
+            </div>
+            <div className="p-3 rounded-xl bg-white/[0.03] border border-white/10">
+              <span className="text-purple-400 font-bold block mb-0.5">🛡️ Full Replacement Warranty</span>
+              <span className="text-slate-400 text-[11px]">Full support &amp; instant replacements for the entire plan duration.</span>
+            </div>
+          </div>
+        </motion.div>
+
         {/* Trust Stat Strip */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          className="mt-14 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-violet-900/30 via-indigo-900/20 to-pink-900/30 border border-white/15 backdrop-blur-2xl flex flex-col md:flex-row items-center justify-between gap-6"
+          className="mt-8 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-violet-900/30 via-indigo-900/20 to-pink-900/30 border border-white/15 backdrop-blur-2xl flex flex-col md:flex-row items-center justify-between gap-6"
         >
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center shrink-0">

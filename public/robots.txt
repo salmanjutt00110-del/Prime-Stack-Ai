@@ -55,6 +55,6 @@ User-agent: Twitterbot
 Allow: /
 
 # Sitemaps
-Sitemap: https://primetoolshub.store/sitemap-index.xml
-Sitemap: https://primetoolshub.store/sitemap.xml
-Sitemap: https://primetoolshub.store/sitemap-images.xml
+Sitemap: https://www.primetoolshub.store/sitemap-index.xml
+Sitemap: https://www.primetoolshub.store/sitemap.xml
+Sitemap: https://www.primetoolshub.store/sitemap-images.xml

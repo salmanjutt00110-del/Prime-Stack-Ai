@@ -97,6 +97,18 @@ export default function Footer() {
               <li><Link to="/acceptable-use" className="hover:text-white transition-colors">Acceptable Use Policy</Link></li>
               <li><Link to="/html-sitemap" className="hover:text-white transition-colors">HTML Sitemap</Link></li>
             </ul>
+
+            {/* Trusted External Links */}
+            <h4 className="font-display font-bold text-xs text-slate-500 uppercase tracking-wider mt-5 mb-2">
+              Official Resources
+            </h4>
+            <ul className="space-y-1.5 text-xs text-slate-500">
+              <li><a href="https://openai.com/chatgpt" target="_blank" rel="noopener noreferrer" className="hover:text-slate-300 transition-colors">OpenAI ChatGPT ↗</a></li>
+              <li><a href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer" className="hover:text-slate-300 transition-colors">Google Gemini ↗</a></li>
+              <li><a href="https://www.canva.com/" target="_blank" rel="noopener noreferrer" className="hover:text-slate-300 transition-colors">Canva Design ↗</a></li>
+              <li><a href="https://www.capcut.com/" target="_blank" rel="noopener noreferrer" className="hover:text-slate-300 transition-colors">CapCut Editor ↗</a></li>
+              <li><a href="https://surfshark.com/" target="_blank" rel="noopener noreferrer" className="hover:text-slate-300 transition-colors">Surfshark VPN ↗</a></li>
+            </ul>
           </div>
 
           {/* COLUMN 4 — TRUST & CONTACT */}

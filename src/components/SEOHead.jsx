@@ -20,7 +20,7 @@ export default function SEOHead({
 }) {
   useEffect(() => {
     // 1. Update Document Title (35 - 65 chars recommended)
-    let fullTitle = title || `Buy ChatGPT Plus in Pakistan — ${STORE_NAME}`;
+    let fullTitle = title || `${STORE_NAME} | Buy ChatGPT Plus & AI Tools Pakistan`;
     if (title && !title.includes(STORE_NAME)) {
       fullTitle = `${title} — ${STORE_NAME}`;
     }
@@ -50,15 +50,15 @@ export default function SEOHead({
 
     const finalDescription =
       description ||
-      "Pakistan's trusted marketplace for ChatGPT Plus, Canva Pro, Veo 3, CapCut, Gemini Pro & more. Fast delivery via JazzCash/EasyPaisa.";
+      "Buy ChatGPT Plus, Canva Pro, Gemini Pro, Veo 3 & CapCut Pro in Pakistan. Instant delivery via JazzCash/EasyPaisa. 100% replacement warranty. Trusted by 1,200+ users.";
     const finalKeywords =
       keywords ||
       "ChatGPT Plus Pakistan, Google Gemini Advanced, Veo 3 AI Video, CapCut Pro subscription, Canva Pro account, SuperGrok 12m, Surfshark VPN, Prime Tools Hub, primetoolshub.store, buy AI tools Pakistan, digital subscriptions Pakistan";
     const finalCanonical =
       canonicalUrl ||
       (typeof window !== "undefined"
-        ? window.location.origin + window.location.pathname
-        : DOMAIN);
+        ? DOMAIN + window.location.pathname.replace(/\/$/, '') + (window.location.pathname === '/' ? '/' : '')
+        : DOMAIN + '/');
     const finalImage = ogImage || LOGO_URL;
     const finalImageAlt =
       ogImageAlt ||

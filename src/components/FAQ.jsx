@@ -9,27 +9,79 @@ const FAQS = [
   },
   {
     q: "Payment kaise karni hai?",
-    a: "JazzCash, EasyPaisa, bank transfer, ya USDT se payment kar sakte hain. WhatsApp par batayein, hum details denge.",
+    a: "JazzCash, EasyPaisa, bank transfer (Meezan, HBL, UBL, Allied Bank), ya USDT se payment kar sakte hain. WhatsApp par batayein, hum details denge.",
   },
   {
     q: "Kitne waqt mein milega?",
-    a: "Zyada tar 5–30 minute ke andar delivery ho jati hai. Busy hours mein max 2 ghante lag sakte hain.",
+    a: "Zyada tar 5–15 minute ke andar delivery ho jati hai. Busy hours mein max 2 ghante lag sakte hain.",
   },
   {
     q: "Agar koi masla aaye toh?",
-    a: "Hum 30-day support dete hain. Koi bhi issue ho, WhatsApp karein — hum free mein fix karenge.",
+    a: "Hum full replacement warranty dete hain jo product card par mentioned duration ke liye valid hai. Koi bhi issue ho, WhatsApp karein — hum free mein fix ya replace karenge.",
   },
   {
     q: "Kya subscription renew hogi automatically?",
-    a: "Nahi. Aapko renewal ke liye dobara WhatsApp karna hoga. Hum reminder bhi dete hain.",
+    a: "Nahi. Aapko renewal ke liye dobara WhatsApp karna hoga. Hum expiry se pehle reminder bhi dete hain taake aapka access uninterrupted rahe.",
   },
   {
     q: "Kya aap trustworthy hain? Fraud toh nahi?",
-    a: "Hum 2+ saal se active hain, 1,200+ orders de chuke hain. Reviews dekh sakte hain WhatsApp par. Pehle chota tool try karein trust ke liye.",
+    a: "Hum 2022 se active hain aur 5,000+ orders successfully deliver kar chuke hain. Reviews dekh sakte hain WhatsApp par. Pehle chota tool try karein trust ke liye.",
   },
   {
     q: "Kya international customers order kar sakte hain?",
-    a: "Haan! USDT ya card se pay karke international customers bhi order kar sakte hain.",
+    a: "Haan! USDT ya crypto se pay karke international customers bhi order kar sakte hain. Delivery worldwide available hai WhatsApp ke through.",
+  },
+  {
+    q: "ChatGPT Plus Pakistan mein kaise milega?",
+    a: "Humse order karein — hum aapki email par ChatGPT Plus activate karte hain. Koi VPN ya international card ki zaroorat nahi. 15 minute mein delivery ho jati hai.",
+  },
+  {
+    q: "Canva Pro kitne mein milega?",
+    a: "Canva Pro sirf Rs. 279 mein 3 saal ke liye available hai. Ye education invite hai jo aapke personal account par activate hota hai with all premium features.",
+  },
+  {
+    q: "Google Gemini Pro kya hai aur kaise kaam karta hai?",
+    a: "Google Gemini Pro Google ka flagship AI model hai with 2M context window, 5TB cloud storage, aur Veo video generation. Hum isko aapke personal Gmail par activate karte hain 18 months ke liye.",
+  },
+  {
+    q: "VPN subscription safe hai? IP leak toh nahi hoga?",
+    a: "Surfshark aur NordVPN dono industry-leading VPN providers hain with military-grade encryption, no-log policy, aur kill switch. Aapki privacy 100% protected hai.",
+  },
+  {
+    q: "Kya bulk orders ke liye discount milta hai?",
+    a: "Haan! 5 ya zyada products kharidne par exclusive bulk pricing milti hai. Agencies, resellers, aur teams ke liye custom quotes available hain — WhatsApp par contact karein.",
+  },
+  {
+    q: "Refund policy kya hai?",
+    a: "Agar product activation mein koi issue aaye toh hum replacement dete hain. Digital nature ki wajah se standard refunds available nahi hain, lekin full replacement warranty har product ke saath included hai.",
+  },
+  {
+    q: "CapCut Pro mein kya features milte hain?",
+    a: "CapCut Pro mein 4K export bina watermark, AI auto-captions, body tracking, premium effects library, aur trending TikTok templates sab included hain. Perfect hai video editors aur content creators ke liye.",
+  },
+  {
+    q: "Kya mujhe product ka login credentials milenge?",
+    a: "ChatGPT Plus mein hum aapki email par activate karte hain. Canva Pro mein invite link milta hai. Har product ka method different hai — order ke waqt hum full guide dete hain WhatsApp par.",
+  },
+  {
+    q: "Aapki support timings kya hain?",
+    a: "Humari WhatsApp support 9 AM se 11 PM PKT tak available hai, 7 days a week including weekends. Urgent issues ke liye WhatsApp par message karein aur hum jaldi reply karenge.",
+  },
+  {
+    q: "Kya YouTube Premium bhi available hai?",
+    a: "Haan! YouTube Premium 1, 3, aur 12 month plans mein available hai. Aapke personal Google account par fixed family slot milta hai — ad-free videos, YouTube Music, aur background play sab included hai.",
+  },
+  {
+    q: "Lovable AI aur Cursor AI kya hain?",
+    a: "Lovable AI ek AI-powered app builder hai jo code likhne mein madad karta hai. Cursor AI ek advanced coding assistant hai. Dono developers aur startups ke liye ideal hain aur humse affordable rates par available hain.",
+  },
+  {
+    q: "Kya mere existing Google account par Gemini activate ho jayega?",
+    a: "Haan, bilkul! Google Gemini Pro aapke existing Gmail account par directly activate hota hai. Aapko naya account banane ki zaroorat nahi — apna personal Gmail share karein aur hum baaki handle karenge.",
+  },
+  {
+    q: "Order karne ka tareeqa kya hai step by step?",
+    a: "Step 1: Website par product choose karein. Step 2: 'Buy on WhatsApp' button click karein. Step 3: Apni details aur payment method batayein. Step 4: Payment karein. Step 5: 15 minute mein credentials ya activation link receive karein. Simple!",
   },
 ];
 

@@ -6,7 +6,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 
-const DOMAIN = 'https://primetoolshub.store';
+const DOMAIN = 'https://www.primetoolshub.store';
 const today = new Date().toISOString().split('T')[0];
 
 function getProductsData() {

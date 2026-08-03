@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Prime Tools Hub â€” Schema.org JSON-LD Generator
  * Enterprise-level, 100% Google Rich Results & Merchant Listings compliant.
  * 
@@ -17,7 +17,7 @@
  * - Speakable (AI Search Optimization)
  */
 
-export const DOMAIN = "https://primetoolshub.store";
+export const DOMAIN = "https://www.primetoolshub.store";
 export const STORE_NAME = "Prime Tools Hub";
 export const LOGO_URL = `${DOMAIN}/prime-tools-logo.webp`;
 export const CONTACT_PHONE = "+923707020580";
@@ -61,7 +61,7 @@ export function generateOrganizationSchema() {
     "@type": "Organization",
     "@id": `${DOMAIN}/#organization`,
     "name": STORE_NAME,
-    "alternateName": "PrimeToolsHub",
+    "alternateName": ["PrimeToolsHub", "Prime Tools Hub Pakistan"],
     "url": `${DOMAIN}/`,
     "logo": {
       "@type": "ImageObject",
@@ -71,8 +71,15 @@ export function generateOrganizationSchema() {
       "caption": STORE_NAME
     },
     "image": LOGO_URL,
-    "description": "Pakistan & Global's #1 marketplace for genuine AI tools, creator accounts, VPNs, and digital subscriptions. Trusted by 1,200+ verified users.",
+    "description": "Pakistan & Global's #1 marketplace for genuine AI tools, creator accounts, VPNs, and digital subscriptions. Founded by Salman Jutt in 2022. Trusted by 5,000+ verified users.",
     "foundingDate": "2022",
+    "founder": {
+      "@type": "Person",
+      "@id": `${DOMAIN}/#founder`,
+      "name": "Salman Jutt",
+      "jobTitle": "Founder & Technical Lead",
+      "sameAs": [`${DOMAIN}/contact`]
+    },
     "telephone": CONTACT_PHONE,
     "email": CONTACT_EMAIL,
     "priceRange": "$$",
@@ -103,7 +110,8 @@ export function generateOrganizationSchema() {
     },
     "sameAs": [
       WHATSAPP_URL,
-      `${DOMAIN}/`
+      "https://www.instagram.com/primetoolshub",
+      "https://www.facebook.com/primetoolshub"
     ]
   };
 }
@@ -163,6 +171,10 @@ export function generateWebPageSchema({ name, description, url, breadcrumbItems 
     "about": { "@id": `${DOMAIN}/#organization` },
     "inLanguage": "en",
     "dateModified": new Date().toISOString().split("T")[0],
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": ["h1", "h2", ".hero-subtext", ".seo-content-header"]
+    }
   };
   if (breadcrumbItems.length > 0) {
     schema.breadcrumb = { "@id": `${url}#breadcrumb` };
@@ -463,18 +475,10 @@ export function generateFAQPageSchema() {
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "How do I place an order on Prime Tools Hub?",
+        "name": "Are these accounts genuine or shared?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Simply browse our catalog, click 'Buy on WhatsApp' or 'Order Now' on any product card. Your order details will auto-fill in a WhatsApp message. Send it to our team and we'll guide you through quick payment and instant activation."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How fast is product delivery & activation?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Most products (such as ChatGPT Plus, Gemini Advanced, CapCut Pro, Canva Pro, and VPNs) are activated within minutes after payment confirmation. Special custom growth services like TikTok Growth Challenge may take up to 24 hours."
+          "text": "We provide 100% official accounts. ChatGPT Plus uses your own email, while other tools provide family/team slots that are perfectly safe and fully verified."
         }
       },
       {
@@ -482,31 +486,151 @@ export function generateFAQPageSchema() {
         "name": "What payment methods do you accept?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "We accept EasyPaisa, JazzCash, Bank Account Transfers, and select international payment methods. Once you place an order on WhatsApp, we share the exact payment details."
+          "text": "We accept JazzCash, EasyPaisa, bank transfer (Meezan, HBL, UBL, Allied Bank), and USDT for international customers."
         }
       },
       {
         "@type": "Question",
-        "name": "Are these accounts genuine, safe, and legal?",
+        "name": "How fast is delivery?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, 100%. We only deal in legitimate, genuine accounts and official activation channels. Your privacy and data safety are fully protected."
+          "text": "Most products are delivered within 5-15 minutes. During peak hours, delivery may take up to 2 hours maximum."
         }
       },
       {
         "@type": "Question",
-        "name": "What if I face an issue during my subscription period?",
+        "name": "What if I face an issue during my subscription?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "All our products come with a dedicated replacement warranty for the duration specified on the product card. If you experience any issue, simply reach out to our WhatsApp support and we will replace or resolve it immediately."
+          "text": "We provide full replacement warranty for the duration specified on the product card. Contact us on WhatsApp and we will fix or replace it at no cost."
         }
       },
       {
         "@type": "Question",
-        "name": "Do you offer bulk discounts for agencies, teams, or resellers?",
+        "name": "Does the subscription renew automatically?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes! If you purchase 5 or more products (or require multi-user team seats), we offer exclusive custom bulk pricing. Contact us on WhatsApp for a personalized quotation."
+          "text": "No. You need to contact us via WhatsApp for renewal. We send expiry reminders to ensure uninterrupted access."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is Prime Tools Hub trustworthy?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We have been operating since 2022 with 5,000+ successfully delivered orders across Pakistan. Check our verified customer reviews on the reviews page."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can international customers place orders?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! International customers can pay via USDT cryptocurrency. Worldwide delivery is available through WhatsApp."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How to buy ChatGPT Plus in Pakistan?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Order from us — we activate ChatGPT Plus on your email. No VPN or international credit card needed. Delivery within 15 minutes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does Canva Pro cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Canva Pro is available for just Rs. 279 for 3 years. It is an education invite activated on your personal account with all premium features."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is Google Gemini Pro and how does it work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Google Gemini Pro is Google's flagship AI with 2M context window, 5TB cloud storage, and Veo video generation. We activate it on your personal Gmail for 18 months."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is VPN subscription safe? Will my IP leak?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Both Surfshark and NordVPN are industry-leading VPN providers with military-grade encryption, no-log policy, and kill switch. Your privacy is 100% protected."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you offer bulk discounts for agencies and teams?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! Purchasing 5 or more products qualifies for exclusive bulk pricing. Agencies, resellers, and teams can get custom quotes via WhatsApp."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is your refund policy?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Due to the digital nature of products, standard refunds are not available. However, full replacement warranty is included with every product for the specified duration."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What features does CapCut Pro include?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CapCut Pro includes 4K export without watermark, AI auto-captions, body tracking, premium effects library, and trending TikTok templates."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will I receive login credentials for products?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Delivery method varies by product. ChatGPT Plus is activated on your email, Canva Pro via invite link. We provide a full guide on WhatsApp during delivery."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are your support hours?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "WhatsApp support is available 9 AM to 11 PM PKT, 7 days a week including weekends."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is YouTube Premium available?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! YouTube Premium is available in 1, 3, and 12 month plans on your personal Google account with ad-free videos, YouTube Music, and background play."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are Lovable AI and Cursor AI?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Lovable AI is an AI-powered app builder and Cursor AI is an advanced coding assistant. Both are ideal for developers and startups, available at affordable rates."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can Gemini Pro be activated on my existing Google account?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! Google Gemini Pro is activated directly on your existing Gmail account. No new account needed — share your personal Gmail and we handle the rest."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the step-by-step ordering process?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Step 1: Choose product on website. Step 2: Click Buy on WhatsApp. Step 3: Share details and payment method. Step 4: Make payment. Step 5: Receive credentials within 15 minutes."
         }
       }
     ]
@@ -557,8 +681,8 @@ export function generateHomepageGraph(products = []) {
   const productSchemas = products.map((p) => generateProductSchema(p)).filter(Boolean);
 
   const webPage = generateWebPageSchema({
-    name: "Buy ChatGPT Plus in Pakistan | Canva Pro, Veo 3 â€” Prime Tools Hub",
-    description: "Pakistan's trusted marketplace for ChatGPT Plus, Canva Pro, Veo 3, CapCut, Gemini Pro & more. Fast delivery via JazzCash/EasyPaisa.",
+    name: "Prime Tools Hub | Buy ChatGPT Plus & AI Tools Pakistan",
+    description: "Buy ChatGPT Plus, Canva Pro, Gemini Pro, Veo 3 & CapCut Pro in Pakistan. Instant delivery via JazzCash/EasyPaisa. 100% replacement warranty. Trusted by 1,200+ users.",
     url: `${DOMAIN}/`,
     breadcrumbItems: [{ name: "Products", url: "/#products" }]
   });
