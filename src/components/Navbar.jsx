@@ -311,22 +311,23 @@ export default function Navbar() {
                   {t("nav_live")}
                 </div>
 
-                {/* Location Badge (Only before setup is locked) */}
-                {!isLocked && (
-                  <button
-                    type="button"
-                    onClick={() => window.__openPrimeOnboarding && window.__openPrimeOnboarding()}
-                    className="hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-white/[0.08] hover:bg-white/[0.15] border border-white/15 backdrop-blur-md text-[11px] font-bold text-slate-200 transition-all cursor-pointer shadow-sm hover:border-cyan-400/40"
-                    title={`Location: ${countryName || "Pakistan"} (${currency})`}
-                  >
-                    <span className="text-xs">{countryFlag || "🇵🇰"}</span>
-                    <span className="font-mono text-cyan-300 font-extrabold">{currency}</span>
-                    <Globe size={12} className="text-slate-400" />
-                  </button>
-                )}
+                {/* Always-visible Country Flag & Currency Selector Badge */}
+                <button
+                  type="button"
+                  onClick={() => window.__openPrimeOnboarding && window.__openPrimeOnboarding()}
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/[0.08] hover:bg-white/[0.16] border border-white/20 hover:border-cyan-400/50 backdrop-blur-md text-xs font-bold text-slate-200 transition-all cursor-pointer shadow-md hover:shadow-[0_0_15px_rgba(0,212,255,0.3)] shrink-0"
+                  title={`Location: ${countryName || "Pakistan"} (${countryFlag || "🇵🇰"}) | Currency: ${currency}`}
+                >
+                  <span className="text-sm leading-none">{countryFlag || "🇵🇰"}</span>
+                  <span className="font-mono text-cyan-300 font-extrabold">{currency}</span>
+                  <span className="hidden xl:inline text-[10px] text-slate-300 font-medium border-l border-white/20 pl-1.5">
+                    {countryName || "Pakistan"}
+                  </span>
+                  <Globe size={12} className="text-slate-400" />
+                </button>
 
                 <LanguageSwitcher />
-                {!isLocked && <CurrencySwitcher />}
+                <CurrencySwitcher />
 
                 <a
                   href={whatsappNavUrl}
@@ -606,8 +607,19 @@ export default function Navbar() {
                     </button>
                   </div>
                   <div className="flex items-center justify-between gap-2 flex-wrap pt-0.5">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setOpen(false);
+                        if (window.__openPrimeOnboarding) window.__openPrimeOnboarding();
+                      }}
+                      className="flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-xs font-bold text-white transition-all cursor-pointer"
+                    >
+                      <span className="text-sm">{countryFlag || "🇵🇰"}</span>
+                      <span className="font-mono text-cyan-300 font-extrabold">{countryName || "Pakistan"}</span>
+                    </button>
                     <LanguageSwitcher />
-                    {!isLocked && <CurrencySwitcher />}
+                    <CurrencySwitcher />
                   </div>
                 </div>
 

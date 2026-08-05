@@ -53,11 +53,11 @@ export const FULL_COUNTRY_LIST = [
 ];
 
 const INTRO_STATUS_MESSAGES = [
-  "Initializing Secure Gateway...",
-  "Connecting Premium Servers...",
-  "Verifying Marketplace...",
-  "Loading AI Products...",
-  "Preparing Experience..."
+  "Setting up store preferences...",
+  "Loading localized plans & pricing...",
+  "Verifying available tool licenses...",
+  "Preparing your store experience...",
+  "Almost ready!"
 ];
 
 export default function OnboardingExperience({ onComplete }) {
@@ -79,8 +79,13 @@ export default function OnboardingExperience({ onComplete }) {
   });
   const [selectedLanguage, setSelectedLanguage] = useState("ro_urdu");
 
-  // Check if onboarding is already completed permanently
+  // Check if onboarding is already completed permanently or expose global trigger
   useEffect(() => {
+    window.__openPrimeOnboarding = () => {
+      setStep(2);
+      setIsOpen(true);
+    };
+
     try {
       const completed = localStorage.getItem("prime_onboarding_completed");
       const cookieCompleted = document.cookie.includes("prime_onboarding_completed=true");
@@ -91,6 +96,12 @@ export default function OnboardingExperience({ onComplete }) {
     } catch (e) {
       console.error(e);
     }
+
+    return () => {
+      try {
+        delete window.__openPrimeOnboarding;
+      } catch (_) {}
+    };
   }, []);
 
   // Intro progress timer for Step 1
@@ -230,7 +241,7 @@ export default function OnboardingExperience({ onComplete }) {
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500 shadow-[0_0_10px_#22c55e]" />
             </span>
             <span className="text-slate-300 font-bold uppercase tracking-wider text-[11px]">
-              SYSTEM GATEWAY <span className="text-emerald-400 font-black">ONLINE</span>
+              PRIME TOOLS STORE <span className="text-emerald-400 font-black">• VERIFIED</span>
             </span>
           </div>
 

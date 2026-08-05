@@ -1,79 +1,100 @@
 import { memo } from "react";
-import { MessageCircle } from "lucide-react";
+import { ShoppingCart, Check, ArrowRight, ShieldCheck, Bell, Sparkles } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { openWhatsApp } from "@/lib/whatsapp";
 import { motion } from "framer-motion";
 import LazyImage from "@/components/LazyImage";
 import { useCurrency } from "@/context/CurrencyContext";
 
-const getBadgeConfig = (id = "", name = "") => {
-  const str = (id + " " + name).toLowerCase();
-  if (str.includes("surfshark")) return { label: "❌ Out of Stock", color: "bg-red-500/20 text-red-300 border-red-500/40" };
-  if (str.includes("grok") || str.includes("supergrok")) return { label: "❌ Out of Stock", color: "bg-red-500/20 text-red-300 border-red-500/40" };
-  if (str.includes("chatgpt")) return { label: "🔥 Best Seller", color: "bg-amber-500/20 text-amber-300 border-amber-500/40" };
-  if (str.includes("veo")) return { label: "⚡ New", color: "bg-cyan-500/20 text-cyan-300 border-cyan-500/40" };
-  if (str.includes("canva")) return { label: "🔥 Popular", color: "bg-pink-500/20 text-pink-300 border-pink-500/40" };
-  if (str.includes("gemini")) return { label: "⚡ Top Value", color: "bg-blue-500/20 text-blue-300 border-blue-500/40" };
-  return null;
-};
-
+// Brand-tailored aesthetic color tokens (matching reference image 1)
 const getBrandTheme = (id = "", name = "") => {
   const str = (id + " " + name).toLowerCase();
-  if (str.includes("chatgpt")) {
+  if (str.includes("youtube")) {
     return {
-      glow: "#10A37F",
-      border: "rgba(16, 163, 127, 0.5)",
-      bgGradient: "linear-gradient(140deg, rgba(16, 163, 127, 0.18) 0%, rgba(8, 14, 12, 0.97) 100%)",
-    };
-  }
-  if (str.includes("gemini")) {
-    return {
-      glow: "#4285F4",
-      border: "rgba(66, 133, 244, 0.5)",
-      bgGradient: "linear-gradient(140deg, rgba(66, 133, 244, 0.18) 0%, rgba(8, 10, 24, 0.97) 100%)",
-    };
-  }
-  if (str.includes("canva")) {
-    return {
-      glow: "#7D2AE8",
-      border: "rgba(125, 42, 232, 0.5)",
-      bgGradient: "linear-gradient(140deg, rgba(125, 42, 232, 0.2) 0%, rgba(10, 8, 24, 0.97) 100%)",
+      glow: "rgba(239, 68, 68, 0.75)",
+      bgGlow: "from-red-500/30 via-slate-900/40 to-transparent",
+      logoRing: "border-red-500/80 shadow-[0_0_30px_rgba(239,68,68,0.55)]",
+      logoGradient: "radial-gradient(circle at 50% 50%, rgba(239,68,68,0.45) 0%, rgba(10,15,30,0.95) 75%)",
     };
   }
   if (str.includes("capcut")) {
     return {
-      glow: "#FE2C55",
-      border: "rgba(254, 44, 85, 0.5)",
-      bgGradient: "linear-gradient(140deg, rgba(254, 44, 85, 0.18) 0%, rgba(15, 23, 42, 0.97) 100%)",
+      glow: "rgba(236, 72, 153, 0.75)",
+      bgGlow: "from-pink-500/30 via-purple-900/30 to-transparent",
+      logoRing: "border-pink-400/80 shadow-[0_0_30px_rgba(236,72,153,0.55)]",
+      logoGradient: "radial-gradient(circle at 50% 50%, rgba(236,72,153,0.45) 0%, rgba(10,15,30,0.95) 75%)",
     };
   }
-  if (str.includes("veo")) {
+  if (str.includes("lovable")) {
     return {
-      glow: "#6366F1",
-      border: "rgba(99, 102, 241, 0.5)",
-      bgGradient: "linear-gradient(140deg, rgba(99, 102, 241, 0.18) 0%, rgba(10, 10, 24, 0.97) 100%)",
+      glow: "rgba(244, 63, 94, 0.85)",
+      bgGlow: "from-rose-500/35 via-pink-950/40 to-transparent",
+      logoRing: "border-rose-400/80 shadow-[0_0_30px_rgba(244,63,94,0.6)]",
+      logoGradient: "radial-gradient(circle at 50% 50%, rgba(244,63,94,0.5) 0%, rgba(25,10,20,0.98) 80%)",
     };
   }
-  if (str.includes("surfshark") || str.includes("vpn")) {
+  if (str.includes("notion")) {
     return {
-      glow: "#00D1B2",
-      border: "rgba(0, 209, 178, 0.5)",
-      bgGradient: "linear-gradient(140deg, rgba(0, 209, 178, 0.18) 0%, rgba(6, 14, 18, 0.97) 100%)",
+      glow: "rgba(255, 255, 255, 0.9)",
+      bgGlow: "from-slate-100/20 via-slate-800/30 to-transparent",
+      logoRing: "border-white/90 shadow-[0_0_30px_rgba(255,255,255,0.7)]",
+      logoGradient: "radial-gradient(circle at 50% 50%, #ffffff 0%, #e2e8f0 100%)",
+      isNotion: true,
+    };
+  }
+  if (str.includes("chatgpt")) {
+    return {
+      glow: "rgba(16, 185, 129, 0.85)",
+      bgGlow: "from-emerald-500/35 via-teal-950/40 to-transparent",
+      logoRing: "border-emerald-400/80 shadow-[0_0_30px_rgba(16,185,129,0.6)]",
+      logoGradient: "radial-gradient(circle at 50% 50%, rgba(16,185,129,0.5) 0%, rgba(6,20,18,0.98) 80%)",
+    };
+  }
+  if (str.includes("gemini") || str.includes("veo")) {
+    return {
+      glow: "rgba(66, 133, 244, 0.85)",
+      bgGlow: "from-blue-500/35 via-indigo-900/40 to-transparent",
+      logoRing: "border-blue-400/80 shadow-[0_0_30px_rgba(66,133,244,0.6)]",
+      logoGradient: "radial-gradient(circle at 50% 50%, rgba(66,133,244,0.5) 0%, rgba(10,15,35,0.98) 80%)",
+    };
+  }
+  if (str.includes("canva")) {
+    return {
+      glow: "rgba(168, 85, 247, 0.75)",
+      bgGlow: "from-purple-500/30 via-violet-900/30 to-transparent",
+      logoRing: "border-purple-400/80 shadow-[0_0_30px_rgba(168,85,247,0.55)]",
+      logoGradient: "radial-gradient(circle at 50% 50%, rgba(168,85,247,0.45) 0%, rgba(10,15,30,0.95) 75%)",
+    };
+  }
+  if (str.includes("nord")) {
+    return {
+      glow: "rgba(0, 96, 255, 0.85)",
+      bgGlow: "from-blue-600/35 via-blue-950/40 to-transparent",
+      logoRing: "border-blue-400/80 shadow-[0_0_30px_rgba(0,96,255,0.6)]",
+      logoGradient: "radial-gradient(circle at 50% 50%, rgba(0,96,255,0.5) 0%, rgba(7,14,30,0.98) 80%)",
+    };
+  }
+  if (str.includes("surfshark")) {
+    return {
+      glow: "rgba(0, 209, 178, 0.85)",
+      bgGlow: "from-teal-400/35 via-slate-900/40 to-transparent",
+      logoRing: "border-teal-400/80 shadow-[0_0_30px_rgba(0,209,178,0.6)]",
+      logoGradient: "radial-gradient(circle at 50% 50%, rgba(0,209,178,0.5) 0%, rgba(6,20,30,0.98) 80%)",
     };
   }
   return {
-    glow: "#8B5CF6",
-    border: "rgba(139, 92, 246, 0.45)",
-    bgGradient: "linear-gradient(140deg, rgba(139, 92, 246, 0.15) 0%, rgba(10, 8, 16, 0.97) 100%)",
+    glow: "rgba(59, 130, 246, 0.75)",
+    bgGlow: "from-blue-500/30 via-slate-900/30 to-transparent",
+    logoRing: "border-blue-400/80 shadow-[0_0_30px_rgba(59,130,246,0.55)]",
+    logoGradient: "radial-gradient(circle at 50% 50%, rgba(59,130,246,0.45) 0%, rgba(10,15,30,0.95) 75%)",
   };
 };
 
-function ProductCardComponent({ product, index = 0, priority = false }) {
+function ProductCardComponent({ product, index = 0, priority = false, onQuickView }) {
   const navigate = useNavigate();
   const { formatPrice } = useCurrency();
 
-  const theme = getBrandTheme(product.id, product.name);
-  const badge = getBadgeConfig(product.id, product.name);
+  const brandTheme = getBrandTheme(product.id, product.name);
   const isChatGPT = String(product.id || "").toLowerCase().includes("chatgpt");
   const isOutOfStock =
     product.stock === "0" ||
@@ -86,186 +107,207 @@ function ProductCardComponent({ product, index = 0, priority = false }) {
   const pricing = {
     price: product.price,
     oldPrice: product.oldPrice,
-    label: product.duration || "1 Month"
+    label: product.duration || "1 Month Subscription"
   };
+
+  // Calculate percentage off
+  const calcDiscount = () => {
+    if (!pricing.oldPrice || !pricing.price) return "20% OFF";
+    const pNum = parseFloat(String(pricing.price).replace(/[^0-9.]/g, ""));
+    const opNum = parseFloat(String(pricing.oldPrice).replace(/[^0-9.]/g, ""));
+    if (opNum && pNum && opNum > pNum) {
+      const pct = Math.round(((opNum - pNum) / opNum) * 100);
+      return `${pct}% OFF`;
+    }
+    return "20% OFF";
+  };
+
+  const discountText = calcDiscount();
+
+  const defaultFeatures = [
+    isChatGPT ? "GPT-4 Access" : "Full Pro Features",
+    isChatGPT ? "10 Days Warranty" : "Official Family Plan"
+  ];
+
+  const featuresList = (product.features && product.features.length >= 2)
+    ? product.features.slice(0, 2)
+    : (product.tagline ? [product.tagline, "Official Account"] : defaultFeatures);
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 25 }}
+      initial={{ opacity: 0, y: 15 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-20px" }}
-      transition={{ duration: 0.4, delay: (index % 3) * 0.08 }}
+      viewport={{ once: true, margin: "-10px" }}
+      transition={{ duration: 0.3, delay: (index % 4) * 0.04 }}
       className="w-full flex"
     >
-      <div className="relative w-full group">
+      <div className="relative w-full group flex flex-col">
         
-        {/* Glow Border Animation */}
+        {/* Hover Radial Ambient Glow */}
         <div
-          className="absolute -inset-1 rounded-[28px] pointer-events-none z-0 opacity-40 transition-all duration-500 group-hover:opacity-100 blur-xl"
+          className="absolute -inset-0.5 rounded-[24px] pointer-events-none z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"
           style={{
-            background: `radial-gradient(circle at 50% 30%, ${theme.glow}70 0%, transparent 80%)`,
+            background: `radial-gradient(circle at 50% 30%, ${brandTheme.glow} 0%, transparent 80%)`,
           }}
         />
 
-        {/* Card Container */}
+        {/* Card Main Container (Ultra-Clean Glassmorphism matching reference image 1) */}
         <div
-          onClick={() => navigate(`/product/${product.id}`)}
-          className="relative w-full rounded-[26px] p-5 sm:p-6 flex flex-col justify-between cursor-pointer overflow-hidden z-10 bg-[#0d1117] border transition-all duration-400 group-hover:-translate-y-2 group-hover:border-cyan-400/60 shadow-2xl"
-          style={{
-            borderColor: theme.border,
-            boxShadow: `0 20px 40px rgba(0,0,0,0.8)`,
+          onClick={() => {
+            if (onQuickView) onQuickView(product);
+            else navigate(`/product/${product.id}`);
           }}
+          className="relative w-full h-full rounded-[22px] sm:rounded-[26px] p-3.5 sm:p-5 flex flex-col justify-between cursor-pointer overflow-hidden z-10 bg-[#060a16] border border-[#16223b] hover:border-blue-500/60 transition-all duration-300 hover:-translate-y-1 shadow-[0_12px_35px_rgba(0,0,0,0.85)] backdrop-blur-2xl"
         >
-          {/* Most Popular Ribbon on ChatGPT */}
-          {isChatGPT && (
-            <div className="absolute -top-1 -right-1 z-20 overflow-hidden w-28 h-28 pointer-events-none">
-              <div className="bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-950 text-[10px] font-black uppercase tracking-wider text-center py-1 font-mono shadow-md rotate-45 translate-x-7 translate-y-4 w-32 border border-yellow-200">
-                Most Popular
-              </div>
-            </div>
-          )}
+          {/* Subtle Top Card Gradient */}
+          <div className={`absolute top-0 left-0 right-0 h-32 bg-gradient-to-b ${brandTheme.bgGlow} pointer-events-none opacity-60 z-0`} />
 
-          <div>
-            {/* BADGES & STOCK ROW */}
-            <div className="flex items-center justify-between gap-2 mb-3 relative z-10">
-              <span className="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-white/10 text-white flex items-center gap-1 border border-white/15">
-                {product.duration || "Verified"}
-              </span>
+          <div className="relative z-10">
+            {/* BADGES ROW */}
+            <div className="flex items-center justify-between gap-1 mb-2.5">
+              {isOutOfStock ? (
+                <span className="px-2.5 py-0.5 rounded-full text-[10px] sm:text-[11px] font-bold bg-[#290c3d] text-[#c084fc] border border-[#a855f7]/40 flex items-center gap-1 shrink-0">
+                  <Sparkles size={11} className="text-purple-300" />
+                  <span>Restocking</span>
+                </span>
+              ) : (
+                <span className="px-2.5 py-0.5 rounded-full text-[10px] sm:text-[11px] font-bold bg-[#0c1f38] text-[#38bdf8] border border-[#0284c7]/40 flex items-center gap-1 shrink-0">
+                  <ShieldCheck size={11} className="text-[#38bdf8]" />
+                  <span>Official</span>
+                </span>
+              )}
 
-              {badge && (
-                <span className={`px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider border ${badge.color}`}>
-                  {badge.label}
+              {/* Best Seller Ribbon or Rating Star */}
+              {isChatGPT ? (
+                <span className="px-2.5 py-0.5 rounded-full text-[9.5px] sm:text-[10.5px] font-extrabold uppercase bg-[#3b0764] text-[#e9d5ff] border border-[#a855f7]/50 font-mono flex items-center gap-1 shrink-0">
+                  👑 Best Seller
+                </span>
+              ) : (
+                <span className="px-2 py-0.5 rounded-full text-[10px] sm:text-[11px] font-bold bg-[#231707] text-[#fbbf24] border border-[#d97706]/40 flex items-center gap-0.5 font-mono shrink-0">
+                  ★ 4.9
                 </span>
               )}
             </div>
 
-            {/* TOOL LOGO WITH HIGH-CONTRAST DUAL GLOW */}
-            <div className="flex justify-center my-3 relative z-10">
+            {/* CIRCULAR LOGO CONTAINER WITH TRANSPARENT BG LOGO & GLOWING NEON SPOTLIGHT */}
+            <div className="flex justify-center my-3 sm:my-4">
               <div
-                className="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl p-2.5 flex items-center justify-center border shadow-2xl transition-transform duration-300 group-hover:scale-105"
+                className={`w-20 h-20 sm:w-24 sm:h-24 rounded-full p-3 sm:p-3.5 flex items-center justify-center border ${brandTheme.logoRing} group-hover:scale-105 transition-transform duration-300 relative overflow-hidden shrink-0 shadow-2xl ${brandTheme.isNotion ? 'bg-white' : ''}`}
                 style={{
-                  background: `radial-gradient(circle at 50% 50%, ${theme.glow}45 0%, rgba(13, 17, 23, 0.98) 100%)`,
-                  borderColor: `${theme.glow}70`,
-                  boxShadow: `0 12px 30px rgba(0,0,0,0.8), 0 0 25px ${theme.glow}30`,
+                  background: brandTheme.isNotion ? "#FFFFFF" : (brandTheme.logoGradient || "radial-gradient(circle at 50% 50%, rgba(15,23,42,0.95) 0%, rgba(8,12,24,0.98) 100%)"),
                 }}
               >
-                {String(product.id || "").toLowerCase().includes("notion") ||
-                String(product.name || "").toLowerCase().includes("notion") ? (
-                  <div className="w-full h-full rounded-xl bg-white/95 p-3 flex items-center justify-center shadow-lg border border-white">
-                    <LazyImage
-                      src={product.logo}
-                      alt={product.name}
-                      width={140}
-                      height={140}
-                      className="w-full h-full object-contain filter drop-shadow-sm"
-                      priority={priority}
-                    />
-                  </div>
-                ) : String(product.id || "").toLowerCase().includes("capcut") ||
-                  String(product.name || "").toLowerCase().includes("capcut") ? (
-                  <div className="w-full h-full rounded-xl bg-[#090d16] p-3 flex items-center justify-center shadow-xl border border-[#FE2C55]/70 shadow-red-950/50">
-                    <LazyImage
-                      src={product.logo}
-                      alt={product.name}
-                      width={140}
-                      height={140}
-                      className="w-full h-full object-contain filter drop-shadow-[0_0_10px_rgba(255,255,255,0.95)] drop-shadow-[0_0_20px_rgba(254,44,85,0.6)]"
-                      priority={priority}
-                    />
-                  </div>
-                ) : (
-                  <LazyImage
-                    src={product.logo}
-                    alt={product.name}
-                    width={140}
-                    height={140}
-                    className="w-20 h-20 sm:w-24 sm:h-24 object-contain filter drop-shadow-[0_0_12px_rgba(255,255,255,0.75)] drop-shadow-[0_4px_10px_rgba(0,0,0,0.9)]"
-                    priority={priority}
+                {/* Vibrant Brand Neon Glow Spotlight directly behind the transparent logo */}
+                {!brandTheme.isNotion && (
+                  <div
+                    className="absolute inset-0 pointer-events-none rounded-full blur-md opacity-90"
+                    style={{
+                      background: `radial-gradient(circle at 50% 50%, ${brandTheme.glow} 0%, transparent 65%)`,
+                    }}
                   />
                 )}
+
+                <LazyImage
+                  src={product.logo}
+                  alt={product.name}
+                  title={product.name}
+                  width={100}
+                  height={100}
+                  className="w-12 h-12 sm:w-14 sm:h-14 object-contain relative z-10 flex items-center justify-center"
+                  imgStyle={{
+                    objectFit: "contain",
+                    filter: brandTheme.isNotion ? "none" : "drop-shadow(0 2px 8px rgba(0,0,0,0.5)) brightness(1.15) contrast(1.1)",
+                  }}
+                  priority={priority}
+                />
               </div>
             </div>
 
-            {/* TOOL NAME */}
-            <h3 className="font-display font-black text-lg sm:text-xl text-white tracking-tight text-center mb-1 group-hover:text-[#00ff88] transition-colors">
+            {/* PRODUCT NAME & SUBTITLE */}
+            <h3 className="font-display font-black text-base sm:text-lg text-white text-center tracking-tight leading-snug group-hover:text-blue-400 transition-colors line-clamp-1">
               {product.name}
             </h3>
 
-            {/* SHORT DESCRIPTION (1 line max) */}
-            <p className="text-xs text-slate-300 text-center leading-snug font-body mb-4 line-clamp-1 px-1">
-              {product.tagline || product.description}
+            <p className="text-xs text-slate-400 text-center font-medium mt-0.5 mb-3 line-clamp-1">
+              {product.duration || "1 Month Subscription"}
             </p>
 
-
-
-            {/* SLA Delivery & Ratings Row */}
-            <div className="flex items-center justify-between text-[11px] text-slate-300 font-semibold mb-3 px-1">
-              <span className="text-amber-400 font-bold flex items-center gap-1">
-                ★ 4.9 <span className="text-slate-400 font-normal">(120+)</span>
-              </span>
-              <span className="text-emerald-400 font-bold bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
-                ⚡ 15-Min Delivery
-              </span>
+            {/* BULLET FEATURES LIST */}
+            <div className="space-y-1.5 mb-4 text-xs text-slate-300 font-sans">
+              {featuresList.map((feat, idx) => (
+                <div key={idx} className="flex items-center gap-2">
+                  <Check size={14} className="text-[#38bdf8] shrink-0" />
+                  <span className="truncate">{feat}</span>
+                </div>
+              ))}
             </div>
 
-            {/* PRICE DISPLAY */}
-            <div className="flex flex-col items-center justify-center py-2.5 px-3 bg-white/[0.04] border border-white/10 rounded-xl mb-4">
-              <div className="flex items-center gap-2">
-                {pricing.oldPrice && (
-                  <>
-                    <span className="text-xs text-slate-400 line-through font-mono">
-                      {formatPrice(pricing.oldPrice)}
-                    </span>
-                    {(() => {
-                      const pNum = parseFloat(String(pricing.price).replace(/[^0-9.]/g, ""));
-                      const opNum = parseFloat(String(pricing.oldPrice).replace(/[^0-9.]/g, ""));
-                      if (opNum && pNum && opNum > pNum) {
-                        const pct = Math.round(((opNum - pNum) / opNum) * 100);
-                        return (
-                          <span className="text-xs font-extrabold text-red-400 bg-red-500/10 px-2 py-0.5 rounded-full border border-red-500/20">
-                            SAVE {pct}%
-                          </span>
-                        );
-                      }
-                      return (
-                        <span className="text-xs font-extrabold text-red-400 bg-red-500/10 px-2 py-0.5 rounded-full border border-red-500/20">
-                          SPECIAL DEAL
-                        </span>
-                      );
-                    })()}
-                  </>
-                )}
-              </div>
-              <span className="text-2xl font-black font-display text-[#00ff88] mt-0.5">
+            {/* PRICING & DISCOUNT ROW — SINGLE LINE LAYOUT MATCHING REFERENCE IMAGE 0 */}
+            <div className="flex items-center justify-between gap-1 pt-2.5 mb-3 border-t border-[#1e293b] flex-nowrap">
+              <span className="text-[10px] sm:text-xs text-slate-500 line-through font-mono shrink-0">
+                {pricing.oldPrice ? formatPrice(pricing.oldPrice) : "Rs. 1,299"}
+              </span>
+
+              <span className="text-sm sm:text-lg font-black font-display text-white tracking-tight shrink-0">
                 {formatPrice(pricing.price)}
+              </span>
+
+              <span className="px-1.5 py-0.5 rounded-full text-[9px] sm:text-[10.5px] font-extrabold uppercase bg-[#2a0e3b] text-[#e879f9] border border-[#a855f7]/40 font-mono shadow-sm shrink-0">
+                {discountText}
               </span>
             </div>
 
           </div>
 
-          {/* CTA BUTTON: "Order via WhatsApp →" */}
-          {isOutOfStock ? (
-            <button
-              disabled
-              onClick={(e) => e.stopPropagation()}
-              className="w-full py-3 rounded-xl font-display font-bold text-xs text-amber-300 bg-amber-500/10 border border-amber-500/30 cursor-not-allowed text-center"
-            >
-              ⏳ Restocking Soon
-            </button>
-          ) : (
-            <motion.button
-              onClick={(e) => {
-                e.stopPropagation();
-                openWhatsApp(product.name, pricing.label, pricing.price);
-              }}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="w-full py-3 rounded-xl font-display font-black text-sm text-white bg-[#25D366] hover:bg-[#20bd5a] flex items-center justify-center gap-2 shadow-lg shadow-emerald-950/40 transition-all cursor-pointer"
-            >
-              <MessageCircle size={17} className="fill-white" />
-              <span>Order via WhatsApp →</span>
-            </motion.button>
-          )}
+          {/* ACTION BUTTONS ROW */}
+          <div className="relative z-10">
+            {isOutOfStock ? (
+              <div className="flex items-center justify-between gap-1.5 pt-1">
+                <div className="flex flex-col">
+                  <span className="text-[9px] text-slate-400 font-mono hidden sm:inline">Currently</span>
+                  <span className="text-[11px] sm:text-xs font-black text-[#c084fc]">Out of Stock</span>
+                </div>
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    openWhatsApp(product.name, "Notify Me", "Out of Stock");
+                  }}
+                  className="py-2 px-3 sm:px-4 rounded-xl font-display font-bold text-[11px] sm:text-xs text-[#f3e8ff] bg-[#3b0764] hover:bg-[#581c87] border border-[#a855f7]/50 flex items-center gap-1 cursor-pointer shadow-md active:scale-95 transition-all shrink-0"
+                >
+                  <Bell size={12} />
+                  <span>Notify</span>
+                </button>
+              </div>
+            ) : (
+              <div className="grid grid-cols-2 gap-1.5 sm:gap-2 pt-1">
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    openWhatsApp(product.name, pricing.label, pricing.price);
+                  }}
+                  className="w-full py-2 sm:py-2.5 rounded-xl font-display font-bold text-[11px] sm:text-xs text-white bg-[#2563eb] hover:bg-[#1d4ed8] flex items-center justify-center gap-1 shadow-[0_4px_16px_rgba(37,99,235,0.35)] cursor-pointer transition-all active:scale-95"
+                >
+                  <ShoppingCart size={13} className="shrink-0" />
+                  <span className="truncate">Order Now</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    if (onQuickView) onQuickView(product);
+                    else navigate(`/product/${product.id}`);
+                  }}
+                  className="w-full py-2 sm:py-2.5 rounded-xl font-display font-bold text-[11px] sm:text-xs text-slate-200 bg-[#0f172a] hover:bg-[#1e293b] hover:text-white flex items-center justify-center gap-0.5 border border-[#334155] cursor-pointer transition-all active:scale-95"
+                >
+                  <span className="truncate">Details</span>
+                  <ArrowRight size={12} className="shrink-0" />
+                </button>
+              </div>
+            )}
+          </div>
 
         </div>
 

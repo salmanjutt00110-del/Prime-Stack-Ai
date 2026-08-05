@@ -1,4 +1,4 @@
-﻿import { useEffect, useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { useLocation } from "react-router-dom";
 import AnnouncementBar from "@/components/AnnouncementBar";
 import Navbar from "@/components/Navbar";
@@ -26,6 +26,7 @@ import BackToTopButton from "@/components/BackToTopButton";
 import SectionDivider from "@/components/SectionDivider";
 import SEOHead from "@/components/SEOHead";
 import SeoContentSection from "@/components/SeoContentSection";
+import ScrollReveal from "@/components/ScrollReveal";
 import { ALL_PRODUCTS } from "@/data/products";
 import { generateHomepageGraph, DOMAIN } from "@/lib/seoSchema";
 import { scrollToSection } from "@/lib/scroll";
@@ -49,13 +50,12 @@ export default function Home() {
   return (
     <div className="relative min-h-screen bg-[#050505] text-white overflow-x-hidden">
       <SEOHead
-        title="Buy ChatGPT Plus &amp; AI Subscriptions â€” Prime Tools Hub"
+        title="Buy ChatGPT Plus &amp; AI Subscriptions — Prime Tools Hub"
         description="Pakistan's trusted marketplace for ChatGPT Plus, Canva Pro, Veo 3, CapCut, Gemini Pro &amp; more. Fast delivery via JazzCash/EasyPaisa."
         canonicalUrl={`${DOMAIN}/`}
         schemaJson={homepageSchema}
       />
       <ScrollProgress />
-      <AmbientGlow />
       
       {/* Top Sticky Announcement Bar */}
       <AnnouncementBar />
@@ -68,68 +68,100 @@ export default function Home() {
         <Hero />
 
         {/* Trust & Credibility Section */}
-        <TrustSection />
+        <ScrollReveal direction="up" duration={0.4}>
+          <TrustSection />
+        </ScrollReveal>
 
         {/* Product Showcase Ribbon */}
-        <ProductShowcaseRibbon />
+        <ScrollReveal direction="scale" duration={0.4}>
+          <ProductShowcaseRibbon />
+        </ScrollReveal>
 
         <SectionDivider color="rgba(59, 130, 246, 0.4)" />
 
         {/* Products Grid Catalog */}
-        <ProductsGrid />
+        <ScrollReveal direction="up" duration={0.4}>
+          <ProductsGrid />
+        </ScrollReveal>
 
         <SectionDivider color="rgba(16, 163, 127, 0.4)" />
 
         {/* Why Buy From Us Comparison Table */}
-        <ComparisonTable />
+        <ScrollReveal direction="left" duration={0.4}>
+          <ComparisonTable />
+        </ScrollReveal>
 
         <SectionDivider color="rgba(125, 42, 232, 0.4)" />
 
         {/* Tiered Free Gifts & Reseller Deals */}
-        <TieredRewardsBanner />
+        <ScrollReveal direction="scale" duration={0.4}>
+          <TieredRewardsBanner />
+        </ScrollReveal>
 
         <SectionDivider color="rgba(245, 158, 11, 0.4)" />
 
         {/* ChatGPT Special Offer */}
-        <ChatGPTSpecialOffer />
+        <ScrollReveal direction="right" duration={0.4}>
+          <ChatGPTSpecialOffer />
+        </ScrollReveal>
 
         <SectionDivider color="rgba(99, 102, 241, 0.4)" />
 
         {/* Bulk Offer */}
-        <div id="bulk-offers" className="scroll-mt-24">
-          <BulkPurchaseBanner variant="card" />
-        </div>
+        <ScrollReveal direction="up" duration={0.4}>
+          <div id="bulk-offers" className="scroll-mt-24">
+            <BulkPurchaseBanner variant="card" />
+          </div>
+        </ScrollReveal>
 
         <SectionDivider color="rgba(6, 182, 212, 0.4)" />
 
         {/* Digital Agency Services */}
-        <DigitalServicesSection />
+        <ScrollReveal direction="scale" duration={0.4}>
+          <DigitalServicesSection />
+        </ScrollReveal>
 
         <SectionDivider color="rgba(236, 72, 153, 0.4)" />
 
         {/* About & How It Works */}
-        <SeoContentSection />
-        <AboutUs />
-        <HowItWorks />
-        <WhyUs />
+        <ScrollReveal direction="up" duration={0.4}>
+          <SeoContentSection />
+        </ScrollReveal>
+
+        <ScrollReveal direction="left" duration={0.4}>
+          <AboutUs />
+        </ScrollReveal>
+
+        <ScrollReveal direction="right" duration={0.4}>
+          <HowItWorks />
+        </ScrollReveal>
+
+        <ScrollReveal direction="scale" duration={0.4}>
+          <WhyUs />
+        </ScrollReveal>
 
         <SectionDivider color="rgba(236, 72, 153, 0.4)" />
 
         {/* Customer Reviews */}
-        <Testimonials />
+        <ScrollReveal direction="up" duration={0.4}>
+          <Testimonials />
+        </ScrollReveal>
 
         <SectionDivider color="rgba(139, 92, 246, 0.4)" />
 
         {/* FAQ Accordion */}
-        <FAQ />
+        <ScrollReveal direction="up" duration={0.4}>
+          <FAQ />
+        </ScrollReveal>
 
         <SectionDivider color="rgba(16, 185, 129, 0.4)" />
 
         {/* Contact Section */}
-        <ContactSection />
+        <ScrollReveal direction="scale" duration={0.4}>
+          <ContactSection />
+        </ScrollReveal>
       </main>
 
-      {/* Conversion Floating & Modal Tools */}
       <WhatsAppFloating />
       <AIChatBot />
       <ExitIntentPopup />
