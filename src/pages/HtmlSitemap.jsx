@@ -47,15 +47,26 @@ export default function HtmlSitemap() {
     { name: "Contact Support & Order Verification", link: "/#contact" },
   ];
 
-  const breadcrumbSchema = generateBreadcrumbSchema([{ name: "HTML Sitemap", url: "/html-sitemap" }]);
+  const sitemapSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      generateWebPageSchema({
+        name: "HTML Sitemap — Full Product & Page Index — Prime Tools Hub",
+        description: "Comprehensive HTML Sitemap for Prime Tools Hub. Easily navigate all premium AI tools, creator accounts, VPN subscriptions, agency services, and customer review pages.",
+        url: pageUrl,
+        breadcrumbItems
+      }),
+      generateBreadcrumbSchema(breadcrumbItems, pageUrl)
+    ]
+  };
 
   return (
     <div className="relative min-h-screen bg-[#02040a] text-white flex flex-col justify-between overflow-x-hidden">
       <SEOHead
-        title="HTML Sitemap â€” Full Product & Page Index â€” Prime Tools Hub"
+        title="HTML Sitemap — Full Product & Page Index — Prime Tools Hub"
         description="Comprehensive HTML Sitemap for Prime Tools Hub. Easily navigate all premium AI tools, creator accounts, VPN subscriptions, agency services, and customer review pages."
-        canonicalUrl={`${DOMAIN}/html-sitemap`}
-        schemaJson={breadcrumbSchema}
+        canonicalUrl={pageUrl}
+        schemaJson={sitemapSchema}
       />
       <Navbar />
 

@@ -109,7 +109,14 @@ export default function SEOHead({
         scriptEl.setAttribute("type", "application/ld+json");
         document.head.appendChild(scriptEl);
       }
-      scriptEl.textContent = JSON.stringify(schemaJson);
+      let finalSchema = schemaJson;
+      if (!Array.isArray(schemaJson) && typeof schemaJson === "object" && !schemaJson["@context"]) {
+        finalSchema = {
+          "@context": "https://schema.org",
+          ...schemaJson
+        };
+      }
+      scriptEl.textContent = JSON.stringify(finalSchema);
     }
 
     // Cleanup on unmount: remove route-specific schema to prevent stale data

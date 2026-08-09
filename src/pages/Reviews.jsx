@@ -1,4 +1,4 @@
-﻿import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { Star, MessageCircle, Quote, Send } from "lucide-react";
 import Navbar from "@/components/Navbar";
@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
 import Breadcrumb from "@/components/Breadcrumb";
 import { WHATSAPP_GENERAL, WHATSAPP_NUMBER } from "@/lib/whatsapp";
-import { DOMAIN, generateBreadcrumbSchema } from "@/lib/seoSchema";
+import { DOMAIN, generateBreadcrumbSchema, generateWebPageSchema } from "@/lib/seoSchema";
 import { motion } from "framer-motion";
 import Animated3DText from "@/components/Animated3DText";
 
@@ -60,7 +60,15 @@ export default function Reviews() {
   };
 
   const schemaGraph = useMemo(() => {
-    const breadcrumbSchema = generateBreadcrumbSchema([{ name: "Verified Reviews", url: "/reviews" }]);
+    const pageUrl = `${DOMAIN}/reviews`;
+    const breadcrumbItems = [{ name: "Verified Reviews", url: "/reviews" }];
+    const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbItems, pageUrl);
+    const webPageSchema = generateWebPageSchema({
+      name: "Verified Customer Reviews & Ratings — Prime Tools Hub",
+      description: "Verified customer reviews, feedback and ratings for ChatGPT Plus, Canva Pro, Gemini & AI subscriptions at Prime Tools Hub.",
+      url: pageUrl,
+      breadcrumbItems
+    });
     const aggregateSchema = {
       "@type": "Product",
       "@id": `${DOMAIN}/reviews#store-rating`,
@@ -95,7 +103,7 @@ export default function Reviews() {
 
     return {
       "@context": "https://schema.org",
-      "@graph": [breadcrumbSchema, aggregateSchema]
+      "@graph": [webPageSchema, breadcrumbSchema, aggregateSchema]
     };
   }, [reviews]);
 

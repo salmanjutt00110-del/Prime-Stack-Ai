@@ -1,30 +1,37 @@
-﻿import SEOHead from "@/components/SEOHead";
+import SEOHead from "@/components/SEOHead";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloating from "@/components/WhatsAppFloating";
 import ContactSection from "@/components/ContactSection";
 import { Mail, MessageCircle, Clock } from "lucide-react";
 import { WHATSAPP_NUMBER } from "@/data/products";
+import { DOMAIN, generateWebPageSchema, generateBreadcrumbSchema } from "@/lib/seoSchema";
 
 export default function ContactPage() {
   const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}`;
+  const pageUrl = `${DOMAIN}/contact`;
+  const breadcrumbItems = [{ name: "Contact", url: "/contact" }];
 
-  const breadcrumbSchema = {
+  const contactSchema = {
     "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://primetoolshub.store/" },
-      { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://primetoolshub.store/contact" }
+    "@graph": [
+      generateWebPageSchema({
+        name: "Contact Customer Support & Help — Prime Tools Hub",
+        description: "Contact Prime Tools Hub support via WhatsApp +92-370-7020580 or email support@primetoolshub.store. Operating hours: 9 AM – 11 PM PKT.",
+        url: pageUrl,
+        breadcrumbItems
+      }),
+      generateBreadcrumbSchema(breadcrumbItems, pageUrl)
     ]
   };
 
   return (
     <div className="min-h-screen bg-[#050505] text-slate-100 font-sans selection:bg-[#00ff88] selection:text-black">
       <SEOHead
-        title="Contact Customer Support & Help â€” Prime Tools Hub"
-        description="Contact Prime Tools Hub support via WhatsApp +92-370-7020580 or email support@primetoolshub.store. Operating hours: 9 AM â€“ 11 PM PKT."
-        canonicalUrl="https://primetoolshub.store/contact"
-        schemaJson={breadcrumbSchema}
+        title="Contact Customer Support & Help — Prime Tools Hub"
+        description="Contact Prime Tools Hub support via WhatsApp +92-370-7020580 or email support@primetoolshub.store. Operating hours: 9 AM – 11 PM PKT."
+        canonicalUrl={pageUrl}
+        schemaJson={contactSchema}
       />
 
       <Navbar />

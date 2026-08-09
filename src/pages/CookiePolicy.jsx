@@ -1,16 +1,33 @@
-﻿import SEOHead from "@/components/SEOHead";
+import SEOHead from "@/components/SEOHead";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloating from "@/components/WhatsAppFloating";
 import { Cookie, ShieldCheck } from "lucide-react";
+import { DOMAIN, generateWebPageSchema, generateBreadcrumbSchema } from "@/lib/seoSchema";
 
 export default function CookiePolicy() {
+  const pageUrl = `${DOMAIN}/cookie-policy`;
+  const breadcrumbItems = [{ name: "Cookie Policy", url: "/cookie-policy" }];
+  const cookieSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      generateWebPageSchema({
+        name: "Cookie Policy & Site Storage Info — Prime Tools Hub",
+        description: "Learn how Prime Tools Hub uses essential cookies and local storage to enhance site functionality, shopping cart performance, and session security.",
+        url: pageUrl,
+        breadcrumbItems
+      }),
+      generateBreadcrumbSchema(breadcrumbItems, pageUrl)
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-[#050505] text-slate-100 font-sans selection:bg-[#00ff88] selection:text-black">
       <SEOHead
-        title="Cookie Policy & Site Storage Info â€” Prime Tools Hub"
+        title="Cookie Policy & Site Storage Info — Prime Tools Hub"
         description="Learn how Prime Tools Hub uses essential cookies and local storage to enhance site functionality, shopping cart performance, and session security."
-        canonicalUrl="https://primetoolshub.store/cookie-policy"
+        canonicalUrl={pageUrl}
+        schemaJson={cookieSchema}
       />
       <Navbar />
       <main id="main-content" className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">

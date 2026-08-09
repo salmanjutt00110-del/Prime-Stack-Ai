@@ -146,7 +146,7 @@ ${imageEntries.join('\n')}
 
   // 4. Technical SEO Robots.txt
   const robotsTxt = `# Prime Tools Hub — robots.txt
-# https://primetoolshub.store
+# https://www.primetoolshub.store
 
 User-agent: *
 Allow: /

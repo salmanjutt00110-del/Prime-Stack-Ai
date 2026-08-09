@@ -1,5 +1,5 @@
 # Prime Tools Hub — robots.txt
-# https://primetoolshub.store
+# https://www.primetoolshub.store
 
 User-agent: *
 Allow: /

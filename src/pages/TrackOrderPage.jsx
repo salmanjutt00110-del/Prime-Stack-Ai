@@ -1,10 +1,11 @@
-﻿import { useState } from "react";
+import { useState } from "react";
 import SEOHead from "@/components/SEOHead";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloating from "@/components/WhatsAppFloating";
 import { Search, CheckCircle2, MessageCircle, Package } from "lucide-react";
 import { WHATSAPP_NUMBER } from "@/data/products";
+import { DOMAIN, generateWebPageSchema, generateBreadcrumbSchema } from "@/lib/seoSchema";
 
 export default function TrackOrderPage() {
   const [orderId, setOrderId] = useState("");
@@ -20,12 +21,28 @@ export default function TrackOrderPage() {
     `Hi Prime Tools Hub! I want to check the status of my Order: ${orderId}`
   )}`;
 
+  const pageUrl = `${DOMAIN}/track-order`;
+  const breadcrumbItems = [{ name: "Track Order", url: "/track-order" }];
+  const trackSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      generateWebPageSchema({
+        name: "Track Your Subscription Order Status — Prime Tools Hub",
+        description: "Check your digital subscription order status at Prime Tools Hub. Track delivery progress and message support instantly.",
+        url: pageUrl,
+        breadcrumbItems
+      }),
+      generateBreadcrumbSchema(breadcrumbItems, pageUrl)
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-[#050505] text-slate-100 font-sans selection:bg-[#00ff88] selection:text-black">
       <SEOHead
-        title="Track Your Subscription Order Status â€” Prime Tools Hub"
+        title="Track Your Subscription Order Status — Prime Tools Hub"
         description="Check your digital subscription order status at Prime Tools Hub. Track delivery progress and message support instantly."
-        canonicalUrl="https://primetoolshub.store/track-order"
+        canonicalUrl={pageUrl}
+        schemaJson={trackSchema}
       />
 
       <Navbar />

@@ -1,16 +1,33 @@
-﻿import SEOHead from "@/components/SEOHead";
+import SEOHead from "@/components/SEOHead";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloating from "@/components/WhatsAppFloating";
 import { Lock, Shield, Eye, Database } from "lucide-react";
+import { DOMAIN, generateWebPageSchema, generateBreadcrumbSchema } from "@/lib/seoSchema";
 
 export default function PrivacyPolicy() {
+  const pageUrl = `${DOMAIN}/privacy-policy`;
+  const breadcrumbItems = [{ name: "Privacy Policy", url: "/privacy-policy" }];
+  const privacySchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      generateWebPageSchema({
+        name: "Privacy Policy & Data Protection — Prime Tools Hub",
+        description: "Read Prime Tools Hub's Privacy Policy. We respect your privacy — learn how customer data, WhatsApp contacts, and transactions are securely handled.",
+        url: pageUrl,
+        breadcrumbItems
+      }),
+      generateBreadcrumbSchema(breadcrumbItems, pageUrl)
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-[#050505] text-slate-100 font-sans selection:bg-[#00ff88] selection:text-black">
       <SEOHead
-        title="Privacy Policy & Data Protection â€” Prime Tools Hub"
-        description="Read Prime Tools Hub's Privacy Policy. We respect your privacy â€” learn how customer data, WhatsApp contacts, and transactions are securely handled."
-        canonicalUrl="https://primetoolshub.store/privacy-policy"
+        title="Privacy Policy & Data Protection — Prime Tools Hub"
+        description="Read Prime Tools Hub's Privacy Policy. We respect your privacy — learn how customer data, WhatsApp contacts, and transactions are securely handled."
+        canonicalUrl={pageUrl}
+        schemaJson={privacySchema}
       />
 
       <Navbar />

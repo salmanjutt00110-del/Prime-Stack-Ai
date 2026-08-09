@@ -1,16 +1,33 @@
-﻿import SEOHead from "@/components/SEOHead";
+import SEOHead from "@/components/SEOHead";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloating from "@/components/WhatsAppFloating";
 import { AlertCircle, FileText, Info } from "lucide-react";
+import { DOMAIN, generateWebPageSchema, generateBreadcrumbSchema } from "@/lib/seoSchema";
 
 export default function DisclaimerPage() {
+  const pageUrl = `${DOMAIN}/disclaimer`;
+  const breadcrumbItems = [{ name: "Disclaimer", url: "/disclaimer" }];
+  const disclaimerSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      generateWebPageSchema({
+        name: "Reseller Disclaimer & Brand Statement — Prime Tools Hub",
+        description: "Read the independent reseller disclaimer for Prime Tools Hub. We operate as an independent digital marketplace and do not claim official ownership of third-party software.",
+        url: pageUrl,
+        breadcrumbItems
+      }),
+      generateBreadcrumbSchema(breadcrumbItems, pageUrl)
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-[#050505] text-slate-100 font-sans selection:bg-[#00ff88] selection:text-black">
       <SEOHead
-        title="Reseller Disclaimer & Brand Statement â€” Prime Tools Hub"
+        title="Reseller Disclaimer & Brand Statement — Prime Tools Hub"
         description="Read the independent reseller disclaimer for Prime Tools Hub. We operate as an independent digital marketplace and do not claim official ownership of third-party software."
-        canonicalUrl="https://primetoolshub.store/disclaimer"
+        canonicalUrl={pageUrl}
+        schemaJson={disclaimerSchema}
       />
 
       <Navbar />

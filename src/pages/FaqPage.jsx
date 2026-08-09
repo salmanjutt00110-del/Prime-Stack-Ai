@@ -1,9 +1,10 @@
-﻿import { useState } from "react";
+import { useState } from "react";
 import SEOHead from "@/components/SEOHead";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloating from "@/components/WhatsAppFloating";
 import { HelpCircle, ChevronDown, Search } from "lucide-react";
+import { DOMAIN, generateWebPageSchema, generateBreadcrumbSchema } from "@/lib/seoSchema";
 
 const FAQ_CATEGORIES = [
   { id: "all", label: "All Questions" },
@@ -90,12 +91,14 @@ export default function FaqPage() {
   });
 
   // Generate FAQ Schema for rich results
+  const pageUrl = `${DOMAIN}/faq`;
+  const breadcrumbItems = [{ name: "FAQ", url: "/faq" }];
   const faqSchema = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "FAQPage",
-        "@id": "https://primetoolshub.store/faq#faqpage",
+        "@id": `${pageUrl}#faqpage`,
         "mainEntity": FAQS_DATA.map(item => ({
           "@type": "Question",
           "name": item.q,
@@ -105,22 +108,22 @@ export default function FaqPage() {
           }
         }))
       },
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://primetoolshub.store/" },
-          { "@type": "ListItem", "position": 2, "name": "FAQ", "item": "https://primetoolshub.store/faq" }
-        ]
-      }
+      generateWebPageSchema({
+        name: "Frequently Asked Questions & Answers — Prime Tools Hub",
+        description: "Got questions about buying ChatGPT Plus, Canva Pro, Gemini, or VPNs in Pakistan? Read our comprehensive 25+ FAQ guide on pricing, delivery & replacement warranty.",
+        url: pageUrl,
+        breadcrumbItems
+      }),
+      generateBreadcrumbSchema(breadcrumbItems, pageUrl)
     ]
   };
 
   return (
     <div className="min-h-screen bg-[#050505] text-slate-100 font-sans selection:bg-[#00ff88] selection:text-black">
       <SEOHead
-        title="Frequently Asked Questions & Answers â€” Prime Tools Hub"
+        title="Frequently Asked Questions & Answers — Prime Tools Hub"
         description="Got questions about buying ChatGPT Plus, Canva Pro, Gemini, or VPNs in Pakistan? Read our comprehensive 25+ FAQ guide on pricing, delivery & replacement warranty."
-        canonicalUrl="https://primetoolshub.store/faq"
+        canonicalUrl={pageUrl}
         schemaJson={faqSchema}
       />
 

@@ -1,16 +1,33 @@
-﻿import SEOHead from "@/components/SEOHead";
+import SEOHead from "@/components/SEOHead";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloating from "@/components/WhatsAppFloating";
 import { ShieldCheck, FileText, AlertCircle, HelpCircle } from "lucide-react";
+import { DOMAIN, generateWebPageSchema, generateBreadcrumbSchema } from "@/lib/seoSchema";
 
 export default function TermsOfService() {
+  const pageUrl = `${DOMAIN}/terms-of-service`;
+  const breadcrumbItems = [{ name: "Terms of Service", url: "/terms-of-service" }];
+  const termsSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      generateWebPageSchema({
+        name: "Terms of Service for Digital Subscriptions — Prime Tools Hub",
+        description: "Read the complete Terms of Service for Prime Tools Hub. Understand digital goods delivery, shared plan slot policies, replacement guarantee, and user obligations.",
+        url: pageUrl,
+        breadcrumbItems
+      }),
+      generateBreadcrumbSchema(breadcrumbItems, pageUrl)
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-[#050505] text-slate-100 font-sans selection:bg-[#00ff88] selection:text-black">
       <SEOHead
-        title="Terms of Service for Digital Subscriptions â€” Prime Tools Hub"
-        description="Read the complete Terms of Service for Prime Tools Hub. Understand digital goods delivery, shared plan slot policies, 7-day replacement guarantee, and user obligations."
-        canonicalUrl="https://primetoolshub.store/terms-of-service"
+        title="Terms of Service for Digital Subscriptions — Prime Tools Hub"
+        description="Read the complete Terms of Service for Prime Tools Hub. Understand digital goods delivery, shared plan slot policies, replacement guarantee, and user obligations."
+        canonicalUrl={pageUrl}
+        schemaJson={termsSchema}
       />
 
       <Navbar />

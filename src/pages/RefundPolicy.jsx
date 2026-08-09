@@ -1,16 +1,33 @@
-﻿import SEOHead from "@/components/SEOHead";
+import SEOHead from "@/components/SEOHead";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloating from "@/components/WhatsAppFloating";
 import { RefreshCw, CheckCircle2, AlertTriangle, ShieldCheck } from "lucide-react";
+import { DOMAIN, generateWebPageSchema, generateBreadcrumbSchema } from "@/lib/seoSchema";
 
 export default function RefundPolicy() {
+  const pageUrl = `${DOMAIN}/refund-policy`;
+  const breadcrumbItems = [{ name: "Refund Policy", url: "/refund-policy" }];
+  const refundSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      generateWebPageSchema({
+        name: "Refund & Replacement Warranty Policy — Prime Tools Hub",
+        description: "Learn about Prime Tools Hub's clear Refund and Replacement Policy. Enjoy full duration replacement warranty and 100% money-back guarantee for invalid activations.",
+        url: pageUrl,
+        breadcrumbItems
+      }),
+      generateBreadcrumbSchema(breadcrumbItems, pageUrl)
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-[#050505] text-slate-100 font-sans selection:bg-[#00ff88] selection:text-black">
       <SEOHead
-        title="Refund & Replacement Warranty Policy â€” Prime Tools Hub"
+        title="Refund & Replacement Warranty Policy — Prime Tools Hub"
         description="Learn about Prime Tools Hub's clear Refund and Replacement Policy. Enjoy full duration replacement warranty and 100% money-back guarantee for invalid activations."
-        canonicalUrl="https://primetoolshub.store/refund-policy"
+        canonicalUrl={pageUrl}
+        schemaJson={refundSchema}
       />
 
       <Navbar />

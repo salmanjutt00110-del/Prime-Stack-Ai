@@ -120,14 +120,22 @@ export default function ProductDetail() {
   const relatedProducts = ALL_PRODUCTS.filter(p => p.id !== product.id && getProductCategory(p) === categoryName).slice(0, 3);
 
   // SEO Schemas
-  const productSchema = generateProductSchema(product);
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: categoryName, url: "/#products" },
+  const pageUrl = `${DOMAIN}/product/${id}`;
+  const breadcrumbItems = [
+    { name: categoryName, url: "/" },
     { name: product.name, url: `/product/${id}` }
-  ]);
+  ];
+  const productSchema = generateProductSchema(product);
+  const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbItems, pageUrl);
+  const webPageSchema = generateWebPageSchema({
+    name: `Buy ${product.name} Subscription in Pakistan — Prime Tools Hub`,
+    description: product.description || `Get ${product.name} subscription at wholesale pricing with instant WhatsApp activation and replacement warranty at Prime Tools Hub.`,
+    url: pageUrl,
+    breadcrumbItems
+  });
   const schemaGraph = {
     "@context": "https://schema.org",
-    "@graph": [productSchema, breadcrumbSchema].filter(Boolean)
+    "@graph": [productSchema, webPageSchema, breadcrumbSchema].filter(Boolean)
   };
 
   return (

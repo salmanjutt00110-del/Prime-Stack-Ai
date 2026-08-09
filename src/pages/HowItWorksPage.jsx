@@ -30,7 +30,7 @@ export default function HowItWorksPage() {
         url: pageUrl,
         breadcrumbItems,
       }),
-      generateBreadcrumbSchema(breadcrumbItems),
+      generateBreadcrumbSchema(breadcrumbItems, pageUrl),
     ],
   };
 

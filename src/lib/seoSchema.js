@@ -286,7 +286,7 @@ export function generateHowToSchema() {
   };
 }
 
-export function generateBreadcrumbSchema(items = []) {
+export function generateBreadcrumbSchema(items = [], pageUrl = DOMAIN) {
   const elements = [
     {
       "@type": "ListItem",
@@ -296,18 +296,36 @@ export function generateBreadcrumbSchema(items = []) {
     }
   ];
 
-  items.forEach((it, idx) => {
+  let positionCounter = 2;
+  items.forEach((it) => {
+    if (it.name?.toLowerCase() === "home") return;
+
+    // Clean hash fragments for Google Search Console compliance
+    let rawUrl = it.url || "";
+    let cleanUrl = rawUrl.replace(/#.*$/, "");
+    if (!cleanUrl) cleanUrl = "/";
+
+    const fullUrl = cleanUrl.startsWith("http")
+      ? cleanUrl
+      : `${DOMAIN}${cleanUrl.startsWith("/") ? "" : "/"}${cleanUrl}`;
+
     elements.push({
       "@type": "ListItem",
-      "position": idx + 2,
+      "position": positionCounter++,
       "name": it.name,
-      "item": it.url.startsWith("http") ? it.url : `${DOMAIN}${it.url}`
+      "item": fullUrl
     });
   });
 
+  const formattedPageUrl = pageUrl.startsWith("http")
+    ? pageUrl
+    : `${DOMAIN}${pageUrl.startsWith("/") ? "" : "/"}${pageUrl}`;
+  const breadcrumbId = `${formattedPageUrl.replace(/\/$/, "")}#breadcrumb`;
+
   return {
+    "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    "@id": `${DOMAIN}/#breadcrumb-${items.map(i => i.name).join("-").toLowerCase().replace(/\s+/g, "-")}`,
+    "@id": breadcrumbId,
     "itemListElement": elements
   };
 }
@@ -643,7 +661,7 @@ export function generateHomepageGraph(products = []) {
   const organization = generateOrganizationSchema();
   const store = generateOnlineStoreSchema();
   const website = generateWebSiteSchema();
-  const breadcrumbs = generateBreadcrumbSchema([{ name: "Products", url: "/#products" }]);
+  const breadcrumbs = generateBreadcrumbSchema([{ name: "AI Tools Catalog", url: "/" }], `${DOMAIN}/`);
   const faqPage = generateFAQPageSchema();
   const services = generateServiceSchemas();
   const productSchemas = products.map((p) => generateProductSchema(p)).filter(Boolean);
@@ -652,7 +670,7 @@ export function generateHomepageGraph(products = []) {
     name: "Prime Tools Hub | Buy ChatGPT Plus & AI Tools Pakistan",
     description: "Buy ChatGPT Plus, Canva Pro, Gemini Pro, Veo 3 & CapCut Pro in Pakistan. Instant delivery via JazzCash/EasyPaisa. 100% replacement warranty. Trusted by 1,200+ users.",
     url: `${DOMAIN}/`,
-    breadcrumbItems: [{ name: "Products", url: "/#products" }]
+    breadcrumbItems: [{ name: "AI Tools Catalog", url: "/" }]
   });
 
   const itemList = {

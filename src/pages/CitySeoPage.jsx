@@ -67,7 +67,7 @@ export default function CitySeoPage() {
         url: pageUrl,
         breadcrumbItems,
       }),
-      generateBreadcrumbSchema(breadcrumbItems),
+      generateBreadcrumbSchema(breadcrumbItems, pageUrl),
     ],
   };
 

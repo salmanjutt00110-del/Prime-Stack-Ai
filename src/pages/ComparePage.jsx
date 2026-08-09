@@ -1,30 +1,37 @@
-﻿import SEOHead from "@/components/SEOHead";
+import SEOHead from "@/components/SEOHead";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloating from "@/components/WhatsAppFloating";
 import ComparisonTable from "@/components/ComparisonTable";
 import { Scale, MessageCircle } from "lucide-react";
 import { WHATSAPP_NUMBER } from "@/data/products";
+import { DOMAIN, generateWebPageSchema, generateBreadcrumbSchema } from "@/lib/seoSchema";
 
 export default function ComparePage() {
   const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}`;
+  const pageUrl = `${DOMAIN}/compare`;
+  const breadcrumbItems = [{ name: "Price Comparison", url: "/compare" }];
 
-  const breadcrumbSchema = {
+  const compareSchema = {
     "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://primetoolshub.store/" },
-      { "@type": "ListItem", "position": 2, "name": "Price Comparison", "item": "https://primetoolshub.store/compare" }
+    "@graph": [
+      generateWebPageSchema({
+        name: "Compare AI Subscription Prices in PKR — Prime Tools Hub",
+        description: "Compare Prime Tools Hub localized prices in PKR with official USD credit card prices for ChatGPT Plus, Canva Pro, Gemini, CapCut & NordVPN. Save up to 80%.",
+        url: pageUrl,
+        breadcrumbItems
+      }),
+      generateBreadcrumbSchema(breadcrumbItems, pageUrl)
     ]
   };
 
   return (
     <div className="min-h-screen bg-[#050505] text-slate-100 font-sans selection:bg-[#00ff88] selection:text-black">
       <SEOHead
-        title="Compare AI Subscription Prices in PKR â€” Prime Tools Hub"
+        title="Compare AI Subscription Prices in PKR — Prime Tools Hub"
         description="Compare Prime Tools Hub localized prices in PKR with official USD credit card prices for ChatGPT Plus, Canva Pro, Gemini, CapCut & NordVPN. Save up to 80%."
-        canonicalUrl="https://primetoolshub.store/compare"
-        schemaJson={breadcrumbSchema}
+        canonicalUrl={pageUrl}
+        schemaJson={compareSchema}
       />
 
       <Navbar />
