@@ -7,6 +7,7 @@ export const translations = {
     nav_services: "Services",
     nav_pricing: "Pricing",
     nav_reviews: "Reviews",
+    nav_blog: "Blog",
     nav_faq: "FAQ",
     nav_contact: "Contact",
     nav_live: "Live Support",
@@ -14,7 +15,7 @@ export const translations = {
     nav_whatsapp: "WhatsApp",
 
     // Hero
-    hero_badge_customers: "1,200+ Happy Customers",
+    hero_badge_customers: "5,000+ Happy Customers",
     hero_badge_rating: "4.9/5 Rating",
     hero_badge_secure: "Secure Payment",
     hero_headline_1: "Premium AI Tools —",
@@ -58,6 +59,7 @@ export const translations = {
     nav_tools: "Tools",
     nav_pricing: "Qeemat",
     nav_reviews: "Reviews",
+    nav_blog: "Blog",
     nav_faq: "Sawaalaat",
     nav_contact: "Rabta",
     nav_live: "Live Support",
@@ -65,7 +67,7 @@ export const translations = {
     nav_whatsapp: "WhatsApp",
 
     // Hero
-    hero_badge_customers: "1,200+ Khush Customers",
+    hero_badge_customers: "5,000+ Khush Customers",
     hero_badge_rating: "4.9/5 Rating",
     hero_badge_secure: "Mehfooz Payment",
     hero_headline_1: "Premium AI Tools —",

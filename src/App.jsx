@@ -30,6 +30,8 @@ const ComparePage = lazy(() => import('@/pages/ComparePage'));
 const TrackOrderPage = lazy(() => import('@/pages/TrackOrderPage'));
 const ContactPage = lazy(() => import('@/pages/ContactPage'));
 const CitySeoPage = lazy(() => import('@/pages/CitySeoPage'));
+const Blog = lazy(() => import('@/pages/Blog'));
+const BlogPost = lazy(() => import('@/pages/BlogPost'));
 
 const AuthenticatedApp = ({ isLoaded }) => {
   const location = useLocation();
@@ -74,6 +76,46 @@ const AuthenticatedApp = ({ isLoaded }) => {
           element={
             <PageTransition>
               <CitySeoPage />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/rawalpindi"
+          element={
+            <PageTransition>
+              <CitySeoPage />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/peshawar"
+          element={
+            <PageTransition>
+              <CitySeoPage />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/multan"
+          element={
+            <PageTransition>
+              <CitySeoPage />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/blog"
+          element={
+            <PageTransition>
+              <Blog />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/blog/:slug"
+          element={
+            <PageTransition>
+              <BlogPost />
             </PageTransition>
           }
         />

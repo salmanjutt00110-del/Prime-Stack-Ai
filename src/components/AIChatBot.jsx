@@ -106,7 +106,7 @@ function generateResponse(userMsg) {
   // Trust / Warranty queries
   if (query.includes("trust") || query.includes("warranty") || query.includes("real") || query.includes("fraud") || query.includes("guarantee")) {
     return {
-      text: `🛡️ **Why Trust Prime Tools Hub?**\n\n• **2+ Years Active** in Pakistan\n• **1,200+ Orders** completed\n• **4.9/5 Rating** based on customer reviews\n• **Full Free Replacement Warranty** if any issue arises!`,
+      text: `🛡️ **Why Trust Prime Tools Hub?**\n\n• **2+ Years Active** in Pakistan\n• **5,000+ Orders** completed\n• **4.9/5 Rating** based on customer reviews\n• **Full Free Replacement Warranty** if any issue arises!`,
       ctaText: "Talk to Us on WhatsApp",
       ctaLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hello! I want to verify an order.")}`,
     };

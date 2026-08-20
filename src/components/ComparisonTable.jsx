@@ -7,7 +7,7 @@ export default function ComparisonTable() {
     { feature: "Full 30-Day Support & Replacement", us: true, others: false, textUs: "30-Day Free Fix", textOthers: "Ghost After Payment" },
     { feature: "Affordable Wholesale Rates in PKR", us: true, others: false, textUs: "Best Prices", textOthers: "Overpriced / Hidden Fees" },
     { feature: "Local Payment via JazzCash & EasyPaisa", us: true, others: false, textUs: "Instant Local Pay", textOthers: "Complex / Foreign Cards" },
-    { feature: "Long-term Reliability & Trust (2+ Yrs)", us: true, others: false, textUs: "1,200+ Verified Buyers", textOthers: "New / Scam Sellers" },
+    { feature: "Long-term Reliability & Trust (2+ Yrs)", us: true, others: false, textUs: "5,000+ Verified Buyers", textOthers: "New / Scam Sellers" },
   ];
 
   return (

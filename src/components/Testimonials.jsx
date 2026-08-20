@@ -133,7 +133,7 @@ export default function Testimonials() {
           Customer Reviews
         </span>
         <h2 className="font-display font-black text-3xl sm:text-4xl text-white tracking-tight mt-3">
-          ⭐ What Our 1,200+ Customers Say
+          ⭐ What Our 5,000+ Customers Say
         </h2>
         <p className="text-slate-300 text-sm sm:text-base mt-2 font-body">
           4.9 out of 5 — Based on verified WhatsApp orders across Pakistan

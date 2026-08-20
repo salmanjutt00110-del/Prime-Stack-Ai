@@ -73,6 +73,13 @@ export function generateOrganizationSchema() {
     "image": LOGO_URL,
     "description": "Pakistan & Global's #1 marketplace for genuine AI tools, creator accounts, VPNs, and digital subscriptions. Founded by Salman Jutt in 2022. Trusted by 5,000+ verified users.",
     "foundingDate": "2022",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "5000",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
     "founder": {
       "@type": "Person",
       "@id": `${DOMAIN}/#founder`,
@@ -203,13 +210,25 @@ export function generateLocalBusinessSchema(cityName = "Lahore") {
     "Karachi": { lat: 24.8607, lng: 67.0011 },
     "Islamabad": { lat: 33.6844, lng: 73.0479 },
     "Faisalabad": { lat: 31.4504, lng: 73.1350 },
+    "Rawalpindi": { lat: 33.5651, lng: 73.0169 },
+    "Peshawar": { lat: 34.0150, lng: 71.5249 },
+    "Multan": { lat: 30.1575, lng: 71.5249 },
   };
   const geo = geoMap[cityName] || geoMap["Lahore"];
+
+  const getRegion = (city) => {
+    switch (city) {
+      case "Karachi": return "Sindh";
+      case "Islamabad": return "Islamabad Capital Territory";
+      case "Peshawar": return "Khyber Pakhtunkhwa";
+      default: return "Punjab";
+    }
+  };
 
   return {
     "@type": "LocalBusiness",
     "@id": `${DOMAIN}/#localbusiness-${cityName.toLowerCase()}`,
-    "name": `${STORE_NAME} â€” ${cityName}`,
+    "name": `${STORE_NAME} — ${cityName}`,
     "description": `Buy ChatGPT Plus, Canva Pro, Gemini Pro & VPN subscriptions in ${cityName}, Pakistan. Instant WhatsApp delivery with full warranty.`,
     "url": `${DOMAIN}/${cityName.toLowerCase()}`,
     "telephone": CONTACT_PHONE,
@@ -219,13 +238,20 @@ export function generateLocalBusinessSchema(cityName = "Lahore") {
     "address": {
       "@type": "PostalAddress",
       "addressLocality": cityName,
-      "addressRegion": cityName === "Karachi" ? "Sindh" : cityName === "Islamabad" ? "Islamabad Capital Territory" : "Punjab",
+      "addressRegion": getRegion(cityName),
       "addressCountry": "PK"
     },
     "geo": {
       "@type": "GeoCoordinates",
       "latitude": geo.lat,
       "longitude": geo.lng
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "5000",
+      "bestRating": "5",
+      "worstRating": "1"
     },
     "openingHoursSpecification": {
       "@type": "OpeningHoursSpecification",
@@ -655,7 +681,74 @@ export function generateFAQPageSchema() {
   };
 }
 
+/** FAQ Schema — for any page with FAQs */
+export function generateFAQSchema(faqs = [], pageId = '') {
+  if (!faqs || faqs.length === 0) return null;
+  return {
+    "@type": "FAQPage",
+    ...(pageId ? { "@id": pageId } : {}),
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question || faq.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer || faq.a
+      }
+    }))
+  };
+}
 
+/** Article Schema — for blog posts */
+export function generateBlogPostSchema(post) {
+  if (!post) return null;
+  return {
+    "@type": "Article",
+    "@id": `${DOMAIN}/blog/${post.slug}#article`,
+    "headline": post.title,
+    "description": post.metaDescription || post.excerpt,
+    "url": `${DOMAIN}/blog/${post.slug}`,
+    "datePublished": post.datePublished,
+    "dateModified": post.dateModified || post.datePublished,
+    "author": {
+      "@type": "Person",
+      "name": post.author || "PrimeToolsHub Team"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": STORE_NAME,
+      "logo": {
+        "@type": "ImageObject",
+        "url": LOGO_URL
+      }
+    },
+    "image": post.image ? (post.image.startsWith('http') ? post.image : `${DOMAIN}${post.image}`) : LOGO_URL,
+    "wordCount": post.wordCount || 1500,
+    "keywords": post.tags ? post.tags.join(', ') : post.primaryKeyword || '',
+    "inLanguage": "en-PK",
+    "isPartOf": { "@id": `${DOMAIN}/#website` },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `${DOMAIN}/blog/${post.slug}`
+    }
+  };
+}
+
+/** ItemList Schema — for blog index page */
+export function generateBlogListSchema(posts = []) {
+  if (!posts || posts.length === 0) return null;
+  return {
+    "@type": "ItemList",
+    "@id": `${DOMAIN}/blog#itemlist`,
+    "name": "AI Tools Pakistan — Complete Guides & Pricing",
+    "numberOfItems": posts.length,
+    "itemListElement": posts.map((post, idx) => ({
+      "@type": "ListItem",
+      "position": idx + 1,
+      "name": post.title,
+      "url": `${DOMAIN}/blog/${post.slug}`
+    }))
+  };
+}
 
 export function generateHomepageGraph(products = []) {
   const organization = generateOrganizationSchema();
@@ -668,7 +761,7 @@ export function generateHomepageGraph(products = []) {
 
   const webPage = generateWebPageSchema({
     name: "Prime Tools Hub | Buy ChatGPT Plus & AI Tools Pakistan",
-    description: "Buy ChatGPT Plus, Canva Pro, Gemini Pro, Veo 3 & CapCut Pro in Pakistan. Instant delivery via JazzCash/EasyPaisa. 100% replacement warranty. Trusted by 1,200+ users.",
+    description: "Buy ChatGPT Plus, Canva Pro, Gemini Pro, Veo 3 & CapCut Pro in Pakistan. Instant delivery via JazzCash/EasyPaisa. 100% replacement warranty. Trusted by 5,000+ users.",
     url: `${DOMAIN}/`,
     breadcrumbItems: [{ name: "AI Tools Catalog", url: "/" }]
   });

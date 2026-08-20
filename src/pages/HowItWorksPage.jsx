@@ -106,7 +106,7 @@ export default function HowItWorksPage() {
             Ready to Upgrade Your Creative &amp; AI Workflow?
           </h2>
           <p className="text-sm text-slate-300 max-w-xl mx-auto mb-6">
-            Join 1,200+ freelancers, students, and agencies across Pakistan. Order your digital tool in seconds.
+            Join 5,000+ freelancers, students, and agencies across Pakistan. Order your digital tool in seconds.
           </p>
           <a
             href={whatsappUrl}

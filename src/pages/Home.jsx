@@ -1,5 +1,5 @@
 import { useEffect, useMemo } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import AnnouncementBar from "@/components/AnnouncementBar";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
@@ -27,9 +27,12 @@ import SectionDivider from "@/components/SectionDivider";
 import SEOHead from "@/components/SEOHead";
 import SeoContentSection from "@/components/SeoContentSection";
 import ScrollReveal from "@/components/ScrollReveal";
+import BlogCard from "@/components/BlogCard";
 import { ALL_PRODUCTS } from "@/data/products";
+import { getFeaturedBlogPosts } from "@/data/blogPosts";
 import { generateHomepageGraph, DOMAIN } from "@/lib/seoSchema";
 import { scrollToSection } from "@/lib/scroll";
+import { BookOpen, ChevronRight } from "lucide-react";
 
 export default function Home() {
   const location = useLocation();
@@ -50,8 +53,9 @@ export default function Home() {
   return (
     <div className="relative min-h-screen bg-[#050505] text-white overflow-x-hidden">
       <SEOHead
-        title="Buy ChatGPT Plus &amp; AI Subscriptions — Prime Tools Hub"
-        description="Pakistan's trusted marketplace for ChatGPT Plus, Canva Pro, Veo 3, CapCut, Gemini Pro &amp; more. Fast delivery via JazzCash/EasyPaisa."
+        title="Premium AI Tools Pakistan 2026 — ChatGPT, Canva Pro | PrimeToolsHub"
+        description="Buy ChatGPT Plus, Canva Pro & CapCut Pro in Pakistan ✓ From Rs.279 ✓ Instant WhatsApp delivery ✓ 5,000+ trusted customers. Original subscriptions 🇵🇰"
+        keywords="premium ai tools pakistan, buy chatgpt plus pakistan, canva pro price pakistan, capcut pro pakistan, ai tool subscription pakistan, prime tools hub"
         canonicalUrl={`${DOMAIN}/`}
         schemaJson={homepageSchema}
       />
@@ -145,6 +149,40 @@ export default function Home() {
         {/* Customer Reviews */}
         <ScrollReveal direction="up" duration={0.4}>
           <Testimonials />
+        </ScrollReveal>
+
+        <SectionDivider color="rgba(16, 185, 129, 0.4)" />
+
+        {/* Latest AI Tools Guides (Homepage -> Blog Internal Linking) */}
+        <ScrollReveal direction="up" duration={0.4}>
+          <section id="blog-guides" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+              <div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 mb-2">
+                  <BookOpen size={12} />
+                  <span>Educational Hub</span>
+                </div>
+                <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
+                  Latest AI Tools Guides &amp; Pricing
+                </h2>
+                <p className="text-slate-400 text-xs sm:text-sm mt-1">
+                  In-depth tutorials, price breakdowns, and comparisons for Pakistani creators and freelancers.
+                </p>
+              </div>
+              <Link
+                to="/blog"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 text-emerald-400 font-semibold text-xs sm:text-sm transition-all shrink-0"
+              >
+                <span>Sab Parhen (View All)</span>
+                <ChevronRight size={16} />
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {getFeaturedBlogPosts().slice(0, 3).map((post) => (
+                <BlogCard key={post.id} post={post} />
+              ))}
+            </div>
+          </section>
         </ScrollReveal>
 
         <SectionDivider color="rgba(139, 92, 246, 0.4)" />

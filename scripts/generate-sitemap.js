@@ -53,12 +53,33 @@ function getProductsData() {
   return products;
 }
 
+function getBlogPostsData() {
+  const blogFilePath = path.join(rootDir, 'src', 'data', 'blogPosts.js');
+  if (!fs.existsSync(blogFilePath)) {
+    console.warn(`[sitemap-gen] Warning: ${blogFilePath} not found.`);
+    return [];
+  }
+  const content = fs.readFileSync(blogFilePath, 'utf-8');
+  const posts = [];
+  const slugRegex = /slug:\s*["']([^"']+)["']/g;
+  let match;
+  while ((match = slugRegex.exec(content)) !== null) {
+    const slug = match[1];
+    if (!posts.includes(slug)) {
+      posts.push(slug);
+    }
+  }
+  return posts;
+}
+
 function generateSitemap() {
   const products = getProductsData();
-  console.log(`[sitemap-gen] Found ${products.length} products for sitemap generation.`);
+  const blogSlugs = getBlogPostsData();
+  console.log(`[sitemap-gen] Found ${products.length} products and ${blogSlugs.length} blog posts for sitemap generation.`);
 
   const staticPages = [
     { loc: `${DOMAIN}/`, priority: '1.0', changefreq: 'daily' },
+    { loc: `${DOMAIN}/blog`, priority: '0.8', changefreq: 'daily' },
     { loc: `${DOMAIN}/how-it-works`, priority: '0.9', changefreq: 'weekly' },
     { loc: `${DOMAIN}/faq`, priority: '0.9', changefreq: 'weekly' },
     { loc: `${DOMAIN}/compare`, priority: '0.9', changefreq: 'weekly' },
@@ -75,6 +96,9 @@ function generateSitemap() {
     { loc: `${DOMAIN}/karachi`, priority: '0.8', changefreq: 'weekly' },
     { loc: `${DOMAIN}/islamabad`, priority: '0.8', changefreq: 'weekly' },
     { loc: `${DOMAIN}/faisalabad`, priority: '0.8', changefreq: 'weekly' },
+    { loc: `${DOMAIN}/rawalpindi`, priority: '0.8', changefreq: 'weekly' },
+    { loc: `${DOMAIN}/peshawar`, priority: '0.8', changefreq: 'weekly' },
+    { loc: `${DOMAIN}/multan`, priority: '0.8', changefreq: 'weekly' },
     { loc: `${DOMAIN}/html-sitemap`, priority: '0.7', changefreq: 'monthly' },
   ];
 
@@ -84,7 +108,13 @@ function generateSitemap() {
     changefreq: 'weekly',
   }));
 
-  const allUrls = [...staticPages, ...productUrls];
+  const blogUrls = blogSlugs.map(slug => ({
+    loc: `${DOMAIN}/blog/${slug}`,
+    priority: '0.7',
+    changefreq: 'weekly',
+  }));
+
+  const allUrls = [...staticPages, ...productUrls, ...blogUrls];
 
   // 1. Standard XML Sitemap
   const xmlUrls = allUrls.map(u => `  <url>

@@ -110,6 +110,13 @@ export const ALL_PRODUCTS = [
       "Misuse, account sharing, or Google AI policy violations will void warranty"
     ],
     warrantyNote: "20 Days Warranty · Single Device Login · Direct Gmail",
+    seo: {
+      titleTag: "Google VEO 3 Price Pakistan 2026 — Rs.2,999 | PrimeToolsHub",
+      metaDescription: "Google VEO 3.1 Ultra from Rs.2,999 ✓ Unlimited AI video & image generation ✓ Gmail direct ✓ 15-min delivery ✓ 20-day warranty. 5,000+ users 🇵🇰",
+      h1: "Google VEO 3.1 Ultra Price in Pakistan 2026 — AI Video Generator",
+      primaryKeyword: "google veo 3 price in pakistan",
+      secondaryKeywords: ["veo 3 subscription pakistan", "buy google veo 3 pakistan", "veo 3 pakistan pkr", "ai video generator pakistan 2026"]
+    },
   },
   {
     id: "gemini-pro-18",
@@ -130,6 +137,13 @@ export const ALL_PRODUCTS = [
     termsOfUse: ["Activate on your personal Google account via the redeem link", "Features, credits and usage limits are subject to Google's applicable policies and availability"],
     warrantyPolicy: ["Warranty is provided until successful activation only", "Once the subscription is activated and the duration appears on your account, the order is considered complete", "Future changes due to Google policies, eligibility, account issues, feature limits, or regional restrictions are not covered by warranty or replacement"],
     warrantyNote: "Warranty valid until successful activation only.",
+    seo: {
+      titleTag: "Google Gemini Pro Price Pakistan 2026 — Rs.799 | PrimeToolsHub",
+      metaDescription: "Google Gemini Pro 18 months for Rs.799 ✓ 5TB storage ✓ 2M context ✓ Veo video credits ✓ Your Gmail ✓ 15-min delivery. 5,000+ users 🇵🇰",
+      h1: "Google Gemini Pro Price in Pakistan 2026 — 18-Month Plans & Deals",
+      primaryKeyword: "google gemini price in pakistan",
+      secondaryKeywords: ["gemini pro subscription pakistan", "buy gemini advanced pakistan", "gemini pro pakistan pkr", "google gemini pakistan 2026"]
+    },
   },
   {
     id: "capcut-pro-1m",
@@ -149,6 +163,13 @@ export const ALL_PRODUCTS = [
     termsOfUse: ["You can change the account password", "Do NOT share your account with anyone", "This subscription is for 1 Account = 1 Device only"],
     warrantyPolicy: ["No warranty is provided", "Support will be provided for activation and setup only", "Any login limitation, account restriction, or suspension due to multiple devices, account sharing, or violation of CapCut's policies will be the user's responsibility"],
     warrantyNote: "1 Account = 1 Device only",
+    seo: {
+      titleTag: "CapCut Pro Price Pakistan 2026 — Rs.1,139 | PrimeToolsHub",
+      metaDescription: "CapCut Pro from Rs.1,139/month ✓ 4K no watermark ✓ AI captions ✓ JazzCash payment ✓ 15-min delivery ✓ 30-day warranty. 5,000+ users 🇵🇰",
+      h1: "CapCut Pro Price in Pakistan 2026 — Subscription Plans & Deals",
+      primaryKeyword: "capcut pro price in pakistan",
+      secondaryKeywords: ["capcut pro subscription pakistan", "buy capcut pro pakistan", "capcut pro pakistan pkr", "capcut pro pakistan 2026"]
+    },
   },
   {
     id: "capcut-pro-admin-7s",
@@ -206,6 +227,13 @@ export const ALL_PRODUCTS = [
     termsOfUse: ["Currently Out of Stock"],
     warrantyPolicy: ["Currently Out of Stock"],
     warrantyNote: "Out of Stock",
+    seo: {
+      titleTag: "Surfshark VPN Price Pakistan 2026 — Rs.3,320 | PrimeToolsHub",
+      metaDescription: "Surfshark VPN 1-year access from Rs.3,320 ✓ Unlimited devices ✓ Fast streaming & privacy ✓ JazzCash payment ✓ 15-min delivery. 5,000+ users 🇵🇰",
+      h1: "Surfshark VPN Price in Pakistan 2026 — Subscription Plans",
+      primaryKeyword: "surfshark vpn price in pakistan",
+      secondaryKeywords: ["surfshark vpn subscription pakistan", "buy surfshark vpn pakistan", "surfshark pakistan pkr", "surfshark vpn pakistan 2026"]
+    },
   },
   {
     id: "surfshark-vpn-1m",
@@ -358,6 +386,13 @@ export const ALL_PRODUCTS = [
     termsOfUse: ["Please follow Canva's Terms of Service and avoid any misuse", "The invite is generally stable for long-term use under normal usage"],
     warrantyPolicy: ["No warranty is provided after the invitation is accepted", "The invite is generally stable for long-term use under normal usage", "Complete activation support will be provided"],
     warrantyNote: "Only your Gmail address required",
+    seo: {
+      titleTag: "Canva Pro Price Pakistan 2026 — Rs.279 | PrimeToolsHub",
+      metaDescription: "Canva Pro Edu 3-year access for Rs.279 ✓ All AI tools (Magic Design/Write) ✓ Background remover ✓ 15-min delivery ✓ Your Gmail. 5,000+ users 🇵🇰",
+      h1: "Canva Pro Price in Pakistan 2026 — 3-Year Subscription Plans",
+      primaryKeyword: "canva pro price in pakistan",
+      secondaryKeywords: ["canva pro subscription pakistan", "buy canva pro pakistan", "canva pro pakistan pkr", "canva pro pakistan 2026"]
+    },
   },
   {
     id: "canva-pro-admin",
@@ -396,6 +431,13 @@ export const ALL_PRODUCTS = [
     termsOfUse: ["Check and log in to your account immediately after receiving it"],
     warrantyPolicy: ["Full 1 Month Replacement Warranty included"],
     warrantyNote: "1 Month Warranty included",
+    seo: {
+      titleTag: "ChatGPT Plus Price Pakistan 2026 — Rs.2,199 | PrimeToolsHub",
+      metaDescription: "ChatGPT Plus from Rs.2,199 ✓ GPT-4o + DALL·E 3 ✓ 15-min WhatsApp delivery ✓ 30-day warranty ✓ JazzCash/EasyPaisa. 5,000+ users 🇵🇰",
+      h1: "ChatGPT Plus Price in Pakistan 2026 — Subscription Plans & Deals",
+      primaryKeyword: "chatgpt plus price in pakistan",
+      secondaryKeywords: ["chatgpt plus subscription pakistan", "buy chatgpt plus pakistan", "chatgpt plus pakistan pkr", "chatgpt plus pakistan 2026"]
+    },
   },
   {
     id: "chatgpt-plus-10d",
@@ -415,6 +457,13 @@ export const ALL_PRODUCTS = [
     termsOfUse: ["Check and log in to your account immediately after receiving it"],
     warrantyPolicy: ["10 Days Replacement Warranty included"],
     warrantyNote: "10 Days Warranty included",
+    seo: {
+      titleTag: "ChatGPT Plus Price Pakistan 2026 — Rs.1,599 | PrimeToolsHub",
+      metaDescription: "ChatGPT Plus from Rs.1,599 ✓ GPT-4o + DALL·E 3 ✓ 15-min WhatsApp delivery ✓ 10-day warranty ✓ JazzCash/EasyPaisa. 5,000+ users 🇵🇰",
+      h1: "ChatGPT Plus Price in Pakistan 2026 — Subscription Plans & Deals",
+      primaryKeyword: "chatgpt plus price in pakistan",
+      secondaryKeywords: ["chatgpt plus subscription pakistan", "buy chatgpt plus pakistan", "chatgpt plus pakistan pkr", "chatgpt plus pakistan 2026"]
+    },
   },
   {
     id: "chatgpt-go-3m",

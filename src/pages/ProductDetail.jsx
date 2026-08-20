@@ -1,8 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import {
   ArrowLeft, Check, ShieldCheck, PackageCheck, ListChecks,
-  MessageCircle, AlertTriangle, ClipboardList, Star, Sparkles, ChevronRight
+  MessageCircle, AlertTriangle, ClipboardList, Star, Sparkles, ChevronRight, HelpCircle, BookOpen
 } from "lucide-react";
 import { ALL_PRODUCTS, BUYING_STEPS } from "@/data/products";
 import { openWhatsApp, WHATSAPP_GENERAL, WHATSAPP_NUMBER } from "@/lib/whatsapp";
@@ -13,8 +13,10 @@ import BulkPurchaseBanner from "@/components/BulkPurchaseBanner";
 import CountdownTimer from "@/components/CountdownTimer";
 import SEOHead from "@/components/SEOHead";
 import Breadcrumb from "@/components/Breadcrumb";
-import { generateProductSchema, generateBreadcrumbSchema, DOMAIN, getProductCategory } from "@/lib/seoSchema";
-import { motion } from "framer-motion";
+import { generateProductSchema, generateBreadcrumbSchema, generateWebPageSchema, generateFAQSchema, DOMAIN, getProductCategory } from "@/lib/seoSchema";
+import { getProductFaqs } from "@/data/productFaqs";
+import { getBlogPostsForProduct } from "@/data/blogPosts";
+import { motion, AnimatePresence } from "framer-motion";
 import { useCurrency } from "@/context/CurrencyContext";
 
 // Helper to convert hex to rgb for background blending
@@ -135,17 +137,63 @@ export default function ProductDetail() {
   });
   const schemaGraph = {
     "@context": "https://schema.org",
-    "@graph": [productSchema, webPageSchema, breadcrumbSchema].filter(Boolean)
+    "@graph": [
+      productSchema,
+      webPageSchema,
+      breadcrumbSchema,
+      // FAQ Schema for rich snippets
+      ...((() => {
+        const faqs = getProductFaqs(product.id);
+        const faqSchema = generateFAQSchema(faqs, `${pageUrl}#faq`);
+        return faqSchema ? [faqSchema] : [];
+      })()),
+      // HowTo Schema for order process
+      {
+        "@type": "HowTo",
+        "name": `How to Buy ${product.name} in Pakistan`,
+        "description": `Step-by-step guide to order ${product.name} subscription from PrimeToolsHub`,
+        "totalTime": "PT30M",
+        "tool": [{"@type": "HowToTool", "name": "WhatsApp"}],
+        "supply": [{"@type": "HowToSupply", "name": "JazzCash, EasyPaisa, or Bank Account"}],
+        "step": [
+          {
+            "@type": "HowToStep",
+            "position": 1,
+            "name": "Choose Your Plan",
+            "text": `Browse ${product.name} plans on PrimeToolsHub and select your preferred subscription`
+          },
+          {
+            "@type": "HowToStep",
+            "position": 2,
+            "name": "Click WhatsApp Order Button",
+            "text": "Click the WhatsApp Order button \u2014 our team responds within 15 minutes"
+          },
+          {
+            "@type": "HowToStep",
+            "position": 3,
+            "name": "Make Payment",
+            "text": "Pay securely via JazzCash, EasyPaisa, Bank Transfer, or Card"
+          },
+          {
+            "@type": "HowToStep",
+            "position": 4,
+            "name": "Receive Activation",
+            "text": `Get your ${product.name} activated within 5\u201330 minutes with full warranty`
+          }
+        ]
+      }
+    ].filter(Boolean)
   };
 
   return (
     <div className="relative min-h-screen text-white overflow-x-hidden flex flex-col justify-between">
       <SEOHead
-        title={`Buy ${product.name} Subscription in Pakistan`}
-        description={product.description || `Get ${product.name} subscription at wholesale pricing with instant WhatsApp activation and replacement warranty at Prime Tools Hub.`}
+        title={product.seo?.titleTag || `${product.name} Price in Pakistan 2026 | PrimeToolsHub`}
+        description={product.seo?.metaDescription || product.description || `Get ${product.name} subscription at wholesale pricing with instant WhatsApp activation and replacement warranty at Prime Tools Hub.`}
         canonicalUrl={`${DOMAIN}/product/${id}`}
         ogImage={product.logo?.startsWith("http") ? product.logo : `${DOMAIN}/${product.logo}`}
         ogType="product"
+        keywords={product.seo?.secondaryKeywords?.join(', ') || ''}
         schemaJson={schemaGraph}
       />
       <Navbar />
@@ -221,7 +269,7 @@ export default function ProductDetail() {
               )}
             </div>
             <h1 className="font-display font-bold text-white text-[clamp(2.1rem,5vw,3.2rem)] leading-[1.05] tracking-tight">
-              {product.name} Subscription
+              {product.seo?.h1 || `${product.name} Price in Pakistan 2026`}
             </h1>
             <p className="mt-4 text-white/60 text-base leading-relaxed max-w-lg">
               {product.description}
@@ -308,7 +356,7 @@ export default function ProductDetail() {
                 <span className="ps-shimmer absolute inset-0 rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden" />
                 <img
                   src={product.logo}
-                  alt={`${product.name} Official Subscription Logo`}
+                  alt={`Buy ${product.name} Subscription Pakistan \u2014 PrimeToolsHub`}
                   title={`${product.name} Subscription at Prime Tools Hub`}
                   width="200"
                   height="200"
@@ -411,6 +459,38 @@ export default function ProductDetail() {
           </motion.div>
         </div>
 
+        {/* FAQ Section for SEO & User Experience */}
+        {(() => {
+          const faqs = getProductFaqs(product.id);
+          if (!faqs || faqs.length === 0) return null;
+          return (
+            <div className="mx-auto max-w-5xl px-4 sm:px-6 py-6">
+              <motion.div
+                className="rounded-2xl p-6 relative overflow-hidden"
+                style={{
+                  background: "linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)",
+                  border: "1px solid rgba(255,255,255,0.07)",
+                  backdropFilter: "blur(24px)",
+                }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7 }}
+              >
+                <h2 className="font-display font-semibold text-white text-lg mb-5 flex items-center gap-2">
+                  <HelpCircle size={18} style={{ color: accent }} />
+                  <span>Frequently Asked Questions</span>
+                </h2>
+                <div className="space-y-2">
+                  {faqs.map((faq, idx) => (
+                    <FAQAccordionItem key={idx} faq={faq} accent={accent} />
+                  ))}
+                </div>
+              </motion.div>
+            </div>
+          );
+        })()}
+
         {/* Related Products Recommendations (Internal Linking Enhancement) */}
         {relatedProducts.length > 0 && (
           <div className="mx-auto max-w-5xl px-4 sm:px-6 py-8">
@@ -436,7 +516,7 @@ export default function ProductDetail() {
                       className="w-9 h-9 object-contain"
                     />
                     <div>
-                      <h3 className="font-display font-bold text-sm text-white group-hover:text-purple-300 transition-colors line-clamp-1">{rp.name}</h3>
+                      <h3 className="font-display font-bold text-sm text-white group-hover:text-purple-300 transition-colors line-clamp-1">{rp.name} in Pakistan</h3>
                       <span className="text-xs text-emerald-400 font-mono font-semibold">{formatPrice(rp.price)}</span>
                     </div>
                   </div>
@@ -451,6 +531,53 @@ export default function ProductDetail() {
             </div>
           </div>
         )}
+
+        {/* Helpful Guides (Product Pages -> Blog Internal Linking) */}
+        {(() => {
+          const guides = getBlogPostsForProduct(product.id);
+          if (!guides || guides.length === 0) return null;
+          return (
+            <div className="mx-auto max-w-5xl px-4 sm:px-6 py-6">
+              <div className="flex items-center justify-between gap-4 mb-4">
+                <h2 className="font-display font-bold text-white text-lg sm:text-xl flex items-center gap-2">
+                  <BookOpen size={18} className="text-emerald-400" />
+                  <span>Helpful Guides &amp; Tutorials</span>
+                </h2>
+                <Link to="/blog" className="text-xs font-semibold text-emerald-400 hover:text-emerald-300 flex items-center gap-1">
+                  <span>View All Guides</span>
+                  <ChevronRight size={12} />
+                </Link>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {guides.map((post) => (
+                  <Link
+                    key={post.id}
+                    to={`/blog/${post.slug}`}
+                    className="p-4 rounded-xl border border-white/10 bg-[#0c0d12] hover:bg-white/[0.04] hover:border-emerald-500/30 transition-all flex flex-col justify-between group"
+                  >
+                    <div>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
+                        {post.category}
+                      </span>
+                      <h3 className="font-bold text-sm text-white group-hover:text-emerald-300 transition-colors mt-2 line-clamp-2">
+                        {post.title}
+                      </h3>
+                      <p className="text-xs text-slate-400 mt-1 line-clamp-2">
+                        {post.excerpt}
+                      </p>
+                    </div>
+                    <div className="flex items-center justify-between text-[11px] text-slate-400 pt-3 mt-3 border-t border-white/5">
+                      <span>{post.readTime}</span>
+                      <span className="text-emerald-400 font-semibold flex items-center gap-0.5 group-hover:translate-x-1 transition-transform">
+                        Read Guide <ChevronRight size={12} />
+                      </span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          );
+        })()}
 
         {/* Bottom CTA */}
         <div className="mx-auto max-w-5xl px-4 sm:px-6 pb-12">
@@ -538,6 +665,42 @@ function Stat({ icon: Icon, label, value, accent, small = false }) {
         <div className="text-[10px] uppercase tracking-wide text-white/40">{label}</div>
         <div className={`text-white font-medium ${small ? "text-xs truncate" : "text-sm"} truncate`}>{value}</div>
       </div>
+    </div>
+  );
+}
+
+function FAQAccordionItem({ faq, accent }) {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <div
+      className="rounded-xl border border-white/8 overflow-hidden transition-all"
+      style={isOpen ? { borderColor: `${accent}30`, background: 'rgba(255,255,255,0.02)' } : {}}
+    >
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full flex items-center justify-between gap-3 px-4 py-3.5 text-left hover:bg-white/[0.03] transition-colors"
+      >
+        <span className="text-sm font-medium text-white/80 leading-relaxed">{faq.question}</span>
+        <ChevronRight
+          size={16}
+          className={`shrink-0 text-white/40 transition-transform duration-300 ${isOpen ? 'rotate-90' : ''}`}
+          style={isOpen ? { color: accent } : {}}
+        />
+      </button>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <div className="px-4 pb-4 text-sm text-white/55 leading-relaxed">
+              {faq.answer}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

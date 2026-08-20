@@ -14,7 +14,8 @@ import {
   PhoneCall, 
   ChevronRight,
   ShieldCheck,
-  Compass
+  Compass,
+  BookOpen
 } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
@@ -31,6 +32,7 @@ import { Globe } from "lucide-react";
 const DESKTOP_LINKS = [
   { labelKey: "nav_home", href: "#home" },
   { labelKey: "nav_tools", href: "#products" },
+  { labelKey: "nav_blog", href: "/blog", route: true, defaultLabel: "Blog" },
   { labelKey: "nav_reviews", href: "/reviews", route: true },
   { labelKey: "nav_faq", href: "#faq" },
   { labelKey: "nav_contact", href: "#contact" },
@@ -56,6 +58,17 @@ const MAIN_NAV_ITEMS = [
     accent: "from-violet-500/20 to-purple-500/10",
     border: "border-violet-500/30",
     text: "text-violet-400"
+  },
+  { 
+    labelKey: "nav_blog", 
+    defaultLabel: "Blog", 
+    desc: "Guides, Pricing & Reviews", 
+    href: "/blog", 
+    route: true, 
+    icon: BookOpen,
+    accent: "from-cyan-500/20 to-blue-500/10",
+    border: "border-cyan-500/30",
+    text: "text-cyan-400"
   },
   { 
     labelKey: "nav_reviews", 

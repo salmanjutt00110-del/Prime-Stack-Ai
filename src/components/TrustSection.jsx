@@ -1,7 +1,7 @@
 import { ShieldCheck, RefreshCw, Zap, Star, ShoppingBag, Headphones, Lock, Calendar, CreditCard, DollarSign } from "lucide-react";
 
 const STATS_ITEMS = [
-  { icon: ShoppingBag, val: "1,200+", label: "Orders Completed", grad: "from-blue-400 via-cyan-400 to-[#00ff88]", iconColor: "text-blue-400" },
+  { icon: ShoppingBag, val: "5,000+", label: "Orders Completed", grad: "from-blue-400 via-cyan-400 to-[#00ff88]", iconColor: "text-blue-400" },
   { icon: Star, val: "4.9★", label: "Customer Rating", grad: "from-amber-400 via-yellow-300 to-[#00ff88]", iconColor: "text-amber-400", fill: true },
   { icon: Zap, val: "5-30m", label: "Instant Delivery", grad: "from-[#00ff88] via-emerald-300 to-cyan-400", iconColor: "text-[#00ff88]" },
   { icon: Headphones, val: "30 Days", label: "Dedicated Support", grad: "from-purple-400 via-pink-400 to-indigo-400", iconColor: "text-purple-400" },

@@ -50,7 +50,7 @@ export default function SEOHead({
 
     const finalDescription =
       description ||
-      "Buy ChatGPT Plus, Canva Pro, Gemini Pro, Veo 3 & CapCut Pro in Pakistan. Instant delivery via JazzCash/EasyPaisa. 100% replacement warranty. Trusted by 1,200+ users.";
+      "Buy ChatGPT Plus, Canva Pro, Gemini Pro, Veo 3 & CapCut Pro in Pakistan. Instant delivery via JazzCash/EasyPaisa. 100% replacement warranty. Trusted by 5,000+ users.";
     const finalKeywords =
       keywords ||
       "ChatGPT Plus Pakistan, Google Gemini Advanced, Veo 3 AI Video, CapCut Pro subscription, Canva Pro account, SuperGrok 12m, Surfshark VPN, Prime Tools Hub, primetoolshub.store, buy AI tools Pakistan, digital subscriptions Pakistan";
