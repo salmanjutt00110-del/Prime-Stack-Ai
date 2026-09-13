@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import WhatsAppFloating from "@/components/WhatsAppFloating";
 import Breadcrumb from "@/components/Breadcrumb";
 import RelatedPosts from "@/components/RelatedPosts";
+import GoogleAd from "@/components/GoogleAd";
 import { getBlogPostBySlug } from "@/data/blogPosts";
 import { ALL_PRODUCTS } from "@/data/products";
 import {
@@ -284,6 +285,9 @@ export default function BlogPost() {
         <article className="prose prose-invert max-w-none">
           {renderFormattedContent(post.content)}
         </article>
+
+        {/* AdSense Unit */}
+        <GoogleAd className="my-8" />
 
         {/* Related Product CTA Box */}
         {relatedProduct && (

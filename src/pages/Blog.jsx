@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import WhatsAppFloating from "@/components/WhatsAppFloating";
 import Breadcrumb from "@/components/Breadcrumb";
 import BlogCard from "@/components/BlogCard";
+import GoogleAd from "@/components/GoogleAd";
 import { blogPosts } from "@/data/blogPosts";
 import { generateBlogListSchema, generateWebPageSchema, DOMAIN } from "@/lib/seoSchema";
 import { Sparkles, BookOpen, ChevronLeft, ChevronRight } from "lucide-react";
@@ -132,6 +133,9 @@ export default function Blog() {
             <BlogCard key={post.id} post={post} />
           ))}
         </div>
+
+        {/* AdSense Unit */}
+        <GoogleAd className="my-8" />
 
         {/* Pagination */}
         {totalPages > 1 && (
