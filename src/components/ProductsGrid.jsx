@@ -147,7 +147,7 @@ export default function ProductsGrid() {
                 <span className="text-xs font-bold text-amber-300">🔥 #1 Top Deal</span>
               </div>
               <h3 className="font-display text-xl sm:text-2xl font-black text-white tracking-tight group-hover:text-cyan-300 transition-colors">
-                Google Gemini Pro 18 Months — Only {formatPrice("Rs. 799")} <span className="text-sm font-normal line-through text-slate-400">({formatPrice("Rs. 1,599")})</span>
+                Google Gemini Pro 18 Months — Only {formatPrice("Rs. 499")} <span className="text-sm font-normal line-through text-slate-400">({formatPrice("Rs. 1,599")})</span>
               </h3>
               <p className="text-xs sm:text-sm text-slate-300 mt-1 font-body max-w-2xl">
                 5TB Google One cloud storage, Veo AI Video Generator &amp; monthly credits directly on your Gmail.
@@ -156,7 +156,7 @@ export default function ProductsGrid() {
           </div>
 
           <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0 w-full md:w-auto relative z-10">
-            <CountdownTimer compact targetPrice="Rs. 799" futurePrice="Rs. 1,599" />
+            <CountdownTimer compact targetPrice="Rs. 499" futurePrice="Rs. 1,599" />
             <button
               onClick={(e) => {
                 e.stopPropagation();
@@ -164,7 +164,7 @@ export default function ProductsGrid() {
               }}
               className="w-full sm:w-auto px-6 py-3 rounded-xl font-display font-extrabold text-xs text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-xl border border-blue-400/40 min-h-[44px]"
             >
-              <span>Get {formatPrice("Rs. 799")} Deal</span>
+              <span>Get {formatPrice("Rs. 499")} Deal</span>
               <span className="group-hover:translate-x-1 transition-transform">→</span>
             </button>
           </div>

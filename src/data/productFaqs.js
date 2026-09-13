@@ -240,43 +240,47 @@ export const productFaqs = {
     faqs: [
       {
         question: "Google Gemini Advanced price in Pakistan?",
-        answer: "Google Gemini Pro Advanced 18-month plan sirf Rs. 799 mein available hai PrimeToolsHub pe — regular price Rs. 1,599 se 50% off! Ye directly apke personal Gmail pe activate hota hai with 5TB cloud storage, 2M context window, aur Veo video generation."
+        answer: "Google Gemini Pro Advanced 18-month plan sirf Rs. 499 mein available hai PrimeToolsHub pe — regular price Rs. 1,599 se over 68% discount! Ye directly aap ke personal Gmail pe activate hota hai with 5TB Google One cloud storage, 2M context window, Imagen 3, aur Google Veo video generation."
       },
       {
-        question: "Is Google Gemini available in Pakistan?",
-        answer: "Google Gemini Advanced officially requires international payment. PrimeToolsHub bridges this gap — we activate Gemini Pro directly on your personal Gmail address using local PKR payment methods."
+        question: "What is included in the Gemini Pro 18 Months subscription?",
+        answer: "Aapko 18 months ke liye official Google Gemini Pro (Advanced) access milta hai, 5TB Google One cloud storage (Gmail, Drive aur Photos ke liye), Imagen 3 image generation, Google Veo AI video generation credits, aur Google Workspace apps (Docs, Sheets, Slides) ke sath deep integration."
+      },
+      {
+        question: "Is Google Gemini available in Pakistan without VPN?",
+        answer: "Yes! Once Gemini Pro is activated on your Gmail by PrimeToolsHub, it works directly in Pakistan from any browser or mobile app without requiring any VPN or proxy. You can use it natively at gemini.google.com or on Android/iOS."
+      },
+      {
+        question: "How is Gemini Pro activated on my personal Gmail?",
+        answer: "Activation intehai aasan aur safe hai: Order on WhatsApp → Share only your Gmail address (password ki bilkul zaroorat nahi hai) → Pay Rs. 499 via JazzCash, EasyPaisa ya Bank Transfer → We send an official invitation link → You accept it and 18 months Gemini Pro + 5TB storage is instantly activated within 15 minutes."
       },
       {
         question: "Gemini Advanced aur ChatGPT Plus mein kya farq hai?",
-        answer: "Gemini Advanced: Deep Google integration (Gmail, Docs, Drive, Sheets), 2M token context window, 5TB cloud storage, Veo video generation. ChatGPT Plus: Better for coding, DALL·E image gen, Custom GPTs. Both are excellent — depends on your workflow."
+        answer: "Gemini Advanced mein massive 2M token context window, 5TB Google One cloud storage, aur Google Veo video generation milti hai directly personal Gmail par for just Rs. 499 (18 months). ChatGPT Plus coding debugging aur custom GPTs ke liye popular hai lekin Rs. 2,199/month cost karta hai bina kisi cloud storage ke."
       },
       {
-        question: "Can I access Google Gemini in Pakistan without VPN?",
-        answer: "Yes! Once Gemini Pro is activated on your Gmail, it works directly in Pakistan from any browser. No VPN required. Access it at gemini.google.com or through the Google Gemini app."
+        question: "Will my existing Google Drive files and Google Photos remain safe?",
+        answer: "Bilkul 100% safe! Aapka personal account bilkul private rehta hai. 5TB cloud storage aapke account mein add ho jati hai aur aapki purani files, photos, aur emails bilkul secure aur private rehti hain."
       },
       {
         question: "Google Gemini ke saath kaunse Google apps milte hain?",
-        answer: "Gemini Pro integrates with Gmail, Google Docs, Sheets, Slides, Drive, and Meet. Plus 5TB Google One cloud storage. It enhances your entire Google Workspace experience."
-      },
-      {
-        question: "Is Google Gemini better than ChatGPT for coding?",
-        answer: "Both are strong for coding. Gemini excels at understanding large codebases (2M context window) and Google API integration. ChatGPT Plus is generally preferred for real-time code debugging and multi-language support."
+        answer: "Gemini Pro integrates with Gmail, Google Docs, Sheets, Slides, Drive, and Meet. Plus 5TB Google One high-speed cloud storage jo aapke poore Google ecosystem ko supercharge kar deta hai."
       },
       {
         question: "Gemini Advanced mein 2 million token context kya hota hai?",
-        answer: "2 million token context matlab aap poori books, long PDFs, 1-hour videos, ya complete codebases ek saath upload kar ke analysis kara sakte hain. Ye ChatGPT Plus ke 128K context se 15x zyada hai."
+        answer: "2 million token context ka matlab hai aap poori books, 500+ pages ki PDFs, 1 ghantay ki video files, ya complete software repositories ek hi prompt mein upload kar ke deep research ya analysis kara sakte hain. Ye ChatGPT Plus ke 128K context se 15 guna bara hai."
       },
       {
-        question: "Can I use Gemini for content creation in Pakistan?",
-        answer: "Yes! Pakistani content creators use Gemini for blog writing, social media copy, email marketing, SEO content, and video scripts. It also generates images through Imagen 3 integration."
+        question: "Can I use Gemini for content creation and video editing in Pakistan?",
+        answer: "Yes! Pakistani freelancers aur content creators Gemini Pro ko YouTube scripts, SEO blog writing, social media campaigns, aur Imagen 3 photorealistic images ke liye use karte hain. Iske sath Google Veo engine se high-quality cinematic AI videos bhi banti hain."
       },
       {
-        question: "How to order Google Gemini from PrimeToolsHub?",
-        answer: "Click 'Buy on WhatsApp' on our Gemini Pro page → Share your personal Gmail address → Pay Rs. 799 via JazzCash/EasyPaisa → We activate Gemini Pro on your Gmail within 15 minutes."
+        question: "Gemini Advanced ka per-month cost kitna banta hai?",
+        answer: "Rs. 499 mein 18 months ka full access milta hai, jo effectively sirf ~Rs. 27 per month banta hai! Ye official international pricing ($20/month = ~Rs. 5,600/month) ke muqablay mein 99% sasta hai."
       },
       {
-        question: "Gemini Advanced ka trial kaise milega?",
-        answer: "PrimeToolsHub pe trial available nahi hai, lekin Rs. 799 mein 18 months ka access milta hai jo sab se affordable option hai. Ye effectively Rs. 44/month banta hai — international price se 95% sasta."
+        question: "How to order Google Gemini Pro from PrimeToolsHub?",
+        answer: "Simply click 'Buy on WhatsApp' on the Gemini Pro page → Share your personal Gmail address → Pay Rs. 499 via JazzCash, EasyPaisa, SadaPay, NayaPay, or Bank Transfer → Your plan is activated within 15 minutes with verified warranty."
       }
     ]
   },

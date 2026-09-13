@@ -459,6 +459,94 @@ export default function ProductDetail() {
           </motion.div>
         </div>
 
+        {/* Deep-Dive SEO Guide & Technical Overview */}
+        {product.seoGuide && (
+          <div className="mx-auto max-w-5xl px-4 sm:px-6 py-6">
+            <motion.div
+              className="rounded-2xl p-6 sm:p-8 relative overflow-hidden"
+              style={{
+                background: "linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)",
+                border: "1px solid rgba(255,255,255,0.08)",
+                backdropFilter: "blur(24px)",
+              }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+            >
+              <div className="flex items-center gap-2 mb-3">
+                <span
+                  className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border"
+                  style={{ background: `${accent}15`, borderColor: `${accent}30`, color: accent }}
+                >
+                  Subscription Guide &amp; Technical Overview
+                </span>
+              </div>
+              <h2 className="font-display font-bold text-white text-xl sm:text-2xl mb-3">
+                {product.seoGuide.heading}
+              </h2>
+              {product.seoGuide.subheading && (
+                <p className="text-sm text-white/60 mb-6 leading-relaxed">
+                  {product.seoGuide.subheading}
+                </p>
+              )}
+
+              {/* Guide Content Cards */}
+              <div className="grid sm:grid-cols-2 gap-5 mb-8">
+                {product.seoGuide.sections.map((sec, idx) => (
+                  <div
+                    key={idx}
+                    className="rounded-xl p-5 border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-colors"
+                  >
+                    <h3 className="font-display font-semibold text-white text-base mb-2 flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: accent }} />
+                      {sec.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-white/65 leading-relaxed">
+                      {sec.content}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Comparison Table if provided */}
+              {product.seoGuide.comparisonTable && (
+                <div className="overflow-x-auto rounded-xl border border-white/10 bg-white/[0.01]">
+                  <div className="p-4 bg-white/[0.03] border-b border-white/10 flex items-center justify-between">
+                    <h3 className="font-display font-semibold text-sm sm:text-base text-white">
+                      {product.seoGuide.comparisonTable.title}
+                    </h3>
+                    <span className="text-[11px] text-white/40">Updated 2026 Pakistan Pricing</span>
+                  </div>
+                  <table className="w-full text-left text-xs sm:text-sm">
+                    <thead>
+                      <tr className="border-b border-white/10 text-white/70 font-semibold bg-white/[0.02]">
+                        {product.seoGuide.comparisonTable.headers.map((h, i) => (
+                          <th key={i} className="py-3 px-4">{h}</th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-white/5">
+                      {product.seoGuide.comparisonTable.rows.map((row, rIdx) => (
+                        <tr key={rIdx} className="hover:bg-white/[0.02] transition-colors">
+                          {row.map((cell, cIdx) => (
+                            <td
+                              key={cIdx}
+                              className={`py-3 px-4 ${cIdx === 0 ? "font-medium text-white/80" : cIdx === 1 ? "font-bold text-blue-400" : "text-white/60"}`}
+                            >
+                              {cell}
+                            </td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </motion.div>
+          </div>
+        )}
+
         {/* FAQ Section for SEO & User Experience */}
         {(() => {
           const faqs = getProductFaqs(product.id);

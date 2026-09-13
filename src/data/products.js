@@ -47,7 +47,7 @@ export const LOGO = {
 // Hero showcase products (one per brand in requested display priority)
 export const HERO_PRODUCTS = [
   { id: "veo-31-ultra", name: "Google VEO 3.1 Ultra", tag: "🚀 Official Semi-Private", duration: "20 Days Warranty", price: "Rs. 2,999", oldPrice: "Rs. 3,999", description: "🚀 Official Semi-Private Access to Google VEO 3.1 Ultra! Features Unlimited Video Generation (Low Priority 0 Credit Model) & Unlimited Image Generation directly on your Gmail without extension or portal required.", tagline: "Official Google AI Ultra Plan with Unlimited Video & Image Generation on your Gmail.", stock: "5", logo: BRAND.veo, color: "#4285F4", color2: "#EA4335", particle: "#60A5FA" },
-  { id: "gemini-pro-18", name: "Google Gemini Pro", tag: "⚡ 24h Offer: Rs. 799", duration: "18 Months", price: "Rs. 799", oldPrice: "Rs. 1,599", description: "🔥 Limited 24-Hour Flash Sale: Premium Gemini AI access on your personal Google account for 18 Months. 5TB cloud storage, advanced AI image & Veo video generation. Price Rs. 799 (Regular Rs. 1,599).", tagline: "5TB cloud storage, Veo video generation & monthly AI credits on your Gmail.", stock: "4", logo: BRAND.gemini, color: "#4285F4", color2: "#8B5CF6", particle: "#60A5FA", hasTimer: true },
+  { id: "gemini-pro-18", name: "Google Gemini Pro", tag: "⚡ 24h Offer: Rs. 499", duration: "18 Months", price: "Rs. 499", oldPrice: "Rs. 1,599", description: "🔥 Limited 24-Hour Flash Sale: Official Google Gemini Pro AI on your personal Gmail for 18 Months. 5TB cloud storage, 2M context window, advanced AI image & Veo video generation for Rs. 499 (Regular Rs. 1,599).", tagline: "18 Months Gemini Pro on your Gmail · 5TB cloud storage & Veo AI video generation.", stock: "4", logo: BRAND.gemini, color: "#4285F4", color2: "#8B5CF6", particle: "#60A5FA", hasTimer: true },
   { id: "capcut-pro-1m", name: "CapCut Pro", tag: "✂️ Pro Editing", duration: "1 Month", price: "Rs. 1,139", oldPrice: "Rs. 1,329", description: "CapCut Pro premium access with all pro editing features, premium effects, filters, templates, AI editing tools.", tagline: "All pro editing features, AI tools & export without watermark.", stock: "7", logo: BRAND.capcut, color: "#FE2C55", color2: "#25F4EE", particle: "#FE2C55" },
   { id: "nordvpn-3m", name: "NordVPN 3 Months", tag: "🛡️ Redeem Link", duration: "3 Months", price: "Rs. 1,599", oldPrice: "Rs. 1,999", description: "3 Months NordVPN premium subscription via easy activation redeem link.", tagline: "3 Months fast redeem link activation without card required.", stock: "90", logo: BRAND.nord, color: "#0060FF", color2: "#8B5CF6", particle: "#60A5FA" },
   { id: "surfshark-vpn-1y", name: "Surfshark VPN", tag: "❌ Out of Stock", duration: "1 Year", price: "Rs. 3,320", oldPrice: "Rs. 3,899", description: "1-year premium VPN subscription with global server access, high-speed browsing & streaming, encrypted privacy — Currently Out of Stock.", tagline: "1-Year encrypted global privacy & high-speed streaming VPN (Out of Stock).", stock: "0", logo: BRAND.surfshark, color: "#1C9FE8", color2: "#22D3EE", particle: "#22D3EE" },
@@ -122,28 +122,105 @@ export const ALL_PRODUCTS = [
     id: "gemini-pro-18",
     name: "Google Gemini Pro",
     duration: "18 Months",
-    price: "Rs. 799",
+    price: "Rs. 499",
     oldPrice: "Rs. 1,599",
     stock: "4",
     color: "#4285F4",
     logo: BRAND.gemini,
-    tag: "⚡ 24h Offer: Rs. 799",
-    tagline: "5TB storage, advanced AI image & Veo video generation on your Gmail.",
-    description: "🔥 Limited 24-Hour Flash Sale: Get premium Gemini AI access on your personal Google account — 18 months of full Gemini Pro benefits for only Rs. 799 (Regular Rs. 1,599).",
+    tag: "⚡ 24h Offer: Rs. 499",
+    tagline: "18 Months Official Gemini Pro on your Gmail · 5TB Google One storage, 2M context & Veo video credits.",
+    description: "🔥 Limited 24-Hour Flash Sale: Get official Google Gemini Pro (Advanced) access on your personal Gmail for 18 Months at only Rs. 499 (Regular Rs. 1,599). Includes massive 5TB Google One cloud storage, 2M token context window, Imagen 3 image generation & Veo video credits with instant 15-minute WhatsApp activation.",
     hasTimer: true,
-    features: ["5TB Cloud Storage", "Premium Gemini AI Access", "Advanced AI Image Generation", "Veo / AI Video Generation", "Monthly AI Credits", "Family Sharing Benefits", "Easy Redeem Link Activation"],
-    whatsIncluded: ["5TB Cloud Storage", "Premium Gemini AI Access", "Advanced AI Image Generation", "Veo / AI Video Generation", "Monthly AI Credits", "Family Sharing Benefits", "Easy Redeem Link Activation"],
-    requirements: ["Your personal Google / Gmail account"],
-    termsOfUse: ["Activate on your personal Google account via the redeem link", "Features, credits and usage limits are subject to Google's applicable policies and availability"],
-    warrantyPolicy: ["Warranty is provided until successful activation only", "Once the subscription is activated and the duration appears on your account, the order is considered complete", "Future changes due to Google policies, eligibility, account issues, feature limits, or regional restrictions are not covered by warranty or replacement"],
-    warrantyNote: "Warranty valid until successful activation only.",
+    features: [
+      "Official 18 Months Google Gemini Pro (Advanced) Access",
+      "5TB High-Speed Google One Cloud Storage (Drive, Gmail, Photos)",
+      "Activated Directly on Your Personal Gmail Account",
+      "Google Veo AI Video Generation Access & Monthly Credits",
+      "Imagen 3 Next-Gen Photorealistic AI Image Generator",
+      "Massive 2 Million Token Context Window (Analyze full books & codebases)",
+      "Native Google Workspace Integration (Docs, Sheets, Slides, Drive & Gmail)",
+      "No VPN Required — 100% Direct Pakistan Access",
+      "Family Sharing Group Benefits Included"
+    ],
+    whatsIncluded: [
+      "Official 18-Month Gemini Pro Activation on Personal Gmail",
+      "Full 5TB Cloud Storage Allocated Instantly",
+      "Access via gemini.google.com and Android / iOS Gemini App",
+      "Veo Video & Imagen 3 Creation Suite Access",
+      "Instant WhatsApp Activation & Setup Support (5–15 mins)",
+      "100% Activation Guarantee & Verification Support",
+      "Flexible Payment: JazzCash, EasyPaisa, SadaPay, NayaPay & Bank"
+    ],
+    requirements: [
+      "Your personal Google / Gmail account (no new email required)",
+      "Compatible with any device: Windows PC, Mac, Android, and iPhone"
+    ],
+    termsOfUse: [
+      "Activate on your personal Google account via the official redeem / family invitation link",
+      "Features, credits, storage allocations and usage limits are subject to Google's terms and availability",
+      "Personal Gmail account must be eligible to join a Google Family group (not in another group within 12 months)"
+    ],
+    warrantyPolicy: [
+      "Warranty is provided until successful activation and full duration verification on your Google account",
+      "Once the subscription is activated and the duration and 5TB storage reflect on your account, the order is fulfilled",
+      "Dedicated WhatsApp assistance provided for initial setup and family invitation acceptance",
+      "Future changes due to Google policy updates or personal account restrictions after delivery are governed by Google terms"
+    ],
+    warrantyNote: "Verified activation warranty on your personal Gmail.",
     seo: {
-      titleTag: "Google Gemini Pro Price Pakistan 2026 — Rs.799 | PrimeToolsHub",
-      metaDescription: "Google Gemini Pro 18 months for Rs.799 ✓ 5TB storage ✓ 2M context ✓ Veo video credits ✓ Your Gmail ✓ 15-min delivery. 5,000+ users 🇵🇰",
-      h1: "Google Gemini Pro Price in Pakistan 2026 — 18-Month Plans & Deals",
-      primaryKeyword: "google gemini price in pakistan",
-      secondaryKeywords: ["gemini pro subscription pakistan", "buy gemini advanced pakistan", "gemini pro pakistan pkr", "google gemini pakistan 2026"]
+      titleTag: "Google Gemini Pro 18 Months Price Pakistan 2026 — Rs. 499 | PrimeToolsHub",
+      metaDescription: "Buy Google Gemini Pro 18 Months in Pakistan for Rs. 499 only. Official access on your Gmail with 5TB Google One cloud storage, 2M context, Imagen 3 & Veo AI video generation. Instant 15-min delivery via JazzCash & EasyPaisa.",
+      h1: "Google Gemini Pro 18 Months Price in Pakistan 2026 — Official AI & 5TB Storage",
+      primaryKeyword: "google gemini pro price in pakistan",
+      secondaryKeywords: [
+        "gemini pro 18 months pakistan",
+        "google gemini 18 months price in pakistan",
+        "buy gemini pro 499 pkr",
+        "gemini advanced subscription pakistan",
+        "buy google gemini personal gmail",
+        "gemini pro 5tb cloud storage pakistan",
+        "google gemini jazzcash easypaisa",
+        "google veo gemini pro pakistan",
+        "gemini pro vs chatgpt plus pakistan",
+        "google gemini pakistan 2026"
+      ]
     },
+    seoGuide: {
+      heading: "Complete Guide: Google Gemini Pro 18 Months Subscription in Pakistan",
+      subheading: "Everything you need to know about getting official Google Gemini Pro access with 5TB cloud storage at the lowest price in Pakistan.",
+      sections: [
+        {
+          title: "What is Google Gemini Pro (18 Months Plan)?",
+          content: "Google Gemini Pro (Advanced) is Google's flagship artificial intelligence subscription powered by Gemini 1.5 Pro. It features a groundbreaking 2-million-token context window — the largest of any commercial AI model in the world. Pakistani professionals, developers, content creators, and students can now process entire textbooks, hundreds of lines of code, hour-long video files, and massive datasets in a single prompt without hitting memory limits."
+        },
+        {
+          title: "Massive 5TB Google One Cloud Storage Included",
+          content: "A standout benefit of this 18-month plan is the 5TB (5,000 GB) Google One cloud storage. This storage applies directly across your Google Drive, Google Photos, and Gmail. Buying 5TB directly from Google costs thousands of rupees every month; with Prime Tools Hub's 18-month offer for just Rs. 499, you save over 95% while gaining permanent storage peace of mind for all your backups, raw 4K videos, and client files."
+        },
+        {
+          title: "Google Veo AI Video & Imagen 3 Generation",
+          content: "With Gemini Pro, you gain direct access to Google's state-of-the-art generative media engines: Google Veo for cinematic AI video creation and Imagen 3 for photorealistic AI imagery. Whether you are generating promotional B-roll, YouTube Shorts visuals, or realistic advertising creative, Gemini Pro delivers studio-grade outputs right from your browser or mobile phone."
+        },
+        {
+          title: "How Activation Works on Your Personal Gmail",
+          content: "No shared passwords, no risky cracked tools, and no third-party extensions. We activate the subscription directly on your personal Gmail address via an official Google Family invite or redeem link. Your emails, personal documents, and photos remain 100% private — neither Prime Tools Hub nor any family member can ever see your personal data."
+        }
+      ],
+      comparisonTable: {
+        title: "Google Gemini Pro vs ChatGPT Plus in Pakistan",
+        headers: ["Feature / Spec", "Google Gemini Pro 18M", "ChatGPT Plus"],
+        rows: [
+          ["Price in Pakistan", "Rs. 499 (18 Months)", "Rs. 2,199 (1 Month)"],
+          ["Cloud Storage", "5TB (5,000 GB) Google One", "None (0 GB)"],
+          ["Context Window", "2,000,000 Tokens (2M)", "128,000 Tokens (128K)"],
+          ["Video Generation", "Google Veo AI Engine", "Sora (Limited)"],
+          ["Image Generation", "Imagen 3 Ultra-HD", "DALL·E 3"],
+          ["Ecosystem Integration", "Gmail, Docs, Drive, Sheets", "Standalone Web & App"],
+          ["Account Type", "Your Personal Gmail", "Private Login / Email"],
+          ["Payment in PKR", "JazzCash / EasyPaisa", "International Card Required"]
+        ]
+      }
+    }
   },
   {
     id: "capcut-pro-1m",

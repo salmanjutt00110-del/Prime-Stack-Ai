@@ -43,7 +43,7 @@ function generateResponse(userMsg) {
   // Gemini queries
   if (query.includes("gemini") || query.includes("google ai")) {
     return {
-      text: "⚡ **Google Gemini Pro 18 Months Flash Offer:**\n\n• Price: **Rs. 1,099** (Regular Rs. 1,599)\n• 5TB Cloud Storage\n• Advanced AI Image & Veo Video Generation\n• Activated directly on your personal Gmail account!",
+      text: "⚡ **Google Gemini Pro 18 Months Flash Offer:**\n\n• Price: **Rs. 499** (Regular Rs. 1,599)\n• 5TB Cloud Storage\n• Advanced AI Image & Veo Video Generation\n• Activated directly on your personal Gmail account!",
       ctaText: "Get Gemini Deal on WhatsApp",
       ctaLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hello! I want to get the Gemini Pro 18 Months offer.")}`,
     };
@@ -114,7 +114,7 @@ function generateResponse(userMsg) {
 
   // General default response listing popular products
   return {
-    text: `🤖 **Prime Tools Hub Quick Catalog:**\n\n• **ChatGPT Plus Premium (1m Warranty):** Rs. 2,199\n• **ChatGPT Plus (10d Warranty):** Rs. 1,599\n• **Google Gemini Pro 18m:** Rs. 1,099\n• **Canva Pro 3 Years:** Rs. 279\n• **CapCut Pro:** Rs. 1,139\n• **Google Veo 3:** Rs. 2,999\n\nPayment via **JazzCash, EasyPaisa, Bank, USDT**. Delivery in 5–30 mins!`,
+    text: `🤖 **Prime Tools Hub Quick Catalog:**\n\n• **ChatGPT Plus Premium (1m Warranty):** Rs. 2,199\n• **ChatGPT Plus (10d Warranty):** Rs. 1,599\n• **Google Gemini Pro 18m:** Rs. 499\n• **Canva Pro 3 Years:** Rs. 279\n• **CapCut Pro:** Rs. 1,139\n• **Google Veo 3:** Rs. 2,999\n\nPayment via **JazzCash, EasyPaisa, Bank, USDT**. Delivery in 5–30 mins!`,
     ctaText: "Order via WhatsApp →",
     ctaLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hello Prime Tools Hub! I want to place an order.")}`,
   };

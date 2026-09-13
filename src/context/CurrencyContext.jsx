@@ -21,6 +21,7 @@ export function formatUsdPrice(pkrStr) {
   
   // Premium International Pricing (+$1–$2 international support & tax premium)
   if (num <= 350) return "$2.99";   // Rs. 279 / 329 -> $2.99
+  if (num <= 550) return "$3.49";   // Rs. 499 -> $3.49
   if (num <= 850) return "$4.99";   // Rs. 799 -> $4.99
   if (num <= 1250) return "$6.99";  // Rs. 1,139 -> $6.99
   if (num <= 1650) return "$8.99";  // Rs. 1,599 -> $8.99
@@ -41,6 +42,7 @@ export function formatGbpPrice(pkrStr) {
   const num = parseInt(String(pkrStr).replace(/\D/g, ""), 10);
   if (isNaN(num) || num <= 0) return "£0";
   if (num <= 350) return "£2.49";
+  if (num <= 550) return "£2.99";   // Rs. 499 -> £2.99
   if (num <= 850) return "£3.99";
   if (num <= 1800) return "£7.99";
   const gbp = Math.ceil(num / 340) + 1.49;
