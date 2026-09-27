@@ -5,8 +5,8 @@ export default function ComparisonTable() {
     { feature: "100% Verified & Official Accounts", us: true, others: false, textUs: "Official & Guaranteed", textOthers: "Risky / Unverified" },
     { feature: "Instant Delivery (5-30 mins)", us: true, others: false, textUs: "5–30 Minutes", textOthers: "Hours / Days Delay" },
     { feature: "Full 30-Day Support & Replacement", us: true, others: false, textUs: "30-Day Free Fix", textOthers: "Ghost After Payment" },
-    { feature: "Affordable Wholesale Rates in PKR", us: true, others: false, textUs: "Best Prices", textOthers: "Overpriced / Hidden Fees" },
-    { feature: "Local Payment via JazzCash & EasyPaisa", us: true, others: false, textUs: "Instant Local Pay", textOthers: "Complex / Foreign Cards" },
+    { feature: "Affordable Wholesale Rates in USD ($)", us: true, others: false, textUs: "Best Prices", textOthers: "Overpriced / Hidden Fees" },
+    { feature: "Convenient Payment (Card, Crypto & Transfer)", us: true, others: false, textUs: "Instant Easy Pay", textOthers: "Complex / High Fees" },
     { feature: "Long-term Reliability & Trust (2+ Yrs)", us: true, others: false, textUs: "5,000+ Verified Buyers", textOthers: "New / Scam Sellers" },
   ];
 

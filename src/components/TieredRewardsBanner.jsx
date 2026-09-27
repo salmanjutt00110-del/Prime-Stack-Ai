@@ -45,8 +45,8 @@ const BULK_TIERS = [
 
 const SPEND_TIERS = [
   {
-    id: "tier-2k",
-    threshold: "Rs. 2,000+",
+    id: "tier-10usd",
+    threshold: "$10+",
     title: "FREE Canva Pro",
     detail: "Full premium access with Magic AI design tools & background remover.",
     icon: "🎨",
@@ -54,8 +54,8 @@ const SPEND_TIERS = [
     color: "#EC4899",
   },
   {
-    id: "tier-3k",
-    threshold: "Rs. 3,000+",
+    id: "tier-15usd",
+    threshold: "$15+",
     title: "FREE Gemini Pro",
     detail: "18 Months access on your Google account + 5TB Cloud storage.",
     icon: "✨",
@@ -63,8 +63,8 @@ const SPEND_TIERS = [
     color: "#8B5CF6",
   },
   {
-    id: "tier-5k",
-    threshold: "Rs. 5,000+",
+    id: "tier-25usd",
+    threshold: "$25+",
     title: "FREE ChatGPT Plus",
     detail: "Full ChatGPT Plus subscription with instant 2FA setup & stable access.",
     icon: "⚡",
@@ -72,8 +72,8 @@ const SPEND_TIERS = [
     color: "#10A37F",
   },
   {
-    id: "tier-10k",
-    threshold: "Rs. 10,000+",
+    id: "tier-50usd",
+    threshold: "$50+",
     title: "DOUBLE GIFT: ChatGPT + Gemini",
     detail: "Get BOTH ChatGPT Plus and Google Gemini Pro completely FREE!",
     icon: "👑",

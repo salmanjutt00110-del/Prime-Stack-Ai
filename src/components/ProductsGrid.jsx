@@ -12,9 +12,11 @@ import {
   ShoppingCart,
   Check,
   Bell,
-  LayoutGrid
+  LayoutGrid,
+  MessageCircle,
+  AlertTriangle
 } from "lucide-react";
-import { ALL_PRODUCTS, BRAND } from "@/data/products";
+import { ALL_PRODUCTS, BRAND, WHATSAPP_NUMBER } from "@/data/products";
 import ProductCard from "@/components/ProductCard";
 import CountdownTimer from "@/components/CountdownTimer";
 import LazyImage from "@/components/LazyImage";
@@ -56,8 +58,6 @@ export default function ProductsGrid() {
   const filteredProducts = useMemo(() => {
     let list = ALL_PRODUCTS.filter((p) => {
       const q = query.trim().toLowerCase();
-      const filterObj = FILTER_PILLS.find(f => f.id === activeFilter);
-      const filterKw = filterObj?.keyword?.toLowerCase() || "";
 
       const matchesSearch = 
         !q ||
@@ -66,11 +66,23 @@ export default function ProductsGrid() {
         (p.description && p.description.toLowerCase().includes(q)) ||
         (p.features && p.features.some((f) => f.toLowerCase().includes(q)));
 
-      const matchesPill = 
-        !filterKw ||
-        p.id.toLowerCase().includes(filterKw) ||
-        p.name.toLowerCase().includes(filterKw) ||
-        (p.tagline && p.tagline.toLowerCase().includes(filterKw));
+      let matchesPill = true;
+      const pCombined = (p.id + " " + p.name + " " + (p.tagline || "")).toLowerCase();
+      if (activeFilter === "design") {
+        matchesPill = ["canva", "figma", "design"].some(k => pCombined.includes(k));
+      } else if (activeFilter === "productivity") {
+        matchesPill = ["notion", "office", "miro", "microsoft"].some(k => pCombined.includes(k));
+      } else if (activeFilter === "video") {
+        matchesPill = ["capcut", "video", "heygen", "youtube", "tiktok"].some(k => pCombined.includes(k));
+      } else if (activeFilter === "chatgpt" || activeFilter === "ai") {
+        matchesPill = ["chatgpt", "gemini", "veo", "lovable", "grok", "ai"].some(k => pCombined.includes(k));
+      } else if (activeFilter === "gemini") {
+        matchesPill = ["gemini", "veo", "google"].some(k => pCombined.includes(k));
+      } else if (activeFilter === "vpn") {
+        matchesPill = ["nord", "surfshark", "vpn"].some(k => pCombined.includes(k));
+      } else if (activeFilter === "agency") {
+        matchesPill = ["admin", "team", "seats", "invites", "challenge", "499"].some(k => pCombined.includes(k));
+      }
 
       return matchesSearch && matchesPill;
     });
@@ -107,19 +119,43 @@ export default function ProductsGrid() {
         <div className="text-center space-y-3 mb-10 max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest bg-blue-500/10 border border-blue-500/30 text-blue-300 shadow-[0_0_20px_rgba(59,130,246,0.2)] backdrop-blur-xl">
             <ShieldCheck size={14} className="text-blue-400" />
-            <span>Premium Digital Products</span>
+            <span>Premium Digital Products in USD</span>
           </div>
 
           <h2 className="font-display font-black text-3xl sm:text-5xl text-white tracking-tight leading-tight">
             Premium Tools,{" "}
             <span className="bg-gradient-to-r from-blue-400 via-indigo-300 to-pink-400 bg-clip-text text-transparent">
-              Premium Results
+              Wholesale Prices ($)
             </span>
           </h2>
 
           <p className="text-xs sm:text-base text-slate-300 font-body max-w-xl mx-auto leading-relaxed font-medium">
-            100% Official Accounts • Instant Delivery • Best Prices
+            100% Official Accounts • Instant Delivery • All Prices in USD ($)
           </p>
+
+          {/* Real-time Market Price Disclaimer Notice */}
+          <div className="mt-5 p-3.5 sm:p-4 rounded-2xl bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-transparent border border-amber-500/30 text-amber-200 text-xs sm:text-sm flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left backdrop-blur-md shadow-lg">
+            <div className="flex items-center gap-2.5">
+              <span className="relative flex h-2.5 w-2.5 shrink-0">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-500" />
+              </span>
+              <p className="font-medium text-slate-200 leading-snug">
+                <strong className="text-amber-300 font-bold">Live Market Pricing Notice:</strong> Website prices may vary slightly from real-time provider rates. For the 100% confirmed live price and instant delivery, contact us on WhatsApp.
+              </p>
+            </div>
+            <a
+              href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+                "Hello! I am checking prices on Prime Tools Hub. Please confirm the current real live rate and stock availability for my order."
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="shrink-0 px-3.5 py-1.5 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-slate-950 font-black text-xs flex items-center gap-1.5 transition-transform hover:scale-105 shadow-[0_0_15px_rgba(37,211,102,0.3)]"
+            >
+              <MessageCircle size={14} className="fill-slate-950" />
+              <span>Confirm on WhatsApp</span>
+            </a>
+          </div>
         </div>
 
         {/* TOP EXCLUSIVE FEATURED GEMINI PRO BANNER */}
@@ -147,7 +183,7 @@ export default function ProductsGrid() {
                 <span className="text-xs font-bold text-amber-300">🔥 #1 Top Deal</span>
               </div>
               <h3 className="font-display text-xl sm:text-2xl font-black text-white tracking-tight group-hover:text-cyan-300 transition-colors">
-                Google Gemini Pro 18 Months — Only {formatPrice("Rs. 499")} <span className="text-sm font-normal line-through text-slate-400">({formatPrice("Rs. 1,599")})</span>
+                Google Gemini Pro 18 Months — Only $3 <span className="text-sm font-normal line-through text-slate-400">($6)</span>
               </h3>
               <p className="text-xs sm:text-sm text-slate-300 mt-1 font-body max-w-2xl">
                 5TB Google One cloud storage, Veo AI Video Generator &amp; monthly credits directly on your Gmail.
@@ -156,7 +192,7 @@ export default function ProductsGrid() {
           </div>
 
           <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0 w-full md:w-auto relative z-10">
-            <CountdownTimer compact targetPrice="Rs. 499" futurePrice="Rs. 1,599" />
+            <CountdownTimer compact targetPrice="$3" futurePrice="$6" />
             <button
               onClick={(e) => {
                 e.stopPropagation();
@@ -164,7 +200,7 @@ export default function ProductsGrid() {
               }}
               className="w-full sm:w-auto px-6 py-3 rounded-xl font-display font-extrabold text-xs text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-xl border border-blue-400/40 min-h-[44px]"
             >
-              <span>Get {formatPrice("Rs. 499")} Deal</span>
+              <span>Get $3 Deal</span>
               <span className="group-hover:translate-x-1 transition-transform">→</span>
             </button>
           </div>

@@ -24,7 +24,6 @@ import { WHATSAPP_NUMBER } from "@/data/products";
 import DisclaimerBar from "@/components/DisclaimerBar";
 import { scrollToSection } from "@/lib/scroll";
 import CurrencySwitcher from "@/components/CurrencySwitcher";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { useLanguage } from "@/context/LanguageContext";
 import { useCurrency } from "@/context/CurrencyContext";
 import { Globe } from "lucide-react";
@@ -324,22 +323,6 @@ export default function Navbar() {
                   {t("nav_live")}
                 </div>
 
-                {/* Always-visible Country Flag & Currency Selector Badge */}
-                <button
-                  type="button"
-                  onClick={() => window.__openPrimeOnboarding && window.__openPrimeOnboarding()}
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/[0.08] hover:bg-white/[0.16] border border-white/20 hover:border-cyan-400/50 backdrop-blur-md text-xs font-bold text-slate-200 transition-all cursor-pointer shadow-md hover:shadow-[0_0_15px_rgba(0,212,255,0.3)] shrink-0"
-                  title={`Location: ${countryName || "Pakistan"} (${countryFlag || "🇵🇰"}) | Currency: ${currency}`}
-                >
-                  <span className="text-sm leading-none">{countryFlag || "🇵🇰"}</span>
-                  <span className="font-mono text-cyan-300 font-extrabold">{currency}</span>
-                  <span className="hidden xl:inline text-[10px] text-slate-300 font-medium border-l border-white/20 pl-1.5">
-                    {countryName || "Pakistan"}
-                  </span>
-                  <Globe size={12} className="text-slate-400" />
-                </button>
-
-                <LanguageSwitcher />
                 <CurrencySwitcher />
 
                 <a
@@ -604,36 +587,12 @@ export default function Navbar() {
                   </span>
                 </button>
 
-                {/* Language & Currency Controls Glass Box */}
-                <div className="p-3 rounded-2xl bg-gradient-to-r from-white/[0.07] to-white/[0.03] backdrop-blur-xl border border-white/15 shadow-[0_4px_20px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.15)] space-y-2">
-                  <div className="flex items-center justify-between text-[9.5px] font-extrabold text-slate-400 uppercase tracking-widest px-0.5">
-                    <span>Region &amp; Preferences</span>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setOpen(false);
-                        if (window.__openPrimeOnboarding) window.__openPrimeOnboarding();
-                      }}
-                      className="text-[9px] text-[#00D4FF] hover:underline font-mono font-bold cursor-pointer"
-                    >
-                      Reset Setup ⚙️
-                    </button>
+                {/* Currency Controls Glass Box */}
+                <div className="p-3 rounded-2xl bg-gradient-to-r from-white/[0.07] to-white/[0.03] backdrop-blur-xl border border-white/15 shadow-[0_4px_20px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.15)] flex items-center justify-between">
+                  <div className="text-[10px] font-extrabold text-slate-300 uppercase tracking-widest">
+                    <span>Currency &amp; Store</span>
                   </div>
-                  <div className="flex items-center justify-between gap-2 flex-wrap pt-0.5">
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setOpen(false);
-                        if (window.__openPrimeOnboarding) window.__openPrimeOnboarding();
-                      }}
-                      className="flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-xs font-bold text-white transition-all cursor-pointer"
-                    >
-                      <span className="text-sm">{countryFlag || "🇵🇰"}</span>
-                      <span className="font-mono text-cyan-300 font-extrabold">{countryName || "Pakistan"}</span>
-                    </button>
-                    <LanguageSwitcher />
-                    <CurrencySwitcher />
-                  </div>
+                  <CurrencySwitcher />
                 </div>
 
                 {/* Primary Action Buttons */}

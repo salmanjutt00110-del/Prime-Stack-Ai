@@ -133,8 +133,8 @@ export function generateOnlineStoreSchema() {
     "image": LOGO_URL,
     "description": "Premium AI tools, ChatGPT Plus, Gemini Pro, Canva Pro, CapCut Pro, and VPN digital subscriptions with instant activation.",
     "priceRange": "$$",
-    "currenciesAccepted": "PKR",
-    "paymentAccepted": "JazzCash, EasyPaisa, Bank Transfer",
+    "currenciesAccepted": "USD",
+    "paymentAccepted": "Credit Card, Debit Card, Crypto (USDT), Bank Transfer",
     "hasMerchantReturnPolicy": {
       "@type": "MerchantReturnPolicy",
       "applicableCountry": ["PK", "WW"],
@@ -272,12 +272,12 @@ export function generateHowToSchema() {
     "@type": "HowTo",
     "@id": `${DOMAIN}/how-it-works#howto`,
     "name": "How to Order AI Tools & Digital Subscriptions from Prime Tools Hub",
-    "description": "Step-by-step guide: Browse products, click WhatsApp, pay via JazzCash/EasyPaisa, and receive instant activation within 15 minutes.",
+    "description": "Step-by-step guide: Browse products, click WhatsApp, complete payment, and receive instant activation within 15 minutes.",
     "totalTime": "PT15M",
     "estimatedCost": {
       "@type": "MonetaryAmount",
-      "currency": "PKR",
-      "value": "279"
+      "currency": "USD",
+      "value": "1"
     },
     "tool": [
       { "@type": "HowToTool", "name": "WhatsApp" },
@@ -383,7 +383,7 @@ export function generateProductSchema(product) {
     "shippingRate": {
       "@type": "MonetaryAmount",
       "value": "0",
-      "currency": "PKR"
+      "currency": "USD"
     },
     "shippingDestination": {
       "@type": "DefinedRegion",
@@ -425,7 +425,7 @@ export function generateProductSchema(product) {
       "@type": "Offer",
       "@id": `${productUrl}#offer`,
       "url": productUrl,
-      "priceCurrency": "PKR",
+      "priceCurrency": "USD",
       "price": numericPrice,
       "priceValidUntil": "2027-12-31",
       "validFrom": "2026-01-01",

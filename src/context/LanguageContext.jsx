@@ -8,28 +8,17 @@ const LanguageContext = createContext({
 });
 
 export function LanguageProvider({ children }) {
-  const [lang, setLang] = useState(() => {
-    try {
-      return localStorage.getItem("ptHub_lang") || "en";
-    } catch {
-      return "en";
-    }
-  });
+  const lang = "en";
 
-  const changeLang = useCallback((code) => {
-    setLang(code);
-    try {
-      localStorage.setItem("ptHub_lang", code);
-    } catch (e) {
-      console.error(e);
-    }
+  const changeLang = useCallback(() => {
+    // English-only mode enforced
   }, []);
 
   const t = useCallback(
     (key) => {
-      return translations[lang]?.[key] || translations.en?.[key] || key;
+      return translations.en?.[key] || key;
     },
-    [lang]
+    []
   );
 
   return (

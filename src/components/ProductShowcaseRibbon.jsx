@@ -5,10 +5,14 @@ import { useNavigate } from "react-router-dom";
 
 const SHOWCASE_PRODUCTS = [
   { id: "veo-31-ultra", name: "Google VEO 3.1 Ultra", brand: "Google DeepMind", logo: BRAND.veo, glow: "#6366F1", border: "rgba(99, 102, 241, 0.4)", badge: "🚀 Unlimited Video AI" },
-  { id: "chatgpt-plus-1m", name: "ChatGPT", brand: "OpenAI", logo: BRAND.chatgpt, glow: "#10A37F", border: "rgba(16, 163, 127, 0.4)", badge: "GPT-4o & Canvas" },
-  { id: "gemini-pro-18", name: "Gemini Pro", brand: "Google AI", logo: BRAND.gemini, glow: "#4285F4", border: "rgba(66, 133, 244, 0.4)", badge: "🔥 18M Deal" },
-  { id: "canva-pro-edu", name: "Canva", brand: "Visual AI", logo: BRAND.canva, glow: "#7D2AE8", border: "rgba(125, 42, 232, 0.4)", badge: "Magic Studio" },
-  { id: "capcut-pro-1m", name: "CapCut Pro", brand: "ByteDance", logo: BRAND.capcut, glow: "#FFFFFF", border: "rgba(255, 255, 255, 0.4)", badge: "Pro Editing & FX" },
+  { id: "gemini-pro-18", name: "Gemini Pro", brand: "Google AI", logo: BRAND.gemini, glow: "#4285F4", border: "rgba(66, 133, 244, 0.4)", badge: "⚡ $3 Deal" },
+  { id: "ms-office-365-1y", name: "Microsoft 365", brand: "Microsoft", logo: BRAND.office, glow: "#EA3E23", border: "rgba(234, 62, 35, 0.4)", badge: "📦 1 Year · 1TB Cloud" },
+  { id: "chatgpt-plus-20d", name: "ChatGPT Plus", brand: "OpenAI", logo: BRAND.chatgpt, glow: "#10A37F", border: "rgba(16, 163, 127, 0.4)", badge: "💎 20d Warranty" },
+  { id: "canva-pro-1m", name: "Canva Pro", brand: "Visual AI", logo: BRAND.canva, glow: "#7D2AE8", border: "rgba(125, 42, 232, 0.4)", badge: "🎨 $1 Monthly" },
+  { id: "capcut-pro-1m", name: "CapCut Pro", brand: "ByteDance", logo: BRAND.capcut, glow: "#FE2C55", border: "rgba(254, 44, 85, 0.4)", badge: "✂️ $4 Monthly" },
+  { id: "figma-pro-2y", name: "Figma Pro", brand: "Figma", logo: BRAND.figma, glow: "#F24E1E", border: "rgba(242, 78, 30, 0.4)", badge: "🎨 2 Years Plan" },
+  { id: "miro-lifetime-100", name: "Miro Lifetime", brand: "Miro", logo: BRAND.miro, glow: "#FFD02F", border: "rgba(255, 208, 47, 0.4)", badge: "👑 100 Invites" },
+  { id: "nordvpn-3m", name: "NordVPN", brand: "Nord Security", logo: BRAND.nord, glow: "#0060FF", border: "rgba(0, 96, 255, 0.4)", badge: "🛡️ $4 Deal" },
   { id: "notion-plus-12m", name: "Notion AI", brand: "Notion", logo: BRAND.notion, glow: "#F8FAFC", border: "rgba(255, 255, 255, 0.35)", badge: "3K AI Credits/Mo" },
   { id: "heygen-creator-600c", name: "HeyGen AI", brand: "AI Video", logo: BRAND.heygen, glow: "#5C24FF", border: "rgba(92, 36, 255, 0.4)", badge: "600 Credits" },
   { id: "supergrok-12m-premium", name: "SuperGrok", brand: "xAI", logo: BRAND.grok, glow: "#9333EA", border: "rgba(147, 51, 234, 0.4)", badge: "Fun & Fast AI" },

@@ -7,8 +7,7 @@ import { AnimatePresence } from 'framer-motion';
 import PageNotFound from './lib/PageNotFound';
 import { AuthProvider } from '@/lib/AuthContext';
 import ScrollToTop from './components/ScrollToTop';
-import StartupIntro from './components/StartupIntro';
-import OnboardingExperience from './components/OnboardingExperience';
+import LivePriceNoticeModal from './components/LivePriceNoticeModal';
 import PageTransition from './components/PageTransition';
 import Home from '@/pages/Home';
 import ErrorBoundary from '@/components/ErrorBoundary';
@@ -245,7 +244,7 @@ const AuthenticatedApp = ({ isLoaded }) => {
 };
 
 function App() {
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(true);
 
   // Suppress unexpected automatic PWA install prompts (Fix #7)
   useEffect(() => {
@@ -262,8 +261,7 @@ function App() {
         <CurrencyProvider>
           <AuthProvider>
             <QueryClientProvider client={queryClientInstance}>
-              <StartupIntro onComplete={() => setIsLoaded(true)} />
-              <OnboardingExperience />
+              <LivePriceNoticeModal />
               <Router>
                 <ScrollToTop />
                 <Suspense fallback={

@@ -38,13 +38,13 @@ const FAQS_DATA = [
   },
   {
     category: "payment",
-    q: "What local payment options do you accept in Pakistan?",
-    a: "We accept JazzCash, EasyPaisa, Bank Account Transfers (HBL, Meezan, UBL, etc.), and select international card methods."
+    q: "What payment options do you accept?",
+    a: "We accept Debit/Credit Cards, Crypto (USDT), Bank Account Transfers, and convenient local wallet transfers."
   },
   {
     category: "payment",
-    q: "Do I need an international credit card to buy?",
-    a: "No! You can pay entirely using local Pakistani currency (PKR) via EasyPaisa or JazzCash."
+    q: "Are all prices in USD ($)?",
+    a: "Yes! All prices on Prime Tools Hub are transparently listed in USD ($) without any hidden fees."
   },
   {
     category: "payment",

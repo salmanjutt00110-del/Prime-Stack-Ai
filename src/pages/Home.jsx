@@ -53,9 +53,9 @@ export default function Home() {
   return (
     <div className="relative min-h-screen bg-[#050505] text-white overflow-x-hidden">
       <SEOHead
-        title="Premium AI Tools Pakistan 2026 — ChatGPT, Canva Pro | PrimeToolsHub"
-        description="Buy ChatGPT Plus, Canva Pro & CapCut Pro in Pakistan ✓ From Rs.279 ✓ Instant WhatsApp delivery ✓ 5,000+ trusted customers. Original subscriptions 🇵🇰"
-        keywords="premium ai tools pakistan, buy chatgpt plus pakistan, canva pro price pakistan, capcut pro pakistan, ai tool subscription pakistan, prime tools hub"
+        title="Premium AI Tools Marketplace 2026 — ChatGPT, Canva Pro, Miro, Office 365 | PrimeToolsHub"
+        description="Buy ChatGPT Plus, Canva Pro, CapCut Pro & Miro in USD ✓ From $1 ✓ Instant WhatsApp delivery ✓ 5,000+ trusted customers. Original subscriptions."
+        keywords="premium ai tools, buy chatgpt plus, canva pro price, capcut pro, miro lifetime, office 365, ai tool subscription, prime tools hub"
         canonicalUrl={`${DOMAIN}/`}
         schemaJson={homepageSchema}
       />

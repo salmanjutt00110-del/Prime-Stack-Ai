@@ -186,6 +186,20 @@ export default function Hero() {
             </motion.a>
           </motion.div>
 
+          {/* Live Market Price Notice Pill */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="mt-4 inline-flex items-center gap-2 text-[11px] sm:text-xs text-amber-200 bg-amber-500/10 border border-amber-500/25 px-3.5 py-1.5 rounded-full backdrop-blur-md"
+          >
+            <span className="relative flex h-2 w-2 shrink-0">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500" />
+            </span>
+            <span><strong className="text-amber-300">Price Notice:</strong> Website prices may vary slightly with live market rates. Please confirm real-time pricing on WhatsApp.</span>
+          </motion.div>
+
           {/* TRUST LOGOS STRIP Below CTA */}
           <motion.div
             initial={{ opacity: 0 }}

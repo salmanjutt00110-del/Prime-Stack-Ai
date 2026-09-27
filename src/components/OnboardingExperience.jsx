@@ -18,7 +18,7 @@ import {
 } from "lucide-react";
 
 export const FULL_COUNTRY_LIST = [
-  { code: "PK", name: "Pakistan", flag: "🇵🇰", currency: "PKR", symbol: "Rs." },
+  { code: "PK", name: "Pakistan", flag: "🇵🇰", currency: "USD", symbol: "$" },
   { code: "US", name: "United States", flag: "🇺🇸", currency: "USD", symbol: "$" },
   { code: "GB", name: "United Kingdom", flag: "🇬🇧", currency: "USD", symbol: "$" },
   { code: "CA", name: "Canada", flag: "🇨🇦", currency: "USD", symbol: "$" },
@@ -72,10 +72,10 @@ export default function OnboardingExperience({ onComplete }) {
 
   // Selected State
   const [selectedCountry, setSelectedCountry] = useState({
-    code: "PK",
-    name: "Pakistan",
-    flag: "🇵🇰",
-    currency: "PKR"
+    code: "US",
+    name: "Global",
+    flag: "🌐",
+    currency: "USD"
   });
   const [selectedLanguage, setSelectedLanguage] = useState("ro_urdu");
 
@@ -150,7 +150,7 @@ export default function OnboardingExperience({ onComplete }) {
   // Step 2: Country Selection Handler
   const handleSelectCountry = (country) => {
     const isPK = country.code === "PK";
-    const curr = isPK ? "PKR" : "USD";
+    const curr = "USD";
     const lang = isPK ? "ro_urdu" : "en";
 
     const countryObj = {

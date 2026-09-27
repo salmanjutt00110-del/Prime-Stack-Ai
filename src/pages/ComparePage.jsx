@@ -16,8 +16,8 @@ export default function ComparePage() {
     "@context": "https://schema.org",
     "@graph": [
       generateWebPageSchema({
-        name: "Compare AI Subscription Prices in PKR — Prime Tools Hub",
-        description: "Compare Prime Tools Hub localized prices in PKR with official USD credit card prices for ChatGPT Plus, Canva Pro, Gemini, CapCut & NordVPN. Save up to 80%.",
+        name: "Compare AI Subscription Wholesale Prices in USD — Prime Tools Hub",
+        description: "Compare Prime Tools Hub wholesale prices in USD with official retail prices for ChatGPT Plus, Canva Pro, Gemini, CapCut & NordVPN. Save up to 80%.",
         url: pageUrl,
         breadcrumbItems
       }),
@@ -28,8 +28,8 @@ export default function ComparePage() {
   return (
     <div className="min-h-screen bg-[#050505] text-slate-100 font-sans selection:bg-[#00ff88] selection:text-black">
       <SEOHead
-        title="Compare AI Subscription Prices in PKR — Prime Tools Hub"
-        description="Compare Prime Tools Hub localized prices in PKR with official USD credit card prices for ChatGPT Plus, Canva Pro, Gemini, CapCut & NordVPN. Save up to 80%."
+        title="Compare AI Subscription Wholesale Prices in USD — Prime Tools Hub"
+        description="Compare Prime Tools Hub wholesale prices in USD with official retail prices for ChatGPT Plus, Canva Pro, Gemini, CapCut & NordVPN. Save up to 80%."
         canonicalUrl={pageUrl}
         schemaJson={compareSchema}
       />
@@ -47,7 +47,7 @@ export default function ComparePage() {
             Our Price vs Official Retail Price
           </h1>
           <p className="mt-4 text-sm sm:text-base text-slate-400">
-            See how much you save by getting localized digital tool subscriptions via EasyPaisa / JazzCash instead of paying international bank card taxes.
+            See how much you save by getting wholesale digital tool subscriptions in USD ($) with verified accounts and replacement warranties.
           </p>
         </div>
 

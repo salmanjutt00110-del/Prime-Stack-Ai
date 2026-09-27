@@ -33,6 +33,30 @@ const getBrandTheme = (id = "", name = "") => {
       logoGradient: "radial-gradient(circle at 50% 50%, rgba(244,63,94,0.5) 0%, rgba(25,10,20,0.98) 80%)",
     };
   }
+  if (str.includes("miro")) {
+    return {
+      glow: "rgba(255, 208, 47, 0.85)",
+      bgGlow: "from-amber-400/35 via-yellow-950/40 to-transparent",
+      logoRing: "border-amber-400/80 shadow-[0_0_30px_rgba(255,208,47,0.6)]",
+      logoGradient: "radial-gradient(circle at 50% 50%, rgba(255,208,47,0.5) 0%, rgba(30,25,5,0.98) 80%)",
+    };
+  }
+  if (str.includes("office") || str.includes("microsoft")) {
+    return {
+      glow: "rgba(234, 62, 35, 0.85)",
+      bgGlow: "from-orange-500/35 via-red-950/40 to-transparent",
+      logoRing: "border-orange-400/80 shadow-[0_0_30px_rgba(234,62,35,0.6)]",
+      logoGradient: "radial-gradient(circle at 50% 50%, rgba(234,62,35,0.5) 0%, rgba(30,10,5,0.98) 80%)",
+    };
+  }
+  if (str.includes("figma")) {
+    return {
+      glow: "rgba(242, 78, 30, 0.85)",
+      bgGlow: "from-purple-500/30 via-orange-950/30 to-transparent",
+      logoRing: "border-orange-400/80 shadow-[0_0_30px_rgba(242,78,30,0.55)]",
+      logoGradient: "radial-gradient(circle at 50% 50%, rgba(242,78,30,0.45) 0%, rgba(25,10,25,0.95) 75%)",
+    };
+  }
   if (str.includes("notion")) {
     return {
       glow: "rgba(255, 255, 255, 0.9)",
