@@ -21,15 +21,25 @@ const INITIAL_MESSAGES = [
 ];
 
 const SUGGESTIONS = [
+  "🚀 Muse AI 3,000 PKR deal kya hai?",
   "💰 ChatGPT Plus price kya hai?",
+  "⭐ Gemini Pro Last Day offer details?",
   "⚡ Delivery kitne minutes mein milti hai?",
   "💳 Payment methods kon kon se hain?",
-  "⭐ Gemini Pro offer details?",
   "🛡️ Warranty policy kya hai?",
 ];
 
 function generateResponse(userMsg) {
   const query = userMsg.toLowerCase().trim();
+
+  // Muse AI queries
+  if (query.includes("muse") || query.includes("30 minute") || query.includes("billion token") || query.includes("3000")) {
+    return {
+      text: "🎬 **Muse AI Video Generator (Flagship Offer):**\n\n• Price: **Rs. 3,000 ($12)**\n• **1 Billion Generation Tokens Included**\n• Create **30+ to 45+ Minute Continuous Videos** with 1 single prompt!\n• Veo 3 Competitor Level Visual Quality & HD Rendering\n• Requirements: 4–5y old Gmail + 3–4y old Facebook account\n• Instant WhatsApp Delivery & Setup Support!",
+      ctaText: "Claim Muse AI Deal on WhatsApp",
+      ctaLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hello Prime Tools Hub! I want to order Muse AI Video Generator for 3,000 PKR.")}`,
+    };
+  }
 
   // ChatGPT queries
   if (query.includes("chatgpt") || query.includes("gpt")) {
@@ -43,9 +53,9 @@ function generateResponse(userMsg) {
   // Gemini queries
   if (query.includes("gemini") || query.includes("google ai")) {
     return {
-      text: "⚡ **Google Gemini Pro 18 Months Flash Offer:**\n\n• Price: **Rs. 499** (Regular Rs. 1,599)\n• 5TB Cloud Storage\n• Advanced AI Image & Veo Video Generation\n• Activated directly on your personal Gmail account!",
-      ctaText: "Get Gemini Deal on WhatsApp",
-      ctaLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hello! I want to get the Gemini Pro 18 Months offer.")}`,
+      text: "⚡ **Google Gemini Pro 18 Months (Last Day Offer):**\n\n• Price: **Rs. 2,999 ($12)** (Regular Rs. 5,500)\n• ⚠️ Ending Today · Only 2 slots left in stock!\n• 5TB Google One Cloud Storage\n• Advanced AI Image (Imagen 3) & Veo Video Generation\n• Activated directly on your personal Gmail account!",
+      ctaText: "Claim Gemini Deal on WhatsApp",
+      ctaLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hello! I want to claim the Gemini Pro 18 Months Last Day offer (2,999 PKR).")}`,
     };
   }
 
@@ -114,7 +124,7 @@ function generateResponse(userMsg) {
 
   // General default response listing popular products
   return {
-    text: `🤖 **Prime Tools Hub Quick Catalog:**\n\n• **ChatGPT Plus Premium (1m Warranty):** Rs. 2,199\n• **ChatGPT Plus (10d Warranty):** Rs. 1,599\n• **Google Gemini Pro 18m:** Rs. 499\n• **Canva Pro 3 Years:** Rs. 279\n• **CapCut Pro:** Rs. 1,139\n• **Google Veo 3:** Rs. 2,999\n\nPayment via **JazzCash, EasyPaisa, Bank, USDT**. Delivery in 5–30 mins!`,
+    text: `🤖 **Prime Tools Hub Quick Catalog:**\n\n• **⭐ Muse AI (1B Tokens · 30+ Min):** Rs. 3,000\n• **ChatGPT Plus Premium (1m Warranty):** Rs. 2,199\n• **Google Gemini Pro 18m (Last Day):** Rs. 2,999\n• **Canva Pro 3 Years:** Rs. 279\n• **CapCut Pro:** Rs. 1,139\n• **Google Veo 3:** Rs. 2,999\n\nPayment via **JazzCash, EasyPaisa, Bank, USDT**. Delivery in 5–30 mins!`,
     ctaText: "Order via WhatsApp →",
     ctaLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hello Prime Tools Hub! I want to place an order.")}`,
   };

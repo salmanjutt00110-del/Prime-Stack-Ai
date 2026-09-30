@@ -330,8 +330,11 @@ export default function ProductDetail() {
             <BulkPurchaseBanner variant="compact" productName={product.name} />
 
             {/* 24-Hour Urgency Countdown Timer */}
-            {(product.hasTimer || product.id === "gemini-pro-18") && (
-              <CountdownTimer targetPrice={product.price} futurePrice={product.oldPrice} />
+            {(product.hasTimer || product.id === "muse-ai" || product.id === "gemini-pro-18") && (
+              <CountdownTimer 
+                targetPrice={product.id === "muse-ai" ? "3,000 PKR ($12)" : (product.id === "gemini-pro-18" ? "2,999 PKR ($12)" : product.price)} 
+                futurePrice={product.id === "muse-ai" ? "4,500 PKR ($18)" : (product.id === "gemini-pro-18" ? "5,500 PKR ($20)" : product.oldPrice)} 
+              />
             )}
           </motion.div>
 

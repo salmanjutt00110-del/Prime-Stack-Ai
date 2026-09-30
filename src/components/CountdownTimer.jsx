@@ -2,15 +2,15 @@ import { useState, useEffect } from "react";
 import { Flame } from "lucide-react";
 
 export default function CountdownTimer({
-  targetPrice = "Rs. 1,099",
-  futurePrice = "Rs. 1,599",
+  targetPrice = "3,000 PKR ($12)",
+  futurePrice = "4,500 PKR ($18)",
   compact = false,
 }) {
   const [timeLeft, setTimeLeft] = useState({ hours: 23, minutes: 54, seconds: 30 });
 
   useEffect(() => {
     // Persistent 24h countdown target timestamp stored in localStorage
-    const STORAGE_KEY = "ps_gemini_24h_deal_end";
+    const STORAGE_KEY = "ps_muse_24h_deal_end";
     let endTime = localStorage.getItem(STORAGE_KEY);
     const now = Date.now();
 

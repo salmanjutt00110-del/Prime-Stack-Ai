@@ -27,6 +27,7 @@ import { useCurrency } from "@/context/CurrencyContext";
 
 const FILTER_PILLS = [
   { id: "all", label: "All Products", keyword: "" },
+  { id: "muse", label: "🔥 Muse AI Deal", keyword: "muse" },
   { id: "chatgpt", label: "ChatGPT & AI", keyword: "chatgpt" },
   { id: "gemini", label: "Gemini & Google", keyword: "gemini" },
   { id: "design", label: "Canva & Design", keyword: "canva" },
@@ -68,7 +69,9 @@ export default function ProductsGrid() {
 
       let matchesPill = true;
       const pCombined = (p.id + " " + p.name + " " + (p.tagline || "")).toLowerCase();
-      if (activeFilter === "design") {
+      if (activeFilter === "muse") {
+        matchesPill = pCombined.includes("muse");
+      } else if (activeFilter === "design") {
         matchesPill = ["canva", "figma", "design"].some(k => pCombined.includes(k));
       } else if (activeFilter === "productivity") {
         matchesPill = ["notion", "office", "miro", "microsoft"].some(k => pCombined.includes(k));
@@ -158,13 +161,13 @@ export default function ProductsGrid() {
           </div>
         </div>
 
-        {/* TOP EXCLUSIVE FEATURED MAIN PRODUCT: MUSE AI VIDEO */}
+        {/* TOP EXCLUSIVE FEATURED MAIN PRODUCT DEAL: MUSE AI VIDEO */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           onClick={() => navigate("/product/muse-ai")}
-          className="mb-4 p-6 sm:p-8 rounded-[26px] border border-blue-500/50 bg-gradient-to-r from-[#04091a] via-[#071333] to-[#0c0d29] backdrop-blur-3xl flex flex-col md:flex-row items-center justify-between gap-6 shadow-[0_20px_50px_rgba(0,98,255,0.25)] cursor-pointer group hover:border-blue-400 transition-all relative overflow-hidden"
+          className="mb-10 p-6 sm:p-8 rounded-[26px] border border-blue-500/50 bg-gradient-to-r from-[#04091a] via-[#071333] to-[#0c0d29] backdrop-blur-3xl flex flex-col md:flex-row items-center justify-between gap-6 shadow-[0_20px_50px_rgba(0,98,255,0.25)] cursor-pointer group hover:border-blue-400 transition-all relative overflow-hidden"
         >
           {/* Ambient Spotlight */}
           <div className="absolute -top-24 -left-20 w-72 h-72 rounded-full bg-blue-600/30 blur-3xl pointer-events-none" />
@@ -182,7 +185,7 @@ export default function ProductsGrid() {
             <div>
               <div className="flex items-center gap-2 mb-1.5 flex-wrap">
                 <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-blue-500/25 text-blue-200 border border-blue-400/50 animate-pulse">
-                  ⚡ NEW FLAGSHIP LAUNCH · 3,000 PKR
+                  ⚡ 24-HOUR DEAL · 3,000 PKR ($12)
                 </span>
                 <span className="text-xs font-bold text-amber-300">🔥 Veo 3 Competitor Level</span>
                 <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-purple-500/20 text-purple-200 border border-purple-400/40">
@@ -220,33 +223,10 @@ export default function ProductsGrid() {
               }}
               className="w-full sm:w-auto px-6 py-3 rounded-xl font-display font-extrabold text-xs text-slate-950 bg-gradient-to-r from-[#00ff88] via-cyan-400 to-blue-400 hover:brightness-110 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-[0_0_25px_rgba(0,255,136,0.35)] border border-white/20 min-h-[44px]"
             >
-              <span>Get 3,000 PKR Deal</span>
+              <span>Claim 3,000 PKR Deal</span>
               <span className="group-hover:translate-x-1 transition-transform">→</span>
             </button>
           </div>
-        </motion.div>
-
-        {/* SECONDARY GEMINI PRO LAST DAY NOTICE BANNER */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          onClick={() => navigate("/product/gemini-pro-18")}
-          className="mb-10 p-3.5 sm:p-4 rounded-2xl border border-red-500/35 bg-gradient-to-r from-red-950/40 via-purple-950/30 to-slate-950/60 backdrop-blur-xl flex flex-col sm:flex-row items-center justify-between gap-3 cursor-pointer group hover:border-red-400/60 transition-all shadow-lg"
-        >
-          <div className="flex items-center gap-3 text-left">
-            <span className="px-2.5 py-1 rounded-lg text-[10px] font-black uppercase tracking-wider bg-red-600/30 text-red-200 border border-red-500/50 flex items-center gap-1 shrink-0 animate-pulse">
-              <AlertTriangle size={12} className="text-red-400" />
-              LAST DAY: GEMINI PRO
-            </span>
-            <p className="text-xs sm:text-sm text-slate-200">
-              <strong className="text-white">Google Gemini Pro 18 Months (5TB Cloud):</strong> Special 2,999 PKR rate ends TODAY. Only 2 slots left in stock!
-            </p>
-          </div>
-          <span className="text-xs font-bold text-red-300 group-hover:text-red-200 group-hover:translate-x-0.5 transition-transform flex items-center gap-1 shrink-0">
-            <span>Claim 2,999 PKR Deal</span>
-            <span>→</span>
-          </span>
         </motion.div>
 
         {/* SEARCH, SORTER & FILTERS BAR */}
