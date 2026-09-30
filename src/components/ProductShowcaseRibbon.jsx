@@ -5,7 +5,8 @@ import { useNavigate } from "react-router-dom";
 
 const SHOWCASE_PRODUCTS = [
   { id: "veo-31-ultra", name: "Google VEO 3.1 Ultra", brand: "Google DeepMind", logo: BRAND.veo, glow: "#6366F1", border: "rgba(99, 102, 241, 0.4)", badge: "🚀 Unlimited Video AI" },
-  { id: "gemini-pro-18", name: "Gemini Pro", brand: "Google AI", logo: BRAND.gemini, glow: "#4285F4", border: "rgba(66, 133, 244, 0.4)", badge: "⚡ $3 Deal" },
+  { id: "muse-ai", name: "Muse AI Video", brand: "Muse AI", logo: BRAND.muse, glow: "#0062FF", border: "rgba(0, 98, 255, 0.4)", badge: "🚀 30+ Min Video AI" },
+  { id: "gemini-pro-18", name: "Gemini Pro", brand: "Google AI", logo: BRAND.gemini, glow: "#4285F4", border: "rgba(66, 133, 244, 0.4)", badge: "⚠️ Last Day Deal" },
   { id: "ms-office-365-1y", name: "Microsoft 365", brand: "Microsoft", logo: BRAND.office, glow: "#EA3E23", border: "rgba(234, 62, 35, 0.4)", badge: "📦 1 Year · 1TB Cloud" },
   { id: "chatgpt-plus-20d", name: "ChatGPT Plus", brand: "OpenAI", logo: BRAND.chatgpt, glow: "#10A37F", border: "rgba(16, 163, 127, 0.4)", badge: "💎 20d Warranty" },
   { id: "canva-pro-1m", name: "Canva Pro", brand: "Visual AI", logo: BRAND.canva, glow: "#7D2AE8", border: "rgba(125, 42, 232, 0.4)", badge: "🎨 $1 Monthly" },

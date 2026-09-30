@@ -106,6 +106,14 @@ const getBrandTheme = (id = "", name = "") => {
       logoGradient: "radial-gradient(circle at 50% 50%, rgba(0,209,178,0.5) 0%, rgba(6,20,30,0.98) 80%)",
     };
   }
+  if (str.includes("muse")) {
+    return {
+      glow: "rgba(0, 98, 255, 0.85)",
+      bgGlow: "from-blue-600/35 via-cyan-950/40 to-transparent",
+      logoRing: "border-blue-400/80 shadow-[0_0_30px_rgba(0,98,255,0.6)]",
+      logoGradient: "radial-gradient(circle at 50% 50%, rgba(0,98,255,0.5) 0%, rgba(5,15,35,0.98) 80%)",
+    };
+  }
   return {
     glow: "rgba(59, 130, 246, 0.75)",
     bgGlow: "from-blue-500/30 via-slate-900/30 to-transparent",

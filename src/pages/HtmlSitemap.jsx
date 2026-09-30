@@ -15,7 +15,7 @@ export default function HtmlSitemap() {
 
   // Categorize products
   const aiProducts = ALL_PRODUCTS.filter(p => 
-    p.id.includes("chatgpt") || p.id.includes("gemini") || p.id.includes("veo") || p.id.includes("grok") || p.id.includes("lovable") || p.id.includes("heygen") || p.id.includes("notion")
+    p.id.includes("chatgpt") || p.id.includes("gemini") || p.id.includes("veo") || p.id.includes("grok") || p.id.includes("lovable") || p.id.includes("heygen") || p.id.includes("notion") || p.id.includes("muse")
   );
 
   const creatorProducts = ALL_PRODUCTS.filter(p => 

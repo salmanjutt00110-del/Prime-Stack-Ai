@@ -19,8 +19,9 @@ const SHOWCASE_BRANDS = [
   { id: "chatgpt-plus-1m", name: "ChatGPT Plus", tag: "GPT-4o & Sora", logo: BRAND.chatgpt, glow: "#10A37F" },
   { id: "canva-pro-edu", name: "Canva Pro", tag: "Magic AI Studio", logo: BRAND.canva, glow: "#7D2AE8" },
   { id: "veo-31-ultra", name: "Google VEO 3.1 Ultra", tag: "Unlimited Video AI", logo: BRAND.veo, glow: "#6366F1" },
+  { id: "muse-ai", name: "Muse AI Video", tag: "30+ Min Videos · 1B Tokens", logo: BRAND.muse, glow: "#0062FF" },
   { id: "capcut-pro-1m", name: "CapCut Pro", tag: "4K Pro Editing", logo: BRAND.capcut, glow: "#FE2C55" },
-  { id: "gemini-pro-18", name: "Gemini Pro", tag: "5TB & Veo Video", logo: BRAND.gemini, glow: "#4285F4" },
+  { id: "gemini-pro-18", name: "Gemini Pro", tag: "⚠️ Last Day · Only 2 Left", logo: BRAND.gemini, glow: "#4285F4" },
   { id: "surfshark-vpn-1y", name: "Surfshark VPN", tag: "1-Yr Unlimited", logo: BRAND.surfshark, glow: "#00D1B2" },
   { id: "supergrok-12m-premium", name: "SuperGrok", tag: "High-Speed AI", logo: BRAND.grok, glow: "#9333EA" },
 ];

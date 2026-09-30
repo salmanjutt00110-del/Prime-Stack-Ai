@@ -423,6 +423,34 @@ export default function ProductDetail() {
             </Section>
           </div>
 
+          {product.flyer && (
+            <motion.div
+              className="rounded-2xl p-6 sm:p-8 relative overflow-hidden group transition-all duration-300"
+              style={{
+                background: "linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)",
+                backdropFilter: "blur(24px)",
+                border: "1px solid rgba(255,255,255,0.08)",
+              }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+            >
+              <div className="flex items-center gap-2 mb-4">
+                <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-500/15 border border-blue-400/30 text-blue-300">
+                  Official Feature Overview &amp; Requirements Flyer
+                </span>
+              </div>
+              <div className="flex justify-center rounded-2xl overflow-hidden max-w-sm sm:max-w-md mx-auto shadow-[0_20px_60px_rgba(0,0,0,0.8)] border border-blue-500/30">
+                <img
+                  src={product.flyer}
+                  alt={`${product.name} Official Overview & Requirements`}
+                  className="w-full h-auto object-cover rounded-2xl transition-transform duration-300 hover:scale-[1.02]"
+                />
+              </div>
+            </motion.div>
+          )}
+
           {/* Buying Instructions */}
           <motion.div
             className="rounded-2xl p-6 relative overflow-hidden group transition-all duration-300"

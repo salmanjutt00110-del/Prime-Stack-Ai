@@ -240,7 +240,7 @@ export const productFaqs = {
     faqs: [
       {
         question: "Google Gemini Advanced price in Pakistan?",
-        answer: "Google Gemini Pro Advanced 18-month plan sirf Rs. 499 mein available hai PrimeToolsHub pe — regular price Rs. 1,599 se over 68% discount! Ye directly aap ke personal Gmail pe activate hota hai with 5TB Google One cloud storage, 2M context window, Imagen 3, aur Google Veo video generation."
+        answer: "Google Gemini Pro Advanced 18-month plan abhi Last Day Offer ke tehat sirf 2,999 PKR ($12) mein available hai PrimeToolsHub pe (Regular $20 / Rs. 5,500). Stock bohot kam hai aur aaj is offer ka aakhri din hai. Ye directly aap ke personal Gmail pe activate hota hai with 5TB Google One cloud storage, 2M context window, Imagen 3, aur Google Veo video generation."
       },
       {
         question: "What is included in the Gemini Pro 18 Months subscription?",
@@ -252,11 +252,11 @@ export const productFaqs = {
       },
       {
         question: "How is Gemini Pro activated on my personal Gmail?",
-        answer: "Activation intehai aasan aur safe hai: Order on WhatsApp → Share only your Gmail address (password ki bilkul zaroorat nahi hai) → Pay Rs. 499 via JazzCash, EasyPaisa ya Bank Transfer → We send an official invitation link → You accept it and 18 months Gemini Pro + 5TB storage is instantly activated within 15 minutes."
+        answer: "Activation intehai aasan aur safe hai: Order on WhatsApp → Share only your Gmail address (password ki bilkul zaroorat nahi hai) → Pay 2,999 PKR via JazzCash, EasyPaisa, SadaPay ya Bank Transfer → We send an official invitation link → You accept it and 18 months Gemini Pro + 5TB storage is instantly activated within 15 minutes."
       },
       {
         question: "Gemini Advanced aur ChatGPT Plus mein kya farq hai?",
-        answer: "Gemini Advanced mein massive 2M token context window, 5TB Google One cloud storage, aur Google Veo video generation milti hai directly personal Gmail par for just Rs. 499 (18 months). ChatGPT Plus coding debugging aur custom GPTs ke liye popular hai lekin Rs. 2,199/month cost karta hai bina kisi cloud storage ke."
+        answer: "Gemini Advanced mein massive 2M token context window, 5TB Google One cloud storage, aur Google Veo video generation milti hai directly personal Gmail par for just 2,999 PKR (18 months). ChatGPT Plus coding debugging aur custom GPTs ke liye popular hai lekin Rs. 2,199/month cost karta hai bina kisi cloud storage ke."
       },
       {
         question: "Will my existing Google Drive files and Google Photos remain safe?",
@@ -275,12 +275,42 @@ export const productFaqs = {
         answer: "Yes! Pakistani freelancers aur content creators Gemini Pro ko YouTube scripts, SEO blog writing, social media campaigns, aur Imagen 3 photorealistic images ke liye use karte hain. Iske sath Google Veo engine se high-quality cinematic AI videos bhi banti hain."
       },
       {
-        question: "Gemini Advanced ka per-month cost kitna banta hai?",
-        answer: "Rs. 499 mein 18 months ka full access milta hai, jo effectively sirf ~Rs. 27 per month banta hai! Ye official international pricing ($20/month = ~Rs. 5,600/month) ke muqablay mein 99% sasta hai."
+        question: "Gemini Advanced offer kab tak valid hai?",
+        answer: "Aaj Gemini Pro 18-month deal ka LAST DAY hai aur stock nihayat limited hai (sirf 2 slots baqi hain). Urgent order lock karne ke liye abhi WhatsApp par rabta karein."
       },
       {
         question: "How to order Google Gemini Pro from PrimeToolsHub?",
-        answer: "Simply click 'Buy on WhatsApp' on the Gemini Pro page → Share your personal Gmail address → Pay Rs. 499 via JazzCash, EasyPaisa, SadaPay, NayaPay, or Bank Transfer → Your plan is activated within 15 minutes with verified warranty."
+        answer: "Simply click 'Buy on WhatsApp' on the Gemini Pro page → Share your personal Gmail address → Pay 2,999 PKR via JazzCash, EasyPaisa, SadaPay, NayaPay, or Bank Transfer → Your plan is activated within 15 minutes with verified warranty."
+      }
+    ]
+  },
+
+  // ═══ Muse AI Video Generator ═══
+  "muse-ai": {
+    faqs: [
+      {
+        question: "Muse AI Video Generator price in Pakistan?",
+        answer: "Muse AI Video Generator Prime Tools Hub pe sirf 3,000 PKR ($12) mein available hai with massive 1 Billion Tokens. Ye Veo 3 competitor level model hai jo single prompt se 30+ minute ki long-form cinematic HD videos banata hai."
+      },
+      {
+        question: "What are the account requirements for Muse AI?",
+        answer: "Official account policy ke mutabiq Muse AI authentication ke liye 4–5 years old Gmail account aur 3–4 years old Facebook account required hota hai. Humari WhatsApp team setup aur activation mein full assist karti hai."
+      },
+      {
+        question: "Can Muse AI really create 30+ minute videos with one prompt?",
+        answer: "Yes! Muse AI is specially designed for long-form narrative AI video generation. Single prompt likh kar aap 30 se 45+ minute continuous coherent scenes, consistent characters, aur high-definition cinematic video render kar sakte hain."
+      },
+      {
+        question: "How many tokens are provided with Muse AI?",
+        answer: "Is plan mein pure 1 Billion (1,000,000,000) Tokens milte hain jo multiple full-length videos, high-resolution visual concept renders, aur iterative projects ke liye kafi hain."
+      },
+      {
+        question: "How does Muse AI compare to Google Veo 3?",
+        answer: "Muse AI ko Veo 3 Competitor Level consider kiya jata hai kyunki ye ultra-high-definition visual quality, dynamic camera motions, realistic environmental physics aur long-duration prompt-to-video workflow offer karta hai."
+      },
+      {
+        question: "How to order Muse AI on WhatsApp?",
+        answer: "Simply 'Order Now' ya 'Buy on WhatsApp' pe click karein → Pay 3,000 PKR via JazzCash, EasyPaisa, SadaPay, ya Bank Transfer → 15 minutes mein setup and account delivery complete ho jati hai."
       }
     ]
   },

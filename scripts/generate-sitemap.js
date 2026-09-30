@@ -45,6 +45,7 @@ function getProductsData() {
     else if (id.includes('heygen')) logoName = 'heygen.webp';
     else if (id.includes('notion')) logoName = 'notion.webp';
     else if (id.includes('figma')) logoName = 'figma.webp';
+    else if (id.includes('muse')) logoName = 'muse.png';
 
     if (!products.some(p => p.id === id)) {
       products.push({ id, name, logo: logoName });

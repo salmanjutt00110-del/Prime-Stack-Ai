@@ -16,6 +16,7 @@ import notionLogo from "../photo/notion.webp";
 import figmaLogo from "../photo/figma.webp";
 import miroLogo from "../photo/miro.png";
 import officeLogo from "../photo/office-365.png";
+import museLogo from "../photo/muse.png";
 
 const db = globalThis.__B44_DB__ || { auth: { isAuthenticated: async () => false, me: async () => null }, entities: new Proxy({}, { get: () => ({ filter: async () => [], get: async () => null, create: async () => ({}), update: async () => ({}), delete: async () => ({}) }) }), integrations: { Core: { UploadFile: async () => ({ file_url: '' }) } } };
 
@@ -40,6 +41,7 @@ const BRAND = {
   figma: figmaLogo,
   miro: miroLogo,
   office: officeLogo,
+  muse: museLogo,
 };
 export { BRAND };
 
@@ -50,8 +52,9 @@ export const LOGO = {
 
 // Hero showcase products (first: $5, second: $3, all in USD)
 export const HERO_PRODUCTS = [
+  { id: "muse-ai", name: "Muse AI Video Generator", tag: "🚀 30+ Min Videos · 1B Tokens", duration: "1 Billion Tokens", price: "$12", oldPrice: "$18", description: "🎬 Create 30+ Minute Full-Length Cinematic Videos with One Prompt! Veo 3 competitor level model with 1 Billion generation tokens for 3,000 PKR / $12.", tagline: "Create 30+ Minute HD Videos with One Prompt · 1 Billion Tokens · Veo 3 Competitor.", stock: "6", logo: BRAND.muse, color: "#0062FF", color2: "#38BDF8", particle: "#60A5FA" },
+  { id: "gemini-pro-18", name: "Google Gemini Pro", tag: "⚠️ Last Day: 2,999 PKR", duration: "18 Months", price: "$12", oldPrice: "$20", description: "🔥 LAST DAY OFFER · EXTREMELY LIMITED STOCK: Official Google Gemini Pro AI on your personal Gmail for 18 Months. 5TB cloud storage, 2M context window, advanced AI image & Veo video generation for 2,999 PKR / $12 (Regular $20).", tagline: "Ending Today · Only 2 Left! 18 Months Gemini Pro on your Gmail · 5TB cloud storage & Veo AI.", stock: "2", logo: BRAND.gemini, color: "#4285F4", color2: "#8B5CF6", particle: "#60A5FA", hasTimer: true },
   { id: "veo-31-ultra", name: "Google VEO 3.1 Ultra", tag: "🚀 Official Semi-Private", duration: "20 Days Warranty", price: "$5", oldPrice: "$8", description: "🚀 Official Semi-Private Access to Google VEO 3.1 Ultra! Features Unlimited Video Generation (Low Priority 0 Credit Model) & Unlimited Image Generation directly on your Gmail without extension or portal required.", tagline: "Official Google AI Ultra Plan with Unlimited Video & Image Generation on your Gmail.", stock: "5", logo: BRAND.veo, color: "#4285F4", color2: "#EA4335", particle: "#60A5FA" },
-  { id: "gemini-pro-18", name: "Google Gemini Pro", tag: "⚡ 24h Offer: $3", duration: "18 Months", price: "$3", oldPrice: "$6", description: "🔥 Limited 24-Hour Flash Sale: Official Google Gemini Pro AI on your personal Gmail for 18 Months. 5TB cloud storage, 2M context window, advanced AI image & Veo video generation for $3 (Regular $6).", tagline: "18 Months Gemini Pro on your Gmail · 5TB cloud storage & Veo AI video generation.", stock: "4", logo: BRAND.gemini, color: "#4285F4", color2: "#8B5CF6", particle: "#60A5FA", hasTimer: true },
   { id: "ms-office-365-1y", name: "Microsoft Office 365 Plus", tag: "📦 1 Year · 1TB Cloud", duration: "1 Year", price: "$3", oldPrice: "$5", description: "Microsoft Office 365 Plus – 1 Month (Guaranteed) + 11 Months (GIFT) Subscription. Includes Word, Excel, PowerPoint, OneNote, Forms & 1TB OneDrive Cloud Storage for up to 5 Windows PCs.", tagline: "Word, Excel, PowerPoint & 1TB OneDrive for up to 5 Windows PCs.", stock: "10", logo: BRAND.office, color: "#EA3E23", color2: "#D83B01", particle: "#F25022" },
   { id: "capcut-pro-1m", name: "CapCut Pro (1 Month)", tag: "✂️ Pro Editing", duration: "1 Month", price: "$4", oldPrice: "$6", description: "CapCut Pro premium access with all pro editing features, premium effects, filters, templates, AI editing tools.", tagline: "All pro editing features, AI tools & export without watermark.", stock: "7", logo: BRAND.capcut, color: "#FE2C55", color2: "#25F4EE", particle: "#FE2C55" },
   { id: "nordvpn-3m", name: "NordVPN 3 Months", tag: "🛡️ Single Device", duration: "3 Months", price: "$4", oldPrice: "$6", description: "3 Months NordVPN premium subscription single device via easy activation redeem link.", tagline: "3 Months fast redeem link activation without card required.", stock: "90", logo: BRAND.nord, color: "#0060FF", color2: "#8B5CF6", particle: "#60A5FA" },
@@ -70,8 +73,104 @@ export const HERO_PRODUCTS = [
   { id: "supergrok-12m-premium", name: "SuperGrok 12 Months", tag: "❌ Out of Stock", duration: "12 Months", price: "$12", oldPrice: "$18", description: "SuperGrok 12-month premium subscription powered by X — Currently Out of Stock.", tagline: "12 Months SuperGrok subscription (Out of Stock).", stock: "0", logo: BRAND.grok, color: "#1DA1F2", color2: "#8B5CF6", particle: "#60A5FA" },
 ];
 
-// Full catalog strictly ordered according to user request with 100% USD pricing
 export const ALL_PRODUCTS = [
+  {
+    id: "muse-ai",
+    name: "Muse AI Video Generator",
+    duration: "1 Billion Tokens",
+    price: "$12",
+    oldPrice: "$18",
+    stock: "6",
+    color: "#0062FF",
+    logo: BRAND.muse,
+    flyer: "/muse-flyer.jpg",
+    tag: "🚀 30+ Min Videos · 1B Tokens",
+    tagline: "Create 30+ Minute HD Videos with One Prompt · 1 Billion Tokens · Veo 3 Competitor Level.",
+    description: "🎬 Create 30+ Minute Full-Length Cinematic Videos with One Single Prompt! Muse AI is a groundbreaking Veo 3 competitor level AI video model loaded with 1 Billion generation tokens. Produce 30 to 45+ minute coherent videos, high-quality HD rendering, and instant workflow for 3,000 PKR / $12 only.",
+    features: [
+      "Create 30+ Minute Videos With One Prompt",
+      "Massive 1 Billion Generation Tokens Included",
+      "Google Veo 3 Competitor Level Visual Quality",
+      "Crystal Clear High-Definition (HD) Video Rendering",
+      "Multi-Scene Storytelling & Narrative Continuity",
+      "Built-in AI Image Generation & Prompt Chat Assistant",
+      "Full Creator Workspace (Generate, Video, Images, Chat, Projects)",
+      "Instant 15-Minute WhatsApp Delivery & Setup"
+    ],
+    whatsIncluded: [
+      "Official Muse AI Premium Account Access",
+      "1 Billion Total Generation Tokens",
+      "Single-Prompt 30+ Minute Long Video Generation",
+      "Veo 3 Competitor Quality Video Model Access",
+      "High-Definition HD Video & Image Export",
+      "Dedicated Setup & WhatsApp Activation Support (15 mins)"
+    ],
+    requirements: [
+      "4–5 Years Old Gmail Account",
+      "3–4 Years Old Facebook Account (Required for account authentication)"
+    ],
+    termsOfUse: [
+      "Requires 4-5 years old Gmail and 3-4 years old Facebook account for verified access",
+      "Single device / user usage — do not share account credentials",
+      "Strict adherence to AI content policies and terms"
+    ],
+    warrantyPolicy: [
+      "Full activation and token allocation verification warranty",
+      "100% genuine access with dedicated WhatsApp support team assistance",
+      "Instant replacement support in case of initial activation issues"
+    ],
+    warrantyNote: "1 Billion Tokens · 4-5y Gmail + 3-4y FB Required",
+    seo: {
+      titleTag: "Muse AI Video Generator Price in Pakistan — 3,000 PKR | PrimeToolsHub",
+      metaDescription: "Buy Muse AI Video Generator for 3,000 PKR ($12). Create 30+ min HD videos with one prompt. 1 Billion tokens, Veo 3 competitor level with instant WhatsApp delivery.",
+      h1: "Muse AI Video Generator — Create 30+ Min Videos with One Prompt",
+      primaryKeyword: "muse ai video price in pakistan",
+      secondaryKeywords: [
+        "muse ai in pakistan",
+        "buy muse ai pakistan",
+        "muse ai 3000 pkr",
+        "muse ai video generator",
+        "create 30 minute videos one prompt",
+        "veo 3 competitor muse",
+        "muse ai tokens",
+        "buy muse ai pakistan"
+      ]
+    },
+    seoGuide: {
+      heading: "Complete Guide: Muse AI Long-Form Video Generation (1 Billion Tokens)",
+      subheading: "Everything you need to know about Muse AI — the Veo 3 competitor creating 30+ minute cinematic videos with a single prompt for only 3,000 PKR.",
+      sections: [
+        {
+          title: "What is Muse AI Video Generator?",
+          content: "Muse AI is the next-generation generative video platform built to solve the biggest limitation in AI video: duration. While traditional AI tools produce 4-to-10 second clips, Muse AI allows creators to generate coherent, full-length 30+ minute cinematic videos from a single descriptive prompt."
+        },
+        {
+          title: "Veo 3 Competitor Level Visual Quality",
+          content: "Equipped with state-of-the-art visual architecture rivaling Google Veo 3, Muse AI produces high-definition (HD) scenes with dynamic lighting, smooth camera motions, consistent characters, and rich natural environments for YouTube, documentaries, and social media."
+        },
+        {
+          title: "Massive 1 Billion Generation Tokens",
+          content: "With 1,000,000,000 tokens included at only 3,000 PKR ($12), creators get unprecedented value to test, generate, and export dozens of long-form video projects and high-resolution concept art without worrying about token exhaustion."
+        },
+        {
+          title: "Account Requirements & Smooth Setup",
+          content: "To maintain platform stability and verified access, Muse AI requires a 4-5 years old Gmail account and a 3-4 years old Facebook account. Our dedicated WhatsApp support team assists with full activation within 15 minutes of payment."
+        }
+      ],
+      comparisonTable: {
+        title: "Muse AI vs Other AI Video Generators",
+        headers: ["Feature / Metric", "Muse AI", "Google Veo 3", "Runway Gen-3 / Sora"],
+        rows: [
+          ["Price in Pakistan", "3,000 PKR ($12)", "$5 - $20+", "Expensive Monthly Sub"],
+          ["Video Duration", "30+ Minutes / Prompt", "Short / Medium Clips", "4s – 10s per generation"],
+          ["Token Allocation", "1 Billion Tokens", "Credit-Based Tier", "Limited Monthly Credits"],
+          ["Quality Standard", "HD Veo 3 Competitor Level", "Cinematic Google Quality", "Variable Motion Quality"],
+          ["Workflow", "Single Prompt Long-Form", "Prompt & Iterative Clips", "Clip-by-Clip Stitching"],
+          ["Setup Assistance", "15-min WhatsApp Support", "Gmail Activation", "Self-Serve Credit Card"]
+        ]
+      }
+    }
+  },
   {
     id: "veo-31-ultra",
     name: "Google VEO 3.1 Ultra",
@@ -129,14 +228,14 @@ export const ALL_PRODUCTS = [
     id: "gemini-pro-18",
     name: "Google Gemini Pro",
     duration: "18 Months",
-    price: "$3",
-    oldPrice: "$6",
-    stock: "4",
+    price: "$12",
+    oldPrice: "$20",
+    stock: "2",
     color: "#4285F4",
     logo: BRAND.gemini,
-    tag: "⚡ 24h Offer: $3",
-    tagline: "18 Months Official Gemini Pro on your Gmail · 5TB Google One storage, 2M context & Veo video credits.",
-    description: "🔥 Limited 24-Hour Flash Sale: Get official Google Gemini Pro (Advanced) access on your personal Gmail for 18 Months at only $3 (Regular $6). Includes massive 5TB Google One cloud storage, 2M token context window, Imagen 3 image generation & Veo video credits with instant 15-minute WhatsApp activation.",
+    tag: "⚠️ Last Day Deal: 2,999 PKR",
+    tagline: "🚨 Ending Today · Limited Stock (Only 2 Left)! 18 Months Gemini Pro on your Gmail · 5TB cloud storage & Veo AI.",
+    description: "🔥 LAST DAY OFFER · EXTREMELY LIMITED STOCK: Official Google Gemini Pro AI on your personal Gmail for 18 Months. Only 2 slots remaining! Massive 5TB Google One cloud storage, 2M context window, Imagen 3 image generation & Veo video credits for 2,999 PKR / $12 (Regular $20 / Rs. 5,500) with instant 15-minute WhatsApp activation.",
     hasTimer: true,
     features: [
       "Official 18 Months Google Gemini Pro (Advanced) Access",
@@ -156,7 +255,7 @@ export const ALL_PRODUCTS = [
       "Veo Video & Imagen 3 Creation Suite Access",
       "Instant WhatsApp Activation & Setup Support (5–15 mins)",
       "100% Activation Guarantee & Verification Support",
-      "Flexible Payment: Card, USDT / Crypto & Bank Transfer"
+      "Flexible Payment: JazzCash, EasyPaisa, SadaPay, Bank & Crypto"
     ],
     requirements: [
       "Your personal Google / Gmail account (no new email required)",
@@ -172,13 +271,13 @@ export const ALL_PRODUCTS = [
       "Once the subscription is activated and the duration and 5TB storage reflect on your account, the order is fulfilled",
       "Dedicated WhatsApp assistance provided for initial setup and family invitation acceptance"
     ],
-    warrantyNote: "Verified activation warranty on your personal Gmail.",
+    warrantyNote: "Verified activation warranty · Last day offer (Only 2 slots left)",
     seo: {
-      titleTag: "Google Gemini Pro 18 Months Price — $3 | PrimeToolsHub",
-      metaDescription: "Buy Google Gemini Pro 18 Months for $3 only. Official access on your Gmail with 5TB Google One cloud storage, 2M context, Imagen 3 & Veo AI video generation.",
-      h1: "Google Gemini Pro 18 Months — Official AI & 5TB Storage",
+      titleTag: "Google Gemini Pro 18 Months Price — 2,999 PKR ($12) | PrimeToolsHub",
+      metaDescription: "Buy Google Gemini Pro 18 Months for 2,999 PKR ($12). Last Day Offer with 5TB Google One cloud storage, 2M context, Imagen 3 & Veo AI video generation. Only 2 slots left!",
+      h1: "Google Gemini Pro 18 Months — Last Day Deal & 5TB Storage",
       primaryKeyword: "google gemini pro price",
-      secondaryKeywords: ["gemini pro 18 months", "google gemini 18 months price", "buy gemini pro 3 usd", "gemini advanced subscription"]
+      secondaryKeywords: ["gemini pro 18 months", "google gemini 18 months price", "buy gemini pro 2999 pkr", "gemini advanced subscription"]
     },
   },
   {
